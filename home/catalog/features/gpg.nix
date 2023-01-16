@@ -21,6 +21,15 @@
       name = "curses";
     };
 in {
+  home.persistence = {
+    "/persist/home/gogsaan" = {
+      allowOther = true;
+      directories = [
+        ".gnupg"
+      ];
+    };
+  };
+
   home.packages = [pinentry.package];
 
   services.gpg-agent = {
@@ -56,10 +65,6 @@ in {
       ];
     };
   };
-
-  # home.persistence = {
-  #   "/persist/home/gogsaan".directories = [".gnupg"];
-  # };
 
   # Link /run/user/$UID/gnupg to ~/.gnupg-sockets
   # So that SSH config does not have to know the UID

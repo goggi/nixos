@@ -46,6 +46,7 @@
 
     # Features with persistance
     ../catalog/features/yubikey.nix
+    ../catalog/features/gpg.nix
   ];
 
   home = {

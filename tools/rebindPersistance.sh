@@ -20,6 +20,9 @@ bindfs -o fsname=/persist/home/gogsaan/.config/Yubico /persist/home/gogsaan/.con
 # Signal
 bindfs -o fsname=/persist/home/gogsaan/.config/Signal /persist/home/gogsaan/.config/Signal /home/gogsaan/.config/Signal
 
+# Signal
+bindfs -o fsname=/persist/home/gogsaan/.gnupg /persist/home/gogsaan/.gnupg /home/gogsaan/.gnupg
+
 # Navicat
 bindfs -o fsname=/persist/home/gogsaan/.config/navicat /persist/home/gogsaan/.config/navicat /home/gogsaan/.config/navicat
 
