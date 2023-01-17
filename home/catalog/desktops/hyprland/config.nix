@@ -307,10 +307,8 @@
 
 
   # Screenshots
-  $screenshotarea = hyprctl keyword animation "fadeOut,0,0,5"; grimblast --notify --cursor save area - | swappy -f - ; hyprctl keyword animation "fadeOut,1,4,5"
-  $screensscreen = hyprctl keyword animation "fadeOut,0,0,5"; grimblast --notify --cursor save active - | swappy -f - ; hyprctl keyword animation "fadeOut,1,4,5"
-
-
+  $screenshotarea = hyprctl keyword animation "fadeOut,0,0,5"; grimblast --cursor save area - | swappy -f - ; hyprctl keyword animation "fadeOut,1,4,5"
+  $screensscreen = hyprctl keyword animation "fadeOut,0,0,5"; grimblast --cursor save active - | swappy -f - ; hyprctl keyword animation "fadeOut,1,4,5"
 
   bind = SUPER_SHIFT, t, exec, $screenshotarea
   bind = SUPER_CTRL, t, exec, $screensscreen
