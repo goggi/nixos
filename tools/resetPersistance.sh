@@ -19,7 +19,7 @@ rm -R ~/.local/share/applications || true
 rm -R ~/.local/share/desktop-directories || true
 rm -R ~/.aws || true
 rm -R ~/.ssh || true
-
+rm -R /var/lib/libvirt/images || true
 # Apps
 # Chrome
 rm -R ~/.config/google-chrome-beta || true

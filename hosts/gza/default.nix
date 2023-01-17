@@ -7,6 +7,7 @@
 }: {
   imports = [
     # Include the results of the hardware scan.
+
     ./hardware-configuration.nix
 
     ../catalog/global
@@ -23,6 +24,14 @@
   networking = {
     hostName = "gza";
     useDHCP = lib.mkDefault true;
+  };
+
+  environment.persistence = {
+    "/persist/var" = {
+      directories = [
+        "/lib/libvirt/images"
+      ];
+    };
   };
 
   boot = {
