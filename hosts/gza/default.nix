@@ -7,7 +7,7 @@
 }: {
   imports = [
     # Include the results of the hardware scan.
-
+    inputs.impermanence.nixosModules.impermanence
     ./hardware-configuration.nix
 
     ../catalog/global
