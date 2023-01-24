@@ -45,7 +45,8 @@ rm -R ~/.config/navicat || true
 rm -R ~/.config/k9s || true
 # Btop
 rm -R ~/.config/btop || true
-
+# Coder
+rm -R ~/.config/coderv2 || true
 # Gaming
 rm -R ~/.local/share/"Paradox Interactive" || true
 rm -R ~/.cache/AMD || true
@@ -56,4 +57,13 @@ rm -R ~/.paradoxlauncher || true
 rm -R ~/.gnupg || true
 rm -R ~/.config/Yubico || true
 
-echo "Check Yubikey" && git add . && sudo nixos-rebuild switch --flake .#gza
+rm  ~/.local/share/fish/fish_history || true
+rm  ~/.config/fish/config.fish  || true
+
+
+# Manual remove after first fail
+# rm -R ~/.gnupg/private-keys-v1.d || true
+
+
+
+# echo "Check Yubikey" && git add . && sudo nixos-rebuild switch --flake .#gza

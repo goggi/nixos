@@ -18,6 +18,7 @@
     ../catalog/optional/features/btrfsOptinPersistence.nix
     ../catalog/optional/features/encryptedRoot.nix
     ../catalog/optional/apps/podman.nix
+    # ../catalog/optional/apps/bazecor.nix
     # ../catalog/optional/apps/taskwarrior.nix
   ];
 
@@ -120,9 +121,17 @@
     };
   };
 
+  services.udev = {
+    # For dygma keyboard
+    extraRules = ''
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2201", GROUP="users", MODE="0666"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2200", GROUP="users", MODE="0666"
+    '';
+  };
+
   environment = {
     systemPackages = with pkgs; [
-      # inputs.bazecor.packages.${pkgs.system}.default
+      inputs.bazecor.packages.${pkgs.system}.default
       acpi
       libva-utils
       ocl-icd
@@ -142,5 +151,5 @@
     HandlePowerKey=ignore
   '';
 
-  system.stateVersion = lib.mkForce "22.11"; # DONT TOUCH THIS
+  system.stateVersion = lib.mkForce "22.11"; # DONT TOUCH TH
 }

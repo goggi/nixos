@@ -14,11 +14,11 @@ in {
     enable = true;
     openFirewall = true;
     forwardX11 = false;
-    useDns = false;
     ports = [49022];
-    kbdInteractiveAuthentication = false;
-    passwordAuthentication = lib.mkForce false;
-    permitRootLogin = lib.mkForce "no";
+    settings.kbdInteractiveAuthentication = false;
+    settings.passwordAuthentication = lib.mkForce false;
+    settings.permitRootLogin = lib.mkForce "no";
+    settings.useDns = false;
 
     hostKeys = [
       # {

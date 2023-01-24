@@ -4,6 +4,8 @@
   inputs = {
     # NixOS
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgsUnstableMaster.url = "github:nixos/nixpkgs/master";
+    # nixpkgsUnstableMasterMine.url = "github:goggi/nixpkgs/master";
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nur.url = "github:nix-community/NUR";
@@ -42,7 +44,6 @@
   } @ inputs: let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
-
     inherit (builtins) mapAttrs elem;
 
     filterNixFiles = k: v: v == "regular" && lib.hasSuffix ".nix" k;
@@ -50,6 +51,7 @@
       (lib.lists.forEach (lib.mapAttrsToList (name: _: path + ("/" + name))
           (lib.filterAttrs filterNixFiles (builtins.readDir path))))
       import;
+
     pkgs = import inputs.nixpkgs {
       inherit system;
       config = {
@@ -58,10 +60,11 @@
         tarball-ttl = 0;
         packageOverrides = super: {
           webcord = pkgs.callPackage ./pkgs/webcord {};
-          # gamescope = pkgs.callPackage ./pkgs/gamescope {};
-          # firefoxpwa = pkgs.callPackage ./pkgs/firefoxpwa {};
         };
       };
+
+      pkgs.config.allowBroken = pkgs: with pkgs; [kitty];
+
       overlays = with inputs;
         [
           (

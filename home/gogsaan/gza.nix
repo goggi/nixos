@@ -27,6 +27,10 @@
 
     # Persistance
     # App with persistance
+    # ../catalog/apps/vscodeInsiders.nix
+    # ../catalog/apps/googleChrome.nix
+    # ../catalog/apps/neovim.nix
+
     ../catalog/apps/googleChromeBeta.nix
     ../catalog/apps/vscode.nix
     ../catalog/apps/1password.nix
@@ -36,10 +40,8 @@
     ../catalog/apps/webcord.nix
     ../catalog/apps/fish.nix
     ../catalog/apps/navicat.nix
-    # ../catalog/apps/googleChrome.nix
     ../catalog/apps/btop.nix
-    ../catalog/apps/vscodeInsiders.nix
-    # ../catalog/apps/neovim.nix
+    ../catalog/apps/coder.nix
 
     # Games with persistance
     ../catalog/apps/steam.nix

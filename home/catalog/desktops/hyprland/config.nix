@@ -188,8 +188,6 @@
     windowrule = float, title:^.*Edit Connection.*$
     windowrule = move 0 0, title:^.*Edit Connection.*$
 
-
-
   # Variables
   $term = kitty
   $browser = firefox
