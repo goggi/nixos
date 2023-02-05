@@ -5,7 +5,11 @@
 }: {
   home = {
     packages = [
-      pkgs._1password-gui
+      # pkgs._1password-gui
+      # {
+      #   enable = true;
+      #   polkitPolicyOwners = ["gogsaan"];
+      # }
       pkgs._1password
     ];
     persistence = {

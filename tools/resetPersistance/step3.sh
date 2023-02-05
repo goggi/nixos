@@ -4,7 +4,6 @@ bindfs -o fsname=/persist/home/gogsaan/.config/obsidian /persist/home/gogsaan/.c
 # coder
 bindfs -o fsname=/persist/home/gogsaan/.config/coderv2 /persist/home/gogsaan/.config/coderv2 /home/gogsaan/.config/coderv2
 
-
 # Webcord
 bindfs -o fsname=/persist/home/gogsaan/.config/WebCord /persist/home/gogsaan/.config/WebCord /home/gogsaan/.config/WebCord                                                                                                                                                              
 

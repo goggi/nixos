@@ -33,18 +33,22 @@
       sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
     }
 
+
+    # General
+    binds {
+      allow_workspace_cycles = false
+    }
+
     # General
     general {
       gaps_in = 6
       gaps_out = 12
       border_size = 2
-      col.active_border=0xffcba6f7
-      col.inactive_border=0xff313244
+      col.active_border= 0xffcba6f7 0xfff38ba8 45deg
       no_border_on_floating = false
       layout = dwindle
       # main_mod = SUPER
     }
-
     # Misc
     misc {
       disable_hyprland_logo = true
@@ -92,19 +96,23 @@
     animations {
       enabled = true
       # bezier curve
+      bezier = linear, 0, 0, 1, 1
       bezier = overshot, 0.05, 0.9, 0.1, 1.05
       # bezier = overshot, 0.13, 0.99, 0.29, 1.1
       bezier = smoothOut, 0.36, 0, 0.66, -0.56
       bezier = smoothIn, 0.25, 1, 0.5, 1
       # animation list
       animation = windows, 1, 3, overshot, slide
-      animation = windowsOut, 1, 4, smoothOut, slide
+      animation = windowsOut, 1, 10, smoothOut, slide
       animation = windowsMove, 1, 3, default
-      animation = border, 1, 5, default
+
       animation = fade, 1, 7, smoothIn
       animation = fadeDim, 1, 7, smoothIn
-      animation = workspaces, 1, 5, overshot, slidevert
-      # animation=workspaces,1,5,default,fade
+      animation = workspaces, 1, 4, overshot, slidevert
+      #animation = border, 1, 5, default
+      #animation=workspaces,1,1,default,fade
+      #animation = border,1,2,linear
+      animation = borderangle, 1, 15, linear, loop
     }
 
     # Gestures
@@ -115,8 +123,8 @@
 
     # Layouts
     dwindle {
-      col.group_border_active=0xff89b4fa
-      col.group_border=0xff585b70
+      col.group_border=0xff313244
+      col.group_border_active	=0xffcba6f7 0xfff38ba8 45deg
       no_gaps_when_only = false
       pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
       preserve_split = true # you probably want this
@@ -174,7 +182,6 @@
     windowrule = move 35% 10%, title:^(swappy)$
 
     windowrule = workspace special:music, title:^(YouTube Music)$
-    windowrule = workspace special:music, title:^(YouTube Music)$
     windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$
     windowrule = workspace 10, title:^.*WebCord.*$
     windowrule = workspace 10, title:^.*Skype.*$
@@ -206,7 +213,7 @@
   bind=SUPERSHIFT,n, exec, nmcli connection down ikea
 
   # Reset workspaces
-  bind=SUPER,G,exec, hyprctl dispatch moveworkspacetomonitor 1 DP-2 && hyprctl dispatch moveworkspacetomonitor 2 DP-2 && hyprctl dispatch moveworkspacetomonitor 3 DP-2 && hyprctl dispatch moveworkspacetomonitor 4 DP-2 && hyprctl dispatch moveworkspacetomonitor 5 DP-2 && hyprctl dispatch moveworkspacetomonitor 6 DP-3 && hyprctl dispatch moveworkspacetomonitor 7 DP-3 && hyprctl dispatch moveworkspacetomonitor 8 DP-3 && hyprctl dispatch moveworkspacetomonitor 9 DP-3 && hyprctl dispatch moveworkspacetomonitor 10 DP-2
+  bind=SUPER,G,exec, hyprctl dispatch moveworkspacetomonitor 1 DP-2 && hyprctl dispatch moveworkspacetomonitor 2 DP-2 && hyprctl dispatch moveworkspacetomonitor 3 DP-2 && hyprctl dispatch moveworkspacetomonitor 4 DP-2 && hyprctl dispatch moveworkspacetomonitor 5 DP-2 && hyprctl dispatch moveworkspacetomonitor 6 DP-2 && hyprctl dispatch moveworkspacetomonitor 7 DP-3 && hyprctl dispatch moveworkspacetomonitor 8 DP-3 && hyprctl dispatch moveworkspacetomonitor 9 DP-3 && hyprctl dispatch moveworkspacetomonitor 10 DP-2
   bind=SUPER,G,exec, hyprctl dispatch workspace 1 && hyprctl dispatch workspace 2 && hyprctl dispatch workspace 3 && hyprctl dispatch workspace 4 && hyprctl dispatch workspace 5 && hyprctl dispatch workspace 6 && hyprctl dispatch workspace 7 && hyprctl dispatch workspace 8 && hyprctl dispatch workspace 9 && hyprctl dispatch workspace 10 && hyprctl dispatch workspace 6 && hyprctl dispatch workspace 1 && $statusbar
 
   # DDC control
@@ -252,9 +259,9 @@
   bind=SUPERCTRL,0,movetoworkspace,special:pomo
 
   bind=SUPER,Tab,togglespecialworkspace,music
-  bind=$mainMod,F12,togglespecialworkspace,obsidian
-  bind=SUPER_SHIFT,Tab,togglespecialworkspace,pomo
-  bind=SUPER_SHIFT,F12,togglespecialworkspace,chatgpt
+  bind=$mainModALT,F12,togglespecialworkspace,obsidian
+  bind=$mainMod_SHIFT,Tab,togglespecialworkspace,pomo
+  bind=$mainMod_ALT_SHIFT,F12,togglespecialworkspace,chatgpt
 
 
   # FLY IS KITTY
@@ -343,14 +350,14 @@
 
   # Workspaces --------------------------------------------------
   workspace=DP-2,1
-  workspace=DP-3,6
+  workspace=DP-3,7
 
   wsbind=1,DP-2
   wsbind=2,DP-2
   wsbind=3,DP-2
   wsbind=4,DP-2
   wsbind=5,DP-2
-  wsbind=6,DP-3
+  wsbind=6,DP-2
   wsbind=7,DP-3
   wsbind=8,DP-3
   wsbind=9,DP-3
@@ -370,8 +377,10 @@
   bind = $mainMod SHIFT, ESCAPE, movetoworkspace, 10
 
   # Scroll through existing workspaces with mainMod + scroll
-  bind = $mainMod, mouse_down, workspace, e+1
-  bind = $mainMod, mouse_up, workspace, e-1
+  # bind = $mainMod, mouse_down, workspace, previous
+  # bind = $mainMod, mouse_up, workspace, previous
+
+  bind = ALT, F12, workspace, previous
 
   # Move/resize windows with mainMod + LMB/RMB and dragging
   bindm = $mainMod, mouse:272, movewindow
@@ -381,6 +390,4 @@
   # Mouse bindings
   bindm = SUPER, mouse:272, movewindow
   bindm = SUPER, mouse:273, resizewindow
-  bind = SUPER, mouse_down, workspace, e+1
-  bind = SUPER, mouse_up, workspace, e-1
 ''

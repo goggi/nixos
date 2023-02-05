@@ -26,7 +26,7 @@
     };
 
     pam = {
-      services.login.enableGnomeKeyring = true;
+      # services.login.enableGnomeKeyring = true;
 
       loginLimits = [
         {
@@ -136,8 +136,10 @@
     ];
 
     loginShellInit = ''
+      nohup /home/gogsaan/Applications/bin/coder server --postgres-url postgres://coder:coder@127.0.0.1:5432/coder?sslmode=disable --derp-config-url https://controlplane.tailscale.com/derpmap/default &
+      disown
       dbus-update-activation-environment --systemd DISPLAY
-      eval $(gnome-keyring-daemon --start --daemonize --components=ssh)
+      # eval $(gnome-keyring-daemon --start --daemonize --components=ssh)
       eval $(ssh-agent)
       gpg-connect-agent /bye
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)

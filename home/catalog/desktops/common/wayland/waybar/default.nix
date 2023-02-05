@@ -74,15 +74,16 @@ in {
 
         modules-center = [
           "custom/ip"
-          "custom/vpn"
+          # "custom/vpn"
           "custom/gpg-agent"
         ];
 
         modules-right = [
+          "custom/weather"
         ];
 
         "custom/gpg-agent" = {
-          interval = 2;
+          interval = 60;
           return-type = "json";
           exec = let
             keyring = import ../../../../features/keyring.nix {inherit pkgs;};
@@ -115,46 +116,46 @@ in {
           format = " ";
         };
 
-        "custom/todo" = {
-          tooltip = true;
-          format = "{}";
-          interval = 7;
-          exec = let
-            todo = pkgs.todo + "/bin/todo";
-            sed = pkgs.gnused + "/bin/sed";
-            wc = pkgs.coreutils + "/bin/wc";
-          in
-            pkgs.writeShellScript "todo-waybar" ''
-              #!/bin/sh
+        # "custom/todo" = {
+        #   tooltip = true;
+        #   format = "{}";
+        #   interval = 7;
+        #   exec = let
+        #     todo = pkgs.todo + "/bin/todo";
+        #     sed = pkgs.gnused + "/bin/sed";
+        #     wc = pkgs.coreutils + "/bin/wc";
+        #   in
+        #     pkgs.writeShellScript "todo-waybar" ''
+        #       #!/bin/sh
 
-              total_todo=$(${todo} | ${wc} -l)
-              todo_raw_done=$(${todo} raw done | ${sed} 's/^/      ◉ /' | ${sed} -z 's/\n/\\n/g')
-              todo_raw_undone=$(${todo} raw todo | ${sed} 's/^/     ◉ /' | ${sed} -z 's/\n/\\n/g')
-              done=$(${todo} raw done | ${wc} -l)
-              undone=$(${todo} raw todo | ${wc} -l)
-              tooltip=$(${todo})
+        #       total_todo=$(${todo} | ${wc} -l)
+        #       todo_raw_done=$(${todo} raw done | ${sed} 's/^/      ◉ /' | ${sed} -z 's/\n/\\n/g')
+        #       todo_raw_undone=$(${todo} raw todo | ${sed} 's/^/     ◉ /' | ${sed} -z 's/\n/\\n/g')
+        #       done=$(${todo} raw done | ${wc} -l)
+        #       undone=$(${todo} raw todo | ${wc} -l)
+        #       tooltip=$(${todo})
 
-              left="$done/$total_todo"
+        #       left="$done/$total_todo"
 
-              header="<b>todo</b>\\n\\n"
-              tooltip=""
-              if [[ $total_todo -gt 0 ]]; then
-              	if [[ $undone -gt 0 ]]; then
-              		export tooltip="$header👷 Today, you need to do:\\n\\n $(echo $todo_raw_undone)\\n\\n✅ You have already done:\\n\\n $(echo $todo_raw_done)"
-              		export output=" 🗒️ $left"
-              	else
-              		export tooltip="$header✅ All done!\\n🥤 Remember to stay hydrated!"
-              		export output=" 🎉 $left"
-              	fi
-              else
-              	export tooltip=""
-              	export output=""
-              fi
+        #       header="<b>todo</b>\\n\\n"
+        #       tooltip=""
+        #       if [[ $total_todo -gt 0 ]]; then
+        #       	if [[ $undone -gt 0 ]]; then
+        #       		export tooltip="$header👷 Today, you need to do:\\n\\n $(echo $todo_raw_undone)\\n\\n✅ You have already done:\\n\\n $(echo $todo_raw_done)"
+        #       		export output=" 🗒️ $left"
+        #       	else
+        #       		export tooltip="$header✅ All done!\\n🥤 Remember to stay hydrated!"
+        #       		export output=" 🎉 $left"
+        #       	fi
+        #       else
+        #       	export tooltip=""
+        #       	export output=""
+        #       fi
 
-              printf '{"text": "%s", "tooltip": "%s" }' "$output" "$tooltip"
-            '';
-          return-type = "json";
-        };
+        #       printf '{"text": "%s", "tooltip": "%s" }' "$output" "$tooltip"
+        #     '';
+        #   return-type = "json";
+        # };
 
         "custom/weather" = {
           tooltip = true;
@@ -164,25 +165,25 @@ in {
           return-type = "json";
         };
 
-        "custom/swallow" = {
-          tooltip = false;
-          on-click = let
-            hyprctl = config.wayland.windowManager.hyprland.package + "/bin/hyprctl";
-            notify-send = pkgs.libnotify + "/bin/notify-send";
-            rg = pkgs.ripgrep + "/bin/rg";
-          in
-            pkgs.writeShellScript "waybar-swallow" ''
-              #!/bin/sh
-              if ${hyprctl} getoption misc:enable_swallow | ${rg}/bin/rg -q "int: 1"; then
-              	${hyprctl} keyword misc:enable_swallow false >/dev/null &&
-              		${notify-send} "Hyprland" "Turned off swallowing"
-              else
-              	${hyprctl} keyword misc:enable_swallow true >/dev/null &&
-              		${notify-send} "Hyprland" "Turned on swallowing"
-              fi
-            '';
-          format = "󰊰";
-        };
+        # "custom/swallow" = {
+        #   tooltip = false;
+        #   on-click = let
+        #     hyprctl = config.wayland.windowManager.hyprland.package + "/bin/hyprctl";
+        #     notify-send = pkgs.libnotify + "/bin/notify-send";
+        #     rg = pkgs.ripgrep + "/bin/rg";
+        #   in
+        #     pkgs.writeShellScript "waybar-swallow" ''
+        #       #!/bin/sh
+        #       if ${hyprctl} getoption misc:enable_swallow | ${rg}/bin/rg -q "int: 1"; then
+        #       	${hyprctl} keyword misc:enable_swallow false >/dev/null &&
+        #       		${notify-send} "Hyprland" "Turned off swallowing"
+        #       else
+        #       	${hyprctl} keyword misc:enable_swallow true >/dev/null &&
+        #       		${notify-send} "Hyprland" "Turned on swallowing"
+        #       fi
+        #     '';
+        #   format = "󰊰";
+        # };
 
         "custom/ip" = {
           "format" = "<span foreground='orange'>{} </span>";
@@ -288,8 +289,8 @@ in {
         modules-left = [
           "custom/logo"
           "wlr/workspaces"
-          "custom/swallow"
-          "custom/todo"
+          # "custom/swallow"
+          # "custom/todo"
         ];
 
         modules-center = [
@@ -298,10 +299,9 @@ in {
 
         modules-right = [
           # "custom/weather"
-          "custom/weather"
           "temperature"
-          "battery"
-          "backlight"
+          # "battery"
+          # "backlight"
           # "pulseaudio#microphone"
           # "network"
           "custom/lang"
@@ -368,46 +368,46 @@ in {
           format = " ";
         };
 
-        "custom/todo" = {
-          tooltip = true;
-          format = "{}";
-          interval = 7;
-          exec = let
-            todo = pkgs.todo + "/bin/todo";
-            sed = pkgs.gnused + "/bin/sed";
-            wc = pkgs.coreutils + "/bin/wc";
-          in
-            pkgs.writeShellScript "todo-waybar" ''
-              #!/bin/sh
+        # "custom/todo" = {
+        #   tooltip = true;
+        #   format = "{}";
+        #   interval = 7;
+        #   exec = let
+        #     todo = pkgs.todo + "/bin/todo";
+        #     sed = pkgs.gnused + "/bin/sed";
+        #     wc = pkgs.coreutils + "/bin/wc";
+        #   in
+        #     pkgs.writeShellScript "todo-waybar" ''
+        #       #!/bin/sh
 
-              total_todo=$(${todo} | ${wc} -l)
-              todo_raw_done=$(${todo} raw done | ${sed} 's/^/      ◉ /' | ${sed} -z 's/\n/\\n/g')
-              todo_raw_undone=$(${todo} raw todo | ${sed} 's/^/     ◉ /' | ${sed} -z 's/\n/\\n/g')
-              done=$(${todo} raw done | ${wc} -l)
-              undone=$(${todo} raw todo | ${wc} -l)
-              tooltip=$(${todo})
+        #       total_todo=$(${todo} | ${wc} -l)
+        #       todo_raw_done=$(${todo} raw done | ${sed} 's/^/      ◉ /' | ${sed} -z 's/\n/\\n/g')
+        #       todo_raw_undone=$(${todo} raw todo | ${sed} 's/^/     ◉ /' | ${sed} -z 's/\n/\\n/g')
+        #       done=$(${todo} raw done | ${wc} -l)
+        #       undone=$(${todo} raw todo | ${wc} -l)
+        #       tooltip=$(${todo})
 
-              left="$done/$total_todo"
+        #       left="$done/$total_todo"
 
-              header="<b>todo</b>\\n\\n"
-              tooltip=""
-              if [[ $total_todo -gt 0 ]]; then
-              	if [[ $undone -gt 0 ]]; then
-              		export tooltip="$header👷 Today, you need to do:\\n\\n $(echo $todo_raw_undone)\\n\\n✅ You have already done:\\n\\n $(echo $todo_raw_done)"
-              		export output=" 🗒️ $left"
-              	else
-              		export tooltip="$header✅ All done!\\n🥤 Remember to stay hydrated!"
-              		export output=" 🎉 $left"
-              	fi
-              else
-              	export tooltip=""
-              	export output=""
-              fi
+        #       header="<b>todo</b>\\n\\n"
+        #       tooltip=""
+        #       if [[ $total_todo -gt 0 ]]; then
+        #       	if [[ $undone -gt 0 ]]; then
+        #       		export tooltip="$header👷 Today, you need to do:\\n\\n $(echo $todo_raw_undone)\\n\\n✅ You have already done:\\n\\n $(echo $todo_raw_done)"
+        #       		export output=" 🗒️ $left"
+        #       	else
+        #       		export tooltip="$header✅ All done!\\n🥤 Remember to stay hydrated!"
+        #       		export output=" 🎉 $left"
+        #       	fi
+        #       else
+        #       	export tooltip=""
+        #       	export output=""
+        #       fi
 
-              printf '{"text": "%s", "tooltip": "%s" }' "$output" "$tooltip"
-            '';
-          return-type = "json";
-        };
+        #       printf '{"text": "%s", "tooltip": "%s" }' "$output" "$tooltip"
+        #     '';
+        #   return-type = "json";
+        # };
 
         "custom/weather" = {
           tooltip = true;
@@ -417,25 +417,25 @@ in {
           return-type = "json";
         };
 
-        "custom/swallow" = {
-          tooltip = false;
-          on-click = let
-            hyprctl = config.wayland.windowManager.hyprland.package + "/bin/hyprctl";
-            notify-send = pkgs.libnotify + "/bin/notify-send";
-            rg = pkgs.ripgrep + "/bin/rg";
-          in
-            pkgs.writeShellScript "waybar-swallow" ''
-              #!/bin/sh
-              if ${hyprctl} getoption misc:enable_swallow | ${rg}/bin/rg -q "int: 1"; then
-              	${hyprctl} keyword misc:enable_swallow false >/dev/null &&
-              		${notify-send} "Hyprland" "Turned off swallowing"
-              else
-              	${hyprctl} keyword misc:enable_swallow true >/dev/null &&
-              		${notify-send} "Hyprland" "Turned on swallowing"
-              fi
-            '';
-          format = "󰊰";
-        };
+        # "custom/swallow" = {
+        #   tooltip = false;
+        #   on-click = let
+        #     hyprctl = config.wayland.windowManager.hyprland.package + "/bin/hyprctl";
+        #     notify-send = pkgs.libnotify + "/bin/notify-send";
+        #     rg = pkgs.ripgrep + "/bin/rg";
+        #   in
+        #     pkgs.writeShellScript "waybar-swallow" ''
+        #       #!/bin/sh
+        #       if ${hyprctl} getoption misc:enable_swallow | ${rg}/bin/rg -q "int: 1"; then
+        #       	${hyprctl} keyword misc:enable_swallow false >/dev/null &&
+        #       		${notify-send} "Hyprland" "Turned off swallowing"
+        #       else
+        #       	${hyprctl} keyword misc:enable_swallow true >/dev/null &&
+        #       		${notify-send} "Hyprland" "Turned on swallowing"
+        #       fi
+        #     '';
+        #   format = "󰊰";
+        # };
 
         "custom/power" = {
           tooltip = false;
@@ -453,7 +453,7 @@ in {
         };
 
         "clock#date" = {
-          format = "󰃶 {:%a %d %b}";
+          format = "󰃶 {:%d %b}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';

@@ -17,6 +17,7 @@
 
     # Hyprland
     hyprland.url = "github:hyprwm/Hyprland/";
+
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     hyprland-contrib.url = "github:hyprwm/contrib";
     # Other

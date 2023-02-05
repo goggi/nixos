@@ -30,6 +30,9 @@
     # ../catalog/apps/vscodeInsiders.nix
     # ../catalog/apps/googleChrome.nix
     # ../catalog/apps/neovim.nix
+    # ../catalog/apps/firefoxBeta
+
+    # ../catalog/apps/zsh.nix
 
     ../catalog/apps/googleChromeBeta.nix
     ../catalog/apps/vscode.nix
@@ -37,11 +40,14 @@
     ../catalog/apps/obsidian.nix
     ../catalog/apps/signalDesktop.nix
     ../catalog/apps/firefox
+    ../catalog/apps/vivaldi.nix
     ../catalog/apps/webcord.nix
     ../catalog/apps/fish.nix
     ../catalog/apps/navicat.nix
     ../catalog/apps/btop.nix
     ../catalog/apps/coder.nix
+    ../catalog/apps/qutebrowser.nix
+    ../catalog/apps/docker.nix
 
     # Games with persistance
     ../catalog/apps/steam.nix
@@ -71,7 +77,7 @@
           ".config/sops"
           ".ssh"
           ".aws"
-          ".local/share/keyrings"
+          # ".local/share/keyrings"
           ".local/share/applications"
           ".local/share/desktop-directories"
         ];

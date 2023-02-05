@@ -17,7 +17,9 @@
     ../catalog/optional/features/virtualization.nix
     ../catalog/optional/features/btrfsOptinPersistence.nix
     ../catalog/optional/features/encryptedRoot.nix
-    ../catalog/optional/apps/podman.nix
+    ../catalog/optional/features/postgres.nix
+
+    ../catalog/optional/apps/docker.nix
     # ../catalog/optional/apps/bazecor.nix
     # ../catalog/optional/apps/taskwarrior.nix
   ];
@@ -111,7 +113,7 @@
   programs.xwayland.enable = true;
   services.xserver.enable = false;
 
-  services.gnome.gnome-keyring.enable = true;
+  # services.gnome.gnome-keyring.enable = true;
   security = {
     polkit.enable = true;
     pam.services.swaylock = {

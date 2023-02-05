@@ -7,7 +7,7 @@
     packages = [
       (pkgs.vivaldi.override {
         proprietaryCodecs = true;
-        enableWidevine = false;
+        enableWidevine = true;
       })
       pkgs.vivaldi-ffmpeg-codecs
       pkgs.vivaldi-widevine
@@ -20,8 +20,8 @@
     };
   };
 
-  xdg.desktopEntries.vivaldi = {
-    name = "Vivaldi";
-    exec = "vivaldi --enable-features=UseOzonePlatform --ozone-platform=wayland";
-  };
+  # xdg.desktopEntries.vivaldi = {
+  #   name = "Vivaldi";
+  #   exec = "vivaldi --enable-features=UseOzonePlatform --ozone-platform=wayland";
+  # };
 }

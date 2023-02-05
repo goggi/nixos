@@ -20,6 +20,7 @@ rm -R ~/.local/share/desktop-directories || true
 rm -R ~/.aws || true
 rm -R ~/.ssh || true
 rm -R /var/lib/libvirt/images || true
+
 # Apps
 # Chrome
 rm -R ~/.config/google-chrome-beta || true
@@ -37,6 +38,7 @@ rm -R ~/.config/obsidian || true
 rm -R ~/.config/Signal || true
 # Firefox
 rm -R ~/.mozilla || true
+rm -R ~/.mozilla-beta || true
 # WebCord
 rm -R ~/.config/WebCord || true
 # Nacivat
@@ -47,11 +49,15 @@ rm -R ~/.config/k9s || true
 rm -R ~/.config/btop || true
 # Coder
 rm -R ~/.config/coderv2 || true
+# Vivaldi
+rm -R ~/.config/vivaldi || true
 # Gaming
 rm -R ~/.local/share/"Paradox Interactive" || true
 rm -R ~/.cache/AMD || true
 rm -R ~/.cache/mesa_shader_cache || true
 rm -R ~/.paradoxlauncher || true
+rm -R ~/.config/unity3d || true
+rm -R ~/.local/share/Steam || true
 
 # Features
 rm -R ~/.gnupg || true

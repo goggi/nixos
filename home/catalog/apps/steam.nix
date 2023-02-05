@@ -36,6 +36,7 @@ in {
       directories = [
         ".local/share/Paradox Interactive"
         ".cache/AMD"
+        ".config/unity3d"
         ".cache/mesa_shader_cache"
         ".paradoxlauncher"
         {

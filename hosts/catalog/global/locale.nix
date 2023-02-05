@@ -13,8 +13,10 @@
     ];
   };
 
+  # services.ntp.enable = true;
+  # services.localtimed.enable = true;
   time = {
     timeZone = lib.mkDefault "Europe/Stockholm";
-    hardwareClockInLocalTime = true;
+    hardwareClockInLocalTime = false;
   };
 }

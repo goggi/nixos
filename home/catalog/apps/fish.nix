@@ -20,7 +20,7 @@
       kubefwd = "echo \"Check Yubikey\" && sudo cp /etc/hosts /etc/hostsTemp && sudo rm /etc/hosts && sudo cp /etc/hostsTemp /etc/hosts && sudo ~/Applications/bin/kubefwd svc -c $KUBECONFIG -n database -n rabbitmq -n crawlyfi-prod -n coder";
       # Clear screen and scrollback
       clear = "printf '\\033[2J\\033[3J\\033[1;1H'";
-      docker = "podman";
+      startCoder = "nohup /home/gogsaan/Applications/bin/coder server --postgres-url \"postgres://coder:coder@127.0.0.1:5432/coder?sslmode=disable\" --derp-config-url https://controlplane.tailscale.com/derpmap/default & && disown ";
       protonge = "protonup -d \"/home/gogsaan/.steam/steam/compatibilitytools.d\" && protonup ";
     };
     functions = {
