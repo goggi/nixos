@@ -67,6 +67,12 @@ in {
     options = ["subvol=nix" "compress=zstd" "noatime" "ssd" "space_cache=v2"];
   };
 
+  fileSystems."/var/lib/docker" = {
+    device = "/dev/disk/by-label/root";
+    fsType = "btrfs";
+    options = ["subvol=docker" "compress=zstd" "noatime" "ssd" "space_cache=v2"];
+  };
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/boot";
     fsType = "vfat";
