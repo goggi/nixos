@@ -7,9 +7,10 @@
   home.packages = with pkgs; [
     # firefoxpwa
     # gnumake
+    gh
     bindfs
     networkmanager-openvpn
-    polkit_gnome
+    # polkit_gnome
     appimage-run
     ddcutil
     alsa-lib
