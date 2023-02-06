@@ -14,6 +14,7 @@
     ../catalog/apps/k8sManagment.nix
     ../catalog/apps/obsStudio.nix
     ../catalog/apps/kitty.nix
+    ../catalog/apps/helix
 
     # Development
     ../catalog/dev/nodejs.nix
