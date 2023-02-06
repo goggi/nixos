@@ -30,7 +30,6 @@
     # App with persistance
     # ../catalog/apps/vscodeInsiders.nix
     # ../catalog/apps/googleChrome.nix
-    # ../catalog/apps/neovim.nix
     # ../catalog/apps/firefoxBeta
 
     # ../catalog/apps/zsh.nix
@@ -49,6 +48,8 @@
     ../catalog/apps/coder.nix
     ../catalog/apps/qutebrowser.nix
     ../catalog/apps/docker.nix
+    ../catalog/apps/astrovim.nix
+    ../catalog/apps/nvim
 
     # Games with persistance
     ../catalog/apps/steam.nix

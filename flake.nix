@@ -61,6 +61,7 @@
         tarball-ttl = 0;
         packageOverrides = super: {
           webcord = pkgs.callPackage ./pkgs/webcord {};
+          astrovim = pkgs.callPackage ./pkgs/astrovim {};
         };
       };
 

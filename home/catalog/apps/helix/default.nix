@@ -4,12 +4,12 @@ in {
   programs.helix = {
     enable = true;
     settings = {
-      theme = "${colorscheme.slug}";
+      # theme = "${colorscheme.slug}";
       editor = {
         line-number = "absolute";
         indent-guides.render = true;
       };
     };
-    themes = import ./theme.nix {inherit colorscheme;};
+    # themes = import ./theme.nix {inherit colorscheme;};
   };
 }
