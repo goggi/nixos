@@ -5,12 +5,13 @@
 }: {
   home = {
     packages = [
-      pkgs.google-chrome
+      pkgs.idasen
     ];
+
     persistence = {
       "/persist/home/gogsaan" = {
         allowOther = true;
-        directories = [".config/google-chrome"];
+        directories = [".config/idasen"];
       };
     };
   };

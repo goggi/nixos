@@ -7,7 +7,7 @@
     enable = true;
     settings = {
       # Window
-      background_opacity = "0.1";
+      background_opacity = "0.9";
       inactive_text_alpha = "1.0";
       window_padding_width = "12 24 0 24";
       placement_strategy = "center";
@@ -61,7 +61,7 @@
       italic_font = "auto";
       bold_font = "auto";
       bold_italic_font = "auto";
-      font_size = "12.0";
+      font_size = "11.0";
       disable_ligatures = "never";
       adjust_line_height = "0";
       adjust_column_width = "0";

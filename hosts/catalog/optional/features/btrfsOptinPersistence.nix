@@ -37,6 +37,13 @@ in {
     neededForBoot = true;
   };
 
+  fileSystems."/home/gogsaan/.vscode" = {
+    device = "/dev/disk/by-label/root";
+    fsType = "btrfs";
+    options = ["subvol=vscodeExtentions" "compress=zstd" "noatime" "ssd" "space_cache=v2"];
+    neededForBoot = true;
+  };
+
   fileSystems."/var/log" = {
     device = "/dev/disk/by-label/root";
     fsType = "btrfs";

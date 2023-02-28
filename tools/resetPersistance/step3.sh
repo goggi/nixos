@@ -9,6 +9,7 @@ bindfs -o fsname=/persist/home/gogsaan/.config/WebCord /persist/home/gogsaan/.co
 
 # Chrome
 bindfs -o fsname=/persist/home/gogsaan/.config/google-chrome-beta /persist/home/gogsaan/.config/google-chrome-beta /home/gogsaan/.config/google-chrome-beta
+bindfs -o fsname=/persist/home/gogsaan/.config/google-chrome /persist/home/gogsaan/.config/google-chrome /home/gogsaan/.config/google-chrome
 
 # Firefox
 bindfs -o fsname=/persist/home/gogsaan/.mozilla /persist/home/gogsaan/.mozilla /home/gogsaan/.mozilla
@@ -38,6 +39,12 @@ bindfs -o fsname=/persist/home/gogsaan/.config/btop /persist/home/gogsaan/.confi
 # VSCode
 bindfs -o fsname=/persist/home/gogsaan/.vscode /persist/home/gogsaan/.vscode /home/gogsaan/.vscode
 bindfs -o fsname=/persist/home/gogsaan/.config/Code /persist/home/gogsaan/.config/Code /home/gogsaan/.config/Code
+
+bindfs -o fsname=/persist/home/gogsaan/.config/vivaldi /persist/home/gogsaan/.config/vivaldi /home/gogsaan/.config/vivaldi
+
+
+
+bindfs -o fsname=/persist/home/gogsaan/.config/idasen /persist/home/gogsaan/.config/idasen /home/gogsaan/.config/idasen
 
 # VSCodeInsiders
 bindfs -o fsname=/persist/home/gogsaan/.vscode-insiders /persist/home/gogsaan/.vscode-insiders /home/gogsaan/.vscode-insiders    

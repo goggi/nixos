@@ -6,7 +6,7 @@
   home = {
     packages = [
       # pkgs.nodejs
-      pkgs.nodejs-16_x
+      pkgs.nodejs-18_x
       pkgs.yarn
       pkgs.nodePackages.pnpm
     ];

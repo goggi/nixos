@@ -34,22 +34,28 @@
 
     # ../catalog/apps/zsh.nix
 
-    ../catalog/apps/googleChromeBeta.nix
+    # ../catalog/apps/microsoftEdge.nix
+    # ../catalog/apps/googleChromeBeta.nix
+    # ../catalog/apps/vivaldi.nix
+    # ../catalog/apps/chromium.nix
+    # ../catalog/apps/googleChrome.nix
+    # ../catalog/apps/qutebrowser.nix
+
+    ../catalog/apps/vivaldi.nix
     ../catalog/apps/vscode.nix
     ../catalog/apps/1password.nix
     ../catalog/apps/obsidian.nix
     ../catalog/apps/signalDesktop.nix
     ../catalog/apps/firefox
-    ../catalog/apps/vivaldi.nix
     ../catalog/apps/webcord.nix
     ../catalog/apps/fish.nix
     ../catalog/apps/navicat.nix
     ../catalog/apps/btop.nix
     ../catalog/apps/coder.nix
-    ../catalog/apps/qutebrowser.nix
     ../catalog/apps/docker.nix
-    ../catalog/apps/astrovim.nix
-    ../catalog/apps/nvim
+    ../catalog/apps/keepassxc.nix
+    ../catalog/apps/flatpak.nix
+    ../catalog/apps/idasen.nix
 
     # Games with persistance
     ../catalog/apps/steam.nix
@@ -75,6 +81,7 @@
           "Videos"
           "Projects"
           ".config/certs"
+          ".config/dconf"
           ".config/vpn"
           ".config/sops"
           ".ssh"

@@ -75,11 +75,10 @@ in {
         modules-center = [
           "custom/ip"
           # "custom/vpn"
-          "custom/gpg-agent"
+          # "custom/gpg-agent"
         ];
 
         modules-right = [
-          "custom/weather"
         ];
 
         "custom/gpg-agent" = {
@@ -295,10 +294,11 @@ in {
 
         modules-center = [
           "custom/vpn"
+          "custom/wifi"
         ];
 
         modules-right = [
-          # "custom/weather"
+          "custom/weather"
           "temperature"
           # "battery"
           # "backlight"
@@ -314,6 +314,16 @@ in {
           "tray"
         ];
 
+        "custom/wifi" = {
+          "tooltip" = false;
+          "format" = "<span foreground='orange'>TUI </span>";
+          "exec" = "echo '{\"class\": \"connected\"}'";
+          "exec-if" = "nmcli radio wifi | grep -q enabled || return 1";
+          "return-type" = "json";
+          "interval" = 10;
+          "on-click" = "nmcli radio wifi off";
+        };
+
         "custom/ip" = {
           "format" = "<span foreground='orange'>{} </span>";
           "exec" = "curl ifconfig.co/";
@@ -322,17 +332,17 @@ in {
         };
 
         "custom/vpn" = {
-          "format" = "<span foreground='orange'>  </span>";
+          "format" = "<span foreground='orange'>VPN  </span>";
           "exec" = "echo '{\"class\": \"connected\"}'";
           "exec-if" = "test -d /proc/sys/net/ipv4/conf/tun0";
           "return-type" = "json";
-          "interval" = 5;
+          "interval" = 10;
           "on-click" = "vpn";
           "on-click-right" = "novpn";
         };
 
         "custom/lang" = {
-          "interval" = 5;
+          "interval" = 10;
           "tooltip" = false;
           "return-type" = "string";
           "format" = " {}";
@@ -497,8 +507,8 @@ in {
           format-icons = {default = ["󰕿" "󰖀" "󰕾"];};
           tooltip-format = "{desc}, {volume}%";
           on-click = "${pamixer} -t";
-          on-scroll-up = "${pamixer} -d 1";
-          on-scroll-down = "${pamixer} -i 1";
+          on-scroll-up = "pactl set-default-sink 50";
+          on-scroll-down = "pactl set-default-sink 13118";
         };
 
         "pulseaudio#microphone" = {

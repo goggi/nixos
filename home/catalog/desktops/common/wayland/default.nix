@@ -10,6 +10,7 @@
     ./wofi.nix
     ./gtk.nix
     ./dunst
+    ./darkman
   ];
 
   home.packages = with pkgs; [

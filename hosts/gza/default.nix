@@ -17,12 +17,16 @@
     ../catalog/optional/features/virtualization.nix
     ../catalog/optional/features/btrfsOptinPersistence.nix
     ../catalog/optional/features/encryptedRoot.nix
-    ../catalog/optional/features/postgres.nix
+    ../catalog/optional/features/flatpakIconFix.nix
+
+    # ../catalog/optional/features/postgres.nix
 
     ../catalog/optional/apps/docker.nix
     # ../catalog/optional/apps/bazecor.nix
     # ../catalog/optional/apps/taskwarrior.nix
   ];
+
+  services.flatpak.enable = true;
 
   networking = {
     hostName = "gza";
@@ -32,19 +36,47 @@
   environment.persistence = {
     "/persist/var" = {
       directories = [
-        "/lib/libvirt/images"
+        # Perist virtual machines
+        "/var/lib/libvirt"
+      ];
+    };
+    "/persist/etc" = {
+      directories = [
+        # Perist networkpasswords
+        "/etc/NetworkManager/system-connections"
       ];
     };
   };
 
   boot = {
-    initrd.kernelModules = ["dm-snapshot" "amdgpu"];
+    initrd.kernelModules = [
+      "dm-snapshot"
+      "amdgpu"
+      # Passtrough GPU
+      "vfio_pci"
+      "vfio"
+      "vfio_iommu_type1"
+      # "vfio_virqfd"
+    ];
+    kernelParams = [
+      "amd_iommu=on"
+      "vfio-pci.ids=10de:1e84,10de:10f8,10de:1ad8,10de:1ad9"
+    ];
     kernelModules = ["kvm-amd" "i2c-dev"];
     extraModulePackages = [];
     binfmt.emulatedSystems = ["aarch64-linux"];
     # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [];
+
+    # Passtrough GPU
+    initrd.preDeviceCommands = ''
+      DEVS="0000:24:00.0 0000:24:00.1"
+      for DEV in $DEVS; do
+        echo "vfio-pci" > /sys/bus/pci/devices/$DEV/driver_override
+      done
+      modprobe -i vfio-pci
+    '';
+
     initrd.availableKernelModules =
       [
         "xhci_pci"
@@ -52,6 +84,7 @@
         "nvme"
         "usb_storage"
         "sd_mod"
+        "vfio-pci"
       ]
       ++ config.boot.initrd.luks.cryptoModules;
 
@@ -111,6 +144,8 @@
   # enable hyprland
   programs.hyprland.enable = true;
   programs.xwayland.enable = true;
+  # programs.steam.enable = true;
+
   services.xserver.enable = false;
 
   # services.gnome.gnome-keyring.enable = true;

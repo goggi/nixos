@@ -6,12 +6,11 @@
 }: {
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions;
-      [
-        dracula-theme.theme-dracula
-        vscodevim.vim
-        yzhang.markdown-all-in-one
-      ];
+    extensions = with pkgs.vscode-extensions; [
+      dracula-theme.theme-dracula
+      vscodevim.vim
+      yzhang.markdown-all-in-one
+    ];
     package = pkgs.vscode.override {
       commandLineArgs = ''
         --enable-features=UseOzonePlatform \
@@ -36,7 +35,7 @@
       allowOther = true;
       directories = [
         ".config/Code"
-        ".vscode"
+        # ".vscode"
       ];
     };
   };

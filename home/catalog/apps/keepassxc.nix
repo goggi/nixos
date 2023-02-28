@@ -5,12 +5,13 @@
 }: {
   home = {
     packages = [
-      pkgs.google-chrome
+      pkgs.keepassxc
     ];
+
     persistence = {
       "/persist/home/gogsaan" = {
         allowOther = true;
-        directories = [".config/google-chrome"];
+        directories = [".config/keepassxc" ".cache/keepassxc"];
       };
     };
   };

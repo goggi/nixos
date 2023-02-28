@@ -113,7 +113,7 @@ in {
         progress_bar_max_width = 300;
         separator_height = 2;
         frame_width = 2;
-        frame_color = "#313244";
+        frame_color = "#c6a0f6";
         separator_color = "frame";
         corner_radius = 8;
         transparency = 0;
@@ -121,7 +121,7 @@ in {
         line_height = 0;
         notification_limit = 0;
         idle_threshold = 120;
-        history_length = 20;
+        history_length = 10;
         show_age_threshold = 60;
         markup = "full";
         font = "monospace 10";
@@ -147,20 +147,20 @@ in {
       fullscreen_delay_everything = {fullscreen = "delay";};
 
       urgency_low = {
-        timeout = 3;
-        background = "#1e1e2e";
+        timeout = 2;
+        background = "#181926";
         foreground = "#cdd6f4";
         highlight = "#cba6f7";
       };
       urgency_normal = {
-        timeout = 6;
-        background = "#1e1e2e";
+        timeout = 4;
+        background = "#181926";
         foreground = "#cdd6f4";
         highlight = "#cba6f7";
       };
       urgency_critical = {
         timeout = 0;
-        background = "#1e1e2e";
+        background = "#181926";
         foreground = "#cdd6f4";
         highlight = "#cba6f7";
       };

@@ -4,10 +4,15 @@
     shellAbbrs = {
     };
     shellAliases = {
+      lightDark = "if grep -q 'Catppuccin-Mocha-Standard-Mauve-Dark' /home/gogsaan/Projects/nix/config/home/catalog/desktops/common/wayland/gtk.nix; sed -i 's/Catppuccin-Mocha-Standard-Mauve-Dark/Catppuccin-Latte-Standard-Mauve-Light/g' /home/gogsaan/Projects/nix/config/home/catalog/desktops/common/wayland/gtk.nix; else if grep -q 'Catppuccin-Latte-Standard-Mauve-Light' /home/gogsaan/Projects/nix/config/home/catalog/desktops/common/wayland/gtk.nix; sed -i 's/Catppuccin-Latte-Standard-Mauve-Light/Catppuccin-Mocha-Standard-Mauve-Dark/g' /home/gogsaan/Projects/nix/config/home/catalog/desktops/common/wayland/gtk.nix; end; and echo \"Check Yubikey\" && sudo nixos-rebuild switch --flake /home/gogsaan/Projects/nix/config#gza --show-trace";
+      tuivpnon = "nmcli radio wifi on || true && sleep 5 && echo \"Check Yubikey\" && sudo nmcli device disconnect enp38s0 || true  && nmcli device connect wlo1 || true && nmcli device connect enp38s0 || true && sudo ip route add 10.141.96.8/32 via 192.168.5.1 dev wlo1 && sudo ip route add 10.141.96.194/32 via 192.168.5.1 dev wlo1";
+      tuivpnoff = "nmcli radio wifi off";
+      yarn = "npm run";
+      npmr = "npm run";
       cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
       bloat = "nix path-info -Sh /run/current-system";
       cat = "${pkgs.bat}/bin/bat --style=plain";
-      nb = "echo \"Check Yubikey\" && git add . && sudo nixos-rebuild switch --flake .#gza --show-trace";
+      nb = "echo \"Check Yubikey\" && git add . && sudo nixos-rebuild switch --flake /home/gogsaan/Projects/nix/config#gza --show-trace";
       nu = "echo \"Check Yubikey\" && sudo nix flake update";
       sops = "nix-shell -p sops --run \" sops hosts/catalog/secrets.yaml \"";
       ls = "exa";
@@ -17,7 +22,7 @@
       ssh = "kitty +kitten ssh";
       k9s = "k9s --kubeconfig $KUBECONFIG";
       kubectl = "kubectl --kubeconfig $KUBECONFIG";
-      kubefwd = "echo \"Check Yubikey\" && sudo cp /etc/hosts /etc/hostsTemp && sudo rm /etc/hosts && sudo cp /etc/hostsTemp /etc/hosts && sudo ~/Applications/bin/kubefwd svc -c $KUBECONFIG -n database -n rabbitmq -n crawlyfi-prod -n coder";
+      kubefwd = "echo \"Check Yubikey\" && sudo cp /etc/hosts /etc/hostsTemp && sudo rm /etc/hosts && sudo cp /etc/hostsTemp /etc/hosts && sudo ~/Applications/bin/kubefwd svc -c $KUBECONFIG -n database -n rabbitmq";
       # Clear screen and scrollback
       clear = "printf '\\033[2J\\033[3J\\033[1;1H'";
       startCoder = "nohup /home/gogsaan/Applications/bin/coder server --postgres-url \"postgres://coder:coder@127.0.0.1:5432/coder?sslmode=disable\" --derp-config-url https://controlplane.tailscale.com/derpmap/default & && disown ";
@@ -31,6 +36,7 @@
       # Open command buffer in vim when alt+e is pressed
       ''
         bind \ee edit_command_buffer
+        bind \cr true
       ''
       +
       # kitty integration
@@ -80,8 +86,8 @@
         set -U fish_pager_color_progress      'brwhite' '--background=cyan'
         starship init fish | source
 
-        set -U KUBECONFIG /home/gogsaan/Projects/crawlyfi/terraform/kubernetes/kubeconfig
-
+        set -U -x KUBECONFIG /home/gogsaan/Projects/crawlyfi/terraform/kubernetes/kubeconfig
+        set PATH $HOME/.npm/bin $fish_user_paths $PATH
       '';
   };
 

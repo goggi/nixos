@@ -5,12 +5,11 @@
   ...
 }: {
   home.packages = with pkgs; [
-    # firefoxpwa
-    # gnumake
+    envsubst
+    lsof
     gh
     bindfs
     networkmanager-openvpn
-    # polkit_gnome
     appimage-run
     ddcutil
     alsa-lib

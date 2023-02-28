@@ -10,14 +10,19 @@
 
     onShutdown = "suspend";
     onBoot = "ignore";
-
     qemu = {
       package = pkgs.qemu_kvm;
-
+      ovmf.enable = true;
       swtpm.enable = true;
       runAsRoot = false;
+      # ovmf.packages = with pkgs; [pkgs.OVMFFull];
     };
   };
+
+  programs.dconf.enable = true; # Needed to save virt-manager settings
+  systemd.tmpfiles.rules = [
+    "f /dev/shm/looking-glass 0660 gogsaan qemu-libvirtd -"
+  ];
 
   environment.etc = {
     "ovmf/edk2-x86_64-secure-code.fd" = {
@@ -30,5 +35,11 @@
       user = "libvirtd";
     };
   };
-  environment.systemPackages = with pkgs; [virt-manager];
+
+  environment.sessionVariables.LIBVIRT_DEFAULT_URI = ["qemu:///system"];
+
+  environment.systemPackages = with pkgs; [
+    virt-manager
+    looking-glass-client # Passthrough GPU
+  ];
 }

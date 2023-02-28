@@ -29,6 +29,9 @@ in {
         "git"
         "libvirtd"
         "mysql"
+        "libvirt-qemu"
+        "qemu-libvirtd"
+        "kvm"
       ];
 
     openssh.authorizedKeys.keys = [

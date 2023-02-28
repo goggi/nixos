@@ -28,6 +28,8 @@
     flake-utils.url = "github:numtide/flake-utils";
     bazecor.url = "github:gvolpe/bazecor-nix";
 
+    nix-colors.url = "github:misterio77/nix-colors";
+
     # Non Flakes
     sf-mono-liga = {
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
@@ -61,7 +63,9 @@
         tarball-ttl = 0;
         packageOverrides = super: {
           webcord = pkgs.callPackage ./pkgs/webcord {};
+          looking-glass-client = pkgs.callPackage ./pkgs/looking {};
           astrovim = pkgs.callPackage ./pkgs/astrovim {};
+          gtk-layer-shell = pkgs.callPackage ./pkgs/gtkLayerShell {}; # TODO Remove once the original works
         };
       };
 

@@ -49,8 +49,8 @@ rm -R ~/.config/k9s || true
 rm -R ~/.config/btop || true
 # Coder
 rm -R ~/.config/coderv2 || true
-# Vivaldi
 rm -R ~/.config/vivaldi || true
+rm -R ~/.config/idasen || true
 # Gaming
 rm -R ~/.local/share/"Paradox Interactive" || true
 rm -R ~/.cache/AMD || true
