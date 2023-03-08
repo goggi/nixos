@@ -19,7 +19,7 @@
     ../catalog/optional/features/encryptedRoot.nix
     ../catalog/optional/features/flatpakIconFix.nix
     ../catalog/optional/features/greetd.nix
-    ../catalog/optional/features/quietBoot.nix
+  # ../catalog/optional/features/quietBoot.nix
     ../catalog/optional/features/pipewire.nix
 
     ../catalog/optional/apps/docker.nix
@@ -52,7 +52,7 @@
   boot = {
     initrd.kernelModules = [
       "dm-snapshot"
-      # "amdgpu"
+      "amdgpu"
       # Passtrough GPU
       "vfio_pci"
       "vfio"

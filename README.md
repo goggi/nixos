@@ -74,7 +74,7 @@ mount "$DISK"p1 /mnt/boot
 nix-shell -p nixFlakes
 sudo nixos-install --flake 'github:goggi/nixos#gza'
 ```
-4. Persist
+
 
 ## Fix issues
 1. Boot into NIXOS Livecd
@@ -92,8 +92,11 @@ sudo mount /dev/disk/by-label/boot /mnt/boot
 ```
 NIXPKGS_ALLOW_UNFREE=1 nix-shell -p vscode
 code  /mnt/persist/home/gogsaan/Projects/nix/config
+cd /mnt/persist/home/gogsaan/Projects/nix/config 
+sudo nixos-install --flake .#gza
 ```
-4. Fix Persist
+
+## Fix persist
 ```
 sudo cp persist.tar /mnt/
 sudo tar -xvf persist.tar 
