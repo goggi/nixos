@@ -56,6 +56,9 @@
     ../catalog/apps/keepassxc.nix
     ../catalog/apps/flatpak.nix
     ../catalog/apps/idasen.nix
+    ../catalog/apps/nomacs.nix
+    ../catalog/apps/zathura.nix
+    ../catalog/apps/lapce.nix
 
     # Games with persistance
     ../catalog/apps/steam.nix
@@ -92,6 +95,7 @@
         ];
         files = [
           ".zsh_history"
+          # ".config/mimeapps.list"
         ];
         allowOther = true;
       };

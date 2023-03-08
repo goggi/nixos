@@ -18,8 +18,9 @@
     ../catalog/optional/features/btrfsOptinPersistence.nix
     ../catalog/optional/features/encryptedRoot.nix
     ../catalog/optional/features/flatpakIconFix.nix
-
-    # ../catalog/optional/features/postgres.nix
+    ../catalog/optional/features/greetd.nix
+    ../catalog/optional/features/quietBoot.nix
+    ../catalog/optional/features/pipewire.nix
 
     ../catalog/optional/apps/docker.nix
     # ../catalog/optional/apps/bazecor.nix
@@ -51,7 +52,7 @@
   boot = {
     initrd.kernelModules = [
       "dm-snapshot"
-      "amdgpu"
+      # "amdgpu"
       # Passtrough GPU
       "vfio_pci"
       "vfio"
@@ -64,7 +65,7 @@
     ];
     kernelModules = ["kvm-amd" "i2c-dev"];
     extraModulePackages = [];
-    binfmt.emulatedSystems = ["aarch64-linux"];
+    binfmt.emulatedSystems = ["aarch64-linux" "i686-linux"];
     # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     kernelPackages = pkgs.linuxPackages_latest;
 
@@ -80,10 +81,10 @@
     initrd.availableKernelModules =
       [
         "xhci_pci"
-        "thunderbolt"
         "nvme"
         "usb_storage"
         "sd_mod"
+        "usbhid"
         "vfio-pci"
       ]
       ++ config.boot.initrd.luks.cryptoModules;
@@ -113,25 +114,7 @@
     acpid.enable = true;
     thermald.enable = true;
     upower.enable = false;
-
-    greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command = "Hyprland";
-          user = "gogsaan";
-        };
-        default_session = initial_session;
-      };
-    };
-    # add hyprland to display manager sessions
-    xserver.displayManager.sessionPackages = [inputs.hyprland.packages.${pkgs.system}.default];
   };
-
-  # selectable options
-  environment.etc."greetd/environments".text = ''
-    Hyprland
-  '';
 
   xdg.portal = {
     enable = true;
@@ -144,9 +127,9 @@
   # enable hyprland
   programs.hyprland.enable = true;
   programs.xwayland.enable = true;
-  # programs.steam.enable = true;
 
   services.xserver.enable = false;
+  # xserver.displayManager.sessionPackages = [inputs.hyprland.packages.${pkgs.system}.default];
 
   # services.gnome.gnome-keyring.enable = true;
   security = {

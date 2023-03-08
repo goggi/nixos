@@ -5,6 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    leafpad
     envsubst
     lsof
     gh

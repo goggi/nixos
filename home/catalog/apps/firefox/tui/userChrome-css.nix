@@ -15,6 +15,30 @@
       --srf-accent: #cba6f7;
     }
 
+    /*
+    * My changes
+    */
+    #urlbar-input-container {
+      background-color: var(--srf-secondary) !important;
+      border: 1px solid var(--srf-secondary) !important;
+      border-radius: 0px !important;
+      padding: 1 !important;
+      height: 100% !important;
+    }
+    .tabbrowser-tab .tab-label { color: var(--srf-text) !important; }
+
+    #personal-bookmarks .bookmark-item:not([container]) .toolbarbutton-icon {
+      display: none !important;
+    }
+
+    #PlacesToolbarItems > .bookmark-item > .toolbarbutton-icon[label]:not([label=""]) { display: none !important; }
+
+
+    /* Kill bookmark icons in the Personal Toolbar */
+    toolbarbutton.bookmark-item > .toolbarbutton-icon {
+      display: none !important;
+    }
+
     window,
     #main-window,
     #toolbar-menubar,

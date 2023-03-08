@@ -44,6 +44,10 @@ bindfs -o fsname=/persist/home/gogsaan/.config/vivaldi /persist/home/gogsaan/.co
 
 
 
+bindfs -o fsname=/persist/home/gogsaan/.config/apce-stable /persist/home/gogsaan/.config/apce-stable /home/gogsaan/.config/apce-stable
+bindfs -o fsname=/persist/home/gogsaan/.config/nomacs /persist/home/gogsaan/.config/nomacs /home/gogsaan/.config/nomacs
+
+
 bindfs -o fsname=/persist/home/gogsaan/.config/idasen /persist/home/gogsaan/.config/idasen /home/gogsaan/.config/idasen
 
 # VSCodeInsiders

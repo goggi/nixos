@@ -66,6 +66,7 @@
           looking-glass-client = pkgs.callPackage ./pkgs/looking {};
           astrovim = pkgs.callPackage ./pkgs/astrovim {};
           gtk-layer-shell = pkgs.callPackage ./pkgs/gtkLayerShell {}; # TODO Remove once the original works
+          plymouth-spinner-monochrome = pkgs.callPackage ./pkgs/plymouth-spinner-monochrome {}; # TODO Remove once the original works
         };
       };
 

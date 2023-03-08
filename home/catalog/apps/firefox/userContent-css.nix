@@ -3,6 +3,8 @@
     scrollbar-width: none !important;
   }
 
+  :root{ --toolbar-field-focus-border-color: transparent !important; }
+
   @-moz-document url(about:privatebrowsing) {
     :root {
       scrollbar-width: none !important;

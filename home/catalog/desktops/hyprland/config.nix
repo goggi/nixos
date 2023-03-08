@@ -190,7 +190,6 @@
     windowrule = workspace 10, title:^.*WebCord.*$
     windowrule = workspace 10, title:^.*Skype.*$
     windowrule = workspace 10, title:^.*Signal.*$
-    windowrule = float, title:^(htop)$
 
     # Navicat Premium
     windowrule = float, title:^.*New Connection.*$
@@ -259,7 +258,7 @@
   bind=$mainMod_CTRL,F,fakefullscreen
 
 
-  bind=$mainModSHIFT,backslash, exec, pkill waybar || waybar
+  bind=$mainModSHIFT,backslash, exec, pkill waybar || waybar && pkill -f dunst || true
   bind=$mainMod,Q,killactive,
 
   # Screen resolution
@@ -310,7 +309,7 @@
   # Workspaces
   #bind=$mainMod,F12,swapactiveworkspaces,DP-2 DP-3
   bind = $mainMod, C, killactive,
-  #bind = $mainMod, M, exit,
+  bind = $mainMod_CTRL, M, exit,
   bind = ALT, F, togglefloating,
   bind = $mainMod, P, pseudo, # dwindle
   bind = $mainMod, J, togglesplit, # dwindle
