@@ -12,19 +12,19 @@ with lib; let
     "application/x-extension-shtml" = browser;
     "application/x-extension-xht" = browser;
     "application/x-extension-xhtml" = browser;
-    "application/xhtml+xml" = browser;
-    "text/html" = browser;
+    "application/x-yaml" = ["lapce.desktop"];
+    "application/xml" = ["lapce.desktop"];
     "x-scheme-handler/about" = browser;
     "x-scheme-handler/chrome" = ["chromium-browser.desktop"];
     "x-scheme-handler/ftp" = browser;
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/unknown" = browser;
-
+    "text/plain" = ["lapce.desktop"];
     "audio/*" = ["mpv.desktop"];
     "video/*" = ["mpv.dekstop"];
     "image/*" = ["imv.desktop"];
-    "application/json" = browser;
+    "application/json" = ["lapce.desktop"];
     "application/pdf" = ["org.pwmt.zathura.desktop.desktop"];
     "x-scheme-handler/discord" = ["discordcanary.desktop"];
     "x-scheme-handler/spotify" = ["spotify.desktop"];

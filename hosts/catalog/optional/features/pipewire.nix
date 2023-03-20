@@ -1,8 +1,8 @@
 {
-  # systemd.user.services = {
-  #   pipewire.wantedBy = ["default.target"];
-  #   pipewire-pulse.wantedBy = ["default.target"];
-  # };
+  systemd.user.services = {
+    pipewire.wantedBy = ["default.target"];
+    pipewire-pulse.wantedBy = ["default.target"];
+  };
 
   security.rtkit.enable = true;
   hardware.pulseaudio.enable = false;

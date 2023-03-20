@@ -14,14 +14,13 @@
   ];
 
   home.packages = with pkgs; [
-    # imv
+    imv
     # lyrics
     # mimeo
     # primary-xwayland
     # wl-mirror
     # wl-mirror-pick
     # ydotool
-    swappy
     swayidle
     clipman
     pulseaudio

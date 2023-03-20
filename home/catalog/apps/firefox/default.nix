@@ -129,6 +129,7 @@
           "widget.use-xdg-desktop-portal" = true;
           "ui.context_menus.after_mouseup" = true;
           "browser.toolbars.bookmarks.visibility" = "never";
+          "browser.disableResetPrompt" = true;
 
           # Tab
           "browser.urlbar.suggest.quickactions" = false;
@@ -225,6 +226,7 @@
           "widget.use-xdg-desktop-portal" = true;
           "ui.context_menus.after_mouseup" = true;
           "browser.toolbars.bookmarks.visibility" = "never";
+          "browser.disableResetPrompt" = true;
 
           # Tab
           "browser.urlbar.suggest.quickactions" = false;
@@ -316,6 +318,7 @@
           "media.videocontrols.picture-in-picture.allow-multiple" = true;
 
           # Misc
+          "browser.disableResetPrompt" = true;
           "browser.aboutConfig.showWarning" = false;
           "browser.tabs.warnOnClose" = false;
           "widget.use-xdg-desktop-portal" = true;
@@ -417,6 +420,7 @@
           "widget.use-xdg-desktop-portal" = true;
           "ui.context_menus.after_mouseup" = true;
           "browser.toolbars.bookmarks.visibility" = "always";
+          "browser.disableResetPrompt" = true;
 
           # Tab
           "browser.urlbar.suggest.quickactions" = false;

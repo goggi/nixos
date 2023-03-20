@@ -7,14 +7,14 @@
   swaylock = "${pkgs.swaylock-effects}/bin/swaylock";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
   pgrep = "${pkgs.procps}/bin/pgrep";
-  hyprctl = "${pkgs.hyprland}/bin/hyprctl";
+  hyprctl = "hyprctl";
   swaymsg = "${pkgs.sway}/bin/swaymsg";
 
   isLocked = "${pgrep} -x swaylock";
-  actionLock = "";
-  # actionLock = "${swaylock} -S --daemonize";
+  # actionLock = "";
+  actionLock = "${swaylock} -S --daemonize";
 
-  lockTime = 60; # TODO: configurable desktop (10 min)/laptop (4 min)
+  lockTime = 600; # TODO: configurable desktop (10 min)/laptop (4 min)
 
   mkEvent = time: start: resume: ''
     timeout ${toString (lockTime + time)} '${start}' ${lib.optionalString (resume != null) "resume '${resume}'"}
@@ -35,7 +35,15 @@ in {
     +
     # Hyprland - Turn off screen (DPMS)
     lib.optionalString config.wayland.windowManager.hyprland.enable
-    (mkEvent 1 "${hyprctl} dispatch dpms off" "${hyprctl} dispatch dpms on");
+    (mkEvent 30 "${hyprctl} dispatch dpms off" "${hyprctl} dispatch dpms on")
+    +
+    # Hyprland - Turn off screen (DPMS)
+    lib.optionalString config.wayland.windowManager.hyprland.enable
+    (mkEvent 600 "${hyprctl} dispatch dpms on" "")
+    +
+    # Hyprland - Turn off screen (DPMS)
+    lib.optionalString config.wayland.windowManager.hyprland.enable
+    (mkEvent 610 "systemctl suspend" "");
   # +
   # # Sway - Turn off screen (DPMS)
   # lib.optionalString config.wayland.windowManager.hyprland.enable

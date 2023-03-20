@@ -40,8 +40,10 @@
     # ../catalog/apps/chromium.nix
     # ../catalog/apps/googleChrome.nix
     # ../catalog/apps/qutebrowser.nix
+    # ../catalog/apps/coder.nix
 
     ../catalog/apps/vivaldi.nix
+    ../catalog/apps/googleChrome.nix
     ../catalog/apps/vscode.nix
     ../catalog/apps/1password.nix
     ../catalog/apps/obsidian.nix
@@ -51,7 +53,6 @@
     ../catalog/apps/fish.nix
     ../catalog/apps/navicat.nix
     ../catalog/apps/btop.nix
-    ../catalog/apps/coder.nix
     ../catalog/apps/docker.nix
     ../catalog/apps/keepassxc.nix
     ../catalog/apps/flatpak.nix
@@ -59,9 +60,11 @@
     ../catalog/apps/nomacs.nix
     ../catalog/apps/zathura.nix
     ../catalog/apps/lapce.nix
+    ../catalog/apps/swappy.nix
 
     # Games with persistance
     ../catalog/apps/steam.nix
+    ../catalog/apps/minecraft.nix
 
     # Features with persistance
     ../catalog/features/yubikey.nix

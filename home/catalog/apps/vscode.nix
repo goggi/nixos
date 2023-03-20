@@ -19,16 +19,16 @@
     };
   };
 
-  #programs.vscode = {
-  # enable = true;
-  # package = (pkgs.vscode.override {isInsiders = true;}).overrideAttrs (oldAttrs: rec {
-  #   src = builtins.fetchTarball {
-  #     url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
-  #     sha256 = "0b38cg59c28ryb9g6vncgcjiiwgxb4d389wc4w8i7g8g94vzavjy";
-  #  };
-  #   version = "latest";
-  # });
-  #};
+  # programs.vscode = {
+  #   enable = true;
+  #   package = (pkgs.vscode.override {isInsiders = true;}).overrideAttrs (oldAttrs: rec {
+  #     src = builtins.fetchTarball {
+  #       url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
+  #       sha256 = "1l58dd17r7m64sbz3lq6dn7hxlvpazz7fc89mv69mbgvy1w60x54";
+  #     };
+  #     version = "latest";
+  #   });
+  # };
 
   home.persistence = {
     "/persist/home/gogsaan" = {

@@ -1,24 +1,65 @@
 ''
-    # Monitorsss
-    monitor=DP-3,preferred,1505x0,1.2
-    monitor=DP-2,preferred,0x890,1.2
-    monitor=DP-2,addreserved,0,0,700,700
 
-    # Autostart programs
-    # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
-    exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    # exec-once = /home/gogsaan/.config/vpn/addConnection.sh
-    exec-once = waybar &
-    exec-once = swaybg --mode fill --image /home/gogsaan/Pictures/wallpapers/nixos/51202150962_e6317cf68f_o.jpg
-    exec-once = keepassxc
-    exec-once = webcord &
-    # exec-once = signal-desktop
-    exec-once = swayidle -w
-    exec-once = flatpak run io.kopia.KopiaUI &
-    exec-once = kitty --title='special_is_kitty' &
-    exec-once = nmcli radio wifi off
-    # exec-once = obsidian &
+  ### Autostart ###
+  # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
+  # exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+  # exec-once = /home/gogsaan/.config/vpn/addConnection.sh
+  exec-once = waybar &
+  exec-once = swaybg --mode fill --image /home/gogsaan/Pictures/wallpapers/nixos/51202150962_e6317cf68f_o.jpg &
+  exec-once = webcord &
+  exec-once = btop &
+  exec-once = swayidle &
+  exec-once = flatpak run io.kopia.KopiaUI &
+  exec-once = kitty --title='special_is_kitty' &
+  exec-once = nmcli radio wifi off
+  exec-once = keepassxc &
 
+  ### Variables ###
+  # Modifiers
+  $mainMod = SUPER
+  # APPs
+  $term = kitty
+  $browser = firefox
+  $editor = code
+  $files = nemo
+  $launcher = killall rofi || rofi -no-lazy-grab -show drun -theme index  -sort
+  $emoji = killall rofi || rofi -show emoji -emoji-format "{emoji}" -modi emoji -theme emoji
+
+  # Monitor Variables
+  $mainMonitorStandardResolution = DP-2,preferred,0x1080,1
+  $mainMonitorStandardResolutionPadding = DP-2,addreserved,0,0,700,700
+  $mainMonitorLowerResolution = DP-2,2560x1080@120,1260x1080,1
+  $mainMonitorLowerResolutionPadding = DP-2,addreserved,0,0,0,0
+  $secondMonitorStandardResolution = DP-3,preferred,1800x0,1
+
+  ### Monitors Settings ###
+  monitor=DP-2,preferred,0x1080,1
+  monitor=DP-2,addreserved,0,0,700,700
+  monitor=DP-3,preferred,1800x0,1
+
+  # Keybinds for main monitor resloultion
+  bind=$mainMod, slash, exec, hyprctl keyword monitor "$mainMonitorStandardResolution"
+  bind=$mainMod, slash, exec, hyprctl keyword monitor "$mainMonitorStandardResolutionPadding"
+  bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$mainMonitorLowerResolution"
+  bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$mainMonitorLowerResolutionPadding"
+
+  ### Misc ###
+  misc {
+    disable_hyprland_logo = true
+    disable_splash_rendering = true
+    mouse_move_enables_dpms = true
+    key_press_enables_dpms = true
+    vfr = false
+    vrr = 1
+    enable_swallow = true
+    swallow_regex = ^(kitty)$
+  }
+
+  ### Debug ###
+  debug {
+    overlay = false
+    damage_blink = false
+  }
 
     # Inputs
     input {
@@ -52,18 +93,8 @@
       layout = master
       col.group_border=0xff313244
       col.group_border_active	=0xffcba6f7 0xfff38ba8 45deg
-      # main_mod = SUPER
     }
-    # Misc
-    misc {
-      disable_hyprland_logo = true
-      disable_splash_rendering = true
-      mouse_move_enables_dpms = true
-      vfr = false
-      vrr = 0
-      enable_swallow = true
-      swallow_regex = ^(kitty)$
-    }
+
 
     # Decorations
     decoration {
@@ -114,6 +145,7 @@
       animation = fadeIn, 1, 7, default
       animation = fadeDim, 1, 7, smoothIn
       animation = workspaces, 1, 4, overshot, slidevert
+      # animation = workspaces, 1, 10, smoothIn, fade
       animation = borderangle, 1, 15, linear, loop
     }
 
@@ -147,7 +179,13 @@
     windowrule = float, title:Open File
     windowrule = float, title:branchdialog
     windowrule = float, zoom
-    windowrule = float, vlc
+
+
+
+    # windowrule = float, vlc
+    # windowrule = size 800 600, vlc
+    # windowrule = move center, vlc
+
     windowrule = float, Lxappearance
     windowrule = float, ncmpcpp
     windowrule = float, Rofi
@@ -162,7 +200,7 @@
     # windowrule = float, nemo
     windowrule = float, thunar
     windowrule = float, Pcmanfm
-    windowrule = float, obs
+    # windowrule = float, obs
     windowrule = float, wdisplays
     # windowrule = float, *.exe
     windowrule = fullscreen, wlogout
@@ -186,16 +224,21 @@
     windowrule = move 35% 10%, title:^(swappy)$
 
     windowrule = workspace special:music, title:^.*YouTube Music.*$
+    # windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$
+
     windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$
+    windowrule = workspace special:obsidian, title:^.*btop.*$
+
+
     windowrule = workspace 10, title:^.*WebCord.*$
     windowrule = workspace 10, title:^.*Skype.*$
     windowrule = workspace 10, title:^.*Signal.*$
 
     # Navicat Premium
-    windowrule = float, title:^.*New Connection.*$
-    windowrule = move 0 0, title:^.*New Connection.*$
-    windowrule = float, title:^.*Edit Connection.*$
-    windowrule = move 0 0, title:^.*Edit Connection.*$
+    # windowrule = float, title:^.*New Connection.*$
+    # windowrule = move 0 0, title:^.*New Connection.*$
+    # windowrule = float, title:^.*Edit Connection.*$
+    # windowrule = move 75 44%, title:^.*Edit Connection.*$
 
 
   # FLY IS KITTY
@@ -206,19 +249,11 @@
   # SPECIAL IS KITTY
   windowrule = workspace special:kitty, title:^(special_is_kitty)$
 
-  # Variables
-  $mainMod = SUPER
-  $term = kitty
-  $browser = firefox
-  $editor = code
-  $files = nemo
-  $launcher = killall rofi || rofi -no-lazy-grab -show drun -theme index  -sort
-  $emoji = killall rofi || rofi -show emoji -emoji-format "{emoji}" -modi emoji -theme emoji
+
 
   #
   # Keybinds
   #
-
   # App shortcuts
   # bind=CTRL,RETURN,exec,$term
   bind=$mainMod,Return,exec,$term
@@ -261,12 +296,6 @@
   bind=$mainModSHIFT,backslash, exec, pkill waybar || waybar && pkill -f dunst || true
   bind=$mainMod,Q,killactive,
 
-  # Screen resolution
-  bind=$mainMod, slash, exec, hyprctl keyword monitor "DP-2,highrr,0x890,1.2"
-  bind=$mainMod, slash, exec, hyprctl keyword monitor "DP-2,addreserved,0,0,700,700"
-  bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "DP-2,2560x1080@120,850x900,1"
-  bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "DP-2,addreserved,0,0,0,0"
-
   # Special worspace
   bind=SUPERCTRL,7,movetoworkspace,special:music
   bind=SUPERCTRL,8,movetoworkspace,special:obsidian
@@ -275,12 +304,19 @@
   bind=SUPER,Tab,togglespecialworkspace,music
   bind=$mainModALT,F12,togglespecialworkspace,obsidian
   bind=$mainMod_SHIFT,Tab,togglespecialworkspace,pomo
-  bind=$mainMod_ALT_SHIFT,F12,togglespecialworkspace,chatgpt
+  bind=$mainMod_SHIFT,F12,togglespecialworkspace,chatgpt
 
   # Groups
   bind=$mainMod,W,togglegroup,
   bind=$mainMod,Left,changegroupactive, b
   bind=$mainMod,Right,changegroupactive, f
+  # Move Groups
+  bind=SUPER_ALT,left,moveintogroup,l
+  bind=SUPER_ALT,right,moveintogroup,r
+  bind=SUPER_ALT,down,moveoutofgroup,u
+
+  # bind=SUPER_SHIFT,down,moveoutofgroup,u
+  # bind=SUPER_SHIFT,up,exec, hyprctl dispatch moveintogroup l && hyprctl dispatch moveintogroup r && hyprctl dispatch moveintogroup u && hyprctl dispatch moveintogroup d
 
   # Workspace padding
   # bind=SUPER,E,exec, hyprctl keyword monitor DP-2,addreserved,0,0,1200,1200
@@ -297,8 +333,8 @@
   bind = ,XF86AudioLowerVolume, exec, volume -d 5
 
   # Screenshots
-  $screenshotarea = hyprctl keyword animation "fadeOut,0,0,5"; grimblast --cursor save area - | swappy -f - ; hyprctl keyword animation "fadeOut,1,4,5"
-  $screensscreen = hyprctl keyword animation "fadeOut,0,0,5"; grimblast --cursor save active - | swappy -f - ; hyprctl keyword animation "fadeOut,1,4,5"
+  $screenshotarea = grimblast --cursor save area - | swappy -f -
+  $screensscreen = grimblast --cursor save active - | swappy -f -
   bind = SUPER_SHIFT, t, exec, $screenshotarea
   bind = SUPER_CTRL, t, exec, $screensscreen
   bind = CTRL, Print, exec, grimblast --notify --cursor copysave output

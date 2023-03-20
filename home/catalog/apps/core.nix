@@ -5,6 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    vlc
     leafpad
     envsubst
     lsof

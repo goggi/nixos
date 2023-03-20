@@ -10,7 +10,7 @@
         enableWidevine = true;
       })
       pkgs.vivaldi-ffmpeg-codecs
-      pkgs.widevine-cdm
+      # pkgs.widevine-cdm
     ];
     persistence = {
       "/persist/home/gogsaan" = {

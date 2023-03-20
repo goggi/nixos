@@ -49,6 +49,8 @@ bindfs -o fsname=/persist/home/gogsaan/.config/nomacs /persist/home/gogsaan/.con
 
 
 bindfs -o fsname=/persist/home/gogsaan/.config/idasen /persist/home/gogsaan/.config/idasen /home/gogsaan/.config/idasen
+bindfs -o fsname=/persist/home/gogsaan/.config/swappy /persist/home/gogsaan/.config/swappy /home/gogsaan/.config/swappy
+bindfs -o fsname=/persist/home/gogsaan/.local/share/PrismLauncher /persist/home/gogsaan/.local/share/PrismLauncher /home/gogsaan/.local/share/PrismLauncher
 
 # VSCodeInsiders
 bindfs -o fsname=/persist/home/gogsaan/.vscode-insiders /persist/home/gogsaan/.vscode-insiders /home/gogsaan/.vscode-insiders    
