@@ -5,7 +5,6 @@
     # NixOS
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:nixos/nixpkgs/23.05-pre";
-
     # nixpkgsUnstableMaster.url = "github:nixos/nixpkgs/master";
     # nixpkgsUnstableMasterMine.url = "github:goggi/nixpkgs/master";
     impermanence.url = "github:nix-community/impermanence";
