@@ -42,6 +42,7 @@ in {
     sopsFile = ../../catalog/secrets.yaml;
     neededForUsers = true;
   };
+  programs.fish.enable = true;
 
   programs = {
     _1password-gui = {

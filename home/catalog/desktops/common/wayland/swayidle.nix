@@ -32,18 +32,18 @@ in {
     # # If has RGB, turn it off 20 seconds after locked
     # lib.optionalString config.services.rgbdaemon.enable
     # (mkEvent 20 "systemctl --user stop rgbdaemon" "systemctl --user start rgbdaemon")
+    # +
+    # # Hyprland - Turn off screen (DPMS)
+    # lib.optionalString config.wayland.windowManager.hyprland.enable
+    # (mkEvent 30 "${hyprctl} dispatch dpms off" "${hyprctl} dispatch dpms on")
+    # +
+    # # Hyprland - Turn off screen (DPMS)
+    # lib.optionalString config.wayland.windowManager.hyprland.enable
+    # (mkEvent 600 "${hyprctl} dispatch dpms on" "")
     +
     # Hyprland - Turn off screen (DPMS)
     lib.optionalString config.wayland.windowManager.hyprland.enable
-    (mkEvent 30 "${hyprctl} dispatch dpms off" "${hyprctl} dispatch dpms on")
-    +
-    # Hyprland - Turn off screen (DPMS)
-    lib.optionalString config.wayland.windowManager.hyprland.enable
-    (mkEvent 600 "${hyprctl} dispatch dpms on" "")
-    +
-    # Hyprland - Turn off screen (DPMS)
-    lib.optionalString config.wayland.windowManager.hyprland.enable
-    (mkEvent 610 "systemctl suspend" "");
+    (mkEvent 30 "systemctl suspend" "");
   # +
   # # Sway - Turn off screen (DPMS)
   # lib.optionalString config.wayland.windowManager.hyprland.enable

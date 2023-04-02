@@ -10,7 +10,6 @@
       pkgs.yarn
       pkgs.nodePackages.pnpm
       pkgs.okteto
-      pkgs.nodePackages.prisma
     ];
   };
 }

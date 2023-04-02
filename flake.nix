@@ -1,9 +1,11 @@
 {
-  description = "Rxyhn's NixOS Configuration with Home-Manager & Flake";
+  description = "NixOS Configuration with Home-Manager & Flake";
 
   inputs = {
     # NixOS
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/23.05-pre";
+
     # nixpkgsUnstableMaster.url = "github:nixos/nixpkgs/master";
     # nixpkgsUnstableMasterMine.url = "github:goggi/nixpkgs/master";
     impermanence.url = "github:nix-community/impermanence";
@@ -17,7 +19,6 @@
 
     # Hyprland
     hyprland.url = "github:hyprwm/Hyprland/";
-
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     hyprland-contrib.url = "github:hyprwm/contrib";
     # Other

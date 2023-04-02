@@ -76,7 +76,7 @@ in {
   ];
 
   services.dunst = {
-    enable = true;
+    enable = false;
     package = pkgs.dunst.overrideAttrs (oldAttrs: {
       src = pkgs.fetchFromGitHub {
         owner = "k-vernooy";
