@@ -60,6 +60,7 @@
           (lib.filterAttrs filterNixFiles (builtins.readDir path))))
       import;
 
+    # Packages
     pkgs = import inputs.nixpkgs {
       inherit system;
       config = {
@@ -67,42 +68,26 @@
         allowUnfree = true;
         tarball-ttl = 0;
         packageOverrides = super: {
-          # webcord = pkgs.callPackage ./pkgs/webcord {};
           looking-glass-client = pkgs.callPackage ./pkgs/looking {};
-          xwaylandvideobridge = pkgs.callPackage ./pkgs/xwaylandvideobridge {};
-          astrovim = pkgs.callPackage ./pkgs/astrovim {};
-          gtk-layer-shell = pkgs.callPackage ./pkgs/gtkLayerShell {}; # TODO Remove once the original works
-          plymouth-spinner-monochrome = pkgs.callPackage ./pkgs/plymouth-spinner-monochrome {}; # TODO Remove once the original works
+          gtk-layer-shell = pkgs.callPackage ./pkgs/gtkLayerShell {};
         };
       };
 
       pkgs.config.allowBroken = pkgs: with pkgs; [kitty];
 
+      # Overlays
       overlays = with inputs;
         [
           (
             final: _: let
               inherit (final) system;
-            in
-              {
-                # Packages provided by flake inputs
-                # crane-lib = crane.lib.${system};
-              }
-              // (with nixpkgs-f2k.packages.${system}; {
-                # Overlays with f2k's repo
-                awesome = awesome-git;
-                picom = picom-git;
-                wezterm = wezterm-git;
-              })
-              // {
-                # Non Flakes
-                sf-mono-liga-src = sf-mono-liga;
-              }
+            in {
+              sf-mono-liga-src = sf-mono-liga;
+            }
           )
           nur.overlay
           nixpkgs-wayland.overlay
           nixpkgs-f2k.overlays.default
-          # rust-overlay.overlays.default
         ]
         # Overlays from ./overlays directory
         ++ (importNixFiles ./overlays);
