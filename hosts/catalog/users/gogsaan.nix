@@ -43,7 +43,7 @@ in {
     neededForUsers = true;
   };
   programs.fish.enable = true;
-  programs.zsh.enable = true;
+  programs.zsh.enable = false;
 
   programs = {
     _1password-gui = {

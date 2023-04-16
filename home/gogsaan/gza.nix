@@ -51,7 +51,6 @@
 
     # Cli
     ../features/cli/fish.nix
-    ../features/cli/zsh.nix
     ../features/cli/kitty.nix
     ../features/cli/shell
 
