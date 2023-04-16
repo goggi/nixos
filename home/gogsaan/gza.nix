@@ -7,68 +7,64 @@
   ...
 }: {
   imports = [
+    # Core
     inputs.impermanence.nixosModules.home-manager.impermanence
-
-    # Apps
-    ../catalog/apps/core.nix
-    ../catalog/apps/k8sManagment.nix
-    ../catalog/apps/obsStudio.nix
-    ../catalog/apps/kitty.nix
-    ../catalog/apps/helix
-
-    # Development
-    ../catalog/dev/nodejs.nix
-    ../catalog/dev/python3.nix
+    ../features/core.nix
 
     # Desktops
-    ../catalog/desktops/hyprland
+    ../features/desktop/hyprland
 
-    # Features
-    ../catalog/features/shell
+    # Browser
+    ../features/browser/firefox
+    ../features/browser/googleChrome.nix
 
-    # Persistance
-    # App with persistance
-    # ../catalog/apps/vscodeInsiders.nix
-    # ../catalog/apps/googleChrome.nix
-    # ../catalog/apps/firefoxBeta
+    # Development
+    ../features/development/vscode.nix
+    ../features/development/navicatPersistance.nix
+    ../features/development/dockerPersistance.nix
+    ../features/development/k8sManagment.nix
+    ../features/development/helix
 
-    # ../catalog/apps/zsh.nix
+    ../features/development/language/nodejs.nix
+    ../features/development/language/python3.nix
 
-    # ../catalog/apps/microsoftEdge.nix
-    # ../catalog/apps/googleChromeBeta.nix
-    # ../catalog/apps/vivaldi.nix
-    # ../catalog/apps/chromium.nix
-    # ../catalog/apps/googleChrome.nix
-    # ../catalog/apps/qutebrowser.nix
-    # ../catalog/apps/coder.nix
+    # Management
+    ../features/management/1password.nix
+    ../features/management/keepassxc.nix
+    ../features/management/yubikey.nix
+    ../features/management/gpg.nix
 
-    ../catalog/apps/vivaldi.nix
-    ../catalog/apps/googleChrome.nix
-    ../catalog/apps/vscode.nix
-    ../catalog/apps/1password.nix
-    ../catalog/apps/obsidian.nix
-    ../catalog/apps/signalDesktop.nix
-    ../catalog/apps/firefox
-    ../catalog/apps/webcord.nix
-    ../catalog/apps/fish.nix
-    ../catalog/apps/navicat.nix
-    ../catalog/apps/btop.nix
-    ../catalog/apps/docker.nix
-    ../catalog/apps/keepassxc.nix
-    ../catalog/apps/flatpak.nix
-    ../catalog/apps/idasen.nix
-    ../catalog/apps/nomacs.nix
-    ../catalog/apps/zathura.nix
-    ../catalog/apps/lapce.nix
-    ../catalog/apps/swappy.nix
+    # Document
+    ../features/document/obsidian.nix
+    ../features/document/zathura.nix
+    ../features/document/lapce.nix
 
-    # Games with persistance
-    ../catalog/apps/steam.nix
-    ../catalog/apps/minecraft.nix
+    # Communication
+    ../features/communcation/signalDesktop.nix
+    ../features/communcation/webcord.nix
 
-    # Features with persistance
-    ../catalog/features/yubikey.nix
-    ../catalog/features/gpg.nix
+    # Media
+    ../features/media/obsStudio.nix
+
+    # Work
+    ../features/work/teams.nix
+
+    # Cli
+    ../features/cli/fish.nix
+    ../features/cli/zsh.nix
+    ../features/cli/kitty.nix
+    ../features/cli/shell
+
+    # Tool
+    ../features/tool/flatpakPersistance.nix
+    ../features/tool/btop.nix
+    ../features/tool/idasen.nix
+    ../features/tool/nomacs.nix
+    ../features/tool/swappy.nix
+
+    # Game
+    ../features/game/steam.nix
+    ../features/game/minecraft.nix
   ];
 
   home = {
@@ -92,7 +88,6 @@
           ".config/sops"
           ".ssh"
           ".aws"
-          # ".local/share/keyrings"
           ".local/share/applications"
           ".local/share/desktop-directories"
         ];
@@ -104,11 +99,6 @@
       };
     };
   };
-
-  #Add support for ./local/bin
-  # home.sessionPath = [
-  #   "$HOME/.local/bin"
-  # ];
 
   # disable manuals as nmd fails to build often
   manual = {

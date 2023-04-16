@@ -3,12 +3,14 @@
 
   inputs = {
     # NixOS
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:nixos/nixpkgs/23.05-pre";
-    # nixpkgsUnstableMaster.url = "github:nixos/nixpkgs/master";
-    # nixpkgsUnstableMasterMine.url = "github:goggi/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/4c93f32ad63578ee36483cbf6eb78e77443ea09a";
     impermanence.url = "github:nix-community/impermanence";
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland/fce6d1f286936efd8815de6c2cfa9e06e8492096";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nur.url = "github:nix-community/NUR";
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
@@ -17,7 +19,10 @@
     };
 
     # Hyprland
-    hyprland.url = "github:hyprwm/Hyprland/";
+    hyprland = {
+      url = "github:hyprwm/Hyprland/";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     hyprland-contrib.url = "github:hyprwm/contrib";
     # Other
@@ -62,8 +67,9 @@
         allowUnfree = true;
         tarball-ttl = 0;
         packageOverrides = super: {
-          webcord = pkgs.callPackage ./pkgs/webcord {};
+          # webcord = pkgs.callPackage ./pkgs/webcord {};
           looking-glass-client = pkgs.callPackage ./pkgs/looking {};
+          xwaylandvideobridge = pkgs.callPackage ./pkgs/xwaylandvideobridge {};
           astrovim = pkgs.callPackage ./pkgs/astrovim {};
           gtk-layer-shell = pkgs.callPackage ./pkgs/gtkLayerShell {}; # TODO Remove once the original works
           plymouth-spinner-monochrome = pkgs.callPackage ./pkgs/plymouth-spinner-monochrome {}; # TODO Remove once the original works
@@ -105,6 +111,7 @@
     inherit lib pkgs;
 
     # nixos-configs with home-manager
+
     nixosConfigurations = import ./hosts inputs;
 
     devShells.${system}.default = pkgs.mkShell {

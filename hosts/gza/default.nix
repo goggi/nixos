@@ -27,11 +27,16 @@
     # ../catalog/optional/apps/taskwarrior.nix
   ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-21.4.0"
+  ];
+
   services.flatpak.enable = true;
 
   networking = {
     hostName = "gza";
     useDHCP = lib.mkDefault true;
+    nameservers = ["1.1.1.1" "8.8.8.8"];
   };
 
   environment.persistence = {
@@ -104,7 +109,7 @@
         efiSupport = true;
         useOSProber = false;
         enableCryptodisk = true;
-        configurationLimit = 20;
+        configurationLimit = 100;
       };
     };
   };
@@ -150,13 +155,21 @@
   };
 
   environment = {
-    systemPackages = with pkgs; [
+    systemPackages = [
+      (pkgs.runCommandLocal "vscode-fhs-bind-host" {} ''
+        mkdir -p "$out/bin/"
+        substitute \
+          "${pkgs.vscode-fhs}/bin/code" \
+          "$out/bin/code" \
+          --replace "declare -a auto_mounts" "auto_mounts=(--bind-try /etc/nixos /etc/nixos)"
+        chmod 555 "$out/bin/code"
+      '')
       inputs.bazecor.packages.${pkgs.system}.default
-      acpi
-      libva-utils
-      ocl-icd
-      qt5.qtwayland
-      qt5ct
+      pkgs.acpi
+      pkgs.libva-utils
+      pkgs.ocl-icd
+      pkgs.qt5.qtwayland
+      pkgs.qt5ct
       # gamescope
       # mangohud
     ];

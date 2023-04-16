@@ -36,6 +36,11 @@ bindfs -o fsname=/persist/home/gogsaan/.config/k9s /persist/home/gogsaan/.config
 # btop
 bindfs -o fsname=/persist/home/gogsaan/.config/btop /persist/home/gogsaan/.config/btop /home/gogsaan/.config/btop
 
+
+# teams
+bindfs -o fsname=/persist/home/gogsaan/.config/Microsoft /persist/home/gogsaan/.config/Microsoft /home/gogsaan/.config/Microsoft
+
+
 # VSCode
 bindfs -o fsname=/persist/home/gogsaan/.vscode /persist/home/gogsaan/.vscode /home/gogsaan/.vscode
 bindfs -o fsname=/persist/home/gogsaan/.config/Code /persist/home/gogsaan/.config/Code /home/gogsaan/.config/Code
