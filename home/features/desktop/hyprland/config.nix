@@ -231,7 +231,6 @@
     windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$
     windowrule = workspace special:obsidian, title:^.*btop.*$
 
-
     windowrule = workspace 10, title:^.*WebCord.*$
     windowrule = workspace 10, title:^.*Skype.*$
     windowrule = workspace 10, title:^.*Signal.*$
@@ -239,6 +238,7 @@
     # Navicat Premium
     windowrule = move 75 44%, title:^.*New Connection.*$
     windowrule = move 1000 44%, title:^.*Edit Connection.*$
+    # windowrule = move 1000 44%, title:^.*AppRun.*$
     windowrule = move 75 44%, title:^.*Dump SQL File.*$
 
 
@@ -282,8 +282,8 @@
   bind = $mainMod_SHIFT, M, exec, virsh shutdown win10
 
   # Reset workspaces
-  bind=SUPER,G,exec, hyprctl dispatch moveworkspacetomonitor 1 DP-2 && hyprctl dispatch moveworkspacetomonitor 2 DP-2 && hyprctl dispatch moveworkspacetomonitor 3 DP-2 && hyprctl dispatch moveworkspacetomonitor 4 DP-2 && hyprctl dispatch moveworkspacetomonitor 5 DP-2 && hyprctl dispatch moveworkspacetomonitor 6 DP-2 && hyprctl dispatch moveworkspacetomonitor 7 DP-3 && hyprctl dispatch moveworkspacetomonitor 8 DP-3 && hyprctl dispatch moveworkspacetomonitor 9 DP-3 && hyprctl dispatch moveworkspacetomonitor 10 DP-2
-  bind=SUPER,G,exec, hyprctl dispatch workspace 1 && hyprctl dispatch workspace 2 && hyprctl dispatch workspace 3 && hyprctl dispatch workspace 4 && hyprctl dispatch workspace 5 && hyprctl dispatch workspace 6 && hyprctl dispatch workspace 7 && hyprctl dispatch workspace 8 && hyprctl dispatch workspace 9 && hyprctl dispatch workspace 10 && hyprctl dispatch workspace 6 && hyprctl dispatch workspace 1 && $statusbar
+  bind=SUPER,G,exec, hyprctl dispatch moveworkspacetomonitor special:chatgpt && hyprctl dispatch moveworkspacetomonitor special:pomo && hyprctl dispatch moveworkspacetomonitor special:obsidian DP-2 && hyprctl dispatch moveworkspacetomonitor special:kitty DP-2 && hyprctl dispatch moveworkspacetomonitor special:music DP-2 && hyprctl dispatch moveworkspacetomonitor 1 DP-2 && hyprctl dispatch moveworkspacetomonitor 2 DP-2 && hyprctl dispatch moveworkspacetomonitor 3 DP-2 && hyprctl dispatch moveworkspacetomonitor 4 DP-2 && hyprctl dispatch moveworkspacetomonitor 5 DP-2 && hyprctl dispatch moveworkspacetomonitor 6 DP-2 && hyprctl dispatch moveworkspacetomonitor 7 DP-3 && hyprctl dispatch moveworkspacetomonitor 8 DP-3 && hyprctl dispatch moveworkspacetomonitor 9 DP-3 && hyprctl dispatch moveworkspacetomonitor 10 DP-2
+  bind=SUPER,G,exec, hyprctl dispatch workspace 1 && hyprctl dispatch workspace 2 && hyprctl dispatch workspace 3 && hyprctl dispatch workspace 4 && hyprctl dispatch workspace 5 && hyprctl dispatch workspace 6 && hyprctl dispatch workspace 7 && hyprctl dispatch workspace 8 && hyprctl dispatch workspace 9 && hyprctl dispatch workspace 10 && hyprctl dispatch togglespecialworkspace music && hyprctl dispatch togglespecialworkspace obsidian && hyprctl dispatch togglespecialworkspace pomo && hyprctl dispatch togglespecialworkspace chatgpt && hyprctl dispatch togglespecialworkspace kitty && hyprctl dispatch togglespecialworkspace kitty && hyprctl dispatch workspace 1 && $statusbar
 
   # Monitor brightness DDC control
   # bind=$mainMod,A,exec, ~/.config/dots/scripts/dcc dark

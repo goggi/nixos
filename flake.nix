@@ -3,11 +3,14 @@
 
   inputs = {
     # NixOS
-    nixpkgs.url = "github:nixos/nixpkgs/4c93f32ad63578ee36483cbf6eb78e77443ea09a";
+    # nixpkgs.url = "/home/gogsaan/Projects/nix/nixpkgs";
+
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     impermanence.url = "github:nix-community/impermanence";
 
     nixpkgs-wayland = {
-      url = "github:nix-community/nixpkgs-wayland/fce6d1f286936efd8815de6c2cfa9e06e8492096";
+      url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,7 +36,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     bazecor.url = "github:gvolpe/bazecor-nix";
 
-    nix-colors.url = "github:misterio77/nix-colors";
+    # nix-colors.url = "github:misterio77/nix-colors";
 
     # Non Flakes
     sf-mono-liga = {
@@ -65,11 +68,16 @@
       inherit system;
       config = {
         allowBroken = true;
+        allowInsecure = true;
         allowUnfree = true;
         tarball-ttl = 0;
+        permittedInsecurePackages = [
+          "electron-21.4.0"
+        ];
         packageOverrides = super: {
           looking-glass-client = pkgs.callPackage ./pkgs/looking {};
           gtk-layer-shell = pkgs.callPackage ./pkgs/gtkLayerShell {};
+          archi = pkgs.callPackage ./pkgs/archi {};
         };
       };
 

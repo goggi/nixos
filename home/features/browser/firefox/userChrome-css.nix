@@ -48,6 +48,27 @@
     }
 
 
+    #sidebar,
+    #sidebar-search-container,
+    #historyTree {
+      background-color: blue !important;
+    }
+
+    #viewButton {
+      color: white !important;
+    }
+
+    #sidebar-header {
+      # background-color: blue !important;
+      color: white !important;
+      fill: white !important;
+    }
+
+    .sidebar-placesTree treechildren::-moz-tree-cell-text {
+      color: white !important;
+    }
+
+
     /*
      * Default
     */

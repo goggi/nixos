@@ -6,6 +6,7 @@
 }: {
   home.packages = with pkgs; [
     terraform
+    archi
     # xwaylandvideobridge
     playerctl
     azuredatastudio
