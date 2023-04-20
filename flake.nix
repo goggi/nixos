@@ -20,14 +20,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     # Hyprland
     hyprland = {
-      url = "github:hyprwm/Hyprland/";
+      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     hyprland-contrib.url = "github:hyprwm/contrib";
+
     # Other
     vscode-server.url = "github:msteen/nixos-vscode-server";
     sops-nix.url = github:Mic92/sops-nix;
@@ -71,10 +71,11 @@
         allowInsecure = true;
         allowUnfree = true;
         tarball-ttl = 0;
-        permittedInsecurePackages = [
-          "electron-21.4.0"
-        ];
+        # permittedInsecurePackages = [
+        #   "electron-21.4.0"
+        # ];
         packageOverrides = super: {
+          webcord = pkgs.callPackage ./pkgs/webcord {};
           looking-glass-client = pkgs.callPackage ./pkgs/looking {};
           gtk-layer-shell = pkgs.callPackage ./pkgs/gtkLayerShell {};
           archi = pkgs.callPackage ./pkgs/archi {};

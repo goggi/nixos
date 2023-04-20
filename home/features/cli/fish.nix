@@ -14,7 +14,7 @@
       bloat = "nix path-info -Sh /run/current-system";
       cat = "${pkgs.bat}/bin/bat --style=plain";
       nb = "echo \"Check Yubikey\" && sudo rm /home/gogsaan/.config/mimeapps.list || true && sudo rm /home/gogsaan/.ssh/config || true && git add . || true && sudo nixos-rebuild switch --flake /home/gogsaan/Projects/nix/config#gza --show-trace";
-      nu = "echo \"Check Yubikey\" && sudo nix flake update";
+      nu = "echo \"Check Yubikey\" && sudo nix flake update /home/gogsaan/Projects/nix/config";
       sops = "nix-shell -p sops --run \" sops hosts/catalog/secrets.yaml \"";
       ls = "exa";
       cdd = "cd $(find ~ -type d | fzf)";

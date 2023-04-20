@@ -4,15 +4,17 @@
   # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
   # exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
   # exec-once = /home/gogsaan/.config/vpn/addConnection.sh
+
   exec-once = waybar &
   exec-once = swaybg --mode fill --image /home/gogsaan/Pictures/wallpapers/nixos/51202150962_e6317cf68f_o.jpg &
   exec-once = webcord &
-  exec-once = btop &
   exec-once = swayidle &
   exec-once = flatpak run io.kopia.KopiaUI &
   exec-once = kitty --title='special_is_kitty' &
   exec-once = nmcli radio wifi off
   exec-once = keepassxc &
+  exec-once = hypeMoveMonitors &
+
 
   ### Variables ###
   # Modifiers
@@ -225,7 +227,7 @@
     windowrule = float, title:^(swappy)$
     windowrule = move 35% 10%, title:^(swappy)$
 
-    windowrule = workspace special:music, title:^.*YouTube Music.*$
+    # windowrule = workspace special:music, title:^.*YouTube Music.*$
     # windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$
 
     windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$

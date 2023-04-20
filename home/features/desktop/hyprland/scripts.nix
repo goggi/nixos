@@ -9,11 +9,33 @@
   ocrScript = let
     inherit (pkgs) grim libnotify slurp tesseract5 wl-clipboard;
     _ = lib.getExe;
+
+    moveWindowsFile = builtins.readFile "scripts/moveWindows.sh";
   in
     pkgs.writeShellScriptBin "wl-ocr" ''
       ${_ grim} -g "$(${_ slurp})" -t ppm - | ${_ tesseract5} - - | ${wl-clipboard}/bin/wl-copy
       ${_ libnotify} "$(${wl-clipboard}/bin/wl-paste)"
     '';
+
+  moveWindows = pkgs.writeShellScriptBin "hypeMoveMonitors" ''
+    #!/bin/sh
+    function handle {
+        if [[ ''${1:0:10} == "openwindow" ]]; then
+            #
+            # Move YouTube Music to workspace special workspace when opened
+            #
+            sleep 1
+            json_output=$(hyprctl clients -j)
+            address=''${1:12:7}
+            title=$(echo "$json_output" | jq '.[] | select(.address == "0x'$address'") | .title')
+            echo
+            if [[ $title == "\"YouTube Music — Mozilla Firefox\"" ]]; then
+                hyprctl dispatch movetoworkspace special:music,address:0x''${1:12:7}
+            fi
+        fi
+    }
+    socat -t 1000 -U - UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock  | while read line; do handle $line; done
+  '';
 
   hyprlandWorkspaceMonitorFix = pkgs.writeShellScriptBin "hyprlandWorspaceMonitorFix" ''
     #!/bin/sh
@@ -242,7 +264,8 @@ in {
     pkgs.socat
     pkgs.gojq
     #hyprlandPerWindowLayout
-    hyprlandWorkspaceMonitorFix
+    # hyprlandWorkspaceMonitorFix
+    moveWindows
     ocrScript
   ];
 

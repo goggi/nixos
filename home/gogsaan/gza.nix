@@ -35,7 +35,7 @@
     ../features/management/gpg.nix
 
     # Document
-    ../features/document/obsidian.nix
+    # ../features/document/obsidian.nix
     ../features/document/zathura.nix
     ../features/document/lapce.nix
 
