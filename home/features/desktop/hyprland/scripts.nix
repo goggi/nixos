@@ -24,7 +24,7 @@
             #
             # Move YouTube Music to workspace special workspace when opened
             #
-            sleep 1
+            sleep 2
             json_output=$(hyprctl clients -j)
             address=''${1:12:7}
             title=$(echo "$json_output" | jq '.[] | select(.address == "0x'$address'") | .title')

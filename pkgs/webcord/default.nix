@@ -13,7 +13,7 @@
 }:
 buildNpmPackage rec {
   name = "webcord";
-  version = "4.2.0";
+  version = "4.1.2";
 
   src = fetchFromGitHub {
     owner = "SpacingBat3";
