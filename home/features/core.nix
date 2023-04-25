@@ -5,6 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    deepin.deepin-calculator
     terraform
     archi
     # xwaylandvideobridge

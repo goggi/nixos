@@ -15,7 +15,7 @@
     ../features/desktop/hyprland
 
     # Browser
-    ../features/browser/firefox
+    ../features/browser/firefoxDev
     ../features/browser/googleChrome.nix
     ../features/browser/vivaldi.nix
     ../features/browser/chromium.nix
