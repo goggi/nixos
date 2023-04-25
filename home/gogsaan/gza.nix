@@ -18,7 +18,7 @@
     ../features/browser/firefox
     ../features/browser/googleChrome.nix
     ../features/browser/vivaldi.nix
-    ../features/browser/chromium.ni
+    ../features/browser/chromium.nix
 
     # Development
     ../features/development/vscode.nix
