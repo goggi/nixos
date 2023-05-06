@@ -19,9 +19,8 @@
     render_ahead_of_time = false #Buggy
     render_ahead_safezone = 0
     focus_on_activate = true
+
   }
-
-
   ### Autostart ###
   # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
   # exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
@@ -29,14 +28,11 @@
 
   exec-once = waybar &
   exec-once = swaybg --mode fill --image /home/gogsaan/Pictures/wallpapers/nixos/51202150962_e6317cf68f_o.jpg &
-  exec-once = webcord &
   exec-once = swayidle &
   exec-once = flatpak run io.kopia.KopiaUI &
-  exec-once = kitty --title='special_is_kitty' &
   exec-once = nmcli radio wifi off
-  exec-once = keepassxc &
   exec-once = hypeMoveMonitors &
-
+  exec-once = /home/gogsaan/Applications/scripts/startup.sh &
 
   ### Variables ###
   # Modifiers
@@ -66,10 +62,6 @@
   bind=$mainMod, slash, exec, hyprctl keyword monitor "$mainMonitorStandardResolutionPadding"
   bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$mainMonitorLowerResolution"
   bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$mainMonitorLowerResolutionPadding"
-
-
-
-
 
     # Inputs
     input {
@@ -242,6 +234,8 @@
     windowrule = workspace 10, title:^.*WebCord.*$
     windowrule = workspace 10, title:^.*Skype.*$
     windowrule = workspace 10, title:^.*Signal.*$
+    windowrule = workspace 10, title:^.*Microsoft Teams - Preview.*$
+    windowrule = workspace 1, title:^.*Visual Studio Code.*$
 
     # Navicat Premium
     windowrule = move 75 44%, title:^.*New Connection.*$
@@ -320,7 +314,9 @@
   bind=$mainModSHIFT,A,exec, ddcutil --bus=7 setvcp 10 100 & ddcutil --bus=8 setvcp 10 100
 
   # General Shortcuts
-  bind=$mainMod, D, exec, $launcher
+
+  bind=$mainMod, D, execr, $launcher
+
   bind=$mainMod,F,fullscreen
   bind=$mainMod_SHIFT,F,fullscreen, 1
   bind=$mainMod_CTRL,F,fakefullscreen
@@ -420,16 +416,16 @@
   workspace=DP-2,1
   workspace=DP-3,7
 
-  wsbind=1,DP-2
-  wsbind=2,DP-2
-  wsbind=3,DP-2
-  wsbind=4,DP-2
-  wsbind=5,DP-2
-  wsbind=6,DP-2
-  wsbind=7,DP-3
-  wsbind=8,DP-3
-  wsbind=9,DP-3
-  wsbind=0,DP-2
+  workspace=1,DP-2
+  workspace=2,DP-2
+  workspace=3,DP-2
+  workspace=4,DP-2
+  workspace=5,DP-2
+  workspace=6,DP-2
+  workspace=7,DP-3
+  workspace=8,DP-3
+  workspace=9,DP-3
+  workspace=0,DP-2
 
   # Move active window to a workspace with mainMod + SHIFT + [0-9]
   bind = $mainMod SHIFT, 1, movetoworkspace, 1

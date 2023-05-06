@@ -1,6 +1,5 @@
 {
   description = "NixOS Configuration with Home-Manager & Flake";
-
   inputs = {
     # NixOS
     # nixpkgs.url = "/home/gogsaan/Projects/nix/nixpkgs";

@@ -71,7 +71,7 @@
     kernelModules = ["kvm-amd" "i2c-dev"];
     extraModulePackages = [];
     binfmt.emulatedSystems = ["aarch64-linux" "i686-linux"];
-    # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     # kernelPackages = pkgs.linuxPackages_latest;
 
     # Passtrough GPU
@@ -130,11 +130,14 @@
   };
 
   # enable hyprland
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    xwayland.hidpi = true;
+  };
   programs.xwayland.enable = true;
 
   services.xserver.enable = false;
-  # xserver.displayManager.sessionPackages = [inputs.hyprland.packages.${pkgs.system}.default];
+  # xserver.displayManager.sessionPackages = [inputs.hyprland.packages.${pkgs.hostPlatform.system}.default];
 
   # services.gnome.gnome-keyring.enable = true;
   security = {
