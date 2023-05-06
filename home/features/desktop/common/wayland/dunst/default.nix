@@ -29,28 +29,28 @@
     fi
   '';
 
-  microphone = pkgs.writeShellScriptBin "microphone" ''
-    #!/bin/sh
+  # microphone = pkgs.writeShellScriptBin "microphone" ''
+  #   #!/bin/sh
 
-    ${pamixer} --default-source "$@"
-    mic="$(${pamixer} --default-source --get-volume-human)"
+  #   ${pamixer} --default-source "$@"
+  #   mic="$(${pamixer} --default-source --get-volume-human)"
 
-    if [ "$mic" = "muted" ]; then
-        ${notify-send} -r 69 \
-            -a "Microphone" \
-            "Muted" \
-            -i ${./assets/mic-mute.svg} \
-            -t 888 \
-            -u low
-    else
-      ${notify-send} -r 69 \
-            -a "Microphone" "Currently at $mic" \
-            -h int:value:"$mic" \
-            -i ${./assets/mic.svg} \
-            -t 888 \
-            -u low
-    fi
-  '';
+  #   if [ "$mic" = "muted" ]; then
+  #       ${notify-send} -r 69 \
+  #           -a "Microphone" \
+  #           "Muted" \
+  #           -i ${./assets/mic-mute.svg} \
+  #           -t 888 \
+  #           -u low
+  #   else
+  #     ${notify-send} -r 69 \
+  #           -a "Microphone" "Currently at $mic" \
+  #           -h int:value:"$mic" \
+  #           -i ${./assets/mic.svg} \
+  #           -t 888 \
+  #           -u low
+  #   fi
+  # '';
 
   brightness = let
     brightnessctl = pkgs.brightnessctl + "/bin/brightnessctl";
@@ -71,7 +71,7 @@
 in {
   home.packages = [
     volume
-    microphone
+    # microphone
     brightness
   ];
 

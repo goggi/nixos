@@ -1,5 +1,27 @@
 ''
 
+  ### Debug ###
+  debug {
+    overlay = false
+    damage_blink = false
+  }
+
+  ### Misc ###
+  misc {
+    disable_hyprland_logo = true
+    disable_splash_rendering = true
+    mouse_move_enables_dpms = true
+    # key_press_enables_dpms = true
+    vfr = true
+    vrr = 1
+    enable_swallow = true
+    swallow_regex = ^(kitty)$
+    render_ahead_of_time = false #Buggy
+    render_ahead_safezone = 0
+    focus_on_activate = true
+  }
+
+
   ### Autostart ###
   # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
   # exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
@@ -45,25 +67,9 @@
   bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$mainMonitorLowerResolution"
   bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$mainMonitorLowerResolutionPadding"
 
-  ### Misc ###
-  misc {
-    disable_hyprland_logo = true
-    disable_splash_rendering = true
-    mouse_move_enables_dpms = true
-    key_press_enables_dpms = true
-    vfr = false
-    vrr = 1
-    enable_swallow = true
-    swallow_regex = ^(kitty)$
-    render_ahead_of_time = false #Buggy
-    render_ahead_safezone = 1
-  }
 
-  ### Debug ###
-  debug {
-    overlay = false
-    damage_blink = false
-  }
+
+
 
     # Inputs
     input {
@@ -192,8 +198,8 @@
 
     windowrule = float, Lxappearance
     windowrule = float, ncmpcpp
-    windowrule = float, Rofi
-    windowrule = animation none, Rofi
+    # windowrule = float, Rofi
+    # windowrule = animation none, Rofi
     windowrule = float, viewnior
     windowrule = float, pavucontrol-qt
     windowrule = float, gucharmap
@@ -271,6 +277,26 @@
   #bind=$mainMod,B,exec,swaync-client -t -sw
   #bind=$mainMod,V,exec,swaync-client -C -sw && swaync-client -cp -sw
 
+
+  # # will switch to a submap called resize
+  # bind=ALT,R,submap,resize
+
+  # # will start a submap called "resize"
+  # submap=resize
+
+  # # sets repeatable binds for resizing the active window
+  # binde=,right,resizeactive,10 0
+  # binde=,left,resizeactive,-10 0
+  # binde=,up,resizeactive,0 -10
+  # binde=,down,resizeactive,0 10
+
+  # # use reset to go back to the global submap
+  # bind=,escape,submap,reset
+
+  # # will reset the submap, meaning end the current one and return to the global one
+  # submap=reset
+
+
   # Idasen
   bind = $mainMod, comma, exec, idasen stand
   bind = $mainMod_SHIFT, comma, exec, idasen sit
@@ -334,8 +360,15 @@
   bind=,XF86AudioPrev,exec,playerctl previous
   bind=,XF86AudioPlay,exec,playerctl play-pause
   bind=,XF86AudioStop,exec,playerctl stop
-  bind = ,XF86AudioRaiseVolume, exec, volume -i 5
-  bind = ,XF86AudioLowerVolume, exec, volume -d 5
+  bind = ,XF86AudioRaiseVolume, exec, pamixer -i 5
+  bind = ,XF86AudioLowerVolume, exec, pamixer -d 5
+
+  # bind = ,XF86AudioRaiseVolume, exec, echo "hello world"
+  # bind = ,XF86AudioLowerVolume, exec, echo "hello world"
+
+  # bind = ,XF86AudioRaiseVolume, workspace, next
+  # bind = ,XF86AudioLowerVolume, workspace, previous
+
 
   # Screenshots
   $screenshotarea = grimblast --cursor save area - | swappy -f -

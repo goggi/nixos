@@ -141,8 +141,10 @@ in ''
     background-color: #fab387;
 
   }
+
   #pulseaudio {
-    background-color: #f2cdcd;
+    background-color: #181825;
+    color: #f2cdcd;
   }
 
   #clock.date {

@@ -71,9 +71,9 @@
         allowInsecure = true;
         allowUnfree = true;
         tarball-ttl = 0;
-        # permittedInsecurePackages = [
-        #   "electron-21.4.0"
-        # ];
+        permittedInsecurePackages = [
+          "electron-21.4.0"
+        ];
         packageOverrides = super: {
           webcord = pkgs.callPackage ./pkgs/webcord {};
           looking-glass-client = pkgs.callPackage ./pkgs/looking {};

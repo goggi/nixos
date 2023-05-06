@@ -276,6 +276,7 @@ in {
         modules-center = [
           "custom/vpn"
           "custom/wifi"
+          "pulseaudio"
         ];
 
         modules-right = [
@@ -286,7 +287,6 @@ in {
           # "pulseaudio#microphone"
           # "network"
           "custom/lang"
-          "pulseaudio"
 
           "clock#date"
           "clock"

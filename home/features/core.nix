@@ -5,12 +5,12 @@
   ...
 }: {
   home.packages = with pkgs; [
+    # firefox-devedition-bin-unwrapped
     deepin.deepin-calculator
     terraform
-    archi
+    # archi
     # xwaylandvideobridge
     playerctl
-    azuredatastudio
     vlc
     leafpad
     envsubst

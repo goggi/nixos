@@ -15,10 +15,10 @@
     ../features/desktop/hyprland
 
     # Browser
-    ../features/browser/firefoxDev
+    ../features/browser/firefox
     ../features/browser/googleChrome.nix
     ../features/browser/vivaldi.nix
-    ../features/browser/chromium.nix
+    # ../features/browser/chromium.nix
 
     # Development
     ../features/development/vscode.nix
@@ -37,7 +37,8 @@
     ../features/management/gpg.nix
 
     # Document
-    # ../features/document/obsidian.nix
+    ../features/document/obsidia
+    dn.nix
     ../features/document/zathura.nix
     ../features/document/lapce.nix
 
@@ -65,7 +66,7 @@
 
     # Game
     ../features/game/steam.nix
-    ../features/game/minecraft.nix
+    # ../features/game/minecraft.nix
   ];
 
   home = {
