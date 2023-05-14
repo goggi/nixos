@@ -128,6 +128,10 @@ in ''
     animation-direction: alternate;
   }
 
+  #custom-notification {
+    font-family: "NotoSansMono Nerd Font";
+  }
+
   #custom-weather {
     color: #000000;
     background-color: #89b4fa;

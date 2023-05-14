@@ -8,7 +8,7 @@ inputs: let
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = {inherit inputs self;};
+        extraSpecialArgs = {inherit inputs self pkgsStable;};
         users.gogsaan = ../home/gogsaan/gza.nix;
       };
     }
@@ -23,9 +23,11 @@ in {
         ({
           config,
           pkgs,
+          pkgsStable,
           ...
         }: {
           services.vscode-server.enable = true;
+          services.vscode-server.enableFHS = true;
         })
       ]
       ++ sharedModules;

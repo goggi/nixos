@@ -16,7 +16,7 @@
 
     # Browser
     ../features/browser/firefox
-    ../features/browser/googleChrome.nix
+    # ../features/browser/googleChrome.nix
     ../features/browser/vivaldi.nix
     # ../features/browser/chromium.nix
 
@@ -25,7 +25,7 @@
     ../features/development/navicatPersistance.nix
     ../features/development/dockerPersistance.nix
     ../features/development/k8sManagment.nix
-    ../features/development/helix
+    # ../features/development/helix
 
     ../features/development/language/nodejs.nix
     ../features/development/language/python3.nix
@@ -55,11 +55,12 @@
     ../features/cli/fish.nix
     ../features/cli/kitty.nix
     ../features/cli/shell
+    ../features/cli/foot.nix
 
     # Tool
     ../features/tool/flatpakPersistance.nix
     ../features/tool/btop.nix
-    ../features/tool/idasen.nix
+    # ../features/tool/idasen.nix
     ../features/tool/nomacs.nix
     ../features/tool/swappy.nix
 

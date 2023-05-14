@@ -17,6 +17,8 @@ bindfs -o fsname=/persist/home/gogsaan/.mozilla /persist/home/gogsaan/.mozilla /
 # 1password
 bindfs -o fsname=/persist/home/gogsaan/.config/1Password /persist/home/gogsaan/.config/1Password /home/gogsaan/.config/1Password
 
+bindfs -o fsname=/persist/home/gogsaan/.config/swaync /persist/home/gogsaan/.config/swaync /home/gogsaan/.config/swaync
+
 # Yubico
 mkdir -p /home/gogsaan/.config/Yubico
 bindfs -o fsname=/persist/home/gogsaan/.config/Yubico /persist/home/gogsaan/.config/Yubico /home/gogsaan/.config/Yubico

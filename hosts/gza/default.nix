@@ -71,7 +71,7 @@
     kernelModules = ["kvm-amd" "i2c-dev"];
     extraModulePackages = [];
     binfmt.emulatedSystems = ["aarch64-linux" "i686-linux"];
-    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     # kernelPackages = pkgs.linuxPackages_latest;
 
     # Passtrough GPU

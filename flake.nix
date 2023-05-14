@@ -2,9 +2,11 @@
   description = "NixOS Configuration with Home-Manager & Flake";
   inputs = {
     # NixOS
-    # nixpkgs.url = "/home/gogsaan/Projects/nix/nixpkgs";
+    # nixpkgs.url = "/home/gogsaan/Projects/nix/nixpkgs"
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.11";
 
     impermanence.url = "github:nix-community/impermanence";
 
@@ -22,7 +24,7 @@
     # Hyprland
     hyprland = {
       url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     hyprland-contrib.url = "github:hyprwm/contrib";
@@ -100,8 +102,17 @@
         # Overlays from ./overlays directory
         ++ (importNixFiles ./overlays);
     };
+
+    pkgsStable = import inputs.nixpkgs-stable {
+      inherit system;
+      config = {
+        allowBroken = true;
+        allowInsecure = true;
+        allowUnfree = true;
+      };
+    };
   in rec {
-    inherit lib pkgs;
+    inherit lib pkgs pkgsStable;
 
     # nixos-configs with home-manager
 

@@ -7,10 +7,11 @@
     ./swaylock.nix
     ./waybar
     ./rofi.nix
-    ./wofi.nix
+    # ./wofi.nix
     ./gtk.nix
-    ./dunst
+    # ./dunst
     ./darkman
+    ./swaync.nix
   ];
 
   home.packages = with pkgs; [

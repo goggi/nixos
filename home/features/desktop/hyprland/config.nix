@@ -16,8 +16,8 @@
     vrr = 1
     enable_swallow = true
     swallow_regex = ^(kitty)$
-    render_ahead_of_time = false #Buggy
-    render_ahead_safezone = 0
+    # render_ahead_of_time = false #Buggy
+    # render_ahead_safezone = 0
     focus_on_activate = true
 
   }
@@ -290,6 +290,9 @@
   # # will reset the submap, meaning end the current one and return to the global one
   # submap=reset
 
+  # Swaync
+  bind = $mainMod, b, exec, swaync-client -t -sw
+  bind = $mainMod, v, exec, swaync-client -C -t
 
   # Idasen
   bind = $mainMod, comma, exec, idasen stand

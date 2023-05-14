@@ -2,7 +2,6 @@
   inputs,
   pkgs,
   fetchTarball,
-  pkgsStable,
   ...
 }: {
   programs.vscode = {
@@ -13,7 +12,7 @@
     #     --ozone-platform=wayland
     #   '';
     # };
-    package = pkgsStable.vscode.fhs;
+    package = pkgs.vscode.fhs;
   };
 
   # programs.vscode = {
