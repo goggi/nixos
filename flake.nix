@@ -5,6 +5,7 @@
     # nixpkgs.url = "/home/gogsaan/Projects/nix/nixpkgs";
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     # nixpkgs.url = "github:NixOS/nixpkgs/";
 
     impermanence.url = "github:nix-community/impermanence";
@@ -42,6 +43,15 @@
     sf-mono-liga = {
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
+    };
+
+    eww = {
+      url = "github:elkowar/eww";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -92,6 +102,7 @@
               inherit (final) system;
             in {
               sf-mono-liga-src = sf-mono-liga;
+              eww-wayland-git = eww.packages.${system}.eww-wayland;
             }
           )
           nur.overlay

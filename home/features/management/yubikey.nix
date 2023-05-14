@@ -5,7 +5,7 @@
 }: {
   home = {
     packages = [
-      pkgs.yubioath-flutter
+      # pkgs.yubioath-flutter
       # pkgs.yubikey-manager-qt
       pkgs.yubikey-agent
     ];
