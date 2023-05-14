@@ -49,7 +49,7 @@
     ../features/media/obsStudio.nix
 
     # Work
-    # ../features/work/teams.nix
+    ../features/work/teams.nix
 
     # Cli
     ../features/cli/fish.nix
