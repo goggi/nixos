@@ -11,13 +11,13 @@
     inputs.impermanence.nixosModules.home-manager.impermanence
     ../features/core.nix
 
-    # Desktops
+    # # Desktops
     ../features/desktop/hyprland
 
     # Browser
     ../features/browser/firefox
     # ../features/browser/googleChrome.nix
-    ../features/browser/vivaldi.nix
+    # ../features/browser/vivaldi.nix
     # ../features/browser/chromium.nix
 
     # Development
@@ -49,7 +49,7 @@
     ../features/media/obsStudio.nix
 
     # Work
-    ../features/work/teams.nix
+    # ../features/work/teams.nix
 
     # Cli
     ../features/cli/fish.nix
@@ -68,6 +68,13 @@
     ../features/game/steam.nix
     # ../features/game/minecraft.nix
   ];
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+  };
 
   home = {
     username = "gogsaan";

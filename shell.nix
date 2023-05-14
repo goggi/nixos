@@ -20,6 +20,7 @@
       git
 
       sops
+      ssh-to-age
       gnupg
       age
     ];

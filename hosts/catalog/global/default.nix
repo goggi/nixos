@@ -4,9 +4,11 @@
   pkgs,
   self,
   inputs,
+  outputs,
   ...
 }: {
   imports = [
+    inputs.home-manager.nixosModules.home-manager
     ./sops.nix
     ./ssh.nix
     ./yubikey.nix
@@ -15,6 +17,16 @@
     ./network.nix
     ./nix.nix
   ];
+
+
+  nixpkgs = {
+    overlays = builtins.attrValues outputs.overlays;
+    config = {
+      allowUnfree = true;
+    };
+  };
+
+  home-manager.extraSpecialArgs = { inherit inputs outputs pkgs; };
 
   security = {
     rtkit.enable = true;
@@ -117,6 +129,8 @@
       unzip
       wget
       zip
+      kitty
+      home-manager
     ];
 
     loginShellInit = ''

@@ -6,13 +6,13 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Latte-Standard-Mauve-Light";
+      name = "Catppuccin-Mocha-Standard-Mauve-Dark";
       package = pkgs.catppuccin-gtk;
     };
 
     iconTheme = {
       name = "Papirus";
-      package = pkgs.catppuccin-folders;
+      package = pkgs.papirus-folders;
     };
 
     font = {
@@ -54,7 +54,7 @@
 
   home.sessionVariables = {
     # Theming Related Variables
-    GTK_THEME = "Catppuccin-Latte-Standard-Mauve-Light";
+    GTK_THEME = "Catppuccin-Mocha-Standard-Mauve-Dark";
     XCURSOR_SIZE = "28";
   };
 }

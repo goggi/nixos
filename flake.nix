@@ -3,9 +3,7 @@
   inputs = {
     # NixOS
     # nixpkgs.url = "/home/gogsaan/Projects/nix/nixpkgs";
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:NixOS/nixpkgs/";
 
     impermanence.url = "github:nix-community/impermanence";
 
@@ -36,8 +34,6 @@
     flake-utils.url = "github:numtide/flake-utils";
     bazecor.url = "github:gvolpe/bazecor-nix";
 
-    # nix-colors.url = "github:misterio77/nix-colors";
-
     # Non Flakes
     sf-mono-liga = {
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
@@ -48,22 +44,16 @@
   outputs = {
     self,
     nixpkgs,
-    bazecor,
-    sops-nix,
-    vscode-server,
+    home-manager,
     ...
   } @ inputs: let
-    system = "x86_64-linux";
+    inherit (self) outputs;
     lib = nixpkgs.lib;
-    inherit (builtins) mapAttrs elem;
+    system = "x86_64-linux";
 
-    filterNixFiles = k: v: v == "regular" && lib.hasSuffix ".nix" k;
-    importNixFiles = path:
-      (lib.lists.forEach (lib.mapAttrsToList (name: _: path + ("/" + name))
-          (lib.filterAttrs filterNixFiles (builtins.readDir path))))
-      import;
+    # forEachSystem = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" ];
+    # forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
 
-    # Packages
     pkgs = import inputs.nixpkgs {
       inherit system;
       config = {
@@ -74,49 +64,109 @@
         permittedInsecurePackages = [
           "electron-21.4.0"
         ];
-        packageOverrides = super: {
-          webcord = pkgs.callPackage ./pkgs/webcord {};
-          looking-glass-client = pkgs.callPackage ./pkgs/looking {};
-          gtk-layer-shell = pkgs.callPackage ./pkgs/gtkLayerShell {};
-          archi = pkgs.callPackage ./pkgs/archi {};
-        };
+        # packageOverrides = super: {
+        #   webcord = pkgs.callPackage ./pkgs/webcord {};
+        # looking-glass-client = pkgs.callPackage ./pkgs/looking {};
+        #   gtk-layer-shell = pkgs.callPackage ./pkgs/gtkLayerShell {};
+        #   archi = pkgs.callPackage ./pkgs/archi {};
+        # };
       };
-
-      pkgs.config.allowBroken = pkgs: with pkgs; [kitty];
-
-      # Overlays
-      overlays = with inputs;
-        [
-          (
-            final: _: let
-              inherit (final) system;
-            in {
-              sf-mono-liga-src = sf-mono-liga;
-            }
-          )
-          nur.overlay
-          nixpkgs-wayland.overlay
-          nixpkgs-f2k.overlays.default
-        ]
-        # Overlays from ./overlays directory
-        ++ (importNixFiles ./overlays);
-    };
-  in rec {
-    inherit lib pkgs;
-
-    # nixos-configs with home-manager
-
-    nixosConfigurations = import ./hosts inputs;
-
-    devShells.${system}.default = pkgs.mkShell {
-      sopsPGPKeyDirs = ["./keys"];
-      sopsCreateGPGHome = true;
-      nativeBuildInputs = [
-        (pkgs.callPackage sops-nix {}).sops-import-keys-hook
-      ];
     };
 
-    # Default formatter for the entire repo
-    formatter.${system} = pkgs.${system}.alejandra;
+    mkNixos = modules:
+      nixpkgs.lib.nixosSystem {
+        inherit modules pkgs;
+        specialArgs = {inherit inputs outputs pkgs;};
+      };
+    mkHome = modules: pkgs:
+      home-manager.lib.homeManagerConfiguration {
+        inherit modules pkgs;
+        extraSpecialArgs = {inherit inputs outputs pkgs;};
+      };
+  in {
+    nixosConfigurations = {
+      # Desktops
+      gza = mkNixos [./hosts/gza];
+    };
+
+    homeConfigurations = {
+      # Desktops
+      "gogsaan@gza" = mkHome [./home/gogsaan/gza.nix] nixpkgs.legacyPackages."x86_64-linux";
+    };
   };
+
+  # outputs = {
+  #   self,
+  #   nixpkgs,
+  #   bazecor,
+  #   sops-nix,
+  #   vscode-server,
+  #   ...
+  # } @ inputs: let
+  #   system = "x86_64-linux";
+  #   lib = nixpkgs.lib;
+  #   inherit (builtins) mapAttrs elem;
+
+  #   # filterNixFiles = k: v: v == "regular" && lib.hasSuffix ".nix" k;
+  #   # importNixFiles = path:
+  #   #   (lib.lists.forEach (lib.mapAttrsToList (name: _: path + ("/" + name))
+  #   #       (lib.filterAttrs filterNixFiles (builtins.readDir path))))
+  #   #   import;
+
+  #   # Packages
+  #   pkgs = import inputs.nixpkgs {
+  #     inherit system;
+  #     config = {
+  #       allowBroken = true;
+  #       allowInsecure = true;
+  #       allowUnfree = true;
+  #       tarball-ttl = 0;
+  #       permittedInsecurePackages = [
+  #         "electron-21.4.0"
+  #       ];
+  #       packageOverrides = super: {
+  #         webcord = pkgs.callPackage ./pkgs/webcord {};
+  #         looking-glass-client = pkgs.callPackage ./pkgs/looking {};
+  #         gtk-layer-shell = pkgs.callPackage ./pkgs/gtkLayerShell {};
+  #         archi = pkgs.callPackage ./pkgs/archi {};
+  #       };
+  #     };
+
+  #     pkgs.config.allowBroken = pkgs: with pkgs; [kitty];
+
+  #     # Overlays
+  #     # overlays = with inputs;
+  #     #   [
+  #     #     (
+  #     #       final: _: let
+  #     #         inherit (final) system;
+  #     #       in {
+  #     #         sf-mono-liga-src = sf-mono-liga;
+  #     #       }
+  #     #     )
+  #     #     nur.overlay
+  #     #     nixpkgs-wayland.overlay
+  #     #     nixpkgs-f2k.overlays.default
+  #     #   ]
+  #     #   # Overlays from ./overlays directory
+  #     #   ++ (importNixFiles ./overlays);
+  #   };
+  # # in rec {
+  # #   inherit lib pkgs;
+
+  # #   # nixos-configs with home-manager
+
+  # #   nixosConfigurations = import ./hosts inputs;
+
+  # #   devShells.${system}.default = pkgs.mkShell {
+  # #     sopsPGPKeyDirs = ["./keys"];
+  # #     sopsCreateGPGHome = true;
+  # #     nativeBuildInputs = [
+  # #       (pkgs.callPackage sops-nix {}).sops-import-keys-hook
+  # #     ];
+  # #   };
+
+  # #   # Default formatter for the entire repo
+  # #   formatter.${system} = pkgs.${system}.alejandra;
+  # # };
 }

@@ -27,7 +27,7 @@
   };
 
   # pickup pkgs from flake export
-  nixpkgs.pkgs = inputs.self.pkgs;
+  # nixpkgs.pkgs = inputs.self.pkgs;
 
   nix = {
     gc = {
@@ -54,7 +54,6 @@
       min-free = ${toString (100 * 1024 * 1024)}
       max-free = ${toString (1024 * 1024 * 1024)}
     '';
-
     settings = {
       auto-optimise-store = true;
       builders-use-substitutes = true;

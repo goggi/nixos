@@ -44,15 +44,15 @@
         name = "gogsaan";
         id = 0;
 
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-          adnauseam
-          enhanced-github
-          enhancer-for-youtube
-          octotree
-          refined-github
-          stylus
-          ublock-origin
-        ];
+        # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        #   adnauseam
+        #   enhanced-github
+        #   enhancer-for-youtube
+        #   octotree
+        #   refined-github
+        #   stylus
+        #   ublock-origin
+        # ];
         search = {
           force = true;
           default = "google";
