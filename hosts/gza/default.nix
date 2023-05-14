@@ -27,10 +27,6 @@
     # ../catalog/optional/apps/taskwarrior.nix
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-21.4.0"
-  ];
-
   services.flatpak.enable = true;
 
   networking = {

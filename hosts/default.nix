@@ -8,7 +8,7 @@ inputs: let
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = {inherit inputs self pkgsStable;};
+        extraSpecialArgs = {inherit inputs self;};
         users.gogsaan = ../home/gogsaan/gza.nix;
       };
     }
@@ -23,7 +23,6 @@ in {
         ({
           config,
           pkgs,
-          pkgsStable,
           ...
         }: {
           services.vscode-server.enable = true;
