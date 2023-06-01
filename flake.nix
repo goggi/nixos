@@ -53,6 +53,16 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # theme
+    base16 = {
+      url = "github:shaunsingh/base16.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    base16-oxocarbon = {
+      url = "github:shaunsingh/base16-oxocarbon";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -83,7 +93,9 @@
         tarball-ttl = 0;
         permittedInsecurePackages = [
           "electron-21.4.0"
+          "nodejs-16.20.0"
         ];
+
         packageOverrides = super: {
           webcord = pkgs.callPackage ./pkgs/webcord {};
           looking-glass-client = pkgs.callPackage ./pkgs/looking {};

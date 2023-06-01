@@ -91,6 +91,7 @@
           ".ssh"
           ".aws"
           ".local/share/applications"
+          # ".local/share/waydroid"
           ".local/share/desktop-directories"
         ];
         files = [

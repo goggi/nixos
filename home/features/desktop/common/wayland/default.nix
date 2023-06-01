@@ -6,7 +6,7 @@
     ./swayidle.nix
     ./swaylock.nix
     ./waybar
-    ./eew
+    # ./eew
     ./rofi.nix
     # ./wofi.nix
     ./gtk.nix

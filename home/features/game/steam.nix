@@ -34,11 +34,30 @@ in {
     "/persist/games/gogsaan" = {
       allowOther = true;
       directories = [
-        ".local/share/Paradox Interactive"
-        ".cache/AMD"
-        ".config/unity3d"
-        ".cache/mesa_shader_cache"
-        ".paradoxlauncher"
+        {
+          directory = ".local/share/Paradox Interactive";
+          method = "symlink";
+        }
+        {
+          directory = ".cache/AMD";
+          method = "symlink";
+        }
+        {
+          directory = ".config/unity3d";
+          method = "symlink";
+        }
+        {
+          directory = ".cache/mesa_shader_cache";
+          method = "symlink";
+        }
+        {
+          directory = ".cache/mesa_shader_cache";
+          method = "symlink";
+        }
+        {
+          directory = ".paradoxlauncher";
+          method = "symlink";
+        }
         {
           directory = ".local/share/Steam";
           method = "symlink";

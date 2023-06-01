@@ -40,6 +40,7 @@
       directories = [
         # Perist virtual machines
         "/var/lib/libvirt"
+        # "/var/lib/waydroid/"
       ];
     };
     "/persist/etc" = {

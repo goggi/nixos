@@ -53,9 +53,9 @@
   $secondMonitorStandardResolution = DP-3,preferred,1800x0,1
 
   ### Monitors Settings ###
+  monitor=DP-3,preferred,1800x0,1
   monitor=DP-2,preferred,0x1080,1
   monitor=DP-2,addreserved,0,0,700,700
-  monitor=DP-3,preferred,1800x0,1
 
   # Keybinds for main monitor resloultion
   bind=$mainMod, slash, exec, hyprctl keyword monitor "$mainMonitorStandardResolution"
@@ -218,12 +218,23 @@
     windowrule = float, title:^(Volume Control)$
     windowrule = float, title:^(Picture-in-Picture)$
     windowrule = float, title:^(Firefox — Sharing Indicator)$
+
+    # windowrulev2 = fakefullscreen,floating:1,class:^(AppRun)$
+    # windowrulev2 = fullscreen,floating:1,class:^(AppRun)$
+
+    windowrule = float, title:^(Select Folder to Upload)$
+    windowrule = move center,title:^(Select Folder to Upload)$
+
     windowrule = move 0 0, title:^(Firefox — Sharing Indicator)$
     windowrule = size 800 600, title:^(Volume Control)$
     windowrule = move 75 44%, title:^(Volume Control)$
 
     windowrule = float, title:^(swappy)$
     windowrule = move 35% 10%, title:^(swappy)$
+
+    windowrule = move center,title:^(1Password)$
+    windowrule = size 2000 1000, title:^(1Password)$
+    windowrule = float, title:^(1Password)$
 
     # windowrule = workspace special:music, title:^.*YouTube Music.*$
     # windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$

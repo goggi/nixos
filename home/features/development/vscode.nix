@@ -12,7 +12,8 @@
     #     --ozone-platform=wayland
     #   '';
     # };
-    package = pkgs.vscode.fhs;
+    # package = pkgs.vscode.fhs;
+    package = pkgs.vscode;
   };
 
   # programs.vscode = {
