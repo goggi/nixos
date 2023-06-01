@@ -8,11 +8,11 @@
       pkgs.bottles
     ];
 
-    # persistence = {
-    #   "/persist/home/gogsaan" = {
-    #     allowOther = true;
-    #     directories = [".local/share/PrismLauncher"];
-    #   };
-    # };
+    persistence = {
+      "/persist/home/gogsaan" = {
+        allowOther = true;
+        directories = [".local/share/bottles"];
+      };
+    };
   };
 }
