@@ -263,7 +263,7 @@ in {
   home.packages = [
     pkgs.socat
     pkgs.gojq
-    #hyprlandPerWindowLayout
+    hyprlandPerWindowLayout
     # hyprlandWorkspaceMonitorFix
     moveWindows
     ocrScript

@@ -16,7 +16,7 @@
 
     # Browser
     ../features/browser/firefox
-    # ../features/browser/googleChrome.nix
+    ../features/browser/googleChrome.nix
     ../features/browser/vivaldi.nix
     # ../features/browser/chromium.nix
 
@@ -66,6 +66,7 @@
 
     # Game
     ../features/game/steam.nix
+    ../features/game/bottles.nix
     # ../features/game/minecraft.nix
   ];
 

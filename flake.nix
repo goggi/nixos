@@ -4,7 +4,8 @@
     # NixOS
     # nixpkgs.url = "/home/gogsaan/Projects/nix/nixpkgs";
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # nixpkgs.url = "github:NixOS/nixpkgs/";
 

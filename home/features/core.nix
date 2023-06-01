@@ -5,6 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    playerctl # for media keys
     deepin.deepin-calculator
     vlc
     leafpad

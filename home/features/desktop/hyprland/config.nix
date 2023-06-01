@@ -19,6 +19,8 @@
     # render_ahead_of_time = false #Buggy
     # render_ahead_safezone = 0
     focus_on_activate = true
+    groupbar_gradients = false
+    groupbar_titles_font_size = 10
 
   }
   ### Autostart ###
@@ -33,6 +35,7 @@
   exec-once = nmcli radio wifi off
   exec-once = hypeMoveMonitors &
   exec-once = /home/gogsaan/Applications/scripts/startup.sh &
+  exec-once = /home/gogsaan/Applications/bin/hyprland-per-window-layout/target/release/hyprland-per-window-layout &
 
   ### Variables ###
   # Modifiers
@@ -88,7 +91,7 @@
     # General
     general {
       gaps_in = 6
-      gaps_out = 12
+      gaps_out = 20
       border_size = 2
       col.active_border= 0xffcba6f7 0xfff38ba8 45deg
       no_border_on_floating = false
@@ -161,18 +164,7 @@
     # dwindle {
     #   no_gaps_when_only = false
     #   pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-    #   preserve_split = true # you probably want this
-    # }
-
-    master {
-      new_is_master = true
-      new_on_top = true
-    }
-
-    # Window rules
-    windowrule = float, file_progress
-    windowrule = float, confirm
-    windowrule = float, dialog
+    #   preserve_split = true # you probably want thisgroupbar_gradients
     windowrule = float, download
     windowrule = float, notification
     windowrule = float, error
