@@ -19,6 +19,9 @@ bindfs -o fsname=/persist/home/gogsaan/.config/1Password /persist/home/gogsaan/.
 
 bindfs -o fsname=/persist/home/gogsaan/.config/swaync /persist/home/gogsaan/.config/swaync /home/gogsaan/.config/swaync
 
+
+
+
 # Yubico
 mkdir -p /home/gogsaan/.config/Yubico
 bindfs -o fsname=/persist/home/gogsaan/.config/Yubico /persist/home/gogsaan/.config/Yubico /home/gogsaan/.config/Yubico
@@ -86,6 +89,9 @@ bindfs -o fsname=/persist/home/gogsaan/.config/certs /persist/home/gogsaan/.conf
 bindfs -o fsname=/persist/home/gogsaan/.config/vpn /persist/home/gogsaan/.config/vpn /home/gogsaan/.config/vpn
 bindfs -o fsname=/persist/home/gogsaan/.local/share/desktop-directories /persist/home/gogsaan/.local/share/desktop-directories /home/gogsaan/.local/share/desktop-directories
 bindfs -o fsname=/persist/var/lib/libvirt/images /persist/var/lib/libvirt/images /var/lib/libvirt/images
+
+
+bindfs -o fsname=/persist/home/gogsaan/.local/share/bottles /persist/home/gogsaan/.local/share/bottles /home/gogsaan/.local/share/bottles
 
 
 /var/lib/libvirt/images
