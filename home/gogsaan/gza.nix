@@ -66,7 +66,8 @@
 
     # Game
     ../features/game/steam.nix
-    ../features/game/bottles.nix
+    ../features/game/lutris.nix
+    # ../features/game/bottles.nix
     # ../features/game/minecraft.nix
   ];
 
