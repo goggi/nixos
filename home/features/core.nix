@@ -26,7 +26,6 @@
     bash
     blueberry
     cached-nix-shell
-    cinnamon.nemo
     coreutils
     dconf
     findutils
