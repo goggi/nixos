@@ -246,6 +246,7 @@
     # windowrule = move 1000 44%, title:^.*AppRun.*$
     windowrule = move 75 44%, title:^.*Dump SQL File.*$
 
+    windowrule = tile, title:^(Battle.net)$
 
 
   # FLY IS KITTY
