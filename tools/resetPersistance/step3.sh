@@ -92,6 +92,7 @@ bindfs -o fsname=/persist/var/lib/libvirt/images /persist/var/lib/libvirt/images
 
 
 bindfs -o fsname=/persist/home/gogsaan/.local/share/bottles /persist/home/gogsaan/.local/share/bottles /home/gogsaan/.local/share/bottles
+bindfs -o fsname=/persist/home/gogsaan/.config/nemo /persist/home/gogsaan/.config/nemo /home/gogsaan/.config/nemo
 
 
 /var/lib/libvirt/images

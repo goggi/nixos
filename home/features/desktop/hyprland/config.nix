@@ -14,6 +14,7 @@
     # key_press_enables_dpms = true
     vfr = true
     vrr = 1
+    no_direct_scanout = false
     enable_swallow = true
     swallow_regex = ^(kitty)$
     # render_ahead_of_time = false #Buggy
@@ -22,12 +23,11 @@
     groupbar_gradients = false
     groupbar_titles_font_size = 10
 
+
   }
   ### Autostart ###
   # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
-  # exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
-  # exec-once = /home/gogsaan/.config/vpn/addConnection.sh
-
+  exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
   exec-once = waybar &
   exec-once = swaybg --mode fill --image /home/gogsaan/Pictures/wallpapers/nixos/51202150962_e6317cf68f_o.jpg &
   exec-once = swayidle &
@@ -246,8 +246,10 @@
     # windowrule = move 1000 44%, title:^.*AppRun.*$
     windowrule = move 75 44%, title:^.*Dump SQL File.*$
 
-    windowrule = tile, title:^(Battle.net)$
-
+    windowrule = tile, title:^(Battle.net Login)$
+    windowrule = nofullscreenrequest, title:^(Battle.net Login)$
+    windowrule = nofullscreenrequest, title:^(Diablo III)$
+    windowrule = tile, title:^(Diablo III)$
 
   # FLY IS KITTY
   windowrule=move center,title:^(fly_is_kitty)$
@@ -420,19 +422,16 @@
 
 
   # Workspaces --------------------------------------------------
-  workspace=DP-2,1
-  workspace=DP-3,7
-
-  workspace=1,DP-2
-  workspace=2,DP-2
-  workspace=3,DP-2
-  workspace=4,DP-2
-  workspace=5,DP-2
-  workspace=6,DP-2
-  workspace=7,DP-3
-  workspace=8,DP-3
-  workspace=9,DP-3
-  workspace=0,DP-2
+  workspace=1,monitor:DP-2,default:true
+  workspace=2,monitor:DP-2
+  workspace=3,monitor:DP-2
+  workspace=4,monitor:DP-2
+  workspace=5,monitor:DP-2
+  workspace=6,monitor:DP-2
+  workspace=7,monitor:DP-3,default:true
+  workspace=8,monitor:DP-3
+  workspace=9,monitor:DP-3
+  workspace=0,monitor:DP-2
 
   # Move active window to a workspace with mainMod + SHIFT + [0-9]
   bind = $mainMod SHIFT, 1, movetoworkspace, 1

@@ -13,6 +13,7 @@
 
     # Desktops
     ../features/desktop/hyprland
+    ../features/desktop/sway
 
     # Browser
     ../features/browser/firefox
@@ -60,6 +61,7 @@
     # Tool
     ../features/tool/flatpakPersistance.nix
     ../features/tool/btop.nix
+    ../features/tool/nemo.nix
     # ../features/tool/idasen.nix
     ../features/tool/nomacs.nix
     ../features/tool/swappy.nix
@@ -68,7 +70,7 @@
     ../features/game/steam.nix
     ../features/game/lutris.nix
     # ../features/game/bottles.nix
-    # ../features/game/minecraft.nix
+    ../features/game/minecraft.nix
   ];
 
   home = {

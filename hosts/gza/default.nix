@@ -69,7 +69,7 @@
     extraModulePackages = [];
     binfmt.emulatedSystems = ["aarch64-linux" "i686-linux"];
     # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
 
     # Passtrough GPU
     initrd.preDeviceCommands = ''
@@ -114,7 +114,7 @@
     btrfs.autoScrub.enable = true;
     acpid.enable = true;
     thermald.enable = true;
-    upower.enable = false;
+    # upower.enable = false;
   };
 
   xdg.portal = {
@@ -130,12 +130,33 @@
     enable = true;
     xwayland.hidpi = true;
   };
+  programs.sway = {
+    enable = true;
+  };
+
   programs.xwayland.enable = true;
 
+  console = let
+    normal = ["181825" "F38BA8" "A6E3A1" "F9E2AF" "89B4FA" "F5C2E7" "94E2D5" "BAC2DE"];
+    bright = ["1E1E2E" "F38BA8" "A6E3A1" "F9E2AF" "89B4FA" "F5C2E7" "94E2D5" "A6ADC8"];
+  in {
+    earlySetup = true;
+    # colors = normal ++ bright;
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+    keyMap = "us";
+  };
+
+  # console = {
+  #   earlySetup = true;
+  #   font = "${pkgs.tamzen}/share/consolefonts/Tamzen8x16.psf";
+  #   packages = with pkgs; [tamzen];
+  # };
+
   services.xserver.enable = false;
+  services.xserver.autorun = true;
+
   # xserver.displayManager.sessionPackages = [inputs.hyprland.packages.${pkgs.hostPlatform.system}.default];
 
-  # services.gnome.gnome-keyring.enable = true;
   security = {
     polkit.enable = true;
     pam.services.swaylock = {
