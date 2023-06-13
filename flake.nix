@@ -99,11 +99,13 @@
         ];
 
         packageOverrides = super: {
-          bottles = pkgs.callPackage ./pkgs/bottles {};
-          webcord = pkgs.callPackage ./pkgs/webcord {};
+          waybar = pkgs.callPackage ./pkgs/waybar {};
+
+          # bottles = pkgs.callPackage ./pkgs/bottles {};
+          # webcord = pkgs.callPackage ./pkgs/webcord {};
           looking-glass-client = pkgs.callPackage ./pkgs/looking {};
-          gtk-layer-shell = pkgs.callPackage ./pkgs/gtkLayerShell {};
-          archi = pkgs.callPackage ./pkgs/archi {};
+          # gtk-layer-shell = pkgs.callPackage ./pkgs/gtkLayerShell {};
+          # archi = pkgs.callPackage ./pkgs/archi {};
         };
       };
 
