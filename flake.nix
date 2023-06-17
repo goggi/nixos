@@ -25,7 +25,7 @@
 
     # Hyprland
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      url = "github:hyprwm/Hyprland/6beb79f27b84c36b8b9ef5476d861a94a9071009";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
@@ -94,16 +94,16 @@
         allowUnfree = true;
         tarball-ttl = 0;
         permittedInsecurePackages = [
-          "electron-21.4.0"
+          # "electron-21.4.0"
           "nodejs-16.20.0"
         ];
 
         packageOverrides = super: {
-          waybar = pkgs.callPackage ./pkgs/waybar {};
+          looking-glass-client = pkgs.callPackage ./pkgs/looking {};
 
+          # waybar = pkgs.callPackage ./pkgs/waybar {};
           # bottles = pkgs.callPackage ./pkgs/bottles {};
           # webcord = pkgs.callPackage ./pkgs/webcord {};
-          looking-glass-client = pkgs.callPackage ./pkgs/looking {};
           # gtk-layer-shell = pkgs.callPackage ./pkgs/gtkLayerShell {};
           # archi = pkgs.callPackage ./pkgs/archi {};
         };
