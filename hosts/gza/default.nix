@@ -204,5 +204,9 @@
     HandlePowerKey=ignore
   '';
 
+  systemd.extraConfig = ''
+    DefaultTimeoutStopSec=5s
+  '';
+
   system.stateVersion = lib.mkForce "22.11"; # DONT TOUCH TH
 }

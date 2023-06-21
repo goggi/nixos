@@ -100,8 +100,8 @@
 
         packageOverrides = super: {
           looking-glass-client = pkgs.callPackage ./pkgs/looking {};
+          vscode = pkgs.callPackage ./pkgs/vscode/vscode.nix {};
 
-          # waybar = pkgs.callPackage ./pkgs/waybar {};
           # bottles = pkgs.callPackage ./pkgs/bottles {};
           # webcord = pkgs.callPackage ./pkgs/webcord {};
           # gtk-layer-shell = pkgs.callPackage ./pkgs/gtkLayerShell {};

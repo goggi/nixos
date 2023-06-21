@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/run/current-system/sw/bin/bash 
 
 calendar() {
 LOCK_FILE="$HOME/.cache/eww-calendar.lock"

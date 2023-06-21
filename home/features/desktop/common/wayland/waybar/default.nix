@@ -73,12 +73,11 @@ in {
         ];
 
         modules-center = [
-          "custom/ip"
-          # "custom/vpn"
-          # "custom/gpg-agent"
+          "clock"
         ];
 
         modules-right = [
+          "custom/ip"
         ];
 
         "wlr/workspaces" = {
@@ -91,10 +90,10 @@ in {
           sort-by-number = true;
         };
 
-        "custom/logo" = {
-          tooltip = false;
-          format = " ";
-        };
+        # "custom/logo" = {
+        #   tooltip = false;
+        #   format = " ";
+        # };
 
         # "custom/todo" = {
         #   tooltip = true;
@@ -172,21 +171,21 @@ in {
           "interval" = 60;
         };
 
-        "custom/vpn" = {
-          "format" = "<span foreground='orange'>  </span>";
-          "exec" = "echo '{\"class\": \"connected\"}'";
-          "exec-if" = "test -d /proc/sys/net/ipv4/conf/tun0";
-          "return-type" = "json";
-          "interval" = 5;
-          "on-click" = "vpn";
-          "on-click-right" = "novpn";
-        };
+        # "custom/vpn" = {
+        #   "format" = "<span foreground='orange'>  </span>";
+        #   "exec" = "echo '{\"class\": \"connected\"}'";
+        #   "exec-if" = "test -d /proc/sys/net/ipv4/conf/tun0";
+        #   "return-type" = "json";
+        #   "interval" = 5;
+        #   "on-click" = "vpn";
+        #   "on-click-right" = "novpn";
+        # };
 
-        "custom/power" = {
-          tooltip = false;
-          on-click = "power-menu";
-          format = "󰤆";
-        };
+        # "custom/power" = {
+        #   tooltip = false;
+        #   on-click = "power-menu";
+        #   format = "󰤆";
+        # };
 
         tray = {
           spacing = 10;
@@ -267,15 +266,15 @@ in {
         gtk-layer-shell = true;
         height = 34;
         modules-left = [
-          "custom/logo"
+          # "custom/logo"
           "wlr/workspaces"
           # "custom/swallow"
           # "custom/todo"
         ];
 
         modules-center = [
-          "custom/vpn"
-          "custom/wifi"
+          # "custom/vpn"
+          # "custom/wifi"
           "pulseaudio"
           "custom/notification"
         ];
@@ -296,15 +295,15 @@ in {
           "tray"
         ];
 
-        "custom/wifi" = {
-          "tooltip" = false;
-          "format" = "<span foreground='orange'>TUI </span>";
-          "exec" = "echo '{\"class\": \"connected\"}'";
-          "exec-if" = "nmcli radio wifi | grep -q enabled || return 1";
-          "return-type" = "json";
-          "interval" = 10;
-          "on-click" = "nmcli radio wifi off";
-        };
+        # "custom/wifi" = {
+        #   "tooltip" = false;
+        #   "format" = "<span foreground='orange'>TUI </span>";
+        #   "exec" = "echo '{\"class\": \"connected\"}'";
+        #   "exec-if" = "nmcli radio wifi | grep -q enabled || return 1";
+        #   "return-type" = "json";
+        #   "interval" = 10;
+        #   "on-click" = "nmcli radio wifi off";
+        # };
 
         "custom/ip" = {
           "format" = "<span foreground='orange'>{} </span>";
@@ -313,15 +312,15 @@ in {
           "interval" = 60;
         };
 
-        "custom/vpn" = {
-          "format" = "<span foreground='orange'>VPN  </span>";
-          "exec" = "echo '{\"class\": \"connected\"}'";
-          "exec-if" = "test -d /proc/sys/net/ipv4/conf/tun0";
-          "return-type" = "json";
-          "interval" = 10;
-          "on-click" = "vpn";
-          "on-click-right" = "novpn";
-        };
+        # "custom/vpn" = {
+        #   "format" = "<span foreground='orange'>VPN  </span>";
+        #   "exec" = "echo '{\"class\": \"connected\"}'";
+        #   "exec-if" = "test -d /proc/sys/net/ipv4/conf/tun0";
+        #   "return-type" = "json";
+        #   "interval" = 10;
+        #   "on-click" = "vpn";
+        #   "on-click-right" = "novpn";
+        # };
 
         "custom/lang" = {
           "interval" = 10;
@@ -355,10 +354,10 @@ in {
           sort-by-number = true;
         };
 
-        "custom/logo" = {
-          tooltip = false;
-          format = " ";
-        };
+        # "custom/logo" = {
+        #   tooltip = false;
+        #   format = " ";
+        # };
 
         # "custom/todo" = {
         #   tooltip = true;

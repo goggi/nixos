@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/run/current-system/sw/bin/bash 
 # scripts by adi1090x
 
 ## Get data
