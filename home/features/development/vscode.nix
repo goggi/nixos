@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  pkgsUnstable,
   fetchTarball,
   ...
 }: {
@@ -13,7 +14,7 @@
     #   '';
     # };
     # package = pkgs.vscode.fhs;
-    package = pkgs.vscode;
+    package = pkgsUnstable.vscode;
   };
 
   # programs.vscode = {

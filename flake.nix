@@ -3,29 +3,25 @@
   inputs = {
     # NixOS
     # nixpkgs.url = "/home/gogsaan/Projects/nix/nixpkgs";
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
+    nixpkgsUnstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:NixOS/nixpkgs/";
-
     impermanence.url = "github:nix-community/impermanence";
-
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nur.url = "github:nix-community/NUR";
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Hyprland
     hyprland = {
-      url = "github:hyprwm/Hyprland/6beb79f27b84c36b8b9ef5476d861a94a9071009";
+      # url = "github:hyprwm/Hyprland/6beb79f27b84c36b8b9ef5476d861a94a9071009";
+      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
@@ -39,32 +35,26 @@
     flake-utils.url = "github:numtide/flake-utils";
     bazecor.url = "github:gvolpe/bazecor-nix";
 
-    # nix-colors.url = "github:misterio77/nix-colors";
-
     # Non Flakes
     sf-mono-liga = {
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
     };
 
-    eww = {
-      url = "github:elkowar/eww";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # rust-overlay = {
+    #   url = "github:oxalica/rust-overlay";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # theme
-    base16 = {
-      url = "github:shaunsingh/base16.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    base16-oxocarbon = {
-      url = "github:shaunsingh/base16-oxocarbon";
-      flake = false;
-    };
+    # base16 = {
+    #   url = "github:shaunsingh/base16.nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # base16-oxocarbon = {
+    #   url = "github:shaunsingh/base16-oxocarbon";
+    #   flake = false;
+    # };
   };
 
   outputs = {
@@ -96,16 +86,12 @@
         permittedInsecurePackages = [
           # "electron-21.4.0"
           "nodejs-16.20.0"
+          "nodejs-16.20.1"
         ];
 
         packageOverrides = super: {
           looking-glass-client = pkgs.callPackage ./pkgs/looking {};
           vscode = pkgs.callPackage ./pkgs/vscode/vscode.nix {};
-
-          # bottles = pkgs.callPackage ./pkgs/bottles {};
-          # webcord = pkgs.callPackage ./pkgs/webcord {};
-          # gtk-layer-shell = pkgs.callPackage ./pkgs/gtkLayerShell {};
-          # archi = pkgs.callPackage ./pkgs/archi {};
         };
       };
 
@@ -129,8 +115,18 @@
         # Overlays from ./overlays directory
         ++ (importNixFiles ./overlays);
     };
+
+    pkgsUnstable = import inputs.nixpkgsUnstable {
+      inherit system;
+      config = {
+        allowBroken = true;
+        allowInsecure = true;
+        allowUnfree = true;
+        tarball-ttl = 0;
+      };
+    };
   in rec {
-    inherit lib pkgs;
+    inherit lib pkgs pkgsUnstable;
 
     # nixos-configs with home-manager
 
@@ -148,3 +144,8 @@
     formatter.${system} = pkgs.${system}.alejandra;
   };
 }
+# eww = {
+#   url = "github:elkowar/eww";
+#   inputs.nixpkgs.follows = "nixpkgs";
+# };
+

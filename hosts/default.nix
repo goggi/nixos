@@ -23,6 +23,7 @@ in {
         ({
           config,
           pkgs,
+          pkgsUnstable,
           ...
         }: {
           services.vscode-server.enable = true;
