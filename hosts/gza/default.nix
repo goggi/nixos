@@ -69,7 +69,7 @@
     extraModulePackages = [];
     binfmt.emulatedSystems = ["aarch64-linux" "i686-linux"];
     # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-    # kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
 
     # Passtrough GPU
     initrd.preDeviceCommands = ''
@@ -119,7 +119,7 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
+    wlr.enable = false;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
     ];
@@ -129,10 +129,11 @@
   programs.hyprland = {
     enable = true;
     xwayland.hidpi = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
   };
-  programs.sway = {
-    enable = true;
-  };
+  # programs.sway = {
+  #   enable = true;
+  # };
 
   programs.xwayland.enable = true;
 

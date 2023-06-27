@@ -4,7 +4,8 @@
     # NixOS
     # nixpkgs.url = "/home/gogsaan/Projects/nix/nixpkgs";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
-    nixpkgsUnstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:NixOS/nixpkgs/";
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland = {
@@ -22,9 +23,9 @@
     hyprland = {
       # url = "github:hyprwm/Hyprland/6beb79f27b84c36b8b9ef5476d861a94a9071009";
       url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
-    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    # xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     hyprland-contrib.url = "github:hyprwm/contrib";
 
     # Other
@@ -115,18 +116,8 @@
         # Overlays from ./overlays directory
         ++ (importNixFiles ./overlays);
     };
-
-    pkgsUnstable = import inputs.nixpkgsUnstable {
-      inherit system;
-      config = {
-        allowBroken = true;
-        allowInsecure = true;
-        allowUnfree = true;
-        tarball-ttl = 0;
-      };
-    };
   in rec {
-    inherit lib pkgs pkgsUnstable;
+    inherit lib pkgs;
 
     # nixos-configs with home-manager
 

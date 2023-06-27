@@ -18,7 +18,6 @@ in {
     modules =
       [
         ./gza
-        inputs.hyprland.nixosModules.default
         inputs.vscode-server.nixosModule
         ({
           config,
