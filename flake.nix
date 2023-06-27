@@ -94,6 +94,7 @@
           looking-glass-client = pkgs.callPackage ./pkgs/looking {};
           vscode = pkgs.callPackage ./pkgs/vscode/vscode.nix {};
           _1password = pkgs.callPackage ./pkgs/1password {};
+          _1password-gui = pkgs.callPackage ./pkgs/1password-gui {};
         };
       };
 
