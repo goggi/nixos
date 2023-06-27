@@ -14,7 +14,7 @@
 
     # Desktops
     ../features/desktop/hyprland
-    ../features/desktop/sway
+    # ../features/desktop/sway
 
     # Browser
     ../features/browser/firefox

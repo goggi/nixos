@@ -25,7 +25,7 @@
       url = "github:hyprwm/Hyprland";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
-    # xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     hyprland-contrib.url = "github:hyprwm/contrib";
 
     # Other

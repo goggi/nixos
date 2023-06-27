@@ -69,7 +69,7 @@
     extraModulePackages = [];
     binfmt.emulatedSystems = ["aarch64-linux" "i686-linux"];
     # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
 
     # Passtrough GPU
     initrd.preDeviceCommands = ''
@@ -117,20 +117,27 @@
     # upower.enable = false;
   };
 
-  xdg.portal = {
+  # xdg.portal = {
+  #   enable = true;
+  #   wlr.enable = false;
+  #   extraPortals = [
+  #     pkgs.xdg-desktop-portal-gtk
+  #   ];
+  # };
+
+  programs.steam = {
     enable = true;
-    wlr.enable = false;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-    ];
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
   # enable hyprland
   programs.hyprland = {
     enable = true;
     xwayland.hidpi = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; # Steam?
   };
+
   # programs.sway = {
   #   enable = true;
   # };

@@ -18,6 +18,7 @@ in {
     modules =
       [
         ./gza
+        # inputs.hyprland.nixosModules.default # Steam?
         inputs.vscode-server.nixosModule
         ({
           config,
