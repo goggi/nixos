@@ -25,6 +25,7 @@
       hinting = {
         enable = true;
         autohint = true;
+        # style = "full";
         style = "hintfull";
       };
 

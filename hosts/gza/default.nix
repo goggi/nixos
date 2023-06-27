@@ -138,9 +138,9 @@
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; # Steam?
   };
 
-  # programs.sway = {
-  #   enable = true;
-  # };
+  programs.sway = {
+    enable = true;
+  };
 
   programs.xwayland.enable = true;
 

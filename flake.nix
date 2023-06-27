@@ -5,11 +5,11 @@
     # nixpkgs.url = "/home/gogsaan/Projects/nix/nixpkgs";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:NixOS/nixpkgs/";
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland = {
-      url = "github:nix-community/nixpkgs-wayland";
+      url = "github:nix-community/nixpkgs-wayland/4fce76c43a001fb7e8c71777bd6a9ed12769f6a3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
@@ -22,7 +22,7 @@
     # Hyprland
     hyprland = {
       # url = "github:hyprwm/Hyprland/6beb79f27b84c36b8b9ef5476d861a94a9071009";
-      url = "github:hyprwm/Hyprland";
+      url = "github:hyprwm/Hyprland/01f85a09a981eb6c8784d459f729d418c0dd19e3";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
@@ -93,6 +93,7 @@
         packageOverrides = super: {
           looking-glass-client = pkgs.callPackage ./pkgs/looking {};
           vscode = pkgs.callPackage ./pkgs/vscode/vscode.nix {};
+          _1password = pkgs.callPackage ./pkgs/1password {};
         };
       };
 

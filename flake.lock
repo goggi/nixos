@@ -338,16 +338,17 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1687865038,
-        "narHash": "sha256-zFTxFNXmXc2XOriWtNzuznEICcSBnIbRVVR/M5w/Y40=",
+        "lastModified": 1687549364,
+        "narHash": "sha256-vFeOQlFpwcmQEqLRWMY+hdAachLUyG9Ta61jy1mbr7E=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "d83296c7a9029eccc04544ddf0a8387d8104b882",
+        "rev": "01f85a09a981eb6c8784d459f729d418c0dd19e3",
         "type": "github"
       },
       "original": {
         "owner": "hyprwm",
         "repo": "Hyprland",
+        "rev": "01f85a09a981eb6c8784d459f729d418c0dd19e3",
         "type": "github"
       }
     },
@@ -571,22 +572,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-unstable": {
-      "locked": {
-        "lastModified": 1687807295,
-        "narHash": "sha256-7TUD0p0m4mZpIi1O+Cyk5NCqpJUnhv/CJOAuHOndjao=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "6b3d1b1cf13f407fef5e634b224d575eb7211975",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-wayland": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -597,16 +582,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1687904184,
-        "narHash": "sha256-Yc0/BVK6pqrXPFCYVvabDBmN/w7RxkcWUT81OPImRQA=",
+        "lastModified": 1687814125,
+        "narHash": "sha256-ZNzlEay2B31VH5pO+8jOXwo6z5rcqJeBPlVqTRZORUo=",
         "owner": "nix-community",
         "repo": "nixpkgs-wayland",
-        "rev": "ca95f436848bbba253d0eed33341a5a47e6bf3bb",
+        "rev": "4fce76c43a001fb7e8c71777bd6a9ed12769f6a3",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "nixpkgs-wayland",
+        "rev": "4fce76c43a001fb7e8c71777bd6a9ed12769f6a3",
         "type": "github"
       }
     },
@@ -795,7 +781,6 @@
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-f2k": "nixpkgs-f2k",
-        "nixpkgs-unstable": "nixpkgs-unstable",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "nur": "nur",
         "sf-mono-liga": "sf-mono-liga",

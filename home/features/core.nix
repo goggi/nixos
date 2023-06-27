@@ -8,6 +8,7 @@
     playerctl # for media keys
     deepin.deepin-calculator
     steam-tui
+    steamcmd
     vlc
     leafpad
     envsubst
