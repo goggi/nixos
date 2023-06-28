@@ -135,7 +135,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.hidpi = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; # Steam?
+    # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; # Steam?
   };
 
   programs.sway = {

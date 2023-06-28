@@ -7,8 +7,7 @@
   home.packages = with pkgs; [
     playerctl # for media keys
     deepin.deepin-calculator
-    steam-tui
-    steamcmd
+    steamtinkerlaunch
     vlc
     leafpad
     envsubst

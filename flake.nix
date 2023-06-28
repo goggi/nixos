@@ -20,12 +20,13 @@
     };
 
     # Hyprland
-    hyprland = {
-      # url = "github:hyprwm/Hyprland/6beb79f27b84c36b8b9ef5476d861a94a9071009";
-      url = "github:hyprwm/Hyprland/01f85a09a981eb6c8784d459f729d418c0dd19e3";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    # hyprland = {
+    #   # url = "github:hyprwm/Hyprland/6beb79f27b84c36b8b9ef5476d861a94a9071009";
+    #   url = "github:hyprwm/Hyprland/v0.26.0";
+    #   # url = "github:hyprwm/Hyprland/01f85a09a981eb6c8784d459f729d418c0dd19e3";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     hyprland-contrib.url = "github:hyprwm/contrib";
 
     # Other
@@ -94,6 +95,7 @@
           looking-glass-client = pkgs.callPackage ./pkgs/looking {};
           vscode = pkgs.callPackage ./pkgs/vscode/vscode.nix {};
           _1password = pkgs.callPackage ./pkgs/1password {};
+          hyprland = pkgs.callPackage ./pkgs/hyprland {};
           _1password-gui = pkgs.callPackage ./pkgs/1password-gui {};
         };
       };

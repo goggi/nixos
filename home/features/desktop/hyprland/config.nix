@@ -20,8 +20,8 @@
     # render_ahead_of_time = false #Buggy
     # render_ahead_safezone = 0
     focus_on_activate = true
-    groupbar_gradients = false
-    groupbar_titles_font_size = 10
+    # groupbar_gradients = false
+    # groupbar_titles_font_size = 10
 
 
   }
