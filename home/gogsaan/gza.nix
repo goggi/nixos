@@ -27,6 +27,7 @@
     ../features/development/navicatPersistance.nix
     ../features/development/dockerPersistance.nix
     ../features/development/k8sManagment.nix
+    ../features/development/jetbrain.nix
     # ../features/development/helix
 
     ../features/development/language/nodejs.nix

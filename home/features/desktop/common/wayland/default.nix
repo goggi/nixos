@@ -23,7 +23,6 @@
     # wl-mirror
     # wl-mirror-pick
     # ydotool
-    swayidle
     clipman
     pulseaudio
     wf-recorder

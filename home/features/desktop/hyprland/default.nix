@@ -31,14 +31,19 @@ in {
       tesseract5
       xorg.xprop
       inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+      swayidle
     ];
   };
 
   wayland.windowManager.hyprland = {
     enable = true;
-    # package = inputs.hyprland.packages.${pkgs.system}.default.override {};
-    package = pkgs.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.default.override {};
+    # package = pkgs.hyprland;
     systemdIntegration = true;
+    xwayland = {
+      enable = true;
+      hidpi = false;
+    };
     extraConfig = import ./config.nix;
   };
 }

@@ -117,30 +117,30 @@
     # upower.enable = false;
   };
 
-  # xdg.portal = {
+  xdg.portal = {
+    enable = true;
+    wlr.enable = false;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+    ];
+  };
+
+  # programs.steam = {
   #   enable = true;
-  #   wlr.enable = false;
-  #   extraPortals = [
-  #     pkgs.xdg-desktop-portal-gtk
-  #   ];
+  #   remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  #   dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   # };
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
-
   # enable hyprland
-  programs.hyprland = {
-    enable = true;
-    xwayland.hidpi = true;
-    # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; # Steam?
-  };
+  # programs.hyprland = {
+  #   enable = true;
+  #   xwayland.hidpi = true;
+  #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; # Steam?
+  # };
 
-  programs.sway = {
-    enable = true;
-  };
+  # programs.sway = {
+  #   enable = true;
+  # };
 
   programs.xwayland.enable = true;
 

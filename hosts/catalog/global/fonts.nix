@@ -25,8 +25,8 @@
       hinting = {
         enable = true;
         autohint = true;
-        # style = "full";
-        style = "hintfull";
+        style = "full";
+        # style = "hintfull";
       };
 
       subpixel.lcdfilter = "default";
