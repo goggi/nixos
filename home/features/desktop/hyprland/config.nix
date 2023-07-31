@@ -240,6 +240,10 @@
     windowrule = workspace 10, title:^.*Microsoft Teams - Preview.*$
     windowrule = workspace 1, title:^.*Visual Studio Code.*$
 
+    # Looking glass
+    windowrule = workspace 3, title:^.*Looking Glass (client).*$
+    windowrule = float, title:^.*Looking Glass (client).*$
+
     # Navicat Premium
     windowrule = move 75 44%, title:^.*New Connection.*$
     windowrule = move 1000 44%, title:^.*Edit Connection.*$

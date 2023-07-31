@@ -13,7 +13,7 @@
     (import flake-compat {
       src = builtins.fetchTarball {
         url = "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
-        sha256 = "sha256:13b37yf36zslap8qd741qh4hhwffxvfb95mq7abwspg6slag2m6c";
+        sha256 = "sha256:1v6yjjwfwpbljwnw39j6w7pvl7ybn7di2jxb2yalzd9smim9y0p9";
       };
     })
     .defaultNix;

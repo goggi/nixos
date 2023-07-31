@@ -4,10 +4,11 @@
     # NixOS
     # nixpkgs.url = "/home/gogsaan/Projects/nix/nixpkgs";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable/57695599bdc4f7bfe5d28cfa23f14b3d8bdf8a5f";
-    # nixpkgs.url = "github:NixOS/nixpkgs/57695599bdc4f7bfe5d28cfa23f14b3d8bdf8a5f";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:NixOS/nixpkgs/";
+    # NixOs Unstable
+    # nixpkgs.url = "github:NixOS/nixpkgs/684c17c429c42515bafb3ad775d2a710947f3d67";
+    # nixpkgs.url = "github:NixOS/nixpkgs/b12803b6d90e2e583429bb79b859ca53c348b39a";
+    nixpkgs.url = "github:NixOS/nixpkgs/ef99fa5c5ed624460217c31ac4271cfb5cb2502c";
+
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
@@ -17,15 +18,15 @@
     nur.url = "github:nix-community/NUR";
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Hyprland
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.27.2";
+      # url = "github:hyprwm/Hyprland/v0.27.2";
+      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
-      #   inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
@@ -44,21 +45,6 @@
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
     };
-
-    # rust-overlay = {
-    #   url = "github:oxalica/rust-overlay";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # theme
-    # base16 = {
-    #   url = "github:shaunsingh/base16.nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # base16-oxocarbon = {
-    #   url = "github:shaunsingh/base16-oxocarbon";
-    #   flake = false;
-    # };
   };
 
   outputs = {
@@ -141,8 +127,3 @@
     formatter.${system} = pkgs.${system}.alejandra;
   };
 }
-# eww = {
-#   url = "github:elkowar/eww";
-#   inputs.nixpkgs.follows = "nixpkgs";
-# };
-
