@@ -35,7 +35,7 @@
 
     # Management
     ../features/management/1password.nix
-    ../features/management/keepassxc.nix
+    # ../features/management/keepassxc.nix
     ../features/management/yubikey.nix
     ../features/management/gpg.nix
 
@@ -89,7 +89,11 @@
           "Downloads"
           "Pictures"
           "Videos"
-          "Projects"
+          # "Projects"
+          {
+            directory = "Projects";
+            method = "symlink";
+          }
           ".config/certs"
           ".config/dconf"
           ".config/vpn"

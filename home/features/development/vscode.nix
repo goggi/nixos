@@ -12,8 +12,8 @@
     #     --ozone-platform=wayland
     #   '';
     # };
-    package = pkgs.vscode.fhs;
-    # package = pkgs.vscode;
+    # package = pkgs.vscode.fhs;
+    package = pkgs.vscode;
   };
 
   # programs.vscode = {
@@ -35,7 +35,10 @@
     "/persist/home/gogsaan" = {
       allowOther = true;
       directories = [
-        ".config/Code"
+        {
+          directory = ".config/Code";
+          method = "symlink";
+        }
         # ".vscode"
       ];
     };

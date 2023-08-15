@@ -4,6 +4,9 @@
   ...
 }: {
   home = {
+    packages = [
+      pkgs.docker-compose
+    ];
     persistence = {
       "/persist/home/gogsaan" = {
         allowOther = true;

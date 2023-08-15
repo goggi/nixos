@@ -10,7 +10,12 @@
     persistence = {
       "/persist/home/gogsaan" = {
         allowOther = true;
-        directories = [".config/google-chrome"];
+        directories = [
+          {
+            directory = ".config/google-chrome";
+            method = "symlink";
+          }
+        ];
       };
     };
   };

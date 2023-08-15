@@ -8,9 +8,9 @@
     # nixpkgs.url = "github:NixOS/nixpkgs/684c17c429c42515bafb3ad775d2a710947f3d67";
     # nixpkgs.url = "github:NixOS/nixpkgs/b12803b6d90e2e583429bb79b859ca53c348b39a";
     # nixpkgs.url = "github:NixOS/nixpkgs/ef99fa5c5ed624460217c31ac4271cfb5cb2502c";
-    # e6ab46982debeab9831236869539a507f670a129
-    nixpkgs.url = "github:NixOS/nixpkgs/e6ab46982debeab9831236869539a507f670a129";
-    # nixpkgs.url = "github:NixOS/nixpkgs";
+    # nixpkgs.url = "github:NixOS/nixpkgs/e6ab46982debeab9831236869539a507f670a129";
+    # nixpkgs.url = "github:NixOS/nixpkgs/f0451844bbdf545f696f029d1448de4906c7f753";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland = {
@@ -80,14 +80,15 @@
           # "electron-21.4.0"
           "nodejs-16.20.0"
           "nodejs-16.20.1"
+          "nodejs-16.20.2"
         ];
 
         packageOverrides = super: {
           looking-glass-client = pkgs.callPackage ./pkgs/looking {};
-          vscode = pkgs.callPackage ./pkgs/vscode/vscode.nix {};
-          _1password = pkgs.callPackage ./pkgs/1password {};
+          # vscode = pkgs.callPackage ./pkgs/vscode/vscode.nix {};
+          # _1password = pkgs.callPackage ./pkgs/1password {};
           # hyprland = pkgs.callPackage ./pkgs/hyprland {};
-          _1password-gui = pkgs.callPackage ./pkgs/1password-gui {};
+          # _1password-gui = pkgs.callPackage ./pkgs/1password-gui {};
         };
       };
 

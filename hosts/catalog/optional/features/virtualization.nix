@@ -5,6 +5,7 @@
 }: {
   virtualisation.spiceUSBRedirection.enable = true;
 
+  # # Waydroid
   # virtualisation = {
   #   waydroid.enable = true;
   #   lxd.enable = true;
@@ -42,7 +43,6 @@
   };
 
   environment.sessionVariables.LIBVIRT_DEFAULT_URI = ["qemu:///system"];
-
   environment.systemPackages = with pkgs; [
     virt-manager
     looking-glass-client # Passthrough GPU

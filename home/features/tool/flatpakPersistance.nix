@@ -7,7 +7,16 @@
     persistence = {
       "/persist/home/gogsaan" = {
         allowOther = true;
-        directories = [".var" ".local/share/flatpak"];
+        directories = [
+          {
+            directory = ".var";
+            method = "symlink";
+          }
+          {
+            directory = ".local/share/flatpak";
+            method = "symlink";
+          }
+        ];
       };
     };
   };

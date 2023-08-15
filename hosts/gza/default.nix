@@ -29,10 +29,7 @@
 
   services.flatpak.enable = true;
 
-  nix.gc = {
-    automatic = true;
-    randomizedDelaySec = "14m";
-  };
+  nix.gc.automatic = true;
 
   networking = {
     hostName = "gza";
@@ -64,6 +61,8 @@
       "vfio_pci"
       "vfio"
       "vfio_iommu_type1"
+      "dm-cache-default"
+      "dm-raid"
       # "vfio_virqfd"
     ];
     kernelParams = [
@@ -112,7 +111,8 @@
         efiSupport = true;
         useOSProber = false;
         enableCryptodisk = true;
-        configurationLimit = 10;
+        configurationLimit = 50;
+        gfxmodeEfi = "1024x768";
       };
     };
   };
@@ -192,14 +192,14 @@
 
   environment = {
     systemPackages = [
-      (pkgs.runCommandLocal "vscode-fhs-bind-host" {} ''
-        mkdir -p "$out/bin/"
-        substitute \
-          "${pkgs.vscode-fhs}/bin/code" \
-          "$out/bin/code" \
-          --replace "declare -a auto_mounts" "auto_mounts=(--bind-try /etc/nixos /etc/nixos)"
-        chmod 555 "$out/bin/code"
-      '')
+      # (pkgs.runCommandLocal "vscode-fhs-bind-host" {} ''
+      #   mkdir -p "$out/bin/"
+      #   substitute \
+      #     "${pkgs.vscode-fhs}/bin/code" \
+      #     "$out/bin/code" \
+      #     --replace "declare -a auto_mounts" "auto_mounts=(--bind-try /etc/nixos /etc/nixos)"
+      #   chmod 555 "$out/bin/code"
+      # '')
       inputs.bazecor.packages.${pkgs.system}.default
       pkgs.acpi
       pkgs.libva-utils

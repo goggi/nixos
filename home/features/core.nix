@@ -5,6 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    lzip
     playerctl # for media keys
     deepin.deepin-calculator
     steamtinkerlaunch
