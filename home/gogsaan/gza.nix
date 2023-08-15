@@ -78,7 +78,7 @@
   home = {
     username = "gogsaan";
     homeDirectory = "/home/gogsaan";
-    stateVersion = "22.11";
+    stateVersion = "23.11";
     extraOutputsToInstall = ["doc" "devdoc"];
     # Seems like it needs to be commented out on first boot,ss
     persistence = {

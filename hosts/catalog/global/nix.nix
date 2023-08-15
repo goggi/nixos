@@ -88,5 +88,5 @@
   };
 
   system.autoUpgrade.enable = false;
-  system.stateVersion = lib.mkDefault "22.11"; # DONT TOUCH THIS
+  system.stateVersion = lib.mkDefault "23.11";
 }

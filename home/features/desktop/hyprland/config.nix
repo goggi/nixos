@@ -143,6 +143,8 @@
       # bezier = overshot, 0.13, 0.99, 0.29, 1.1
       bezier = smoothOut, 0.36, 0, 0.66, -0.56
       bezier = smoothIn, 0.25, 1, 0.5, 1
+      # bezier = smoothIn, 0.34, 1.56, 0.64, 1
+
       # animation list
       animation = windows, 1, 3, overshot, slide
       animation = windowsOut, 1, 10, smoothOut, slide

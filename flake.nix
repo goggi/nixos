@@ -7,7 +7,10 @@
     # NixOs Unstable
     # nixpkgs.url = "github:NixOS/nixpkgs/684c17c429c42515bafb3ad775d2a710947f3d67";
     # nixpkgs.url = "github:NixOS/nixpkgs/b12803b6d90e2e583429bb79b859ca53c348b39a";
-    nixpkgs.url = "github:NixOS/nixpkgs/ef99fa5c5ed624460217c31ac4271cfb5cb2502c";
+    # nixpkgs.url = "github:NixOS/nixpkgs/ef99fa5c5ed624460217c31ac4271cfb5cb2502c";
+    # e6ab46982debeab9831236869539a507f670a129
+    nixpkgs.url = "github:NixOS/nixpkgs/e6ab46982debeab9831236869539a507f670a129";
+    # nixpkgs.url = "github:NixOS/nixpkgs";
 
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland = {

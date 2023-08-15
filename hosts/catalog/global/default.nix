@@ -117,6 +117,7 @@
       unzip
       wget
       zip
+      mdadm
     ];
 
     loginShellInit = ''

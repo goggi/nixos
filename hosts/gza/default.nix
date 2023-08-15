@@ -29,6 +29,11 @@
 
   services.flatpak.enable = true;
 
+  nix.gc = {
+    automatic = true;
+    randomizedDelaySec = "14m";
+  };
+
   networking = {
     hostName = "gza";
     useDHCP = lib.mkDefault true;
@@ -65,7 +70,7 @@
       "amd_iommu=on"
       "vfio-pci.ids=10de:1e84,10de:10f8,10de:1ad8,10de:1ad9"
     ];
-    kernelModules = ["kvm-amd" "i2c-dev"];
+    kernelModules = ["kvm-amd" "i2c-dev" "kmod-dm-raid" "dm-raid"];
     extraModulePackages = [];
     binfmt.emulatedSystems = ["aarch64-linux" "i686-linux"];
     # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
@@ -88,6 +93,8 @@
         "sd_mod"
         "usbhid"
         "vfio-pci"
+        "dm_thin_pool"
+        "dm-raid"
       ]
       ++ config.boot.initrd.luks.cryptoModules;
 
@@ -105,7 +112,7 @@
         efiSupport = true;
         useOSProber = false;
         enableCryptodisk = true;
-        configurationLimit = 100;
+        configurationLimit = 10;
       };
     };
   };
@@ -143,6 +150,7 @@
   # };
 
   programs.xwayland.enable = true;
+  programs.gnome-disks.enable = true;
 
   console = let
     normal = ["181825" "F38BA8" "A6E3A1" "F9E2AF" "89B4FA" "F5C2E7" "94E2D5" "BAC2DE"];
