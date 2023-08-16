@@ -16,7 +16,7 @@
     ./nix.nix
   ];
 
-  services.gnome.gnome-keyring.enable = true;
+  # services.gnome.gnome-keyring.enable = true;
 
   security = {
     rtkit.enable = true;
@@ -28,7 +28,7 @@
     };
 
     pam = {
-      services.login.enableGnomeKeyring = true;
+      # services.login.enableGnomeKeyring = true;
 
       loginLimits = [
         {
@@ -97,7 +97,7 @@
     };
   };
 
-  environment.sessionVariables.POLKIT_AUTH_AGENT = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+  # environment.sessionVariables.POLKIT_AUTH_AGENT = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
 
   environment = {
     binsh = "${pkgs.bash}/bin/bash";
@@ -105,8 +105,8 @@
     # shells = with pkgs; [zsh];
 
     systemPackages = with pkgs; [
-      polkit
-      polkit_gnome
+      # polkit
+      # polkit_gnome
       curl
       gcc
       git
@@ -128,7 +128,7 @@
 
     loginShellInit = ''
       # dbus-update-activation-environment --systemd DISPLAY
-      eval $(gnome-keyring-daemon --start --daemonize --components=ssh)
+      # eval $(gnome-keyring-daemon --start --daemonize --components=ssh)
       eval $(ssh-agent)
       gpg-connect-agent /bye
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)

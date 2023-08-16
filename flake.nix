@@ -85,7 +85,7 @@
 
         packageOverrides = super: {
           looking-glass-client = pkgs.callPackage ./pkgs/looking {};
-          # vscode = pkgs.callPackage ./pkgs/vscode/vscode.nix {};
+          vscode = pkgs.callPackage ./pkgs/vscode/vscode.nix {};
           # _1password = pkgs.callPackage ./pkgs/1password {};
           # hyprland = pkgs.callPackage ./pkgs/hyprland {};
           # _1password-gui = pkgs.callPackage ./pkgs/1password-gui {};

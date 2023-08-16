@@ -49,20 +49,22 @@
   $emoji = killall rofi || rofi -show emoji -emoji-format "{emoji}" -modi emoji -theme emoji
 
   # Monitor Variables
-  $mainMonitorStandardResolution = DP-2,preferred,0x1080,1
+  $mainMonitorStandardResolution = DP-2,preferred,0x0,1
   $mainMonitorStandardResolutionPadding = DP-2,addreserved,0,0,700,700
   $mainMonitorLowerResolution = DP-2,2560x1080@120,1260x1080,1
   $mainMonitorLowerResolutionPadding = DP-2,addreserved,0,0,0,0
-  $secondMonitorStandardResolution = DP-3,preferred,1800x0,1
+  $secondMonitorStandardResolution = DP-3,preferred,1800x-1080,1
 
   ### Monitors Settings ###
-  monitor=DP-3,preferred,1800x0,1
-  monitor=DP-2,preferred,0x1080,1
+  monitor=DP-2,preferred,0x0,1
   monitor=DP-2,addreserved,0,0,700,700
+  monitor=DP-3,preferred,1800x-1080,1
+
 
   # Keybinds for main monitor resloultion
   bind=$mainMod, slash, exec, hyprctl keyword monitor "$mainMonitorStandardResolution"
   bind=$mainMod, slash, exec, hyprctl keyword monitor "$mainMonitorStandardResolutionPadding"
+  bind=$mainMod, slash, exec, hyprctl keyword monitor "$secondMonitorStandardResolution"
   bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$mainMonitorLowerResolution"
   bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$mainMonitorLowerResolutionPadding"
 

@@ -19,7 +19,7 @@
     # Browser
     ../features/browser/firefox
     ../features/browser/googleChrome.nix
-    ../features/browser/vivaldi.nix
+    # ../features/browser/vivaldi.nix
     # ../features/browser/chromium.nix
 
     # Development
@@ -27,7 +27,7 @@
     ../features/development/navicatPersistance.nix
     ../features/development/dockerPersistance.nix
     ../features/development/k8sManagment.nix
-    ../features/development/jetbrain.nix
+    # ../features/development/jetbrain.nix
     # ../features/development/helix
 
     ../features/development/language/nodejs.nix
@@ -35,7 +35,7 @@
 
     # Management
     ../features/management/1password.nix
-    # ../features/management/keepassxc.nix
+    ../features/management/keepassxc.nix
     ../features/management/yubikey.nix
     ../features/management/gpg.nix
 
