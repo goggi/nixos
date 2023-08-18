@@ -3,9 +3,7 @@
   system,
   ...
 }: let
-  filterNixFiles = k: v: v == "regular" && pkgs.lib.hasSuffix ".nix" k;
-  importNixFiles = path: (builtins.map (import path) (pkgs.lib.filterAttrs filterNixFiles (builtins.readDir path)));
-
+  myOverlay = import ./overlays/derivations.nix;
   pkgs = import inputs.nixpkgs {
     inherit system;
     config = {
@@ -27,9 +25,8 @@
     };
     overlays = with inputs; [
       (
-        final: _: let
-          inherit (final) system;
-        in {
+        final: prev: {
+          inherit (myOverlay) sf-mono-liga catppuccin-gtk catppuccin-folders catppuccin-cursors;
           sf-mono-liga-src = sf-mono-liga;
         }
       )
