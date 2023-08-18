@@ -23,15 +23,6 @@
         vscode = pkgs.callPackage ./vscode/vscode.nix {};
       };
     };
-    overlays = with inputs; [
-      (
-        final: prev: {
-          inherit (myOverlay) sf-mono-liga catppuccin-gtk catppuccin-folders catppuccin-cursors;
-          sf-mono-liga-src = sf-mono-liga;
-        }
-      )
-      nixpkgs-wayland.overlay
-    ];
   };
 in
   pkgs

@@ -6,7 +6,7 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Latte-Standard-Mauve-Light";
+      name = "Catppuccin-Mocha-Standard-Mauve-Dark";
       package = pkgs.catppuccin-gtk;
     };
 
@@ -46,15 +46,15 @@
   };
 
   home.pointerCursor = {
-    name = "Catppuccin-Mocha-Light-Cursors";
-    package = pkgs.catppuccin-cursors;
+    name = "Catppuccin-Mocha-Mauve-Cursors";
+    package = pkgs.catppuccin-cursors.mochaMauve;
     size = 28;
     gtk.enable = true;
   };
 
   home.sessionVariables = {
     # Theming Related Variables
-    GTK_THEME = "Catppuccin-Latte-Standard-Mauve-Light";
+    GTK_THEME = "Catppuccin-Mocha-Standard-Mauve-Dark";
     XCURSOR_SIZE = "28";
   };
 }
