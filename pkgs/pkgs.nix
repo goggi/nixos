@@ -21,8 +21,8 @@
       ];
 
       packageOverrides = super: {
-        looking-glass-client = pkgs.callPackage ./pkgs/looking {};
-        vscode = pkgs.callPackage ./pkgs/vscode/vscode.nix {};
+        looking-glass-client = pkgs.callPackage ./looking {};
+        vscode = pkgs.callPackage ./vscode/vscode.nix {};
       };
     };
     overlays = with inputs; [

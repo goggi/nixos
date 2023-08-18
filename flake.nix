@@ -44,47 +44,7 @@
     system = "x86_64-linux";
     lib = nixpkgs.lib;
     inherit (builtins);
-
-    pkgs = import ./pkgs.nix {inherit inputs system lib builtins;};
-    # # This function imports all nix files in a directory
-    # filterNixFiles = k: v: v == "regular" && lib.hasSuffix ".nix" k;
-    # importNixFiles = path:
-    #   (lib.lists.forEach (lib.mapAttrsToList (name: _: path + ("/" + name))
-    #       (lib.filterAttrs filterNixFiles (builtins.readDir path))))
-    #   import;
-    # # Packages
-    # pkgs = import inputs.nixpkgs {
-    #   inherit system;
-    #   config = {
-    #     allowBroken = true;
-    #     allowInsecure = true;
-    #     allowUnfree = true;
-    #     tarball-ttl = 0;
-    #     permittedInsecurePackages = [
-    #       # "electron-21.4.0"
-    #       "nodejs-16.20.0"
-    #       "nodejs-16.20.1"
-    #       "nodejs-16.20.2"
-    #     ];
-    #     packageOverrides = super: {
-    #       looking-glass-client = pkgs.callPackage ./pkgs/looking {};
-    #       vscode = pkgs.callPackage ./pkgs/vscode/vscode.nix {};
-    #     };
-    #   };
-    #   # Overlays
-    #   overlays = with inputs;
-    #     [
-    #       (
-    #         final: _: let
-    #           inherit (final) system;
-    #         in {
-    #           sf-mono-liga-src = sf-mono-liga;
-    #         }
-    #       )
-    #       nixpkgs-wayland.overlay
-    #     ]
-    #     ++ (importNixFiles ./overlays);
-    # };
+    pkgs = import ./pkgs/pkgs.nix {inherit inputs system lib builtins;};
   in {
     inherit lib pkgs;
     nixosConfigurations = import ./hosts inputs;
