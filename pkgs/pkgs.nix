@@ -3,7 +3,6 @@
   system,
   ...
 }: let
-  myOverlay = import ./overlays/derivations.nix;
   pkgs = import inputs.nixpkgs {
     inherit system;
     config = {
