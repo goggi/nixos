@@ -19,16 +19,12 @@ in {
       [
         ./gza
         inputs.hyprland.nixosModules.default # Steam?
-        inputs.vscode-server.nixosModule
         ({
           config,
           pkgs,
           pkgsUnstable,
           ...
-        }: {
-          services.vscode-server.enable = true;
-          services.vscode-server.enableFHS = true;
-        })
+        }: {})
       ]
       ++ sharedModules;
 

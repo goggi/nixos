@@ -45,14 +45,6 @@ in {
 
   programs.waybar = {
     enable = true;
-    # systemd.enable = true;
-    # package = pkgs.waybar.overrideAttrs (oldAttrs: {
-    #   mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
-    #   patchPhase = ''
-    #     substituteInPlace src/modules/wlr/workspace_manager.cpp --replace "zext_workspace_handle_v1_activate(workspace_handle_);" "const std::string command = \"${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch workspace \" + name_; system(command.c_str());"
-    #   '';
-    # });
-
     package = pkgs.waybar.overrideAttrs (oa: {
       mesonFlags = (oa.mesonFlags or []) ++ ["-Dexperimental=true"];
     });
@@ -73,21 +65,38 @@ in {
         ];
 
         modules-center = [
-          "clock"
         ];
 
         modules-right = [
           "custom/ip"
+          # "custom/weather"
+          # "custom/lang"
+          "clock"
         ];
 
         "wlr/workspaces" = {
           on-click = "activate";
           format = "{name}";
+          # format = "{icon}";
+          # format-icons = {
+          #   urgent = "";
+          #   active = "";
+          #   default = "";
+          #   sort-by-number = true;
+          # };
           all-outputs = false;
           disable-scroll = true;
           active-only = false;
           sort-by-name = false;
           sort-by-number = true;
+        };
+
+        "custom/lang" = {
+          "interval" = 10;
+          "tooltip" = false;
+          "return-type" = "string";
+          "format" = " {}";
+          "exec" = "hyprctl -j devices | jq -r '.keyboards[] | select(.name==\"dygma-raise-keyboard\") | .active_keymap'";
         };
 
         # "custom/logo" = {
@@ -256,6 +265,7 @@ in {
         };
       };
       primary = {
+        enable = false;
         output = "DP-2";
         layer = "top";
         position = "top";
@@ -266,32 +276,33 @@ in {
         gtk-layer-shell = true;
         height = 34;
         modules-left = [
-          # "custom/logo"
           "wlr/workspaces"
+          # "custom/logo"
+          # "wlr/workspaces"
           # "custom/swallow"
           # "custom/todo"
+
+          # "battery"
+          # "backlight"
+          # "pulseaudio#microphone"
+          # "network"
         ];
 
         modules-center = [
           # "custom/vpn"
           # "custom/wifi"
-          "pulseaudio"
-          "custom/notification"
+          # "pulseaudio"
+          # "custom/notification"
         ];
 
         modules-right = [
+          # "tray"
+          # "custom/power"
           "custom/weather"
           "temperature"
-          # "battery"
-          # "backlight"
-          # "pulseaudio#microphone"
-          # "network"
           "custom/lang"
-
           "clock#date"
           "clock"
-          # "custom/power"
-
           "tray"
         ];
 
@@ -347,6 +358,13 @@ in {
         "wlr/workspaces" = {
           on-click = "activate";
           format = "{name}";
+          # format = "{icon}";
+          # format-icons = {
+          #   urgent = "";
+          #   active = "";
+          #   default = "";
+          #   sort-by-number = true;
+          # };
           all-outputs = false;
           disable-scroll = true;
           active-only = false;

@@ -64,7 +64,7 @@
     ../features/tool/flatpakPersistance.nix
     ../features/tool/btop.nix
     ../features/tool/nemo.nix
-    # ../features/tool/idasen.nix
+    ../features/tool/idasen.nix
     ../features/tool/nomacs.nix
     ../features/tool/swappy.nix
 

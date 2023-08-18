@@ -36,6 +36,7 @@
   exec-once = hypeMoveMonitors &
   exec-once = /home/gogsaan/Applications/scripts/startup.sh &
   exec-once = /home/gogsaan/Applications/bin/hyprland-per-window-layout/target/release/hyprland-per-window-layout &
+  exec-once = find ~/Downloads/Sidebery/ -ctime +3 -delete &
 
   ### Variables ###
   # Modifiers
@@ -51,8 +52,9 @@
   # Monitor Variables
   $mainMonitorStandardResolution = DP-2,preferred,0x0,1
   $mainMonitorStandardResolutionPadding = DP-2,addreserved,0,0,700,700
-  $mainMonitorLowerResolution = DP-2,2560x1080@120,1260x1080,1
+  $mainMonitorLowerResolution = DP-2,2560x1080@120,0x0,1
   $mainMonitorLowerResolutionPadding = DP-2,addreserved,0,0,0,0
+  $secondMonitorLowerResolution = DP-3,preferred, 670x-1080,1
   $secondMonitorStandardResolution = DP-3,preferred,1800x-1080,1
 
   ### Monitors Settings ###
@@ -67,6 +69,7 @@
   bind=$mainMod, slash, exec, hyprctl keyword monitor "$secondMonitorStandardResolution"
   bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$mainMonitorLowerResolution"
   bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$mainMonitorLowerResolutionPadding"
+  bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$secondMonitorLowerResolution"
 
     # Inputs
     input {

@@ -42,7 +42,7 @@ in {
     systemdIntegration = true;
     xwayland = {
       enable = true;
-      hidpi = false;
+      hidpi = true;
     };
     extraConfig = import ./config.nix;
   };

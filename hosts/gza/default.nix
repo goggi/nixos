@@ -40,8 +40,8 @@
   environment.persistence = {
     "/persist/var" = {
       directories = [
-        # Perist virtual machines
         "/var/lib/libvirt"
+        "/var/lib/bluetooth"
         # "/var/lib/waydroid/"
       ];
     };
@@ -121,7 +121,6 @@
     btrfs.autoScrub.enable = true;
     acpid.enable = true;
     thermald.enable = true;
-    # upower.enable = false;
   };
 
   xdg.portal = {
@@ -136,13 +135,6 @@
   #   enable = true;
   #   remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
   #   dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  # };
-
-  # enable hyprland
-  # programs.hyprland = {
-  #   enable = true;
-  #   xwayland.hidpi = true;
-  #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; # Steam?
   # };
 
   # programs.sway = {
@@ -162,31 +154,8 @@
     keyMap = "us";
   };
 
-  # console = {
-  #   earlySetup = true;
-  #   font = "${pkgs.tamzen}/share/consolefonts/Tamzen8x16.psf";
-  #   packages = with pkgs; [tamzen];
-  # };
-
   services.xserver.enable = false;
   services.xserver.autorun = true;
-
-  # xserver.displayManager.sessionPackages = [inputs.hyprland.packages.${pkgs.hostPlatform.system}.default];
-  # systemd = {
-  #   user.services.polkit-gnome-authentication-agent-1 = {
-  #     description = "polkit-gnome-authentication-agent-1";
-  #     wantedBy = ["graphical-session.target"];
-  #     wants = ["graphical-session.target"];
-  #     after = ["graphical-session.target"];
-  #     serviceConfig = {
-  #       Type = "simple";
-  #       ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-  #       Restart = "on-failure";
-  #       RestartSec = 1;
-  #       TimeoutStopSec = 10;
-  #     };
-  #   };
-  # };
 
   security = {
     polkit.enable = true;
@@ -221,8 +190,6 @@
       pkgs.ocl-icd
       pkgs.qt5.qtwayland
       pkgs.qt5ct
-      # gamescope
-      # mangohud
     ];
 
     variables = {
