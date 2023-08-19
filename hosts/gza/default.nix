@@ -6,10 +6,8 @@
   ...
 }: {
   imports = [
-    # Include the results of the hardware scan.
     inputs.impermanence.nixosModules.impermanence
     ./hardware-configuration.nix
-
     ../catalog/global
     ../catalog/users/gogsaan.nix
     ../catalog/optional/features/amdGpu.nix
@@ -131,16 +129,6 @@
     ];
   };
 
-  # programs.steam = {
-  #   enable = true;
-  #   remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-  #   dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  # };
-
-  # programs.sway = {
-  #   enable = true;
-  # };
-
   programs.xwayland.enable = true;
   programs.gnome-disks.enable = true;
 
@@ -149,8 +137,8 @@
     bright = ["1E1E2E" "F38BA8" "A6E3A1" "F9E2AF" "89B4FA" "F5C2E7" "94E2D5" "A6ADC8"];
   in {
     earlySetup = true;
-    # colors = normal ++ bright;
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+    colors = normal ++ bright;
+    # font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
     keyMap = "us";
   };
 
@@ -176,14 +164,6 @@
 
   environment = {
     systemPackages = [
-      # (pkgs.runCommandLocal "vscode-fhs-bind-host" {} ''
-      #   mkdir -p "$out/bin/"
-      #   substitute \
-      #     "${pkgs.vscode-fhs}/bin/code" \
-      #     "$out/bin/code" \
-      #     --replace "declare -a auto_mounts" "auto_mounts=(--bind-try /etc/nixos /etc/nixos)"
-      #   chmod 555 "$out/bin/code"
-      # '')
       inputs.bazecor.packages.${pkgs.system}.default
       pkgs.acpi
       pkgs.libva-utils
@@ -206,5 +186,5 @@
     DefaultTimeoutStopSec=5s
   '';
 
-  system.stateVersion = lib.mkForce "22.11"; # DONT TOUCH TH
+  system.stateVersion = lib.mkForce "23.11";
 }

@@ -132,6 +132,7 @@
       eval $(ssh-agent)
       gpg-connect-agent /bye
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+      # home-manager switch --flake .#gogsaan@gza
       # sudo rm -r /var/lib/waydroid
       # sudo ln -s /persist/var/var/lib/waydroid/ /var/lib/waydroid
     '';

@@ -1,7 +1,6 @@
 inputs: let
   inherit (inputs) self;
   inherit (self.lib) nixosSystem;
-
   sharedModules = [
     inputs.home-manager.nixosModules.home-manager
     {
@@ -16,18 +15,8 @@ inputs: let
 in {
   gza = nixosSystem {
     modules =
-      [
-        ./gza
-        inputs.hyprland.nixosModules.default # Steam?
-        ({
-          config,
-          pkgs,
-          pkgsUnstable,
-          ...
-        }: {})
-      ]
+      [./gza]
       ++ sharedModules;
-
     specialArgs = {inherit inputs;};
     system = "x86_64-linux";
   };
