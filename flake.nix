@@ -49,7 +49,6 @@
     imports = [
       "./overlays"
     ];
-
     devShells.${system}.default = pkgs.mkShell {
       sopsPGPKeyDirs = ["./keys"];
       sopsCreateGPGHome = true;

@@ -1,8 +1,17 @@
 {
   inputs,
   system,
+  lib,
   ...
 }: let
+  inherit (builtins) mapAttrs;
+
+  filterNixFiles = k: v: v == "regular" && lib.hasSuffix ".nix" k;
+  importNixFiles = path:
+    (lib.lists.forEach (lib.mapAttrsToList (name: _: path + ("/" + name))
+        (lib.filterAttrs filterNixFiles (builtins.readDir path))))
+    import;
+
   pkgs = import inputs.nixpkgs {
     inherit system;
     config = {
@@ -20,6 +29,23 @@
         looking-glass-client = pkgs.callPackage ./looking {};
         vscode = pkgs.callPackage ./vscode/vscode.nix {};
       };
+
+      overlays = with inputs;
+        [
+          (
+            final: _: let
+              inherit (final) system;
+            in {
+              sf-mono-liga-src = sf-mono-liga;
+              eww-wayland-git = eww.packages.${system}.eww-wayland;
+            }
+          )
+          nur.overlay
+          nixpkgs-wayland.overlay
+          nixpkgs-f2k.overlays.default
+        ]
+        # Overlays from ./overlays directory
+        ++ (importNixFiles ./overlays);
     };
   };
 in

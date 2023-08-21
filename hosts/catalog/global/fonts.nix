@@ -4,20 +4,7 @@
   ...
 }: {
   fonts = {
-    fonts = lib.attrValues {
-      inherit
-        (pkgs)
-        emacs-all-the-icons-fonts
-        inter
-        material-icons
-        material-design-icons
-        noto-fonts
-        noto-fonts-cjk
-        noto-fonts-emoji
-        sf-mono-liga-bin
-        twemoji-color-font
-        ;
-    };
+    fonts = with pkgs; [sf-mono-liga-bin];
 
     fontconfig = {
       enable = true;
