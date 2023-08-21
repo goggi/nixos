@@ -11,7 +11,6 @@
       allowUnfree = true;
       tarball-ttl = 0;
       permittedInsecurePackages = [
-        # "electron-21.4.0"
         "nodejs-16.20.0"
         "nodejs-16.20.1"
         "nodejs-16.20.2"

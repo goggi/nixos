@@ -3,43 +3,10 @@
   config,
   ...
 }: {
-  # gtk = {
-  #   enable = true;
-  #   theme = {
-  #     name = "Catppuccin-Latte-Standard-Mauve-Light";
-  #     package = pkgs.catppuccin-gtk;
-  #   };
-
-  #   # iconTheme = {
-  #   #   name = "Papirus";
-  #   #   package = pkgs.catppuccin-folders;
-  #   # };
-
-  #   font = {
-  #     name = "Inter";
-  #     size = 13;
-  #   };
-
-  #   gtk3.extraConfig = {
-  #     gtk-xft-antialias = 1;
-  #     gtk-xft-hinting = 1;
-  #     gtk-xft-hintstyle = "hintslight";
-  #     gtk-xft-rgba = "rgb";
-  #     gtk-decoration-layout = "menu:";
-  #   };
-
-  #   gtk2.extraConfig = ''
-  #     gtk-xft-antialias=1
-  #     gtk-xft-hinting=1
-  #     gtk-xft-hintstyle="hintslight"
-  #     gtk-xft-rgba="rgb"
-  #   '';
-  # };
-
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Mocha-Standard-Mauve-dark";
+      name = "Catppuccin-Latte-Standard-Mauve-Light";
       package = pkgs.catppuccin-gtk.override {
         accents = ["mauve"];
         size = "standard";

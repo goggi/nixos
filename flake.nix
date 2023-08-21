@@ -25,9 +25,7 @@
     devshell.url = "github:numtide/devshell";
     flake-utils.url = "github:numtide/flake-utils";
     bazecor.url = "github:gvolpe/bazecor-nix";
-
-    # Non Flakes
-    sf-mono-liga = {
+    sf-mono-liga-src = {
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
     };
@@ -48,6 +46,9 @@
     inherit lib pkgs;
     nixosConfigurations = import ./hosts inputs;
     formatter = pkgs.${system}.alejandra;
+    imports = [
+      "./overlays"
+    ];
 
     devShells.${system}.default = pkgs.mkShell {
       sopsPGPKeyDirs = ["./keys"];

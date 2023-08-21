@@ -63,12 +63,14 @@ in {
 
   fileSystems."/home/gogsaan/Drives/other" = {
     device = "/dev/disk/by-label/Other";
+    options = ["nofail"];
     fsType = "ext4";
   };
 
   services.lvm.boot.thin.enable = true;
   fileSystems."/home/gogsaan/Drives/backup" = {
     device = "/dev/volgroup_mirror/backup";
+    options = ["nofail"];
     fsType = "ext4";
   };
 
