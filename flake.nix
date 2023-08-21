@@ -25,7 +25,7 @@
     devshell.url = "github:numtide/devshell";
     flake-utils.url = "github:numtide/flake-utils";
     bazecor.url = "github:gvolpe/bazecor-nix";
-    sf-mono-liga-src = {
+    sf-mono-liga = {
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
     };
@@ -36,13 +36,12 @@
     nixpkgs,
     bazecor,
     sops-nix,
-    sf-mono-liga,
     ...
   } @ inputs: let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
     inherit (builtins);
-    pkgs = import ./pkgs/pkgs.nix {inherit inputs system lib builtins sf-mono-liga;};
+    pkgs = import ./pkgs/pkgs.nix {inherit inputs system lib builtins;};
   in {
     inherit lib pkgs;
     nixosConfigurations = import ./hosts inputs;

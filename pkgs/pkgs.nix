@@ -2,7 +2,6 @@
   inputs,
   system,
   lib,
-  sf-mono-liga,
   ...
 }: let
   inherit (builtins) mapAttrs;
@@ -26,24 +25,24 @@
         "nodejs-16.20.2"
       ];
 
-      overlays = with inputs;
-        [
-          (
-            final: _: let
-              inherit (final) system;
-            in {
-              sf-mono-liga-src = sf-mono-liga;
-            }
-          )
-        ]
-        ++ (importNixFiles ./overlays);
-
       packageOverrides = super: {
         looking-glass-client = pkgs.callPackage ./looking {};
         vscode = pkgs.callPackage ./vscode/vscode.nix {};
-        apple-fonts = pkgs.callPackage ./apple-fontss {};
+        # apple-fonts = pkgs.callPackage ./apple-fonts {};
       };
     };
+
+    overlays = with inputs;
+      [
+        (
+          final: _: let
+            inherit (final) system;
+          in {
+            sf-mono-liga-src = sf-mono-liga;
+          }
+        )
+      ]
+      ++ (importNixFiles ./overlays);
   };
 in
   pkgs
