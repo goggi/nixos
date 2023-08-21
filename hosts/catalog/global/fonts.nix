@@ -4,7 +4,21 @@
   ...
 }: {
   fonts = {
-    fonts = with pkgs; [sf-mono-liga-bin];
+    packages = lib.attrValues {
+      inherit
+        (pkgs)
+        emacs-all-the-icons-fonts
+        inter
+        material-icons
+        material-design-icons
+        noto-fonts
+        noto-fonts-cjk
+        noto-fonts-emoji
+        # sf-mono-liga
+        
+        twemoji-color-font
+        ;
+    };
 
     fontconfig = {
       enable = true;

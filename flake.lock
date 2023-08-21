@@ -477,11 +477,11 @@
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-wayland": "nixpkgs-wayland",
-        "sf-mono-liga-src": "sf-mono-liga-src",
+        "sf-mono-liga": "sf-mono-liga",
         "sops-nix": "sops-nix"
       }
     },
-    "sf-mono-liga-src": {
+    "sf-mono-liga": {
       "flake": false,
       "locked": {
         "lastModified": 1688258025,

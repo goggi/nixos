@@ -37,15 +37,11 @@
               inherit (final) system;
             in {
               sf-mono-liga-src = sf-mono-liga;
-              eww-wayland-git = eww.packages.${system}.eww-wayland;
             }
           )
-          nur.overlay
-          nixpkgs-wayland.overlay
-          nixpkgs-f2k.overlays.default
         ]
         # Overlays from ./overlays directory
-        ++ (importNixFiles ./overlays);
+        ++ (importNixFiles ./pkgs/overlays);
     };
   };
 in
