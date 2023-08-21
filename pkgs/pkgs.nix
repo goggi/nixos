@@ -25,11 +25,6 @@
         "nodejs-16.20.2"
       ];
 
-      packageOverrides = super: {
-        looking-glass-client = pkgs.callPackage ./looking {};
-        vscode = pkgs.callPackage ./vscode/vscode.nix {};
-      };
-
       overlays = with inputs;
         [
           (
@@ -41,7 +36,12 @@
           )
         ]
         # Overlays from ./overlays directory
-        ++ (importNixFiles ./pkgs/overlays);
+        ++ (importNixFiless ./overlays);
+
+      packageOverrides = super: {
+        looking-glass-client = pkgs.callPackage ./looking {};
+        vscode = pkgs.callPackage ./vscode/vscode.nix {};
+      };
     };
   };
 in
