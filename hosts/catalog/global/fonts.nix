@@ -14,8 +14,7 @@
         noto-fonts
         noto-fonts-cjk
         noto-fonts-emoji
-        # sf-mono-liga
-        
+        sf-mono-liga
         twemoji-color-font
         ;
     };
