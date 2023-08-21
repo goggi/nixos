@@ -13,7 +13,7 @@
     (import flake-compat {
       src = builtins.fetchTarball {
         url = "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
-        sha256 = "sha256:086863p2nl3id5agvyhh7k5yx7xka95djw3gby3pax4697dhbqgc";
+        sha256 = "sha256:1jggilhxm0khp0svgbvlra3kpc1x6rgpibk1vszw596pn8sxg876";
       };
     })
     .defaultNix;
@@ -42,7 +42,6 @@ in {
     systemdIntegration = true;
     xwayland = {
       enable = true;
-      hidpi = true;
     };
     extraConfig = import ./config.nix;
   };

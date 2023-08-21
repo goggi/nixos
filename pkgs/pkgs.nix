@@ -2,15 +2,16 @@
   inputs,
   system,
   lib,
+  sf-mono-liga,
   ...
 }: let
   inherit (builtins) mapAttrs;
 
-  # filterNixFiles = k: v: v == "regular" && lib.hasSuffix ".nix" k;
-  # importNixFiles = path:
-  #   (lib.lists.forEach (lib.mapAttrsToList (name: _: path + ("/" + name))
-  #       (lib.filterAttrs filterNixFiles (builtins.readDir path))))
-  #   import;
+  filterNixFiles = k: v: v == "regular" && lib.hasSuffix ".nix" k;
+  importNixFiles = path:
+    (lib.lists.forEach (lib.mapAttrsToList (name: _: path + ("/" + name))
+        (lib.filterAttrs filterNixFiles (builtins.readDir path))))
+    import;
 
   pkgs = import inputs.nixpkgs {
     inherit system;
@@ -25,23 +26,22 @@
         "nodejs-16.20.2"
       ];
 
-      # overlays = with inputs;
-      #   [
-      #     (
-      #       final: _: let
-      #         inherit (final) system;
-      #       in {
-      #         sf-mono-liga-src = sf-mono-liga;
-      #       }
-      #     )
-      #   ]
-      #   # Overlays from ./overlays directory
-      #   ++ (importNixFiless ./overlays);
+      overlays = with inputs;
+        [
+          (
+            final: _: let
+              inherit (final) system;
+            in {
+              sf-mono-liga-src = sf-mono-liga;
+            }
+          )
+        ]
+        ++ (importNixFiles ./overlays);
 
       packageOverrides = super: {
         looking-glass-client = pkgs.callPackage ./looking {};
         vscode = pkgs.callPackage ./vscode/vscode.nix {};
-        apple-fonts = pkgs.callPackage ./apple-fonts {};
+        apple-fonts = pkgs.callPackage ./apple-fontss {};
       };
     };
   };
