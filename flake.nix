@@ -23,7 +23,6 @@
     # Other
     sops-nix.url = github:Mic92/sops-nix;
     devshell.url = "github:numtide/devshell";
-    flake-utils.url = "github:numtide/flake-utils";
     bazecor.url = "github:gvolpe/bazecor-nix";
     sf-mono-liga = {
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";

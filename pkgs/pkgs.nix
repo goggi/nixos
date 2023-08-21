@@ -28,7 +28,6 @@
       packageOverrides = super: {
         looking-glass-client = pkgs.callPackage ./looking {};
         vscode = pkgs.callPackage ./vscode/vscode.nix {};
-        # apple-fonts = pkgs.callPackage ./apple-fonts {};
       };
     };
 
