@@ -3,9 +3,7 @@
 # define colors
 #        red       peach     green     blue
 colors=("#f38ba8" "#fab387" "#a6e3a1" "#89b4fa")
-#        pink      yellow    teal      lavender
-dimmed=("#f5c2e7" "#f9e2af" "#94e2d5" "#b4befe")
-empty="#313244"
+empty="rgba(30, 30, 46, 0.6)"
 
 # get initial focused workspace
 focusedws=$(hyprctl -j monitors | jaq -r '.[] | select(.focused == true) | .activeWorkspace.id')
@@ -18,12 +16,7 @@ declare -A workspaces
 status() {
   if [ "${o[$1]}" -eq 1 ]; then
     mon=${monitormap[${workspaces[$1]}]}
-
-    if [ "$focusedws" -eq "$1" ]; then
-      echo -n "${colors[$mon]}"
-    else
-      echo -n "${dimmed[$mon]}"
-    fi
+    echo -n "${colors[$mon]}"
   else
     echo -n "$empty"
   fi
@@ -31,12 +24,11 @@ status() {
 
 # handle workspace create/destroy
 workspace_event() {
-  o[$1]=$2
-  while read -r k v; do workspaces[$k]="$v"; done < <(hyprctl -j workspaces | gojq -r '.[]|"\(.id) \(.monitor)"')
+  while read -r k v; do workspaces[$k]="$v"; done < <(hyprctl -j workspaces | jaq -jr '.[] | .id, " ", .monitor, "\n"')
 }
 # handle monitor (dis)connects
 monitor_event() {
-  while read -r k v; do monitormap["$k"]=$v; done < <(hyprctl -j monitors | gojq -r '.[]|"\(.name) \(.id) "')
+  while read -r k v; do monitormap["$k"]=$v; done < <(hyprctl -j monitors | jaq -jr '.[] | .name, " ", .id, "\n"')
 }
 
 # get all apps titles in a workspace
@@ -49,13 +41,13 @@ applist() {
 
 # generate the json for eww
 generate() {
-  echo -n '['
+  echo -n '{"workspaces": ['
 
   for i in {1..10}; do
-    echo -n ''"$([ "$i" -eq 1 ] || echo ,)" '{ "number": "'"$i"'", "color": "'"$(status "$i")"'" }' #, "tooltip": "'$(applist "$i")'" }'
+    echo -n ''"$([ "$i" -eq 1 ] || echo ,)" '{"number": '"$i"', "color": "'"$(status "$i")"'", "focused": '"$([ "$focusedws" = "$i" ] && echo "true" || echo "false")"'}' #, "tooltip": "'$(applist "$i")'" }'
   done
 
-  echo ']'
+  echo '], "screencast": '"$screencast"'}'
 }
 
 # setup
@@ -64,7 +56,10 @@ generate() {
 monitor_event
 
 # add workspaces
-while read -r k v; do workspaces[$k]="$v"; done < <(hyprctl -j workspaces | gojq -r '.[]|"\(.id) \(.monitor)"')
+workspace_event
+
+# screen is not shared by default
+screencast=false
 
 # check occupied workspaces
 for num in "${!workspaces[@]}"; do
@@ -74,7 +69,7 @@ done
 generate
 
 # main loop
-socat -u UNIX-CONNECT:/tmp/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock - | rg --line-buffered "workspace|mon(itor)?" | while read -r line; do
+socat -u UNIX-CONNECT:/tmp/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock - | rg --line-buffered "workspace|mon(itor)?|screencast" | while read -r line; do
   case ${line%>>*} in
   "workspace")
     focusedws=${line#*>>}
@@ -83,13 +78,16 @@ socat -u UNIX-CONNECT:/tmp/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock - |
     focusedws=${line#*,}
     ;;
   "createworkspace")
-    workspace_event "${line#*>>}" 1
+    o[${line#*>>}]=1
     ;;
   "destroyworkspace")
-    workspace_event "${line#*>>}" 0
+    o[${line#*>>}]=0
     ;;
   "monitor"*)
     monitor_event
+    ;;
+  "screencast")
+    screencast=$([ "$(echo "${line#*>>}" | awk -F, '{print $1}')" -eq 1 ] && echo true || echo false)
     ;;
   esac
   generate

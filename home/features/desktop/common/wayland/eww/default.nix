@@ -2,25 +2,29 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   dependencies = with pkgs; [
-    config.wayland.windowManager.hyprland.package
     cfg.package
+
+    inputs.gross.packages.${pkgs.system}.gross
+    config.wayland.windowManager.hyprland.package
+
     bash
     blueberry
     bluez
+    brillo
     coreutils
     dbus
     findutils
     gawk
     gnome.gnome-control-center
     gnused
-    gojq
     imagemagick
     jaq
     jc
-    light
+    libnotify
     networkmanager
     pavucontrol
     playerctl
@@ -87,7 +91,7 @@ in {
         filter = name: _type: let
           baseName = baseNameOf (toString name);
         in
-          !(lib.hasSuffix ".nix" baseName) && (baseName != "_colors.scss");
+          !(lib.hasSuffix ".nix" baseName) && (baseName != "colors.scss");
         src = lib.cleanSource ./.;
       };
 
@@ -101,10 +105,10 @@ in {
     };
 
     # colors file
-    xdg.configFile."eww/css/_colors.scss".text =
+    xdg.configFile."eww/css/colors.scss".text =
       if cfg.colors != null
       then cfg.colors
-      else (builtins.readFile ./css/_colors.scss);
+      else (builtins.readFile ./css/colors.scss);
 
     systemd.user.services.eww = {
       Unit = {

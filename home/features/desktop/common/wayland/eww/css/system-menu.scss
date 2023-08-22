@@ -1,13 +1,13 @@
-.system-menu-box {
-  @include window;
-  background-color: $bg;
-  color: $text;
-}
+/* system menu */
 
+.system-menu-box { @include window; }
+
+/* between net/bt and their arrows */
 .separator {
   font-size: 1rem;
 }
 
+/* date & time */
 .top-row {
   margin: 1rem 1.5rem 0;
 
@@ -15,8 +15,6 @@
 
   .date-box {
     margin: 0 1rem;
-
-    label { font-size: 1.1rem; }
 
     .date {
       background: unset;
@@ -26,38 +24,61 @@
   }
 }
 
+/* wifi/bt/airplane button boxes */
 .system-row {
   margin: .5rem .7rem;
 
+  /* the airplane icon is not properly spaced */
   .airplane-box button {
     padding: 1rem 3rem;
   }
 
   label {
-    font-size: 1rem;
     margin: 0 .1rem;
   }
 }
 
+/* wifi/bt/airplane buttons */
 .element {
   @include rounding;
   background-color: $bg1;
   margin: .3rem;
 
+  .enabled button {
+    background: rgba(255, 255, 255, .2);
+    label { color: $base; }
+  }
+  .disabled button {
+    background: rgba(0, 0, 0, .1);
+    label { color: white; }
+  }
+
+  .enabled .separator { background: $base; }
+  .disabled .separator { background: white; }
+
   button {
-    @include rounding;
     padding: 1rem;
 
     label {
       font-size: 1.5rem;
     }
 
+    :first-child {
+      border-radius: 8px 0 0 8px;
+    }
+
+    :last-child {
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* set wifi/bt colors and dim buttons when hovering */
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(0, 0, 0, .1);
     }
   }
 }
 
+/* volume & brightness sliders */
 .sliders {
   @include rounding;
   background-color: $bg1;
@@ -75,6 +96,10 @@
   label { font-size: 1.2rem; }
 }
 
+.system-row .text, .system-info-box .text {
+  font-size: .9rem;
+}
+
 .volume-slider-box,
 .brightness-slider-box {
   trough { background-color: $base; }
@@ -90,11 +115,18 @@
   background-image: linear-gradient(to right, $yellow, $peach);
 }
 
+/* battery & power button */
 .bottom-row {
   margin: .5rem 1rem;
 
-  .battery-icon { font-size: 2rem; }
-  .battery-wattage { color: $mauve; }
+  .battery-icon {
+    color: $green;
+    font-size: 2rem;
+
+    .low { color: $red; }
+  }
+
+  .battery-rate { color: $mauve; }
 
   .battery-status {
     color: $subtext0;
@@ -112,16 +144,13 @@
   }
 }
 
+
 .bt-connected {
   background-color: $blue;
   color: $crust;
-
-  button:hover { background-color: rgba(0, 0, 0, .1); }
 }
 
 .net-connected {
   background-color: $mauve;
   color: $crust;
-
-  button:hover { background-color: rgba(0, 0, 0, .1); }
 }

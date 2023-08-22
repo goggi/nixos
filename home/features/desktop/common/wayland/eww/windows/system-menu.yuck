@@ -1,5 +1,8 @@
+(defvar GB 1024000000)
+(defvar MB 1024000)
+
 (defwidget system-menu []
-  (box
+  (box ; time & date
     :class "system-menu-box"
     :space-evenly false
     :orientation "v"
@@ -7,19 +10,19 @@
       :class "top-row"
       :space-evenly false
       (label
-        :class "time"
-        :text "${time.hour}:${time.minute}")
+        :class "time text"
+        :text {formattime(EWW_TIME, "%H:%M")})
       (box
         :class "date-box"
         :space-evenly false
         (label
           :class "date"
-          :text {time.date})
+          :text {formattime(EWW_TIME, "%d/%m")})
         (label
           :class "day"
-          :text {time.day})))
+          :text {formattime(EWW_TIME, "%A")})))
 
-    (centerbox
+    (centerbox ; wifi/bluetooth/airplane buttons
       :class "system-row"
       (box
         :class "net-box"
@@ -37,12 +40,14 @@
             :text "│")
           (button
             :class "net-arrow-btn"
-            :onclick "eww close system-menu && gnome-control-center &"
+            :onclick "eww close system-menu && XDG_CURRENT_DESKTOP=GNOME gnome-control-center &"
             ""))
         (label
+          :class "text"
           :text {net.name}
           :xalign 0.5
-          :limit-width 15))
+          :justify "center"
+          :wrap true))
 
       (box
         :class "bluetooth-box"
@@ -63,10 +68,12 @@
             :onclick "eww close system-menu && blueberry"
             ""))
         (label
+          :class "text"
           :text {bluetooth.text}
           :xalign 0.5
-          :tooltip "${bluetooth.text} ${bluetooth.battery}"
-          :limit-width 15))
+          :justify "center"
+          :tooltip {bluetooth.battery}
+          :wrap true))
 
       (box
         :class "airplane-box"
@@ -79,11 +86,12 @@
             :onclick "scripts/airplane toggle"
             airplane))
         (label
+          :class "text"
           :text "Airplane Mode"
           :xalign 0.5
           :limit-width 16)))
 
-    (box
+    (box ; brightness & volume sliders
       :class "sliders"
       :orientation "v"
       (box
@@ -108,9 +116,9 @@
           :class "brightness-slider" 
           :value {brightness.percent} 
           :marks true 
-          :onchange "light -S {}")))
+          :onchange "brillo -S {}")))
 
-    (box
+    (box ; cpu & memory info
       :class "system-info-box"
 
       ; cpu
@@ -126,6 +134,7 @@
             :text ""
             :class "sys-icon-cpu icon"))
         (box
+          :class "text"
           :orientation "v"
           :vexpand false
           (label
@@ -147,43 +156,48 @@
         :space-evenly false
         :halign "end"
         (circular-progress
-          :value {memory.percent}
+          :value {EWW_RAM.used_mem_perc}
           :class "sys-mem"
           :thickness 3
           (label
             :text ""
             :class "sys-icon-mem icon"))
         (box
+          :class "text"
           :orientation "v"
           (label
             :text "memory"
             :halign "start"
             :class "sys-text-mem")
           (label
-            :text "${memory.used} | ${memory.total}"
+            :text {EWW_RAM.used_mem / GB < 1 ? "${round(EWW_RAM.used_mem / MB, 1)} M used" : "${round(EWW_RAM.used_mem / GB, 1)} G used"}
+            :halign "start"
+            :class "sys-text-sub")
+          (label
+            :text {EWW_RAM.total_mem / GB < 1 ? "${round(EWW_RAM.total_mem / MB, 1)} M total" : "${round(EWW_RAM.total_mem / GB, 1)} G total"}
             :halign "start"
             :class "sys-text-sub"))))
 
-    (centerbox
+    (centerbox ; battery info & power button
       :class "bottom-row"
       (box
         :class "battery-box"
         :space-evenly false
         :halign "start"
         (label
-          :class "battery-icon icon"
-          :style "color: ${battery.color}"
-          :text {battery.icon})
+          :class "battery-icon icon ${EWW_BATTERY.total_avg > 20 ? '' : 'low'}"
+          :text {battery_icons[round(EWW_BATTERY.total_avg / (100 / arraylength(battery_icons)) - 1,0)]})
         (label
-          :text {battery.percentage})
+          :class "text"
+          :text {round(EWW_BATTERY.total_avg,0)})
         (label
-          :class "battery-status"
+          :class "battery-status text"
           :text {battery.status})
         (label
-          :class "battery-wattage"
-          :text {battery.status != "Fully Charged" ? battery.wattage : ""}))
-      (label)
-      (box
+          :class "battery-rate text"
+          :text {battery.rate}))
+      (label) ; empty element; centerbox requires 3 children but we only need left/right
+      (box ; power button
         :space-evenly false
         :halign "end"
         (button
@@ -201,4 +215,5 @@
     :width "0%"
     :height "0%"
     :anchor "right top")
+  :namespace "system-menu"
   (system-menu))
