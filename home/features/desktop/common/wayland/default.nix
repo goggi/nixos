@@ -38,6 +38,16 @@
     swaybg
   ];
 
+  programs.eww-hyprland = {
+    enable = true;
+    # temp fix until https://github.com/NixOS/nixpkgs/pull/249515 lands. after that,
+    # eww's nixpkgs has to be updated
+    package = inputs.eww.packages.${pkgs.system}.eww-wayland.overrideAttrs (old: {
+      nativeBuildInputs = old.nativeBuildInputs ++ [pkgs.wrapGAppsHook];
+      buildInputs = lib.lists.remove pkgs.gdk-pixbuf (old.buildInputs ++ [pkgs.librsvg]);
+    });
+  };
+
   services.gammastep = {
     enable = true;
     provider = "geoclue2";

@@ -16,6 +16,7 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+    fu.url = "github:numtide/flake-utils";
 
     # Hyprland
     hyprland = {
@@ -32,6 +33,11 @@
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
     };
+    eww = {
+      url = "github:elkowar/eww";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
     #  Fufexan
     fufexan = {
       url = "github:fufexan/dotfiles";
@@ -41,6 +47,11 @@
       url = "github:fufexan/gross";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "fu";
     };
   };
 
