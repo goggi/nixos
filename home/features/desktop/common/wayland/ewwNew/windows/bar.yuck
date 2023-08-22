@@ -3,14 +3,14 @@
   (box
     :space-evenly false
     :halign "start"
-    (workspaces)
-    (indicators)))
+    (workspaces)))
 
 (defwidget center []
   (box
     :space-evenly false
     :halign "center"
-    (music-module)))
+    (music-module)
+    (indicators)))
 
 (defwidget sysbox []
   (eventbox

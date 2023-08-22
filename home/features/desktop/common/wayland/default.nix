@@ -12,6 +12,7 @@
     ./swaylock.nix
     ./waybar
     ./eww
+    ./eww/eww.nix
     ./rofi.nix
     # ./wofi.nix
     ./gtk.nix
@@ -40,6 +41,7 @@
 
   programs.eww-hyprland = {
     enable = true;
+    # autoReload = true;
     # temp fix until https://github.com/NixOS/nixpkgs/pull/249515 lands. after that,
     # eww's nixpkgs has to be updated
     package = inputs.eww.packages.${pkgs.system}.eww-wayland.overrideAttrs (old: {
