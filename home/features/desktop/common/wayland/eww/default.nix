@@ -2,13 +2,13 @@
   config,
   pkgs,
   lib,
-  inputs,
+  inputs',
   ...
 }: let
   dependencies = with pkgs; [
     cfg.package
 
-    inputs.gross.packages.${pkgs.system}.gross
+    inputs'.gross.packages.gross
     config.wayland.windowManager.hyprland.package
 
     bash
@@ -91,7 +91,7 @@ in {
         filter = name: _type: let
           baseName = baseNameOf (toString name);
         in
-          !(lib.hasSuffix ".nix" baseName) && (baseName != "colors.scss");
+          !(lib.hasSuffix ".nix" baseName) && (baseName != "_colors.scss");
         src = lib.cleanSource ./.;
       };
 
@@ -105,10 +105,10 @@ in {
     };
 
     # colors file
-    xdg.configFile."eww/css/colors.scss".text =
+    xdg.configFile."eww/css/_colors.scss".text =
       if cfg.colors != null
       then cfg.colors
-      else (builtins.readFile ./css/colors.scss);
+      else (builtins.readFile ./css/_colors.scss);
 
     systemd.user.services.eww = {
       Unit = {

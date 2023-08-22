@@ -57,7 +57,7 @@
           (scale
             ; transform scale position percentage into song position
             :onchange "playerctl position `awk -v len=$(playerctl metadata mpris:length) 'BEGIN{print {} * len / 1000000 / 100}'`"
-            :css ".top { background: ${music.foreground}; }"
+            :globalstyle ".top { background: ${music.foreground}; }"
             :value {music_time.position_percent}))))))
 
 (defwindow music
@@ -70,5 +70,4 @@
     :width "0%"
     :height "0%"
     :anchor "top center")
-  :namespace "eww-music"
   (music))

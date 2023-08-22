@@ -215,5 +215,4 @@
     :width "0%"
     :height "0%"
     :anchor "right top")
-  :namespace "system-menu"
   (system-menu))

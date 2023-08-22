@@ -2,17 +2,16 @@
 .song-cover-art {
   background-position: center;
   background-size: cover;
-  border-radius: 100%;
   margin: 4px 5px 4px 0;
   min-height: 24px;
   min-width: 24px;
+  @include rounding;
 }
 
 /* music window */
 .music-window {
+  border: 1px solid $border;
   @include window;
-  /* matches the cover art radius nicely */
-  border-radius: 16px;
 }
 
 /* cover, left child */
@@ -20,7 +19,7 @@
   background-position: center;
   background-size: cover;
   border-radius: 8px;
-  box-shadow: 0 1px 2px -1px rgba(0, 0, 0, .4);
+  box-shadow: 0 1px 2px -1px rgba(0,0,0,0.4);
   margin: 1em;
   min-height: 170px;
   min-width: 170px;
@@ -36,6 +35,9 @@
   font-weight: bold;
   margin: .5rem;
 }
+
+.dark { color: $base; }
+.light { color: $text; }
 
 .music-artist {
   margin: 1rem;

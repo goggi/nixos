@@ -1,5 +1,4 @@
 /* system menu */
-
 .system-menu-box { @include window; }
 
 /* between net/bt and their arrows */
@@ -15,6 +14,8 @@
 
   .date-box {
     margin: 0 1rem;
+
+    label { font-size: 1.1rem; }
 
     .date {
       background: unset;
@@ -34,6 +35,7 @@
   }
 
   label {
+    font-size: 1rem;
     margin: 0 .1rem;
   }
 }
@@ -44,36 +46,16 @@
   background-color: $bg1;
   margin: .3rem;
 
-  .enabled button {
-    background: rgba(255, 255, 255, .2);
-    label { color: $base; }
-  }
-  .disabled button {
-    background: rgba(0, 0, 0, .1);
-    label { color: white; }
-  }
-
-  .enabled .separator { background: $base; }
-  .disabled .separator { background: white; }
-
   button {
+    @include rounding;
     padding: 1rem;
 
     label {
       font-size: 1.5rem;
     }
 
-    :first-child {
-      border-radius: 8px 0 0 8px;
-    }
-
-    :last-child {
-      border-radius: 0 8px 8px 0;
-    }
-
-    /* set wifi/bt colors and dim buttons when hovering */
     &:hover {
-      background-color: rgba(0, 0, 0, .1);
+      background-color: rgba(255, 255, 255, 0.1);
     }
   }
 }
@@ -94,10 +76,6 @@
 
   box { margin: .2rem 0; }
   label { font-size: 1.2rem; }
-}
-
-.system-row .text, .system-info-box .text {
-  font-size: .9rem;
 }
 
 .volume-slider-box,
@@ -122,10 +100,9 @@
   .battery-icon {
     color: $green;
     font-size: 2rem;
-
-    .low { color: $red; }
   }
 
+  .battery-icon .low { color: $red; }
   .battery-rate { color: $mauve; }
 
   .battery-status {
@@ -144,6 +121,10 @@
   }
 }
 
+/* set wifi/bt colors and dim buttons when hovering */
+.element {
+  button:hover { background-color: rgba(0, 0, 0, .1); }
+}
 
 .bt-connected {
   background-color: $blue;

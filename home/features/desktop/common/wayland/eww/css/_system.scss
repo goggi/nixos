@@ -1,11 +1,8 @@
 /* right modules (circular-progress) */
 .cpubar { color: $blue; }
 .membar { color: $peach; }
-.batbar {
-  color: $green;
-
-  .low { color: $red; }
-}
+.batbar { color: $green; }
+.batbar .low { color: $red; }
 
 .cpubar,
 .membar,
