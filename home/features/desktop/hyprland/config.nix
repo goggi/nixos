@@ -376,14 +376,8 @@
   bind=,XF86AudioPrev,exec,playerctl previous
   bind=,XF86AudioPlay,exec,playerctl play-pause
   bind=,XF86AudioStop,exec,playerctl stop
-  bind = ,XF86AudioRaiseVolume, exec, pamixer -i 5
-  bind = ,XF86AudioLowerVolume, exec, pamixer -d 5
-
-  # bind = ,XF86AudioRaiseVolume, exec, echo "hello world"
-  # bind = ,XF86AudioLowerVolume, exec, echo "hello world"
-
-  # bind = ,XF86AudioRaiseVolume, workspace, next
-  # bind = ,XF86AudioLowerVolume, workspace, previous
+  bind = ,XF86AudioRaiseVolume, exec, volume -i 5
+  bind = ,XF86AudioLowerVolume, exec, volume -d 5
 
 
   # Screenshots
