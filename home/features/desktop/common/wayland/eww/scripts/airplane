@@ -1,9 +1,4 @@
-#!/usr/bin/env bash
-
-# shellcheck source=/dev/null
-source "$(dirname "$0")"/utils
-
-STATUS="$(rfkill list | sed -n 2p | awk '{print $3}')"
+#!/bin/sh
 
 icon() {
   [ "$STATUS" = "no" ] && echo "" || echo ""
@@ -22,19 +17,8 @@ toggle() {
 if [ "$1" = "toggle" ]; then
   toggle
 else
-  last_time=$(get_time_ms)
-  STATUS="$(rfkill list | sed -n 2p | awk '{print $3}')"
-  icon
-
   rfkill event | while read -r _; do
-    current_time=$(get_time_ms)
-    delta=$((current_time - last_time))
-    # 50ms debounce
-    if [[ $delta -gt 50 ]]; then
-      STATUS="$(rfkill list | sed -n 2p | awk '{print $3}')"
-      icon
-      # reset debounce timer
-      last_time=$(get_time_ms)
-    fi
+    STATUS="$(rfkill list | sed -n 2p | awk '{print $3}')"
+    icon
   done
 fi

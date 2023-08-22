@@ -9,16 +9,15 @@
         :class "song-cover-art"
         :style "background-image: url(\"${music.cover}\");")
       (button
-        :class "module text"
+        :class "module"
         :onclick "${EWW_CMD} open --toggle music"
         {music.title})
-      ; show buttons when hovering
       (revealer
         :transition "slideright"
         :reveal music_reveal
         :duration "350ms"
         (box
-          :class "icon text"
+          :class "icon"
           (button :class "song-button" :onclick "playerctl previous" "")
           (button :class "song-button" :onclick "playerctl play-pause" {music.status})
           (button :class "song-button" :onclick "playerctl next" ""))))))

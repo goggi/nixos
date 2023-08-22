@@ -10,17 +10,17 @@
     bash
     blueberry
     bluez
-    brillo
     coreutils
     dbus
     findutils
     gawk
     gnome.gnome-control-center
     gnused
+    gojq
     imagemagick
     jaq
     jc
-    libnotify
+    light
     networkmanager
     pavucontrol
     playerctl

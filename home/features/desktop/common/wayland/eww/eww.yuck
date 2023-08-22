@@ -1,47 +1,40 @@
-; all variables and listeners
-(include "./variables.yuck")
-
-; various bar modules
 (include "./modules/bluetooth.yuck")
 (include "./modules/bright.yuck")
 (include "./modules/clock.yuck")
-(include "./modules/indicators.yuck")
 (include "./modules/music.yuck")
 (include "./modules/net.yuck")
 (include "./modules/sys.yuck")
+(include "./modules/variables.yuck")
 (include "./modules/volume.yuck")
 (include "./modules/workspaces.yuck")
 
-; individual windows; bar is in this file
 (include "./windows/calendar.yuck")
 (include "./windows/music.yuck")
-(include "./windows/osd.yuck") ; on-screen-display (volume/brightness)
+(include "./windows/osd.yuck")
 (include "./windows/system-menu.yuck")
 
-; bar modules alignment
 (defwidget left []
   (box
     :space-evenly false
     :halign "start"
     (workspaces)))
 
-(defwidget center []
-  (box
-    :space-evenly false
-    :halign "center"
-    (music-module)))
-
 (defwidget right []
   (box
     :space-evenly false
     :halign "end"
-    (indicators)
     (bright)
     (volume-module)
     (bluetooth)
     (net)
     (sys)
     (clock_module)))
+
+(defwidget center []
+  (box
+    :space-evenly false
+    :halign "center"
+    (music-module)))
 
 (defwidget bar-box []
   (centerbox

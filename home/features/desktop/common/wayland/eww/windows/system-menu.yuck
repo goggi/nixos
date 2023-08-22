@@ -1,5 +1,5 @@
 (defwidget system-menu []
-  (box ; time & date
+  (box
     :class "system-menu-box"
     :space-evenly false
     :orientation "v"
@@ -7,7 +7,7 @@
       :class "top-row"
       :space-evenly false
       (label
-        :class "time text"
+        :class "time"
         :text "${time.hour}:${time.minute}")
       (box
         :class "date-box"
@@ -19,7 +19,7 @@
           :class "day"
           :text {time.day})))
 
-    (centerbox ; wifi/bluetooth/airplane buttons
+    (centerbox
       :class "system-row"
       (box
         :class "net-box"
@@ -37,14 +37,12 @@
             :text "│")
           (button
             :class "net-arrow-btn"
-            :onclick "eww close system-menu && XDG_CURRENT_DESKTOP=GNOME gnome-control-center &"
+            :onclick "eww close system-menu && gnome-control-center &"
             ""))
         (label
-          :class "text"
           :text {net.name}
           :xalign 0.5
-          :justify "center"
-          :wrap true))
+          :limit-width 15))
 
       (box
         :class "bluetooth-box"
@@ -65,12 +63,10 @@
             :onclick "eww close system-menu && blueberry"
             ""))
         (label
-          :class "text"
           :text {bluetooth.text}
           :xalign 0.5
-          :justify "center"
-          :tooltip {bluetooth.battery}
-          :wrap true))
+          :tooltip "${bluetooth.text} ${bluetooth.battery}"
+          :limit-width 15))
 
       (box
         :class "airplane-box"
@@ -83,12 +79,11 @@
             :onclick "scripts/airplane toggle"
             airplane))
         (label
-          :class "text"
           :text "Airplane Mode"
           :xalign 0.5
           :limit-width 16)))
 
-    (box ; brightness & volume sliders
+    (box
       :class "sliders"
       :orientation "v"
       (box
@@ -113,9 +108,9 @@
           :class "brightness-slider" 
           :value {brightness.percent} 
           :marks true 
-          :onchange "brillo -S {}")))
+          :onchange "light -S {}")))
 
-    (box ; cpu & memory info
+    (box
       :class "system-info-box"
 
       ; cpu
@@ -131,7 +126,6 @@
             :text ""
             :class "sys-icon-cpu icon"))
         (box
-          :class "text"
           :orientation "v"
           :vexpand false
           (label
@@ -160,22 +154,17 @@
             :text ""
             :class "sys-icon-mem icon"))
         (box
-          :class "text"
           :orientation "v"
           (label
             :text "memory"
             :halign "start"
             :class "sys-text-mem")
           (label
-            :text "${memory.used} used"
-            :halign "start"
-            :class "sys-text-sub")
-          (label
-            :text "${memory.total} total"
+            :text "${memory.used} | ${memory.total}"
             :halign "start"
             :class "sys-text-sub"))))
 
-    (centerbox ; battery info & power button
+    (centerbox
       :class "bottom-row"
       (box
         :class "battery-box"
@@ -186,16 +175,15 @@
           :style "color: ${battery.color}"
           :text {battery.icon})
         (label
-          :class "text"
           :text {battery.percentage})
         (label
-          :class "battery-status text"
+          :class "battery-status"
           :text {battery.status})
         (label
-          :class "battery-wattage text"
+          :class "battery-wattage"
           :text {battery.status != "Fully Charged" ? battery.wattage : ""}))
-      (label) ; empty element; centerbox requires 3 children but we only need left/right
-      (box ; power button
+      (label)
+      (box
         :space-evenly false
         :halign "end"
         (button

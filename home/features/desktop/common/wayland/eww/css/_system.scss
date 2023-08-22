@@ -1,21 +1,34 @@
-/* right modules (circular-progress) */
-.cpubar { color: $blue; }
-.membar { color: $peach; }
-.batbar { color: $green; }
+.membar {
+  color: $peach;
+}
 
-.cpubar,
+.cpubar {
+  color: $blue;
+}
+
+.batbar {
+  color: $green;
+}
+
 .membar,
-.batbar { background-color: $bg1; }
+.cpubar,
+.batbar {
+  background-color: $bg1;
+}
 
-.iconmem { color: $peach; }
-.iconcpu { color: $blue; }
+.iconmem {
+  color: $peach;
+}
+
+.iconcpu {
+  color: $blue;
+}
 
 .icon-text {
   font-size: 3rem;
   padding: .7rem;
 }
 
-/* system box cpu & memory info */
 .sys-text-sub {
   color: $text;
 }

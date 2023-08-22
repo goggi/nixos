@@ -1,6 +1,8 @@
 .calendar-win {
-  padding: .2em;
   @include window;
+  background-color: $bg;
+  color: $fg;
+  padding: .2em;
 }
 
 calendar {
