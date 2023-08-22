@@ -2,15 +2,11 @@
   config,
   pkgs,
   lib,
-  inputs',
   ...
 }: let
   dependencies = with pkgs; [
-    cfg.package
-
-    inputs'.gross.packages.gross
     config.wayland.windowManager.hyprland.package
-
+    cfg.package
     bash
     blueberry
     bluez
