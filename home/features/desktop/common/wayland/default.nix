@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}: {
   imports = [
     ./gammastep.nix
     # ./kitty.nix
