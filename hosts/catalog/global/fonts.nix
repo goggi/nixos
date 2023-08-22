@@ -10,6 +10,7 @@
         emacs-all-the-icons-fonts
         inter
         material-icons
+        material-symbols
         material-design-icons
         noto-fonts
         noto-fonts-cjk
