@@ -5,22 +5,21 @@
   ...
 }: {
   home.packages = with pkgs; [
-    inputs.gross.packages.${pkgs.system}.gross
     config.wayland.windowManager.hyprland.package
     bash
     blueberry
     bluez
-    brillo
     coreutils
     dbus
     findutils
     gawk
     gnome.gnome-control-center
     gnused
+    gojq
     imagemagick
     jaq
     jc
-    libnotify
+    light
     networkmanager
     pavucontrol
     playerctl

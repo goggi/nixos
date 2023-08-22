@@ -9,7 +9,7 @@
         :class "song-cover-art"
         :style "background-image: url(\"${music.cover}\");")
       (button
-        :class "module"
+        :class "module music-font"
         :onclick "${EWW_CMD} open --toggle music"
         {music.title})
       (revealer
