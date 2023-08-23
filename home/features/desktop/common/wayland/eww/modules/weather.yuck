@@ -5,14 +5,11 @@
 
 (defwidget weather-module []
   (box
-    :orientation "v"
     :space-evenly "false"
     :class "module"
+    
     (box
-      :orientation "h"
-      :space-evenly "false"
-      (box
-        :class "weather-icon"
-      :style "color: ${weather-hex}" {weather-icon})
-      (box
-      :class "temperature" "${weather-temp} "))))
+      :class "weather-icon"
+    :style "color: ${weather-hex}" {weather-icon})
+    (box
+    :class "temperature" "${weather-temp} ")))

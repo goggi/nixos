@@ -10,8 +10,9 @@
         :style "background-image: url(\"${music.cover}\");")
       (button
         :class "module music-font"
-        :onclick "${EWW_CMD} open --toggle music"
-        {music.title})
+        ; :onclick "${EWW_CMD} open --toggle music"
+        :onclick "hyprctl dispatch togglespecialworkspace music"
+      {music.title})
       (revealer
         :transition "slideright"
         :reveal music_reveal

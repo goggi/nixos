@@ -38,6 +38,8 @@
       mkdir -p $out/bin
       cp ${./scripts/waybar-wttr.py} $out/bin/waybar-wttr
       chmod +x $out/bin/waybar-wttr
+      cp ${./scripts/waybar-mediaplayer.py} $out/bin/waybar-mediaplayer
+      chmod +x $out/bin/waybar-mediaplayer
     '';
   };
 in {
@@ -303,6 +305,20 @@ in {
           "clock"
           "tray"
         ];
+
+"custom/media" = {
+    "format" = "{icon} {}";
+    "escape" = true;
+    "return-type" = "json";
+    "max-length" = 40;
+    "on-click" = "playerctl play-pause";
+    "on-click-right" = "playerctl stop";
+    "smooth-scrolling-threshold" = 10; 
+    "on-scroll-up" = "playerctl next";
+    "on-scroll-down" = "playerctl previous";
+    "exec" = "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"; 
+}
+        
 
         # "custom/wifi" = {
         #   "tooltip" = false;

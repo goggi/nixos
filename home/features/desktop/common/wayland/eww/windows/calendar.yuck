@@ -3,12 +3,22 @@
     :class "calendar-win"
     (calendar)))
 
-(defwindow calendar
+(defwindow calendar-bar-one
   :monitor 0
   :geometry (geometry
     :x "0%"
     :y "0%"
-  	:anchor "top right"
+    :anchor "top right"
     :width "0px"
-    :height "0px")
+  :height "0px")
+  (calendar-win))
+
+(defwindow calendar-bar-two
+  :monitor 1
+  :geometry (geometry
+    :x "0%"
+    :y "0%"
+    :anchor "top right"
+    :width "0px"
+  :height "0px")
   (calendar-win))

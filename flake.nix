@@ -33,26 +33,6 @@
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
     };
-    eww = {
-      url = "github:elkowar/eww";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-overlay.follows = "rust-overlay";
-    };
-    #  Fufexan
-    fufexan = {
-      url = "github:fufexan/dotfiles";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    gross = {
-      url = "github:fufexan/gross";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "fu";
-    };
   };
 
   outputs = {

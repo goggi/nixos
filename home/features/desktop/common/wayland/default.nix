@@ -11,8 +11,8 @@
     ./swayidle.nix
     ./swaylock.nix
     ./waybar
-    ./eww
-    ./eww/eww.nix
+    # ./eww
+    # ./eww/eww.nix
     ./rofi.nix
     # ./wofi.nix
     ./gtk.nix
@@ -38,17 +38,6 @@
     slurp
     swaybg
   ];
-
-  programs.eww-hyprland = {
-    enable = true;
-    # autoReload = true;
-    # temp fix until https://github.com/NixOS/nixpkgs/pull/249515 lands. after that,
-    # eww's nixpkgs has to be updated
-    package = inputs.eww.packages.${pkgs.system}.eww-wayland.overrideAttrs (old: {
-      nativeBuildInputs = old.nativeBuildInputs ++ [pkgs.wrapGAppsHook];
-      buildInputs = lib.lists.remove pkgs.gdk-pixbuf (old.buildInputs ++ [pkgs.librsvg]);
-    });
-  };
 
   services.gammastep = {
     enable = true;
