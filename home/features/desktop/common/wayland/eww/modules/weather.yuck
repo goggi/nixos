@@ -1,0 +1,18 @@
+(defpoll weather-data :interval "15m" `./scripts/weather_info --getdata`)
+(defpoll weather-icon :interval "15m" `./scripts/weather_info --icon`)
+(defpoll weather-temp :interval "15m" `./scripts/weather_info --temp`)
+(defpoll weather-hex :interval "15m" `./scripts/weather_info --hex`)
+
+(defwidget weather-module []
+  (box
+    :orientation "v"
+    :space-evenly "false"
+    :class "module"
+    (box
+      :orientation "h"
+      :space-evenly "false"
+      (box
+        :class "weather-icon"
+      :style "color: ${weather-hex}" {weather-icon})
+      (box
+      :class "temperature" "${weather-temp} "))))
