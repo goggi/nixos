@@ -25,6 +25,10 @@
       '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
   ''}/bin/waybar-${name}";
 
+  playerctl = "${pkgs.playerctl}/bin/playerctl";
+  cut = "${pkgs.coreutils}/bin/cut";
+  wc = "${pkgs.coreutils}/bin/wc";
+
   brightnessctl = pkgs.brightnessctl + "/bin/brightnessctl";
   pamixer = pkgs.pamixer + "/bin/pamixer";
   waybar-wttr = pkgs.stdenv.mkDerivation {
@@ -38,8 +42,6 @@
       mkdir -p $out/bin
       cp ${./scripts/waybar-wttr.py} $out/bin/waybar-wttr
       chmod +x $out/bin/waybar-wttr
-      cp ${./scripts/waybar-mediaplayer.py} $out/bin/waybar-mediaplayer
-      chmod +x $out/bin/waybar-mediaplayer
     '';
   };
 in {
@@ -47,7 +49,7 @@ in {
 
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar-hyprland;
+    package = pkgs.waybar;
 
     settings = {
       secondary = {
@@ -61,7 +63,7 @@ in {
         gtk-layer-shell = true;
         height = 34;
         modules-left = [
-          "wlr/workspaces"
+          "hyprland/workspaces"
         ];
 
         modules-center = [
@@ -74,28 +76,26 @@ in {
           "clock"
         ];
 
-        "wlr/workspaces" = {
-          on-click = "activate";
-          format = "{name}";
-          # format = "{icon}";
-          # format-icons = {
-          #   urgent = "";
-          #   active = "";
-          #   default = "";
-          #   sort-by-number = true;
+        "hyprland/workspaces" = {
+          "on-scroll-up" = "hyprctl dispatch workspace r-1";
+          "on-scroll-down" = "hyprctl dispatch workspace r+1";
+          "all-outputs" = false;
+          "format" = "{name}";
+          "format-icons" = {
+            "active" = "";
+            "default" = "";
+            "persistent" = "";
+          };
+          # "persistent_workspaces" = {
+          #   "*" = 5;
           # };
-          all-outputs = false;
-          disable-scroll = true;
-          active-only = false;
-          sort-by-name = false;
-          sort-by-number = true;
         };
 
         "custom/lang" = {
           "interval" = 10;
           "tooltip" = false;
           "return-type" = "string";
-          "format" = " {}";
+          "format" = "  {}";
           "exec" = "hyprctl -j devices | jq -r '.keyboards[] | select(.name==\"dygma-raise-keyboard\") | .active_keymap'";
         };
 
@@ -276,7 +276,8 @@ in {
         gtk-layer-shell = true;
         height = 34;
         modules-left = [
-          "wlr/workspaces"
+          "custom/logo"
+          "hyprland/workspaces"
           # "custom/logo"
           # "wlr/workspaces"
           # "custom/swallow"
@@ -293,6 +294,7 @@ in {
           # "custom/wifi"
           # "pulseaudio"
           # "custom/notification"
+          "custom/currentplayer"
         ];
 
         modules-right = [
@@ -306,19 +308,37 @@ in {
           "tray"
         ];
 
-"custom/media" = {
-    "format" = "{icon} {}";
-    "escape" = true;
-    "return-type" = "json";
-    "max-length" = 40;
-    "on-click" = "playerctl play-pause";
-    "on-click-right" = "playerctl stop";
-    "smooth-scrolling-threshold" = 10; 
-    "on-scroll-up" = "playerctl next";
-    "on-scroll-down" = "playerctl previous";
-    "exec" = "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"; 
-}
-        
+        "hyprland/workspaces" = {
+          "on-scroll-up" = "hyprctl dispatch workspace r-1";
+          "on-scroll-down" = "hyprctl dispatch workspace r+1";
+          "all-outputs" = false;
+          "format" = "{name}";
+          "format-icons" = {
+            "active" = "";
+            "default" = "";
+            "persistent" = "";
+          };
+          # "persistent_workspaces" = {
+          #   "*" = 5;
+          # };
+        };
+
+        "custom/currentplayer" = {
+          exec-if = "${playerctl} status";
+          # exec = ''${playerctl} metadata --format '{"text": "{{artist}} - {{title}}", "alt": "{{status}}", "tooltip": "{{title}} ({{artist}} - {{album}})"}' '';
+          exec = ''${playerctl} metadata --format '{"text": "{{title}}", "alt": "{{status}}", "tooltip": "{{title}} ({{artist}} - {{album}})"}' '';
+          return-type = "json";
+          interval = 2;
+          max-length = 60;
+          format = "{icon} {}";
+          format-icons = {
+            "Playing" = "󰐊";
+            "Paused" = "󰏤 ";
+            "Stopped" = "󰓛";
+          };
+          # on-click = "${playerctl} play-pause";
+          on-click = "hyprctl dispatch togglespecialworkspace music";
+        };
 
         # "custom/wifi" = {
         #   "tooltip" = false;
@@ -351,7 +371,7 @@ in {
           "interval" = 10;
           "tooltip" = false;
           "return-type" = "string";
-          "format" = " {}";
+          "format" = "  {}";
           "exec" = "hyprctl -j devices | jq -r '.keyboards[] | select(.name==\"dygma-raise-keyboard\") | .active_keymap'";
         };
 
@@ -359,12 +379,7 @@ in {
           hwmon-path = "/sys/class/hwmon/hwmon1/temp3_input";
           critical-threshold = 90;
           interval = 5;
-          format = "{icon} {temperatureC}°C";
-          # format-icons = [
-          #     "",
-          #     "",
-          #     ""
-          # ];
+          format = "{icon} {temperatureC} °C";
           tooltip = false;
           on-click = "swaymsg exec \"\\$term_float watch sensors\"";
         };
@@ -386,10 +401,10 @@ in {
           sort-by-number = true;
         };
 
-        # "custom/logo" = {
-        #   tooltip = false;
-        #   format = " ";
-        # };
+        "custom/logo" = {
+          tooltip = false;
+          format = " ";
+        };
 
         # "custom/todo" = {
         #   tooltip = true;

@@ -65,6 +65,8 @@ in ''
 
       #custom-weather,
       #custom-swallow,
+      #custom-media,
+      #custom-currentplayer,
       #custom-power,
       #custom-gpg-agent,
       #custom-ip,
@@ -178,6 +180,15 @@ in ''
 
     */
 
+
+      #clock {
+        font-weight: bold;
+      }
+
+
+      #clock.date {
+        font-weight: normal;
+      }
 
       tooltip {
         font-family: "Inter", sans-serif;

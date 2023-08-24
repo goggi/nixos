@@ -12,7 +12,7 @@
   #       lexend
   #       inter
   #       material-icons
-  #     material-symbols
+  #       material-symbols
   #       material-design-icons
   #       noto-fonts
   #       noto-fonts-cjk
@@ -52,6 +52,7 @@
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
+      sf-mono-liga
       roboto
 
       # nerdfonts
