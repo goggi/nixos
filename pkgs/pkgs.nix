@@ -28,7 +28,7 @@
       packageOverrides = super: {
         looking-glass-client = pkgs.callPackage ./looking {};
         vscode = pkgs.callPackage ./vscode/vscode.nix {};
-        xwaylandvideobridge = pkgs.callPackage ./xwaylandbridge {};
+        xwaylandvideobridge = pkgs.callPackage ./xwaylandbridge/default.nix {};
       };
     };
 

@@ -27,6 +27,8 @@
 
   services.flatpak.enable = true;
 
+  services.jellyfin.enable = true;
+
   nix.gc.automatic = true;
 
   networking = {

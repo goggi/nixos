@@ -5,6 +5,8 @@
   ...
 }: {
   home.packages = with pkgs; [
+    kooha
+    xwaylandvideobridge
     s3fs
     lzip
     playerctl # for media keys
