@@ -50,6 +50,7 @@
 
     # Media
     ../features/media/obsStudio.nix
+    ../features/media/tidal.nix
 
     # Work
     ../features/work/teams.nix

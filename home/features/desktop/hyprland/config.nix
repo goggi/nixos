@@ -10,8 +10,8 @@
   misc {
     disable_hyprland_logo = true
     disable_splash_rendering = true
-    mouse_move_enables_dpms = true
-    # key_press_enables_dpms = true
+    # mouse_move_enables_dpms = false
+    key_press_enables_dpms = true
     vfr = true
     vrr = 1
     no_direct_scanout = false
@@ -108,6 +108,8 @@
 
     # Decorations
     decoration {
+
+        dim_inactive = true
       # Rounded corners
       rounding = 6
       multisample_edges = true
@@ -116,11 +118,6 @@
       active_opacity = 1.0
       inactive_opacity = 1.0
 
-      # Blur
-      # blur = true
-      # blur_size = 10
-      # blur_passes = 4
-      # blur_new_optimizations = true
 
       # Shadow
       drop_shadow = true
@@ -167,19 +164,49 @@
     #   workspace_swipe_fingers = 3
     # }
 
+
+
+    ### Window rules
+
+    ## Workspaces
+    windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$
+    windowrule = workspace special:obsidian, title:^.*btop.*$
+    windowrule = workspace 10, title:^.*WebCord.*$
+    windowrule = workspace 10, title:^.*Skype.*$
+    windowrule = workspace 10, title:^.*Signal.*$
+    windowrule = workspace 10, title:^.*Microsoft Teams - Preview.*$
+    windowrule = workspace 1, title:^.*Visual Studio Code.*$
+
+    ## Floating
+    windowrule = float, keepassxc
+    windowrule = float, title:^(Firefox — Sharing Indicator)$
+
+    ## Inhibit IDLE
+    windowrule = idleinhibit fullscreen, firefox
+
+    # 1Password
+    windowrule = move center,title:^(1Password)$
+    windowrule = size 2000 1000, title:^(1Password)$
+    windowrule = float, title:^(1Password)$
+
+    ## Swappy
+    windowrule = float, title:^(swappy)$
+    windowrule = move 35% 10%, title:^(swappy)$
+
+
     # Layouts
     # dwindle {
     #   no_gaps_when_only = false
     #   pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
     #   preserve_split = true # you probably want thisgroupbar_gradients
-    windowrule = float, download
-    windowrule = float, notification
-    windowrule = float, error
-    windowrule = float, splash
-    windowrule = float, confirmreset
-    windowrule = float, title:Open File
-    windowrule = float, title:branchdialog
-    windowrule = float, zoom
+    # windowrule = float, download
+    # windowrule = float, notification
+    # windowrule = float, error
+    # windowrule = float, splash
+    # windowrule = float, confirmreset
+    # windowrule = float, title:Open File
+    # windowrule = float, title:branchdialog
+    # windowrule = float, zoom
 
 
 
@@ -187,80 +214,67 @@
     # windowrule = size 800 600, vlc
     # windowrule = move center, vlc
 
-    windowrule = float, Lxappearance
-    windowrule = float, ncmpcpp
-    # windowrule = float, Rofi
-    # windowrule = animation none, Rofi
-    windowrule = float, viewnior
-    windowrule = float, pavucontrol-qt
-    windowrule = float, gucharmap
-    windowrule = float, gnome-font
-    windowrule = float, org.gnome.Settings
-    windowrule = float, file-roller
-    # windowrule = float, nautilus
-    # windowrule = float, nemo
-    windowrule = float, thunar
-    windowrule = float, Pcmanfm
-    # windowrule = float, obs
-    windowrule = float, wdisplays
-    # windowrule = float, *.exe
-    windowrule = fullscreen, wlogout
-    windowrule = float, title:wlogout
-    windowrule = fullscreen, title:wlogout
-    windowrule = float, pavucontrol-qt
-    windowrule = float, keepassxc
-    windowrule = idleinhibit focus, mpv
-    windowrule = idleinhibit fullscreen, firefox
-    windowrule = float, title:^(Media viewer)$
-    # windowrule = float, title:^(Mount and Blade II Bannerlord)$
-    windowrule = float, title:^(Transmission)$
-    windowrule = float, title:^(Volume Control)$
-    windowrule = float, title:^(Picture-in-Picture)$
-    windowrule = float, title:^(Firefox — Sharing Indicator)$
+    # windowrule = float, Lxappearance
+    # windowrule = float, ncmpcpp
+    # # windowrule = float, Rofi
+    # # windowrule = animation none, Rofi
+    # windowrule = float, viewnior
+    # windowrule = float, pavucontrol-qt
+    # windowrule = float, gucharmap
+    # windowrule = float, gnome-font
+    # windowrule = float, org.gnome.Settings
+    # windowrule = float, file-roller
+    # # windowrule = float, nautilus
+    # # windowrule = float, nemo
+    # windowrule = float, thunar
+    # windowrule = float, Pcmanfm
+    # # windowrule = float, obs
+    # windowrule = float, wdisplays
+    # # windowrule = float, *.exe
+    # windowrule = fullscreen, wlogout
+    # windowrule = float, title:wlogout
+    # windowrule = fullscreen, title:wlogout
+    # windowrule = float, pavucontrol-qt
+    # windowrule = float, keepassxc
+    # windowrule = idleinhibit focus, mpv
+    # windowrule = idleinhibit fullscreen, firefox
+    # windowrule = float, title:^(Media viewer)$
+    # # windowrule = float, title:^(Mount and Blade II Bannerlord)$
+    # windowrule = float, title:^(Transmission)$
+    # windowrule = float, title:^(Volume Control)$
+    # windowrule = float, title:^(Picture-in-Picture)$
+    # windowrule = float, title:^(Firefox — Sharing Indicator)$
 
-    # windowrulev2 = fakefullscreen,floating:1,class:^(AppRun)$
-    # windowrulev2 = fullscreen,floating:1,class:^(AppRun)$
+    # windowrule = float, title:^(Select Folder to Upload)$
+    # windowrule = move center,title:^(Select Folder to Upload)$
 
-    windowrule = float, title:^(Select Folder to Upload)$
-    windowrule = move center,title:^(Select Folder to Upload)$
+    # windowrule = move 0 0, title:^(Firefox — Sharing Indicator)$
+    # windowrule = size 800 600, title:^(Volume Control)$
+    # windowrule = move 75 44%, title:^(Volume Control)$
 
-    windowrule = move 0 0, title:^(Firefox — Sharing Indicator)$
-    windowrule = size 800 600, title:^(Volume Control)$
-    windowrule = move 75 44%, title:^(Volume Control)$
+    # windowrule = float, title:^(swappy)$
+    # windowrule = move 35% 10%, title:^(swappy)$
 
-    windowrule = float, title:^(swappy)$
-    windowrule = move 35% 10%, title:^(swappy)$
+    # windowrule = move center,title:^(1Password)$
+    # windowrule = size 2000 1000, title:^(1Password)$
+    # windowrule = float, title:^(1Password)$
 
-    windowrule = move center,title:^(1Password)$
-    windowrule = size 2000 1000, title:^(1Password)$
-    windowrule = float, title:^(1Password)$
 
-    # windowrule = workspace special:music, title:^.*YouTube Music.*$
-    # windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$
 
-    windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$
-    windowrule = workspace special:obsidian, title:^.*btop.*$
+    # # Looking glass
+    # windowrule = workspace 3, title:^.*Looking Glass (client).*$
+    # windowrule = float, title:^.*Looking Glass (client).*$
 
-    windowrule = workspace 10, title:^.*WebCord.*$
-    windowrule = workspace 10, title:^.*Skype.*$
-    windowrule = workspace 10, title:^.*Signal.*$
-    windowrule = workspace 10, title:^.*Microsoft Teams - Preview.*$
-    windowrule = workspace 1, title:^.*Visual Studio Code.*$
+    # # Navicat Premium
+    # # windowrule = move 75 44%, title:^.*New Connection.*$
+    # # windowrule = move 1000 44%, title:^.*Edit Connection.*$
+    # # # windowrule = move 1000 44%, title:^.*AppRun.*$
+    # # windowrule = move 75 44%, title:^.*Dump SQL File.*$
 
-    # Looking glass
-    windowrule = workspace 3, title:^.*Looking Glass (client).*$
-    windowrule = float, title:^.*Looking Glass (client).*$
-
-    # Navicat Premium
-    windowrule = move 75 44%, title:^.*New Connection.*$
-    windowrule = move 1000 44%, title:^.*Edit Connection.*$
-    # windowrule = move 1000 44%, title:^.*AppRun.*$
-    windowrule = move 75 44%, title:^.*Dump SQL File.*$
-
-    windowrule = tile, title:^(Battle.net Login)$
-    windowrule = nofullscreenrequest, title:^(Battle.net Login)$
-    windowrule = nofullscreenrequest, title:^(Diablo III)$
-    windowrule = tile, title:^(Diablo III)$
+    # windowrule = tile, title:^(Battle.net Login)$
+    # windowrule = nofullscreenrequest, title:^(Battle.net Login)$
+    # windowrule = nofullscreenrequest, title:^(Diablo III)$
+    # windowrule = tile, title:^(Diablo III)$
 
   # FLY IS KITTY
   windowrule=move center,title:^(fly_is_kitty)$

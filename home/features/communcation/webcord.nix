@@ -5,7 +5,7 @@
 }: {
   home = {
     packages = [
-      pkgs.webcord
+      pkgs.webcord-vencord
     ];
     persistence = {
       "/persist/home/gogsaan" = {

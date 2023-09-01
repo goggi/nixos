@@ -5,6 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    s3fs
     lzip
     playerctl # for media keys
     deepin.deepin-calculator

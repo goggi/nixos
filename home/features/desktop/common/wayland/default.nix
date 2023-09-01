@@ -39,10 +39,10 @@
     swaybg
   ];
 
-  services.gammastep = {
-    enable = true;
-    provider = "geoclue2";
-  };
+  # services.gammastep = {
+  #   enable = true;
+  #   provider = "geoclue2";
+  # };
 
   home.sessionVariables = {
     # XDG Specifications
