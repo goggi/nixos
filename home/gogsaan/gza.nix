@@ -51,6 +51,7 @@
     # Media
     ../features/media/obsStudio.nix
     ../features/media/tidal.nix
+    ../features/media/jellyfin.nix
 
     # Work
     ../features/work/teams.nix
