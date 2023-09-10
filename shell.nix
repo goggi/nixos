@@ -17,7 +17,7 @@
     nativeBuildInputs = with pkgs; [
       nix
       home-manager
-      git
+      gitFull
 
       sops
       gnupg

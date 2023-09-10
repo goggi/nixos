@@ -9,6 +9,8 @@
       pkgs.kubectl
       pkgs.kubernetes-helm
       pkgs.terraform
+      pkgs.kustomize
+      pkgs.gitkraken
     ];
 
     persistence = {

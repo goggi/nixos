@@ -5,6 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    easyeffects
     kooha
     xwaylandvideobridge
     s3fs

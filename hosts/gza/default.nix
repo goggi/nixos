@@ -28,6 +28,7 @@
   services.flatpak.enable = true;
 
   services.jellyfin.enable = true;
+  services.jellyfin.openFirewall = true;
 
   nix.gc.automatic = true;
 
@@ -42,6 +43,8 @@
       directories = [
         "/var/lib/libvirt"
         "/var/lib/bluetooth"
+        "/var/lib/jellyfin"
+        "/var/cache/jellyfin"
         # "/var/lib/waydroid/"
       ];
     };
@@ -56,24 +59,25 @@
   boot = {
     initrd.kernelModules = [
       "dm-snapshot"
-      "amdgpu"
       # Passtrough GPU
       "vfio_pci"
       "vfio"
       "vfio_iommu_type1"
-      "dm-cache-default"
-      "dm-raid"
+      # "dm-cache-default"
+      # "dm-raid"
       # "vfio_virqfd"
     ];
     kernelParams = [
       "amd_iommu=on"
       "vfio-pci.ids=10de:1e84,10de:10f8,10de:1ad8,10de:1ad9"
     ];
-    kernelModules = ["kvm-amd" "i2c-dev" "kmod-dm-raid" "dm-raid"];
+    kernelModules = ["amdgpu" "kvm-amd" "i2c-dev" "kmod-dm-raid" "dm-raid"];
     extraModulePackages = [];
     binfmt.emulatedSystems = ["aarch64-linux" "i686-linux"];
     # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    # kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
     # kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_6_4;
 
     # Passtrough GPU
     initrd.preDeviceCommands = ''
@@ -187,6 +191,24 @@
   systemd.extraConfig = ''
     DefaultTimeoutStopSec=5s
   '';
+
+  # systemd.services.mountLv = {
+  #   description = "Mount LV at startup";
+  #   wantedBy = ["multi-user.target"];
+
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     ExecStart = "/usr/bin/sh";
+  #     ExecStartPre = [
+  #       "/bin/sh"
+  #       "lvchange -ay volgroup_mirror/backup"
+  #     ];
+  #     ExecStartPost = [
+  #       "/bin/sh"
+  #       "mount /dev/volgroup_mirror/backup /persist/drivers/backup/"
+  #     ];
+  #   };
+  # };
 
   system.stateVersion = lib.mkForce "23.11";
 }

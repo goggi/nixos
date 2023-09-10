@@ -19,7 +19,7 @@
     # Browser
     ../features/browser/firefox
     ../features/browser/googleChrome.nix
-    # ../features/browser/vivaldi.nix
+    ../features/browser/vivaldi.nix
     # ../features/browser/chromium.nix
 
     # Development
@@ -29,7 +29,6 @@
     ../features/development/k8sManagment.nix
     # ../features/development/jetbrain.nix
     # ../features/development/helix
-
     ../features/development/language/nodejs.nix
     ../features/development/language/python3.nix
 

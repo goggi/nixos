@@ -35,7 +35,8 @@ in {
     #+
     # Hyprland - Turn off screen (DPMS)
     lib.optionalString config.wayland.windowManager.hyprland.enable
-    (mkEvent 0 "${hyprctl} dispatch dpms off" "${hyprctl} dispatch dpms on && rofi -no-lazy-grab -show drun -theme index  -sort");
+    (mkEvent 0 "${hyprctl} dispatch dpms off" "${hyprctl} dispatch dpms on");
+  # (mkEvent 0 "${hyprctl} dispatch dpms off" "${hyprctl} dispatch dpms on && rofi -no-lazy-grab -show drun -theme index  -sort");
   # +
   # # Hyprland - Turn off screen (DPMS)
   # lib.optionalString config.wayland.windowManager.hyprland.enable

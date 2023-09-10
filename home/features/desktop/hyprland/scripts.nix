@@ -29,7 +29,7 @@
             address=''${1:12:7}
             title=$(echo "$json_output" | jq '.[] | select(.address == "0x'$address'") | .title')
             echo
-            if [[ $title == "\"YouTube Music — Mozilla Firefox\"" ]]; then
+            if [[ $title == "\"Music — Mozilla Firefo\"" ]]; then
                 hyprctl dispatch movetoworkspace special:music,address:0x''${1:12:7}
             fi
         fi

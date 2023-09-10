@@ -17,7 +17,7 @@
   ];
 
   programs = {
-    exa.enable = true;
+    eza.enable = true;
 
     fzf = {
       enable = true;

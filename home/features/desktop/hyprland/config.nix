@@ -109,7 +109,6 @@
     # Decorations
     decoration {
 
-        dim_inactive = true
       # Rounded corners
       rounding = 6
       multisample_edges = true
@@ -126,7 +125,7 @@
       shadow_range = 4
       shadow_render_power = 2
       col.shadow = 0x66000000
-      dim_special = 0
+      dim_special = 0.7
       dim_inactive = false
       dim_strength = 0.6
     }
@@ -178,8 +177,9 @@
     windowrule = workspace 1, title:^.*Visual Studio Code.*$
 
     ## Floating
-    windowrule = float, keepassxc
     windowrule = float, title:^(Firefox — Sharing Indicator)$
+    windowrule = float, title:^(KeePassXC -  Access Request)$
+    windowrule = float, title:^(Passwords - KeePassXC)$
 
     ## Inhibit IDLE
     windowrule = idleinhibit fullscreen, firefox
@@ -334,7 +334,7 @@
   bind=SUPERSHIFT,n, exec, nmcli connection down ikea
 
   # Virtual Machines
-  bind = $mainMod, M, exec, virsh start win10 || true && looking-glass-client -K 120 -S -d input:ignoreWindowsKeys input:autoCapture
+  bind = $mainMod, M, exec, virsh start win10 || true && looking-glass-client -F -K 120 -S -d input:ignoreWindowsKeys input:autoCapture
   bind = $mainMod_SHIFT, M, exec, virsh shutdown win10
 
   # Reset workspaces
@@ -344,8 +344,11 @@
   # Monitor brightness DDC control
   # bind=$mainMod,A,exec, ~/.config/dots/scripts/dcc dark
   # bind=$mainModSHIFT,A,exec, ~/.config/dots/scripts/dcc light
-  bind=$mainMod,A,exec, ddcutil --bus=7 setvcp 10 0 & ddcutil --bus=8 setvcp 10 0
-  bind=$mainModSHIFT,A,exec, ddcutil --bus=7 setvcp 10 100 & ddcutil --bus=8 setvcp 10 100
+  # bind=$mainMod,A,exec, ddcutil --bus=7 setvcp 10 0 & ddcutil --bus=8 setvcp 10 0
+  # bind=$mainModSHIFT,A,exec, ddcutil --bus=7 setvcp 10 100 & ddcutil --bus=8 setvcp 10 100
+
+  bind=$mainMod,A,exec, ddcutil --bus=10 setvcp 10 0 & ddcutil --bus=11 setvcp 10 0
+  bind=$mainModSHIFT,A,exec, ddcutil --bus=10 setvcp 10 100 & ddcutil --bus=11 setvcp 10 100
 
   # General Shortcuts
 

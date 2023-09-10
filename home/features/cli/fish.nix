@@ -17,9 +17,9 @@
       nb = "echo \"Check Yubikey\" && sudo rm /home/gogsaan/.config/mimeapps.list || true && sudo rm /home/gogsaan/.ssh/config || true && git add . || true && sudo nixos-rebuild switch --show-trace --option eval-cache false --flake /home/gogsaan/Projects/nix/config#gza --show-trace";
       nu = "echo \"Check Yubikey\" && sudo nix flake update /home/gogsaan/Projects/nix/config";
       sops = "nix-shell -p sops --run \" sops hosts/catalog/secrets.yaml \"";
-      ls = "exa";
+      ls = "eza";
       cdd = "cd $(find ~ -type d | fzf)";
-      la = "${pkgs.exa}/bin/exa -lah";
+      la = "${pkgs.eza}/bin/eza -lah";
       getip = "curl ifconfig.me";
       ssh = "kitty +kitten ssh";
       k9s = "k9s --kubeconfig $KUBECONFIG";
@@ -29,6 +29,11 @@
       clear = "printf '\\033[2J\\033[3J\\033[1;1H'";
       startCoder = "nohup /home/gogsaan/Applications/bin/coder server --postgres-url \"postgres://coder:coder@127.0.0.1:5432/coder?sslmode=disable\" --derp-config-url https://controlplane.tailscale.com/derpmap/default & && disown ";
       protonge = "protonup -d \"/home/gogsaan/.steam/steam/compatibilitytools.d\" && protonup ";
+      # Add & Commit all changes And push
+      gacp = "git add . && git commit -m \"$(date)\" && git push";
+      gitAddCommitPushForce = "git commit -a -m \"$(date)\" && git push -f";
+      gitAddCommitPush = "git commit -a -m \"$(date)\" && git push";
+      mountBackup = "echo \"Check Yubikey\" && sudo lvchange -ay volgroup_mirror/backup && sudo mount /dev/volgroup_mirror/backup /persist/drivers/backup/  && sudo lvchange -ay volgroup_mirror/backup && sudo mount /dev/volgroup_mirror/backup /persist/drivers/backup/";
     };
     functions = {
       fish_greeting = "";
@@ -92,6 +97,7 @@
         set PATH $HOME/.npm/bin $fish_user_paths $PATH
 
         set -U -x CRAWLYFI_ENV dev
+
       '';
   };
 

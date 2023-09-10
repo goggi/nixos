@@ -119,7 +119,7 @@
       zstyle ':fzf-tab:complete:*:*' fzf-preview 'preview.sh $realpath'
       zstyle ":completion:*:git-checkout:*" sort false
       zstyle ':completion:*' file-sort modification
-      zstyle ':completion:*:exa' sort false
+      zstyle ':completion:*:eza' sort false
       zstyle ':completion:files' sort false
 
       # Autosuggest
@@ -258,9 +258,9 @@
       rm = "${pkgs.trash-cli}/bin/trash-put";
       m = "mkdir -p";
       fcd = "cd $(find -type d | fzf)";
-      ls = "${pkgs.exa}/bin/exa --icons --group-directories-first";
-      la = "${pkgs.exa}/bin/exa -lah";
-      tree = "${pkgs.exa}/bin/exa --tree --icons";
+      ls = "${pkgs.eza}/bin/eza --icons --group-directories-first";
+      la = "${pkgs.eza}/bin/eza -lah";
+      tree = "${pkgs.eza}/bin/eza --tree --icons";
       http = "${pkgs.python3}/bin/python3 -m http.server";
       v = "hx";
       nvim = "hx";

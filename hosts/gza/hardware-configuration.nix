@@ -23,8 +23,19 @@ in {
     };
 
     bluetooth = {
-      enable = true;
       package = pkgs.bluez;
+      enable = true;
+      # settings = {
+      #   General = {
+      #     Name = "Hello";
+      #     ControllerMode = "dual";
+      #     FastConnectable = "true";
+      #     Experimental = "true";
+      #   };
+      #   Policy = {
+      #     AutoEnable = "true";
+      #   };
+      # };
     };
 
     enableRedistributableFirmware = true;
@@ -67,12 +78,12 @@ in {
     fsType = "ext4";
   };
 
-  services.lvm.boot.thin.enable = true;
-  fileSystems."/home/gogsaan/Drives/backup" = {
-    device = "/dev/volgroup_mirror/backup";
-    options = ["nofail"];
-    fsType = "ext4";
-  };
+  # services.lvm.boot.thin.enable = true;
+  # fileSystems."/home/gogsaan/Drives/backup" = {
+  #   device = "/dev/volgroup_mirror/backup";
+  #   options = ["nofail"];
+  #   fsType = "ext4";
+  # };
 
   swapDevices = [
     {device = "/dev/disk/by-label/swap";}
