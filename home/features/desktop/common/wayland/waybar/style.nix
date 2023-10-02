@@ -111,8 +111,16 @@ in ''
         color: #cdd6f4;
       }
 
+
+
+
       #custom-swallow {
         color: #cdd6f4;
+      }
+
+      #network {
+        background-color: #fab387;
+        color: #181825
       }
 
       #battery {
@@ -149,6 +157,12 @@ in ''
         margin: 6px 10px 6px 9px;
       }
 
+      #custom-logo{
+        margin-left: 715px;
+      }
+      #tray{
+        margin-right: 720px;
+      }
 
     /*
       #custom-weather {

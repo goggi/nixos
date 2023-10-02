@@ -25,11 +25,13 @@
     # ../catalog/optional/apps/taskwarrior.nix
   ];
 
-  services.flatpak.enable = true;
+  services.plex.enable = true;
+  services.plex.openFirewall = true;
+  services.plex.user = "gogsaan";
 
+  services.flatpak.enable = true;
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;
-
   nix.gc.automatic = true;
 
   networking = {
@@ -44,6 +46,7 @@
         "/var/lib/libvirt"
         "/var/lib/bluetooth"
         "/var/lib/jellyfin"
+        "/var/lib/plex"
         "/var/cache/jellyfin"
         # "/var/lib/waydroid/"
       ];

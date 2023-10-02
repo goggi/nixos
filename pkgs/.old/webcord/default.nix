@@ -1,5 +1,6 @@
 {
   lib,
+  stdenv,
   buildNpmPackage,
   fetchFromGitHub,
   copyDesktopItems,
@@ -7,22 +8,21 @@
   pipewire,
   libpulseaudio,
   xdg-utils,
-  electron_25,
+  electron_22,
   makeDesktopItem,
-  nix-update-script,
 }:
 buildNpmPackage rec {
-  pname = "webcord";
-  version = "4.4.0";
+  name = "webcord";
+  version = "4.1.2";
 
   src = fetchFromGitHub {
     owner = "SpacingBat3";
     repo = "WebCord";
     rev = "v${version}";
-    hash = "sha256-Kiw3pebjH9Pz5oi6Gbjxrjd/kvozapLNqfWLVuTXF/I=";
+    sha256 = "sha256-Buu7eKmI0UGV/9Kfj+urmDcjBtR9HSwW+mlHaYhfUa4=";
   };
 
-  npmDepsHash = "sha256-CPGfhV8VXbpX9UB5oQhI+IwFWPgYq2dGnSuyByMNGg4=";
+  npmDepsHash = "sha256-PeoOoEljbkHynjZwocCWCTyYvIvSE1gQiABUzIiXEdM=";
 
   nativeBuildInputs = [
     copyDesktopItems
@@ -32,6 +32,10 @@ buildNpmPackage rec {
   libPath = lib.makeLibraryPath [
     pipewire
     libpulseaudio
+  ];
+
+  binPath = lib.makeBinPath [
+    xdg-utils
   ];
 
   # npm install will error when electron tries to download its binary
@@ -55,10 +59,9 @@ buildNpmPackage rec {
 
     install -Dm644 sources/assets/icons/app.png $out/share/icons/hicolor/256x256/apps/webcord.png
 
-    # Add xdg-utils to path via suffix, per PR #181171
-    makeWrapper '${electron_26}/bin/electron' $out/bin/webcord \
+    makeWrapper '${electron_22}/bin/electron' $out/bin/webcord \
       --prefix LD_LIBRARY_PATH : ${libPath}:$out/opt/webcord \
-      --suffix PATH : "${lib.makeBinPath [xdg-utils]}" \
+      --prefix PATH : "${binPath}" \
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}" \
       --add-flags $out/lib/node_modules/webcord/
 
@@ -76,16 +79,13 @@ buildNpmPackage rec {
     })
   ];
 
-  passthru.updateScript = nix-update-script {};
-
   meta = with lib; {
     description = "A Discord and Fosscord electron-based client implemented without Discord API";
     homepage = "https://github.com/SpacingBat3/WebCord";
     downloadPage = "https://github.com/SpacingBat3/WebCord/releases";
     changelog = "https://github.com/SpacingBat3/WebCord/releases/tag/v${version}";
     license = licenses.mit;
-    mainProgram = "webcord";
     maintainers = with maintainers; [huantian];
-    platforms = platforms.linux;
+    platforms = electron_22.meta.platforms;
   };
 }

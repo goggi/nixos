@@ -6,7 +6,7 @@
     shellAliases = {
       system = "nix run nixpkgs#neofetch";
       gpgFrontend = "QT_QPA_PLATFORM=\"wayland;xcb\" appimage-run /home/gogsaan/Applications/appimage/GpgFrontend-2.0.9-linux-x86_64_4a0a7c2d621c582a773f4a7652633cc3.AppImage";
-      lightDark = "if grep -q 'Catppuccin-Mocha-Standard-Mauve-dark' /home/gogsaan/Projects/nix/config/home/features/desktop/common/wayland/gtk.nix; sed -i 's/Catppuccin-Mocha-Standard-Mauve-dark/Catppuccin-Latte-Standard-Mauve-Light/g' /home/gogsaan/Projects/nix/config/home/features/desktop/common/wayland/gtk.nix; else if grep -q 'Catppuccin-Latte-Standard-Mauve-Light' /home/gogsaan/Projects/nix/config/home/features/desktop/common/wayland/gtk.nix; sed -i 's/Catppuccin-Latte-Standard-Mauve-Light/Catppuccin-Mocha-Standard-Mauve-dark/g' /home/gogsaan/Projects/nix/config/home/features/desktop/common/wayland/gtk.nix; end; and echo \"Check Yubikey\" && sudo nixos-rebuild switch --flake /home/gogsaan/Projects/nix/config#gza --show-trace";
+      lightDark = "if grep -q 'Catppuccin-Mocha-Standard-Mauve-Dark' /home/gogsaan/Projects/nix/config/home/features/desktop/common/wayland/gtk.nix; sed -i 's/Catppuccin-Mocha-Standard-Mauve-Dark/Catppuccin-Latte-Standard-Mauve-Light/g' /home/gogsaan/Projects/nix/config/home/features/desktop/common/wayland/gtk.nix; else if grep -q 'Catppuccin-Latte-Standard-Mauve-Light' /home/gogsaan/Projects/nix/config/home/features/desktop/common/wayland/gtk.nix; sed -i 's/Catppuccin-Latte-Standard-Mauve-Light/Catppuccin-Mocha-Standard-Mauve-Dark/g' /home/gogsaan/Projects/nix/config/home/features/desktop/common/wayland/gtk.nix; end; and echo \"Check Yubikey\" && sudo nixos-rebuild switch --flake /home/gogsaan/Projects/nix/config#gza --show-trace";
       tuivpnon = "nmcli radio wifi on || true && sleep 5 && echo \"Check Yubikey\" && sudo nmcli device disconnect enp38s0 || true  && nmcli device connect wlo1 || true && nmcli device connect enp38s0 || true && sudo ip route add 10.141.96.190/32 via 192.168.137.1 dev wlo1 && sudo ip route add 10.141.96.117/32 via 192.168.137.1 dev wlo1";
       tuivpnoff = "nmcli radio wifi off";
       yarn = "npm run";
@@ -30,9 +30,16 @@
       startCoder = "nohup /home/gogsaan/Applications/bin/coder server --postgres-url \"postgres://coder:coder@127.0.0.1:5432/coder?sslmode=disable\" --derp-config-url https://controlplane.tailscale.com/derpmap/default & && disown ";
       protonge = "protonup -d \"/home/gogsaan/.steam/steam/compatibilitytools.d\" && protonup ";
       # Add & Commit all changes And push
+      gpacp = "git pull && git add . && git commit -m \"$(date)\" && git push";
       gacp = "git add . && git commit -m \"$(date)\" && git push";
       gitAddCommitPushForce = "git commit -a -m \"$(date)\" && git push -f";
       gitAddCommitPush = "git commit -a -m \"$(date)\" && git push";
+      gp = "git push";
+      ga = "git add .";
+      gcm = "git commit -m \"$(date)\"";
+      gc = "git commit";
+      ns = "nix-shell -p ";
+      gitNotMegedProduction = "for branch in (git for-each-ref --format='%(refname:short)' refs/heads/ refs/remotes/origin/ | grep -v 'development' | grep -v 'production'); if git merge-base --is-ancestor $branch development && not git merge-base --is-ancestor $branch production; echo \"$branch has been merged into development but not into production\"; end; end;";
       mountBackup = "echo \"Check Yubikey\" && sudo lvchange -ay volgroup_mirror/backup && sudo mount /dev/volgroup_mirror/backup /persist/drivers/backup/  && sudo lvchange -ay volgroup_mirror/backup && sudo mount /dev/volgroup_mirror/backup /persist/drivers/backup/";
     };
     functions = {

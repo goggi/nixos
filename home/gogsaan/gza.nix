@@ -51,9 +51,10 @@
     ../features/media/obsStudio.nix
     ../features/media/tidal.nix
     ../features/media/jellyfin.nix
+    ../features/media/plex.nix
 
     # Work
-    ../features/work/teams.nix
+    # ../features/work/teams.nix
 
     # Cli
     ../features/cli/fish.nix

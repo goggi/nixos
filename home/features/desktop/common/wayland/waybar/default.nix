@@ -60,6 +60,7 @@ in {
         exclusive = true;
         passthrough = false;
         fixed-center = true;
+        # margin = "100 0 100 0";
         gtk-layer-shell = true;
         height = 34;
         modules-left = [
@@ -286,7 +287,6 @@ in {
           # "battery"
           # "backlight"
           # "pulseaudio#microphone"
-          # "network"
         ];
 
         modules-center = [
@@ -295,6 +295,7 @@ in {
           # "pulseaudio"
           # "custom/notification"
           "custom/currentplayer"
+          "network"
         ];
 
         modules-right = [
@@ -542,9 +543,9 @@ in {
 
         network = {
           format-wifi = "󰖩 {essid}";
-          format-ethernet = "󰈀 {ipaddr}/{cidr}";
-          format-alt = "󱛇";
-          format-disconnected = "󰖪";
+          format-ethernet = "";
+          format-alt = "";
+          format-disconnected = "";
           tooltip-format = ''
             󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}
             {ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)'';

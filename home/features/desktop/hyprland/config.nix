@@ -111,7 +111,7 @@
 
       # Rounded corners
       rounding = 6
-      multisample_edges = true
+      # multisample_edges = true
 
       # Opacity
       active_opacity = 1.0
@@ -330,8 +330,10 @@
   bind = $mainMod_SHIFT, comma, exec, idasen sit
 
   # VPN
-  bind=SUPER,n, exec, nmcli connection up ikea passwd-file ~/.config/vpn/passwd
-  bind=SUPERSHIFT,n, exec, nmcli connection down ikea
+  # bind=SUPER,n, exec, nmcli connection up ikea passwd-file ~/.config/vpn/passwd
+  bind=SUPER,n, exec, nmcli radio wifi on || true && nmcli device disconnect enp38s0 || true
+  bind=SUPERSHIFT,n, exec, nmcli radio wifi off || true && nmcli device connect enp38s0 || true
+  # bind=SUPERSHIFT,n, exec, nmcli connection down ikea
 
   # Virtual Machines
   bind = $mainMod, M, exec, virsh start win10 || true && looking-glass-client -F -K 120 -S -d input:ignoreWindowsKeys input:autoCapture
@@ -363,12 +365,13 @@
   # Special worspace
   bind=SUPERCTRL,7,movetoworkspace,special:music
   bind=SUPERCTRL,8,movetoworkspace,special:obsidian
-  bind=SUPERCTRL,9,movetoworkspace,special:chatgpt
-  bind=SUPERCTRL,0,movetoworkspace,special:pomo
+  bind=SUPERCTRL,9,movetoworkspace,special:search
+  # bind=SUPERCTRL,0,movetoworkspace,special:pomo
+
   bind=SUPER,Tab,togglespecialworkspace,music
   bind=$mainModALT,F12,togglespecialworkspace,obsidian
-  bind=$mainMod_SHIFT,Tab,togglespecialworkspace,pomo
-  bind=$mainMod_SHIFT,F12,togglespecialworkspace,chatgpt
+  bind=$mainMod_SHIFT,Tab,togglespecialworkspace,search
+  # bind=$mainMod_SHIFT,F12,togglespecialworkspace,search
 
   # Groups
   bind=$mainMod,W,togglegroup,

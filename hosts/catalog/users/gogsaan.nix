@@ -49,6 +49,7 @@ in {
     _1password-gui = {
       enable = true;
       polkitPolicyOwners = ["gogsaan"];
+      package = pkgs._1password-gui-beta;
     };
   };
 }
