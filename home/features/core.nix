@@ -7,7 +7,8 @@
   home.packages = with pkgs; [
     easyeffects
     kooha
-    xwaylandvideobridge
+    starsector
+    # xwaylandvideobridge
     s3fs
     lzip
     playerctl # for media keys

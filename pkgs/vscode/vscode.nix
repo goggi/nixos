@@ -1,46 +1,54 @@
-{ stdenv
-, lib
-, callPackage
-, fetchurl
-, nixosTests
-, srcOnly
-, isInsiders ? false
-# sourceExecutableName is the name of the binary in the source archive over
-# which we have no control and it is needed to run the insider version as
-# documented in https://nixos.wiki/wiki/Visual_Studio_Code#Insiders_Build
-# On MacOS the insider binary is still called code instead of code-insiders as
-# of 2023-08-06.
-, sourceExecutableName ? "code" + lib.optionalString (isInsiders && stdenv.isLinux) "-insiders"
-, commandLineArgs ? ""
-, useVSCodeRipgrep ? stdenv.isDarwin
-}:
-
-let
+{
+  stdenv,
+  lib,
+  callPackage,
+  fetchurl,
+  nixosTests,
+  srcOnly,
+  isInsiders ? false,
+  # sourceExecutableName is the name of the binary in the source archive over
+  # which we have no control and it is needed to run the insider version as
+  # documented in https://nixos.wiki/wiki/Visual_Studio_Code#Insiders_Build
+  # On MacOS the insider binary is still called code instead of code-insiders as
+  # of 2023-08-06.
+  sourceExecutableName ? "code" + lib.optionalString (isInsiders && stdenv.isLinux) "-insiders",
+  commandLineArgs ? "",
+  useVSCodeRipgrep ? stdenv.isDarwin,
+}: let
   inherit (stdenv.hostPlatform) system;
   throwSystem = throw "Unsupported system: ${system}";
 
-  plat = {
-    x86_64-linux = "linux-x64";
-    x86_64-darwin = "darwin";
-    aarch64-linux = "linux-arm64";
-    aarch64-darwin = "darwin-arm64";
-    armv7l-linux = "linux-armhf";
-  }.${system} or throwSystem;
+  plat =
+    {
+      x86_64-linux = "linux-x64";
+      x86_64-darwin = "darwin";
+      aarch64-linux = "linux-arm64";
+      aarch64-darwin = "darwin-arm64";
+      armv7l-linux = "linux-armhf";
+    }
+    .${system}
+    or throwSystem;
 
-  archive_fmt = if stdenv.isDarwin then "zip" else "tar.gz";
+  archive_fmt =
+    if stdenv.isDarwin
+    then "zip"
+    else "tar.gz";
 
-  sha256 = {
-    x86_64-linux = "0j3lmyj77qalhn8hrgfg3zgw6jqv8rscfy16vhkl0ir2xnmb19jf";
-    x86_64-darwin = "06dx8lhw1cqignv06pcjjv8v743kr8bck1iqgl1881jmqyhggi4f";
-    aarch64-linux = "0nyd452wcp5qw2cx1zj89v4fgk3jvbk3hhiix9a0gv150q48vyfa";
-    aarch64-darwin = "1yfbsfnkjbf99yl1dcflpyxppa9mhnxigyyplz0jaqgpwmhs2s0b";
-    armv7l-linux = "1miz95rz2fdw7xplflnydzq57hnz894xg29mhpywwiib8kypfrm7";
-  }.${system} or throwSystem;
+  sha256 =
+    {
+      x86_64-linux = "n+Ark8bysvQU1DEOvNZJWdkTuLZ7nwe/pYUzPj+Z30Q=";
+      x86_64-darwin = "06dx8lhw1cqignv06pcjjv8v743kr8bck1iqgl1881jmqyhggi4f";
+      aarch64-linux = "0nyd452wcp5qw2cx1zj89v4fgk3jvbk3hhiix9a0gv150q48vyfa";
+      aarch64-darwin = "1yfbsfnkjbf99yl1dcflpyxppa9mhnxigyyplz0jaqgpwmhs2s0b";
+      armv7l-linux = "1miz95rz2fdw7xplflnydzq57hnz894xg29mhpywwiib8kypfrm7";
+    }
+    .${system}
+    or throwSystem;
 in
   callPackage ./generic.nix rec {
     # Please backport all compatible updates to the stable release.
     # This is important for the extension ecosystem.
-    version = "1.81.1";
+    version = "1.82.2";
     pname = "vscode" + lib.optionalString isInsiders "-insiders";
 
     # This is used for VS Code - Remote SSH test
@@ -72,7 +80,7 @@ in
       };
     };
 
-    tests = { inherit (nixosTests) vscode-remote-ssh; };
+    tests = {inherit (nixosTests) vscode-remote-ssh;};
 
     updateScript = ./update-vscode.sh;
 
@@ -97,7 +105,7 @@ in
       homepage = "https://code.visualstudio.com/";
       downloadPage = "https://code.visualstudio.com/Updates";
       license = licenses.unfree;
-      maintainers = with maintainers; [ eadwu synthetica maxeaubrey bobby285271 Enzime ];
-      platforms = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" "aarch64-linux" "armv7l-linux" ];
+      maintainers = with maintainers; [eadwu synthetica maxeaubrey bobby285271 Enzime];
+      platforms = ["x86_64-linux" "x86_64-darwin" "aarch64-darwin" "aarch64-linux" "armv7l-linux"];
     };
   }

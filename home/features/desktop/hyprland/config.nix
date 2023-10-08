@@ -163,9 +163,14 @@
     #   workspace_swipe_fingers = 3
     # }
 
+    # Navicat
+    windowrule = float, download
+    windowrule = dimaround, title:^.*Confirm.*$
+    windowrule = float, notification
+    windowrule = float, error
+    windowrule = float, splash
+    windowrule = float, confirmreset
 
-
-    ### Window rules
 
     ## Workspaces
     windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$
@@ -173,8 +178,8 @@
     windowrule = workspace 10, title:^.*WebCord.*$
     windowrule = workspace 10, title:^.*Skype.*$
     windowrule = workspace 10, title:^.*Signal.*$
-    windowrule = workspace 10, title:^.*Microsoft Teams - Preview.*$
     windowrule = workspace 1, title:^.*Visual Studio Code.*$
+    windowrule = fakefullscreen, title:^.*Visual Studio Code.*$
 
     ## Floating
     windowrule = float, title:^(Firefox — Sharing Indicator)$
@@ -185,7 +190,7 @@
     windowrule = idleinhibit fullscreen, firefox
 
     # 1Password
-    windowrule = move center,title:^(1Password)$
+    # windowrule = move center,title:^(1Password)$
     windowrule = size 2000 1000, title:^(1Password)$
     windowrule = float, title:^(1Password)$
 
@@ -265,11 +270,6 @@
     # windowrule = workspace 3, title:^.*Looking Glass (client).*$
     # windowrule = float, title:^.*Looking Glass (client).*$
 
-    # # Navicat Premium
-    # # windowrule = move 75 44%, title:^.*New Connection.*$
-    # # windowrule = move 1000 44%, title:^.*Edit Connection.*$
-    # # # windowrule = move 1000 44%, title:^.*AppRun.*$
-    # # windowrule = move 75 44%, title:^.*Dump SQL File.*$
 
     # windowrule = tile, title:^(Battle.net Login)$
     # windowrule = nofullscreenrequest, title:^(Battle.net Login)$

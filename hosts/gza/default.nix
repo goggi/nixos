@@ -27,7 +27,7 @@
 
   services.plex.enable = true;
   services.plex.openFirewall = true;
-  services.plex.user = "gogsaan";
+  # services.plex.user = "gogsaan";
 
   services.flatpak.enable = true;
   services.jellyfin.enable = true;
@@ -177,8 +177,10 @@
       pkgs.acpi
       pkgs.libva-utils
       pkgs.ocl-icd
-      pkgs.qt5.qtwayland
-      pkgs.qt5ct
+      # pkgs.qt5.qtwayland
+      # pkgs.qt5.qtwayland
+      # pkgs.qt5ct
+      pkgs.qt6.qtwayland
     ];
 
     variables = {
