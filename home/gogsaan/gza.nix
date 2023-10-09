@@ -75,6 +75,7 @@
     ../features/game/lutris.nix
     # ../features/game/bottles.nix
     ../features/game/minecraft.nix
+    ../features/game/starsector.nix
   ];
 
   home = {
