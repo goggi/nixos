@@ -12,6 +12,10 @@
   inherit (fromJSON (readFile ./pin.json)) version url hash;
 
   modify_starsector_sh = toFile "modify_starsector_sh.sed" ''
+    # Increase memory
+    s:-Xms1536m:-Xms8192m:
+    s:-Xmx1536m:-Xmx8192m:
+
     # Exec so we don't have a useless process lying around
     s:./jre_linux/bin/java:exec ./jre_linux/bin/java:
 

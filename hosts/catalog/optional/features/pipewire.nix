@@ -23,5 +23,8 @@
       	["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
       }
     '';
+    "wireplumber/policy.lua.d/11-bluetooth-policy.lua".text = ''
+      bluetooth_policy.policy["media-role.use-headset-profile"] = false
+    '';
   };
 }

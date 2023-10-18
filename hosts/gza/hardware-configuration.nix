@@ -25,21 +25,25 @@ in {
     bluetooth = {
       package = pkgs.bluez;
       enable = true;
-      # settings = {
-      #   General = {
-      #     Name = "Hello";
-      #     ControllerMode = "dual";
-      #     FastConnectable = "true";
-      #     Experimental = "true";
-      #   };
-      #   Policy = {
-      #     AutoEnable = "true";
-      #   };
-      # };
+
+      settings = {
+        General = {
+          # Name = "Hello";
+          # ControllerMode = "dual";
+          # FastConnectable = "true";
+          Experimental = "true";
+          Enable = "Source,Sink,Media,Socket";
+          Disable = "Headset";
+          auto_switch = 0;
+        };
+        Policy = {
+          AutoEnable = "true";
+        };
+      };
     };
 
     enableRedistributableFirmware = true;
-    pulseaudio.enable = false;
+    # pulseaudio.enable = true;
   };
 
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];

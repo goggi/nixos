@@ -12,7 +12,12 @@
     persistence = {
       "/persist/home/gogsaan" = {
         allowOther = true;
-        directories = [".config/starsector"];
+        directories = [
+          {
+            directory = ".config/starsector";
+            method = "symlink";
+          }
+        ];
       };
     };
   };

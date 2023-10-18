@@ -128,6 +128,7 @@
     btrfs.autoScrub.enable = true;
     acpid.enable = true;
     thermald.enable = true;
+    upower.enable = true;
   };
 
   xdg.portal = {

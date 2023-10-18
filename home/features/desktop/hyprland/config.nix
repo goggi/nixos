@@ -20,10 +20,6 @@
     # render_ahead_of_time = false #Buggy
     # render_ahead_safezone = 0
     focus_on_activate = true
-    groupbar_gradients = false
-    groupbar_titles_font_size = 10
-
-
   }
   ### Autostart ###
   # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
@@ -101,8 +97,16 @@
       col.active_border= 0xffcba6f7 0xfff38ba8 45deg
       no_border_on_floating = false
       layout = master
-      col.group_border=0xff313244
-      col.group_border_active	=0xffcba6f7 0xfff38ba8 45deg
+    }
+
+    group {
+      col.border_inactive=0xff313244
+      col.border_active	=0xffcba6f7 0xfff38ba8 45deg
+      groupbar:gradients = false
+      groupbar:col.inactive=0xff313244
+      groupbar:col.active	=0xffcba6f7 0xfff38ba8 45deg
+      groupbar:font_size = 10
+      # groupbar:text_color = 0x000000
     }
 
 
