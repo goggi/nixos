@@ -21,7 +21,7 @@
   testers,
   webkitgtk,
 }: let
-  pname = "devpod";
+  pname = "devpods";
   version = "0.3.7";
 
   src = fetchFromGitHub {

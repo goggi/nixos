@@ -29,7 +29,7 @@
         looking-glass-client = pkgs.callPackage ./looking {};
         vscode = pkgs.callPackage ./vscode/vscode.nix {};
         starsector = pkgs.callPackage ./starsector {};
-        devops = pkgs.devops ./devops {};
+        devpod = pkgs.callPackage ./devpod {};
       };
     };
 
