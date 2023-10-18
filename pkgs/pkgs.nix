@@ -30,9 +30,6 @@
         vscode = pkgs.callPackage ./vscode/vscode.nix {};
         starsector = pkgs.callPackage ./starsector {};
         devops = pkgs.devops ./devops {};
-        # libclang-pip = pkgs.callPackage ./libclang/default.nix {};
-        # xwaylandvideobridge = pkgs.callPackage ./xwaylandbridge/default.nix {};
-        # webcord = pkgs.callPackage ./webcord/default.nix {};
       };
     };
 

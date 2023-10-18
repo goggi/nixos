@@ -5,6 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    devops
     easyeffects
     kooha
     s3fs
