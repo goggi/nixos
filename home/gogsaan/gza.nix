@@ -69,6 +69,8 @@
     ../features/tool/idasen.nix
     ../features/tool/nomacs.nix
     ../features/tool/swappy.nix
+    ../features/tool/wasabiwallet.nix
+    ../features/tool/sparrow.nix
 
     # Game
     ../features/game/steam.nix

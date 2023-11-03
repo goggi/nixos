@@ -5,8 +5,6 @@
   ...
 }: {
   home.packages = with pkgs; [
-    devpod
-    devpodDesktop
     easyeffects
     kooha
     s3fs
