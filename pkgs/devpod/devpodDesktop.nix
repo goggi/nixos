@@ -20,6 +20,7 @@
   stdenv,
   testers,
   webkitgtk,
+  devpod,
 }: let
   pname = "devpod";
   version = "0.3.7";
@@ -87,7 +88,7 @@ in
 
     postPatch =
       ''
-        ln -s ${cli}/bin/devpod bin/devpod-cli-${rustTargetPlatformSpec}
+        ln -s ${devpod}/bin/devpod bin/devpod-cli-${rustTargetPlatformSpec}
         cp -r ${frontend-build} frontend-build
 
         substituteInPlace tauri.conf.json --replace '"distDir": "../dist",' '"distDir": "frontend-build",'
@@ -144,7 +145,7 @@ in
     ];
 
     postInstall = ''
-      ln -sf ${cli}/bin/devpod $out/bin/devpod-cli
+      ln -sf ${devpod}/bin/devpod $out/bin/devpod-cli
       mv $out/bin/devpod-desktop $out/bin/DevPod
 
       mkdir -p $out/share/icons/hicolor/{256x256@2,128x128,32x32}/apps

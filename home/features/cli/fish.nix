@@ -41,6 +41,7 @@
       ns = "nix-shell -p ";
       gitNotMegedProduction = "for branch in (git for-each-ref --format='%(refname:short)' refs/heads/ refs/remotes/origin/ | grep -v 'development' | grep -v 'production'); if git merge-base --is-ancestor $branch development && not git merge-base --is-ancestor $branch production; echo \"$branch has been merged into development but not into production\"; end; end;";
       mountBackup = "echo \"Check Yubikey\" && sudo lvchange -ay volgroup_mirror/backup && sudo mount /dev/volgroup_mirror/backup /persist/drivers/backup/  && sudo lvchange -ay volgroup_mirror/backup && sudo mount /dev/volgroup_mirror/backup /persist/drivers/backup/";
+      psql = "nix shell nixpkgs#postgresql --command psql";
     };
     functions = {
       fish_greeting = "";
