@@ -20,8 +20,8 @@
 
     # Hyprland
     hyprland = {
-      # url = "github:hyprwm/Hyprland/3d9545d2e0aee9f6c67867b22cf3fb9b1f708bc6";
-      url = "github:hyprwm/Hyprland";
+      url = "github:hyprwm/Hyprland/751d2851cc270c3322ffe2eb83c156e4298a0c0e";
+      # url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland-contrib.url = "github:hyprwm/contrib";

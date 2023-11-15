@@ -70,6 +70,7 @@
     ../features/tool/nomacs.nix
     ../features/tool/swappy.nix
     ../features/tool/wasabiwallet.nix
+    ../features/tool/wayvnc.nix
     # ../features/tool/sparrow.nix
 
     # Game
