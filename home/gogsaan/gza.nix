@@ -20,7 +20,8 @@
     ../features/browser/firefox
     ../features/browser/googleChrome.nix
     ../features/browser/vivaldi.nix
-    # ../features/browser/chromium.nix
+    ../features/browser/chromium.nix
+    ../features/browser/chromiumBeta.nix
 
     # Development
     ../features/development/vscode.nix

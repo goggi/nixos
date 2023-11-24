@@ -101,6 +101,7 @@
 
     group {
       col.border_inactive=0xff313244
+      groupbar:render_titles = false
       col.border_active	=0xffcba6f7 0xfff38ba8 45deg
       groupbar:gradients = false
       groupbar:col.inactive=0xff313244

@@ -5,8 +5,9 @@
     };
     shellAliases = {
       system = "nix run nixpkgs#neofetch";
+      xdg-restart = "systemctl --user restart xdg-desktop-portal-hyprland.service";
       gpgFrontend = "QT_QPA_PLATFORM=\"wayland;xcb\" appimage-run /home/gogsaan/Applications/appimage/GpgFrontend-2.0.9-linux-x86_64_4a0a7c2d621c582a773f4a7652633cc3.AppImage";
-      lightDark = "if grep -q 'Catppuccin-Mocha-Standard-Mauve-Dark' /home/gogsaan/Projects/nix/config/home/features/desktop/common/wayland/gtk.nix; sed -i 's/Catppuccin-Mocha-Standard-Mauve-Dark/Catppuccin-Latte-Standard-Mauve-Light/g' /home/gogsaan/Projects/nix/config/home/features/desktop/common/wayland/gtk.nix; else if grep -q 'Catppuccin-Latte-Standard-Mauve-Light' /home/gogsaan/Projects/nix/config/home/features/desktop/common/wayland/gtk.nix; sed -i 's/Catppuccin-Latte-Standard-Mauve-Light/Catppuccin-Mocha-Standard-Mauve-Dark/g' /home/gogsaan/Projects/nix/config/home/features/desktop/common/wayland/gtk.nix; end; and echo \"Check Yubikey\" && sudo nixos-rebuild switch --flake /home/gogsaan/Projects/nix/config#gza --show-trace";
+      lightDark = "if grep -q 'Catppuccin-Mocha-Standard-Mauve-Dark' /home/gogsaan/Projects/private/nix/config/home/features/desktop/common/wayland/gtk.nix; sed -i 's/Catppuccin-Mocha-Standard-Mauve-Dark/Catppuccin-Latte-Standard-Mauve-Light/g' /home/gogsaan/Projects/private/nix/config/home/features/desktop/common/wayland/gtk.nix; else if grep -q 'Catppuccin-Latte-Standard-Mauve-Light' /home/gogsaan/Projects/private/nix/config/home/features/desktop/common/wayland/gtk.nix; sed -i 's/Catppuccin-Latte-Standard-Mauve-Light/Catppuccin-Mocha-Standard-Mauve-Dark/g' /home/gogsaan/Projects/private/nix/config/home/features/desktop/common/wayland/gtk.nix; end; and echo \"Check Yubikey\" && sudo nixos-rebuild switch --flake /home/gogsaan/Projects/private/nix/config#gza --show-trace";
       tuivpnon = "nmcli radio wifi on || true && sleep 5 && echo \"Check Yubikey\" && sudo nmcli device disconnect enp38s0 || true  && nmcli device connect wlo1 || true && nmcli device connect enp38s0 || true && sudo ip route add 10.141.96.190/32 via 192.168.137.1 dev wlo1 && sudo ip route add 10.141.96.117/32 via 192.168.137.1 dev wlo1";
       tuivpnoff = "nmcli radio wifi off";
       yarn = "npm run";
@@ -14,8 +15,8 @@
       cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
       bloat = "nix path-info -Sh /run/current-system";
       cat = "${pkgs.bat}/bin/bat --style=plain";
-      nb = "echo \"Check Yubikey\" && sudo rm /home/gogsaan/.config/mimeapps.list || true && sudo rm /home/gogsaan/.ssh/config || true && git add . || true && sudo nixos-rebuild switch --show-trace --option eval-cache false --flake /home/gogsaan/Projects/nix/config#gza --show-trace";
-      nu = "echo \"Check Yubikey\" && sudo nix flake update /home/gogsaan/Projects/nix/config";
+      nb = "echo \"Check Yubikey\" && sudo rm /home/gogsaan/.config/mimeapps.list || true && sudo rm /home/gogsaan/.ssh/config || true && git add . || true && sudo nixos-rebuild switch --show-trace --option eval-cache false --flake /home/gogsaan/Projects/private/nix/config#gza --show-trace";
+      nu = "echo \"Check Yubikey\" && sudo nix flake update /home/gogsaan/Projects/private/nix/config";
       sops = "nix-shell -p sops --run \" sops hosts/catalog/secrets.yaml \"";
       ls = "eza";
       cdd = "cd $(find ~ -type d | fzf)";

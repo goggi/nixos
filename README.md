@@ -91,8 +91,8 @@ sudo mount /dev/disk/by-label/boot /mnt/boot
 3. Add editor and open config
 ```
 NIXPKGS_ALLOW_UNFREE=1 nix-shell -p vscode
-code  /mnt/persist/home/gogsaan/Projects/nix/config
-cd /mnt/persist/home/gogsaan/Projects/nix/config 
+code  /mnt/persist/home/gogsaan/Projects/private/nix/config
+cd /mnt/persist/home/gogsaan/Projects/private/nix/config 
 sudo nixos-install --flake .#gza
 ```
 

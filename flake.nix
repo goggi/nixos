@@ -1,7 +1,8 @@
 {
   inputs = {
     # NixOS
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
@@ -20,8 +21,9 @@
 
     # Hyprland
     hyprland = {
-      url = "github:hyprwm/Hyprland/751d2851cc270c3322ffe2eb83c156e4298a0c0e";
-      # url = "github:hyprwm/Hyprland";
+      # url = "github:hyprwm/Hyprland/751d2851cc270c3322ffe2eb83c156e4298a0c0e";
+      # url = "github:hyprwm/Hyprland/bc7f6a7fe14e2ed748e4e2e4b326f57c6a28b4e6";
+      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland-contrib.url = "github:hyprwm/contrib";

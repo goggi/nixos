@@ -153,7 +153,7 @@
       gappsWrapperArgs+=(
         # Add gio to PATH so that moving files to the trash works when not using a desktop environment
         --prefix PATH : ${glib.bin}/bin
-        --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
+        # --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
         --add-flags ${lib.escapeShellArg commandLineArgs}
       )
     '';
@@ -176,6 +176,7 @@
         # and the window immediately closes which renders VSCode unusable
         # see https://github.com/NixOS/nixpkgs/issues/152939 for full log
         ln -rs "$unpacked" "$packed"
+        # chmod +x resources/app/node_modules/node-pty/build/Release/spawn-helper
       ''
       + (let
         vscodeRipgrep =

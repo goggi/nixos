@@ -120,12 +120,5 @@
         )
         (lib.lists.crossLists (vscode: electron: {inherit vscode electron;}) [vscodeVersionData electronVersionData]));
   in {
-    packages.x86_64-linux =
-      builtins.mapAttrs (key: anonymize) (vscodePackages
-        // {
-          "vscode_1_77_3_in_1_78_0" = vscodeHybridVersion vscodePackages.vscode_1_78_0 vscodePackages.vscode_1_77_3;
-          "vscode_1_78_0_in_1_77_3" = vscodeHybridVersion vscodePackages.vscode_1_77_3 vscodePackages.vscode_1_78_0;
-        })
-      // vscodeElectronWrapped;
   };
 }

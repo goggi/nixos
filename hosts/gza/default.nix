@@ -216,5 +216,5 @@
   #   };
   # };
 
-  system.stateVersion = lib.mkForce "23.11";
+  system.stateVersion = lib.mkForce "24.05";
 }
