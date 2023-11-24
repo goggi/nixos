@@ -18,10 +18,10 @@
 
     # Browser
     ../features/browser/firefox
-    ../features/browser/googleChrome.nix
+    # ../features/browser/googleChrome.nix
     ../features/browser/vivaldi.nix
-    ../features/browser/chromium.nix
-    ../features/browser/chromiumBeta.nix
+    # ../features/browser/chromium.nix
+    # ../features/browser/microsoftEdge.nix
 
     # Development
     ../features/development/vscode.nix

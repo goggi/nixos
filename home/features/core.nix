@@ -5,6 +5,8 @@
   ...
 }: {
   home.packages = with pkgs; [
+    startcitizen
+
     easyeffects
     kooha
     s3fs
