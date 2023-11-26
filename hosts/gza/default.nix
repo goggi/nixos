@@ -80,7 +80,7 @@
     # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     # kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
     # kernelPackages = pkgs.linuxPackages_latest;
-    # kernelPackages = pkgs.linuxPackages_6_4;
+    kernelPackages = pkgs.linuxPackages_6_6;
 
     # Passtrough GPU
     initrd.preDeviceCommands = ''
@@ -189,6 +189,10 @@
     };
   };
 
+  boot.kernel.sysctl = {
+    "vm.max_map_count" = 16777216;
+    "fs.file-max" = 524288;
+  };
   services.logind.extraConfig = ''
     # don’t shutdown when power button is short-pressed
     HandlePowerKey=ignore
@@ -216,5 +220,5 @@
   #   };
   # };
 
-  system.stateVersion = lib.mkForce "24.05";
+  system.stateVersion = lib.mkForce "23.11";
 }

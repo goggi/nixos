@@ -3,6 +3,11 @@
     # NixOS
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+
+    lug.url = "github:LovingMelody/lug-helper/20806da463f9e069fdf98841ca2c5d69146cb163";
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
@@ -27,8 +32,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland-contrib.url = "github:hyprwm/contrib";
-
     # Other
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     sops-nix.url = github:Mic92/sops-nix;
     devshell.url = "github:numtide/devshell";
     bazecor.url = "github:gvolpe/bazecor-nix";
@@ -43,6 +48,8 @@
     nixpkgs,
     bazecor,
     sops-nix,
+    lug,
+    nix-doom-emacs,
     ...
   } @ inputs: let
     system = "x86_64-linux";

@@ -9,6 +9,7 @@
 }: {
   imports = [
     # Core
+    inputs.nix-doom-emacs.hmModule
     inputs.impermanence.nixosModules.home-manager.impermanence
     ../features/core.nix
 
@@ -20,7 +21,7 @@
     ../features/browser/firefox
     # ../features/browser/googleChrome.nix
     ../features/browser/vivaldi.nix
-    # ../features/browser/chromium.nix
+    ../features/browser/chromium.nix
     # ../features/browser/microsoftEdge.nix
 
     # Development
@@ -129,6 +130,12 @@
 
   # let HM manage itself when in standalone mode
   programs.home-manager.enable = true;
+
+  programs.doom-emacs = {
+    enable = true;
+    doomPrivateDir = ./doom.d; # Directory containing your config.el, init.el
+    # and packages.el files
+  };
 
   programs.mangohud = {
     enable = true;

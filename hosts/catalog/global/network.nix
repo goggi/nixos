@@ -5,6 +5,11 @@
   ...
 }: {
   networking = {
+    extraHosts = ''
+      127.0.0.1 modules-cdn.eac-prod.on.epicgames.com
+      10.0.0.1 server
+    '';
+
     networkmanager = {
       enable = true;
       unmanaged = ["docker0" "rndis0"];

@@ -14,6 +14,7 @@
 
   pkgs = import inputs.nixpkgs {
     inherit system;
+
     config = {
       allowBroken = true;
       allowInsecure = true;
@@ -29,7 +30,7 @@
         looking-glass-client = pkgs.callPackage ./looking {};
         vscode = pkgs.callPackage ./vscode/vscode.nix {};
         starsector = pkgs.callPackage ./starsector {};
-        startcitizen = pkgs.callPackage ./startcitizen {};
+        # startcitizen = pkgs.callPackage ./startcitizen {};
         # devpod = pkgs.callPackage ./devpod {};
         # devpodDesktop = pkgs.callPackage ./devpod/devpodDesktop.nix {};
       };

@@ -5,7 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
-    startcitizen
+    # startcitizen
 
     easyeffects
     kooha

@@ -107,6 +107,9 @@
     systemPackages = with pkgs; [
       # polkit
       # polkit_gnome
+      inputs.lug.packages.${pkgs.system}.lug-helper # installs a package
+      wineWowPackages.stable
+      wineWowPackages.waylandFull
       curl
       gcc
       git

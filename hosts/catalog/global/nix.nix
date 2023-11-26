@@ -74,6 +74,7 @@
         "https://nixpkgs-wayland.cachix.org"
         "https://helix.cachix.org"
         "https://hyprland.cachix.org"
+        "https://nix-gaming.cachix.org"
       ];
 
       trusted-public-keys = [
@@ -83,10 +84,11 @@
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       ];
     };
   };
 
   system.autoUpgrade.enable = false;
-  system.stateVersion = lib.mkDefault "24.05";
+  system.stateVersion = lib.mkDefault "23.11";
 }

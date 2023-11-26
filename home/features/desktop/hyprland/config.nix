@@ -99,6 +99,11 @@
       layout = master
     }
 
+    # Layouts
+    master {
+      special_scale_factor = 0.9f
+    }
+
     group {
       col.border_inactive=0xff313244
       groupbar:render_titles = false
@@ -204,7 +209,7 @@
     windowrule = move 35% 10%, title:^(swappy)$
 
 
-    # Layouts
+
     # dwindle {
     #   no_gaps_when_only = false
     #   pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below

@@ -6,6 +6,7 @@
   gamemode,
   winetricks,
   wine,
+  wineWowPackages,
   dxvk,
   wineFlags ? "",
   pname ? "star-citizen",
