@@ -5,7 +5,6 @@
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
     lug.url = "github:LovingMelody/lug-helper/20806da463f9e069fdf98841ca2c5d69146cb163";
-
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     impermanence.url = "github:nix-community/impermanence";
