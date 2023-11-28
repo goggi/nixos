@@ -22,6 +22,7 @@
     # ../features/browser/googleChrome.nix
     ../features/browser/vivaldi.nix
     ../features/browser/chromium.nix
+    ../features/browser/thorium.nix
     # ../features/browser/microsoftEdge.nix
 
     # Development
