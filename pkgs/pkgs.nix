@@ -28,8 +28,9 @@
 
       packageOverrides = super: {
         looking-glass-client = pkgs.callPackage ./looking {};
-        vscode = pkgs.callPackage ./vscode/vscode.nix {};
+        # vscode = pkgs.callPackage ./vscode/vscode.nix {};
         starsector = pkgs.callPackage ./starsector {};
+        starsector = pkgs.callPackage ./thorium {};
         # startcitizen = pkgs.callPackage ./startcitizen {};
         # devpod = pkgs.callPackage ./devpod {};
         # devpodDesktop = pkgs.callPackage ./devpod/devpodDesktop.nix {};

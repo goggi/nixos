@@ -41,7 +41,7 @@
     ../features/management/gpg.nix
 
     # Document
-    ../features/document/obsidian.nix
+    # ../features/document/obsidian.nix
     ../features/document/zathura.nix
     ../features/document/lapce.nix
 
@@ -51,7 +51,7 @@
 
     # Media
     ../features/media/obsStudio.nix
-    ../features/media/tidal.nix
+    # ../features/media/tidal.nix
     ../features/media/jellyfin.nix
     ../features/media/plex.nix
 
@@ -69,7 +69,7 @@
     ../features/tool/btop.nix
     ../features/tool/nemo.nix
     ../features/tool/idasen.nix
-    ../features/tool/nomacs.nix
+    # ../features/tool/nomacs.nix
     ../features/tool/swappy.nix
     ../features/tool/wasabiwallet.nix
     ../features/tool/wayvnc.nix
@@ -114,7 +114,7 @@
         ];
         files = [
           ".zsh_history"
-          # ".config/mimeapps.list"
+          ".config/mimeapps.list"
         ];
         allowOther = true;
       };

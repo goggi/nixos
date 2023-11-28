@@ -6,7 +6,8 @@
 }: {
   home.packages = with pkgs; [
     # startcitizen
-
+    # wpsoffice
+    libreoffice-fresh
     easyeffects
     kooha
     s3fs

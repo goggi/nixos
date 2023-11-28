@@ -495,4 +495,7 @@
   # Mouse bindings
   bindm = SUPER, mouse:272, movewindow
   bindm = SUPER, mouse:273, resizewindow
+
+  unbind=ALT,N
+
 ''

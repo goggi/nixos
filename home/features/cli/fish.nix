@@ -15,7 +15,8 @@
       cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
       bloat = "nix path-info -Sh /run/current-system";
       cat = "${pkgs.bat}/bin/bat --style=plain";
-      nb = "echo \"Check Yubikey\" && sudo rm /home/gogsaan/.config/mimeapps.list || true && sudo rm /home/gogsaan/.ssh/config || true && git add . || true && sudo nixos-rebuild switch --show-trace --option eval-cache false --flake /home/gogsaan/Projects/private/nix/config#gza --show-trace";
+      nb = "echo \"Check Yubikey\" && sudo rm /home/gogsaan/.ssh/config || true && git add . || true && sudo nixos-rebuild switch --show-trace --option eval-cache false --flake /home/gogsaan/Projects/private/nix/config#gza --show-trace";
+      # nb = "echo \"Check Yubikey\" && sudo rm /home/gogsaan/.config/mimeapps.list || true && sudo rm /home/gogsaan/.ssh/config || true && git add . || true && sudo nixos-rebuild switch --show-trace --option eval-cache false --flake /home/gogsaan/Projects/private/nix/config#gza --show-trace";
       nu = "echo \"Check Yubikey\" && sudo nix flake update /home/gogsaan/Projects/private/nix/config";
       sops = "nix-shell -p sops --run \" sops hosts/catalog/secrets.yaml \"";
       ls = "eza";

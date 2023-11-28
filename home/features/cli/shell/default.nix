@@ -23,12 +23,12 @@ with lib; let
     "text/plain" = ["lapce.desktop"];
     "audio/*" = ["mpv.desktop"];
     "video/*" = ["mpv.dekstop"];
-    "image/*" = ["imv.desktop"];
     "application/json" = ["lapce.desktop"];
     "application/pdf" = ["org.pwmt.zathura.desktop.desktop"];
     "x-scheme-handler/discord" = ["discordcanary.desktop"];
     "x-scheme-handler/spotify" = ["spotify.desktop"];
     "x-scheme-handler/tg" = ["telegramdesktop.desktop"];
+    "image/*" = ["imv-folder.desktop"];
   };
 in {
   imports = [
@@ -82,10 +82,10 @@ in {
       };
     };
 
-    mimeApps = {
-      enable = true;
-      associations.added = associations;
-      defaultApplications = associations;
-    };
+    # mimeApps = {
+    #   enable = true;
+    #   associations.added = associations;
+    #   defaultApplications = associations;
+    # };
   };
 }
