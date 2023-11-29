@@ -5,11 +5,6 @@
 }: {
   home = {
     packages = [
-      # pkgs._1password-gui
-      # {
-      #   enable = true;
-      #   polkitPolicyOwners = ["gogsaan"];
-      # }
       pkgs.tidal-hifi
       pkgs.tidal-dl
     ];

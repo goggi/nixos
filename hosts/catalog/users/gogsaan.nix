@@ -13,7 +13,7 @@ in {
     description = "Gogsaan";
     isNormalUser = true;
     shell = pkgs.fish;
-    passwordFile = config.sops.secrets.gogsaan-password.path;
+    hashedPasswordFile = config.sops.secrets.gogsaan-password.path;
     extraGroups =
       [
         "i2c"
@@ -44,12 +44,4 @@ in {
   };
   programs.fish.enable = true;
   programs.zsh.enable = false;
-
-  programs = {
-    _1password-gui = {
-      enable = true;
-      polkitPolicyOwners = ["gogsaan"];
-      package = pkgs._1password-gui-beta;
-    };
-  };
 }
