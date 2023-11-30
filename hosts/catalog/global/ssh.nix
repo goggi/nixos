@@ -13,7 +13,7 @@ in {
   services.openssh = {
     enable = true;
     openFirewall = true;
-    forwardX11 = false;
+    settings.X11Forwarding = false;
     ports = [49022];
     # settings.kbdInteractiveAuthentication = false;
     # settings.passwordAuthentication = lib.mkForce false;

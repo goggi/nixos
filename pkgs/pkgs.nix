@@ -29,10 +29,14 @@
       packageOverrides = super: {
         looking-glass-client = pkgs.callPackage ./looking {};
         # vscode = pkgs.callPackage ./vscode/vscode.nix {};
-        starsector = pkgs.callPackage ./starsector {};
-        thorium = pkgs.callPackage ./thorium {};
+        starsector = pkgs.callPackage ./.current/starsector {};
+        thorium = pkgs.callPackage ./.current/thorium {};
+        vscode = pkgs.callPackage ./.current/vscode/vscode.nix {};
+        webcord = pkgs.callPackage ./.current/webcord {};
+
+        # Add vscode from inputs.nixpkgsUnstable
+
         # startcitizen = pkgs.callPackage ./startcitizen {};
-        # devpod = pkgs.callPackage ./devpod {};
         # devpodDesktop = pkgs.callPackage ./devpod/devpodDesktop.nix {};
       };
     };
@@ -47,7 +51,7 @@
           }
         )
       ]
-      ++ (importNixFiles ./overlays);
+      ++ (importNixFiles ./.overlays);
   };
 in
   pkgs

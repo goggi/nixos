@@ -1,12 +1,16 @@
 {
   inputs = {
     # NixOS
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
-    lug.url = "github:LovingMelody/lug-helper/20806da463f9e069fdf98841ca2c5d69146cb163";
-    nix-gaming.url = "github:fufexan/nix-gaming";
+    # Local Unstable nixpkgs repository at ../nixpkgs
+    # nixpkgsUnstable = {
+    # url = "/persist/home/gogsaan/Projects/private/nix/nixpkgs";
+    # };
 
+    nixpkgs = {
+      # url = "github:NixOS/nixpkgs/nixos-unstable";
+      url = "github:NixOS/nixpkgs/nixos-23.11";
+    };
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
@@ -14,25 +18,28 @@
     };
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    fu.url = "github:numtide/flake-utils";
+    fu = {
+      url = "github:numtide/flake-utils";
+    };
 
     # Hyprland
     hyprland = {
-      # url = "github:hyprwm/Hyprland/751d2851cc270c3322ffe2eb83c156e4298a0c0e";
-      # url = "github:hyprwm/Hyprland/bc7f6a7fe14e2ed748e4e2e4b326f57c6a28b4e6";
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     hyprland-contrib.url = "github:hyprwm/contrib";
+
     # Other
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    lug.url = "github:LovingMelody/lug-helper/20806da463f9e069fdf98841ca2c5d69146cb163";
+    nix-gaming.url = "github:fufexan/nix-gaming";
+    # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     sops-nix.url = github:Mic92/sops-nix;
     devshell.url = "github:numtide/devshell";
     bazecor.url = "github:gvolpe/bazecor-nix";
@@ -48,7 +55,6 @@
     bazecor,
     sops-nix,
     lug,
-    nix-doom-emacs,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -67,23 +73,4 @@
       ];
     };
   };
-
-  # nixConfig = {
-  #   extra-substituters = [
-  #     "https://nix-community.cachix.org"
-  #     "https://helix.cachix.org"
-  #     "https://fufexan.cachix.org"
-  #     "https://nix-gaming.cachix.org"
-  #     "https://hyprland.cachix.org"
-  #     "https://cache.privatevoid.net"
-  #   ];
-  #   extra-trusted-public-keys = [
-  #     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-  #     "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
-  #     "fufexan.cachix.org-1:LwCDjCJNJQf5XD2BV+yamQIMZfcKWR9ISIFy5curUsY="
-  #     "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-  #     "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-  #     "cache.privatevoid.net:SErQ8bvNWANeAvtsOESUwVYr2VJynfuc9JRwlzTTkVg="
-  #   ];
-  # };
 }

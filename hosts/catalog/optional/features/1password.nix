@@ -2,15 +2,14 @@
   pkgs,
   config,
   ...
-}:
-{
+}: {
   programs = {
     _1password-gui = {
       enable = true;
       polkitPolicyOwners = ["gogsaan"];
       package = pkgs._1password-gui-beta;
     };
-    _1password-cli = {
+    _1password = {
       enable = true;
     };
   };
@@ -20,10 +19,10 @@
       text = ''
         librewolf
         com.microsoft.EdgeDev
+        thorium-browser
       '';
       mode = "0755";
       user = "root";
     };
   };
 }
-D

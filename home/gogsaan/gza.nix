@@ -9,7 +9,7 @@
 }: {
   imports = [
     # Core
-    inputs.nix-doom-emacs.hmModule
+
     inputs.impermanence.nixosModules.home-manager.impermanence
     ../features/core.nix
 
@@ -23,7 +23,6 @@
     ../features/browser/vivaldi.nix
     # ../features/browser/chromium.nix
     ../features/browser/librewolf
-
     ../features/browser/thorium.nix
     # ../features/browser/microsoftEdge.nix
 
@@ -36,6 +35,7 @@
     # ../features/development/helix
     ../features/development/language/nodejs.nix
     ../features/development/language/python3.nix
+    # inputs.nix-doom-emacs.hmModule
 
     # Management
     ../features/management/1password.nix
@@ -134,11 +134,11 @@
   # let HM manage itself when in standalone mode
   programs.home-manager.enable = true;
 
-  programs.doom-emacs = {
-    enable = true;
-    doomPrivateDir = ./doom.d; # Directory containing your config.el, init.el
-    # and packages.el files
-  };
+  # programs.doom-emacs = {
+  #   enable = true;
+  #   doomPrivateDir = ./doom.d; # Directory containing your config.el, init.el
+  #   # and packages.el files
+  # };
 
   programs.mangohud = {
     enable = true;

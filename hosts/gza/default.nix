@@ -17,6 +17,7 @@
     ../catalog/optional/features/encryptedRoot.nix
     ../catalog/optional/features/flatpakIconFix.nix
     ../catalog/optional/features/greetd.nix
+    ../catalog/optional/features/1password.nix
     # ../catalog/optional/features/quietBoot.nix
     ../catalog/optional/features/pipewire.nix
 
@@ -79,8 +80,8 @@
     binfmt.emulatedSystems = ["aarch64-linux" "i686-linux"];
     # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     # kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
-    # kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.linuxPackages_6_6;
+    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_6_6;
 
     # Passtrough GPU
     initrd.preDeviceCommands = ''
@@ -137,6 +138,7 @@
     extraPortals = [
       pkgs.xdg-desktop-portal-hyprland
     ];
+    config.common.default = "*";
   };
 
   programs.xwayland.enable = true;
