@@ -21,17 +21,16 @@
     ../catalog/optional/features/dygma.nix
     ../catalog/optional/features/pipewire.nix
     ../catalog/optional/features/plex.nix
+    ../catalog/optional/features/flatpak.nix
 
     ../catalog/optional/apps/docker.nix
   ];
 
-  services.flatpak.enable = true;
   nix.gc.automatic = true;
 
   networking = {
     hostName = "gza";
     useDHCP = lib.mkDefault true;
-    # nameservers = ["1.1.1.1" "8.8.8.8"];
   };
 
   environment.persistence = {
