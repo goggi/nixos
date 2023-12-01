@@ -65,4 +65,6 @@
     GTK_THEME = "Catppuccin-Latte-Standard-Mauve-Light";
     XCURSOR_SIZE = "28";
   };
+
+  # xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 }

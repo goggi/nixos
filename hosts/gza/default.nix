@@ -31,8 +31,8 @@
   # services.plex.user = "gogsaan";
 
   services.flatpak.enable = true;
-  services.jellyfin.enable = true;
-  services.jellyfin.openFirewall = true;
+  # services.jellyfin.enable = true;
+  # services.jellyfin.openFirewall = true;
   nix.gc.automatic = true;
 
   networking = {
@@ -134,25 +134,23 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = false;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
-    ];
+    extraPortals = [pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr];
+    configPackages = [pkgs.hyprland];
     config.common.default = "*";
   };
 
   programs.xwayland.enable = true;
   programs.gnome-disks.enable = true;
 
-  console = let
-    normal = ["181825" "F38BA8" "A6E3A1" "F9E2AF" "89B4FA" "F5C2E7" "94E2D5" "BAC2DE"];
-    bright = ["1E1E2E" "F38BA8" "A6E3A1" "F9E2AF" "89B4FA" "F5C2E7" "94E2D5" "A6ADC8"];
-  in {
-    earlySetup = true;
-    colors = normal ++ bright;
-    # font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
-    keyMap = "us";
-  };
+  # console = let
+  #   normal = ["181825" "F38BA8" "A6E3A1" "F9E2AF" "89B4FA" "F5C2E7" "94E2D5" "BAC2DE"];
+  #   bright = ["1E1E2E" "F38BA8" "A6E3A1" "F9E2AF" "89B4FA" "F5C2E7" "94E2D5" "A6ADC8"];
+  # in {
+  #   earlySetup = true;
+  #   colors = normal ++ bright;
+  #   # font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+  #   keyMap = "us";
+  # };
 
   services.xserver.enable = false;
   services.xserver.autorun = true;
@@ -164,14 +162,6 @@
         auth include login
       '';
     };
-  };
-
-  services.udev = {
-    # For dygma keyboard
-    extraRules = ''
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2201", GROUP="users", MODE="0666"
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2200", GROUP="users", MODE="0666"
-    '';
   };
 
   environment = {
@@ -195,6 +185,7 @@
     "vm.max_map_count" = 16777216;
     "fs.file-max" = 524288;
   };
+
   services.logind.extraConfig = ''
     # don’t shutdown when power button is short-pressed
     HandlePowerKey=ignore

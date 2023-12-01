@@ -8,8 +8,8 @@
     # };
 
     nixpkgs = {
-      # url = "github:NixOS/nixpkgs/nixos-unstable";
-      url = "github:NixOS/nixpkgs/nixos-23.11";
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+      # url = "github:NixOS/nixpkgs/nixos-23.11";
     };
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland = {
@@ -18,7 +18,8 @@
     };
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      # url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {
@@ -63,7 +64,10 @@
     pkgs = import ./pkgs/pkgs.nix {inherit inputs system lib builtins;};
   in {
     inherit lib pkgs;
+    homeManagerModules = import ./modules/home-manager;
+
     nixosConfigurations = import ./hosts inputs;
+
     formatter = pkgs.${system}.alejandra;
     devShells.${system}.default = pkgs.mkShell {
       sopsPGPKeyDirs = ["./keys"];

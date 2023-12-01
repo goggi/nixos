@@ -21,7 +21,7 @@
     ../features/browser/firefox
     # ../features/browser/googleChrome.nix
     ../features/browser/vivaldi.nix
-    # ../features/browser/chromium.nix
+    ../features/browser/chromium.nix
     ../features/browser/librewolf
     ../features/browser/thorium.nix
     # ../features/browser/microsoftEdge.nix
@@ -55,7 +55,7 @@
     # Media
     ../features/media/obsStudio.nix
     # ../features/media/tidal.nix
-    ../features/media/jellyfin.nix
+    # ../features/media/jellyfin.nix
     ../features/media/plex.nix
 
     # Work
