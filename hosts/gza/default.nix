@@ -18,38 +18,26 @@
     ../catalog/optional/features/flatpakIconFix.nix
     ../catalog/optional/features/greetd.nix
     ../catalog/optional/features/1password.nix
-    # ../catalog/optional/features/quietBoot.nix
+    ../catalog/optional/features/dygma.nix
     ../catalog/optional/features/pipewire.nix
+    ../catalog/optional/features/plex.nix
 
     ../catalog/optional/apps/docker.nix
-    # ../catalog/optional/apps/bazecor.nix
-    # ../catalog/optional/apps/taskwarrior.nix
   ];
 
-  services.plex.enable = true;
-  services.plex.openFirewall = true;
-  # services.plex.user = "gogsaan";
-
   services.flatpak.enable = true;
-  # services.jellyfin.enable = true;
-  # services.jellyfin.openFirewall = true;
   nix.gc.automatic = true;
 
   networking = {
     hostName = "gza";
     useDHCP = lib.mkDefault true;
-    nameservers = ["1.1.1.1" "8.8.8.8"];
+    # nameservers = ["1.1.1.1" "8.8.8.8"];
   };
 
   environment.persistence = {
     "/persist/var" = {
       directories = [
-        "/var/lib/libvirt"
         "/var/lib/bluetooth"
-        "/var/lib/jellyfin"
-        "/var/lib/plex"
-        "/var/cache/jellyfin"
-        # "/var/lib/waydroid/"
       ];
     };
     "/persist/etc" = {

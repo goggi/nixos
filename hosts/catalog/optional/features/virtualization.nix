@@ -47,4 +47,12 @@
     virt-manager
     looking-glass-client # Passthrough GPU
   ];
+
+  environment.persistence = {
+    "/persist/var" = {
+      directories = [
+        "/var/lib/libvirt"
+      ];
+    };
+  };
 }
