@@ -8,7 +8,6 @@
 
     supportedLocales = lib.mkDefault [
       "en_US.UTF-8/UTF-8"
-      "pt_BR.UTF-8/UTF-8"
       "sv_SE.UTF-8/UTF-8"
     ];
   };

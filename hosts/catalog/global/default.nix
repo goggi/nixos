@@ -16,10 +16,14 @@
     ./nix.nix
   ];
 
-  # services.gnome.gnome-keyring.enable = true;
-
   security = {
     rtkit.enable = true;
+    polkit.enable = true;
+    pam.services.swaylock = {
+      text = ''
+        auth include login
+      '';
+    };
 
     apparmor = {
       enable = true;
@@ -28,8 +32,6 @@
     };
 
     pam = {
-      # services.login.enableGnomeKeyring = true;
-
       loginLimits = [
         {
           domain = "@wheel";
@@ -55,6 +57,14 @@
     udisks2.enable = true;
     printing.enable = true;
     fstrim.enable = true;
+    btrfs.autoScrub.enable = true;
+    acpid.enable = true;
+    thermald.enable = true;
+    upower.enable = true;
+
+    # Xserver & Xwayland
+    xserver.enable = false;
+    xserver.autorun = true;
 
     udev.packages = with pkgs; [gnome.gnome-settings-daemon];
 
@@ -67,7 +77,7 @@
       lidSwitch = "suspend-then-hibernate";
       lidSwitchExternalPower = "lock";
       extraConfig = ''
-        HandlePowerKey=suspend-then-hibernate
+        HandlePowerKey=ignore
         HibernateDelaySec=3600
       '';
     };
@@ -76,7 +86,8 @@
   programs = {
     bash.promptInit = ''eval "$(${pkgs.starship}/bin/starship init bash)"'';
     fish.promptInit = ''eval "$(${pkgs.starship}/bin/starship init fish | source)"'';
-
+    xwayland.enable = true;
+    gnome-disks.enable = true;
     adb.enable = true;
     dconf.enable = true;
     nm-applet.enable = true;
@@ -97,16 +108,17 @@
     };
   };
 
-  # environment.sessionVariables.POLKIT_AUTH_AGENT = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-
   environment = {
     binsh = "${pkgs.bash}/bin/bash";
     shells = with pkgs; [fish];
     # shells = with pkgs; [zsh];
 
     systemPackages = with pkgs; [
-      # polkit
-      # polkit_gnome
+      inputs.bazecor.packages.${pkgs.system}.default
+      acpi
+      libva-utils
+      ocl-icd
+      qt6.qtwayland
       inputs.lug.packages.${pkgs.system}.lug-helper # installs a package
       wineWowPackages.stable
       wineWowPackages.waylandFull
@@ -130,19 +142,15 @@
     ];
 
     loginShellInit = ''
-      # dbus-update-activation-environment --systemd DISPLAY
-      # eval $(gnome-keyring-daemon --start --daemonize --components=ssh)
       eval $(ssh-agent)
       gpg-connect-agent /bye
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-      # home-manager switch --flake .#gogsaan@gza
-      # sudo rm -r /var/lib/waydroid
-      # sudo ln -s /persist/var/var/lib/waydroid/ /var/lib/waydroid
     '';
 
     variables = {
       EDITOR = "nano";
       BROWSER = "firefox";
+      NIXOS_OZONE_WL = "1";
     };
   };
 }

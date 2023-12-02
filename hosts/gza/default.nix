@@ -24,6 +24,7 @@
     ../catalog/optional/features/flatpak.nix
 
     ../catalog/optional/apps/docker.nix
+    ../catalog/optional/apps/bazecor.nix
   ];
 
   nix.gc.automatic = true;
@@ -37,12 +38,6 @@
     "/persist/var" = {
       directories = [
         "/var/lib/bluetooth"
-      ];
-    };
-    "/persist/etc" = {
-      directories = [
-        # Perist networkpasswords
-        "/etc/NetworkManager/system-connections"
       ];
     };
   };
@@ -69,6 +64,11 @@
     # kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
     kernelPackages = pkgs.linuxPackages_latest;
     # kernelPackages = pkgs.linuxPackages_6_6;
+
+    kernel.sysctl = {
+      "vm.max_map_count" = 16777216;
+      "fs.file-max" = 524288;
+    };
 
     # Passtrough GPU
     initrd.preDeviceCommands = ''
@@ -112,93 +112,16 @@
     };
   };
 
-  services = {
-    btrfs.autoScrub.enable = true;
-    acpid.enable = true;
-    thermald.enable = true;
-    upower.enable = true;
-  };
-
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr];
+    extraPortals = [pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal];
     configPackages = [pkgs.hyprland];
     config.common.default = "*";
   };
 
-  programs.xwayland.enable = true;
-  programs.gnome-disks.enable = true;
-
-  # console = let
-  #   normal = ["181825" "F38BA8" "A6E3A1" "F9E2AF" "89B4FA" "F5C2E7" "94E2D5" "BAC2DE"];
-  #   bright = ["1E1E2E" "F38BA8" "A6E3A1" "F9E2AF" "89B4FA" "F5C2E7" "94E2D5" "A6ADC8"];
-  # in {
-  #   earlySetup = true;
-  #   colors = normal ++ bright;
-  #   # font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
-  #   keyMap = "us";
-  # };
-
-  services.xserver.enable = false;
-  services.xserver.autorun = true;
-
-  security = {
-    polkit.enable = true;
-    pam.services.swaylock = {
-      text = ''
-        auth include login
-      '';
-    };
-  };
-
-  environment = {
-    systemPackages = [
-      inputs.bazecor.packages.${pkgs.system}.default
-      pkgs.acpi
-      pkgs.libva-utils
-      pkgs.ocl-icd
-      # pkgs.qt5.qtwayland
-      # pkgs.qt5.qtwayland
-      # pkgs.qt5ct
-      pkgs.qt6.qtwayland
-    ];
-
-    variables = {
-      NIXOS_OZONE_WL = "1";
-    };
-  };
-
-  boot.kernel.sysctl = {
-    "vm.max_map_count" = 16777216;
-    "fs.file-max" = 524288;
-  };
-
-  services.logind.extraConfig = ''
-    # don’t shutdown when power button is short-pressed
-    HandlePowerKey=ignore
-  '';
-
   systemd.extraConfig = ''
     DefaultTimeoutStopSec=5s
   '';
-
-  # systemd.services.mountLv = {
-  #   description = "Mount LV at startup";
-  #   wantedBy = ["multi-user.target"];
-
-  #   serviceConfig = {
-  #     Type = "oneshot";
-  #     ExecStart = "/usr/bin/sh";
-  #     ExecStartPre = [
-  #       "/bin/sh"
-  #       "lvchange -ay volgroup_mirror/backup"
-  #     ];
-  #     ExecStartPost = [
-  #       "/bin/sh"
-  #       "mount /dev/volgroup_mirror/backup /persist/drivers/backup/"
-  #     ];
-  #   };
-  # };
 
   system.stateVersion = lib.mkForce "23.11";
 }

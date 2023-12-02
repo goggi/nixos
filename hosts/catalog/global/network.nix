@@ -23,6 +23,14 @@
     };
   };
 
+  environment.persistence = {
+    "/persist/etc" = {
+      directories = [
+        "/etc/NetworkManager/system-connections"
+      ];
+    };
+  };
+
   # slows down boot time
   systemd.services.NetworkManager-wait-online.enable = false;
 }
