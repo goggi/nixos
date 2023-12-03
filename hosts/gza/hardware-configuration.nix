@@ -28,9 +28,6 @@ in {
 
       settings = {
         General = {
-          # Name = "Hello";
-          # ControllerMode = "dual";
-          # FastConnectable = "true";
           Experimental = "true";
           Enable = "Source,Sink,Media,Socket";
           Disable = "Headset";
@@ -43,7 +40,6 @@ in {
     };
 
     enableRedistributableFirmware = true;
-    # pulseaudio.enable = true;
   };
 
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
@@ -89,7 +85,7 @@ in {
   ];
 
   networking.useDHCP = lib.mkDefault true;
-  networking.firewall.allowedTCPPorts = [25565];
+  networking.firewall.allowedTCPPorts = [25565 32400];
   networking.firewall.allowedUDPPorts = [19132];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

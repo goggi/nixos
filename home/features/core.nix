@@ -5,18 +5,15 @@
   ...
 }: {
   home.packages = with pkgs; [
-    # startcitizen
-    # wpsoffice
     libreoffice-fresh
     easyeffects
     kooha
     s3fs
     lzip
     playerctl # for media keys
-    deepin.deepin-calculator
     steamtinkerlaunch
     vlc
-    leafpad
+    # leafpad
     envsubst
     lsof
     gh

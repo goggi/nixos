@@ -5,13 +5,12 @@
 }: {
   home = {
     packages = [
-      pkgs.teams
+      pkgs.wavebox
     ];
-
     persistence = {
       "/persist/home/gogsaan" = {
         allowOther = true;
-        directories = [".config/Microsoft"];
+        directories = [".config/wavebox"];
       };
     };
   };

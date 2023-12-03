@@ -44,13 +44,14 @@
 
   boot = {
     initrd.kernelModules = [
+      "raid1"
       "dm-snapshot"
+      "dm-cache-default"
+      "dm-raid"
       # Passtrough GPU
       "vfio_pci"
       "vfio"
       "vfio_iommu_type1"
-      # "dm-cache-default"
-      # "dm-raid"
       # "vfio_virqfd"
     ];
     kernelParams = [

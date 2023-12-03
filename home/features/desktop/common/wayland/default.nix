@@ -23,12 +23,6 @@
 
   home.packages = with pkgs; [
     imv
-    # lyrics
-    # mimeo
-    # primary-xwayland
-    # wl-mirror
-    # wl-mirror-pick
-    # ydotool
     clipman
     pulseaudio
     wf-recorder
@@ -39,20 +33,11 @@
     swaybg
   ];
 
-  # services.gammastep = {
-  #   enable = true;
-  #   provider = "geoclue2";
-  # };
-
-  # xdg.portal.enable = true;
-
   home.sessionVariables = {
     # XDG Specifications
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
     XDG_SESSION_DESKTOP = "Hyprland";
-    # XCURSOR_SIZE = "24";
-    # GDK_SCALE = "2";
     # QT Variables
     DISABLE_QT5_COMPAT = "0";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";

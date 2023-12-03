@@ -24,6 +24,7 @@
     ../features/browser/chromium.nix
     ../features/browser/librewolf
     ../features/browser/thorium.nix
+    ../features/browser/wavebox.nix
     # ../features/browser/microsoftEdge.nix
 
     # Development
@@ -54,12 +55,7 @@
 
     # Media
     ../features/media/obsStudio.nix
-    # ../features/media/tidal.nix
-    # ../features/media/jellyfin.nix
     ../features/media/plex.nix
-
-    # Work
-    # ../features/work/teams.nix
 
     # Cli
     ../features/cli/fish.nix
@@ -72,16 +68,13 @@
     ../features/tool/btop.nix
     ../features/tool/nemo.nix
     ../features/tool/idasen.nix
-    # ../features/tool/nomacs.nix
     ../features/tool/swappy.nix
     ../features/tool/wasabiwallet.nix
     ../features/tool/wayvnc.nix
-    # ../features/tool/sparrow.nix
 
     # Game
     ../features/game/steam.nix
     ../features/game/lutris.nix
-    # ../features/game/bottles.nix
     ../features/game/minecraft.nix
     ../features/game/starsector.nix
   ];

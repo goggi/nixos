@@ -1,6 +1,11 @@
 {
-  services.plex.enable = true;
-  services.plex.openFirewall = true;
+  services.plex = {
+    enable = true;
+    dataDir = "/var/lib/plex";
+    openFirewall = true;
+    user = "gogsaan";
+    group = "users";
+  };
 
   environment.persistence = {
     "/persist/var" = {
