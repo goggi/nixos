@@ -294,6 +294,10 @@
   # SPECIAL IS KITTY
   windowrule = workspace special:kitty, title:^(special_is_kitty)$
 
+  windowrule=float,title:^_crx_
+
+
+
   #
   # Keybinds
   #

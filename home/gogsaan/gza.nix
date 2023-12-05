@@ -24,7 +24,7 @@
     ../features/browser/chromium.nix
     ../features/browser/librewolf
     ../features/browser/thorium.nix
-    ../features/browser/wavebox.nix
+    # ../features/browser/wavebox.nix
     # ../features/browser/microsoftEdge.nix
 
     # Development
