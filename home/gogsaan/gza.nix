@@ -22,7 +22,7 @@
     # ../features/browser/googleChrome.nix
     ../features/browser/vivaldi.nix
     ../features/browser/chromium.nix
-    ../features/browser/librewolf
+    # ../features/browser/librewolf
     ../features/browser/thorium.nix
     ../features/browser/waterfox.nix
     # ../features/browser/wavebox.nix
@@ -46,7 +46,7 @@
     ../features/management/gpg.nix
 
     # Document
-    # ../features/document/obsidian.nix
+    ../features/document/obsidian.nix
     ../features/document/zathura.nix
     ../features/document/lapce.nix
 

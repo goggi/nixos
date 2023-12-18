@@ -195,6 +195,8 @@
     windowrule = float, title:^(Firefox — Sharing Indicator)$
     windowrule = float, title:^(KeePassXC -  Access Request)$
     windowrule = float, title:^(Passwords - KeePassXC)$
+    windowrule = float, title:^(KopiaUI is Loading...)$
+    windowrule = move center,title:^(KopiaUI is Loading...)$
 
     ## Inhibit IDLE
     windowrule = idleinhibit fullscreen, firefox
@@ -208,6 +210,15 @@
     windowrule = float, title:^(swappy)$
     windowrule = move 35% 10%, title:^(swappy)$
 
+    # FLY IS KITTY
+    windowrule=move center,title:^(fly_is_kitty)$
+    windowrule=size 800 500,title:^(fly_is_kitty)$
+    windowrule=float,title:^(fly_is_kitty)$
+
+    # SPECIAL IS KITTY
+    windowrule = workspace special:kitty, title:^(special_is_kitty)$
+
+    windowrule=float,title:^_crx_
 
 
     # dwindle {
@@ -286,15 +297,6 @@
     # windowrule = nofullscreenrequest, title:^(Diablo III)$
     # windowrule = tile, title:^(Diablo III)$
 
-  # FLY IS KITTY
-  windowrule=move center,title:^(fly_is_kitty)$
-  windowrule=size 800 500,title:^(fly_is_kitty)$
-  windowrule=float,title:^(fly_is_kitty)$
-
-  # SPECIAL IS KITTY
-  windowrule = workspace special:kitty, title:^(special_is_kitty)$
-
-  windowrule=float,title:^_crx_
 
 
 
@@ -310,8 +312,8 @@
   bind=$mainMod_SHIFT,G,exec, hyprctl dispatch centerwindow
 
   # Browsers
-  bind=$mainModSHIFT,Return,exec,firefox
-  bind=$mainModCTRL,Return,exec, vivaldi --profile-directory="Default"
+  bind=$mainModSHIFT,Return,exec,waterfox-browser
+  bind=$mainModCTRL,Return,togglespecialworkspace,chatgpt
 
   #bind=$mainMod,B,exec,swaync-client -t -sw
   #bind=$mainMod,V,exec,swaync-client -C -sw && swaync-client -cp -sw

@@ -20,6 +20,7 @@
         librewolf
         com.microsoft.EdgeDev
         thorium-browser
+        waterfox-browser
       '';
       mode = "0755";
       user = "root";

@@ -6,7 +6,7 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Mocha-Standard-Mauve-Dark";
+      name = "Catppuccin-Latte-Standard-Mauve-Light";
       package = pkgs.catppuccin-gtk.override {
         accents = ["mauve"];
         size = "standard";
@@ -62,7 +62,7 @@
 
   home.sessionVariables = {
     # Theming Related Variables
-    GTK_THEME = "Catppuccin-Mocha-Standard-Mauve-Dark";
+    GTK_THEME = "Catppuccin-Latte-Standard-Mauve-Light";
     XCURSOR_SIZE = "28";
   };
 

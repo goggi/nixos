@@ -5,6 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    audio-recorder
     libreoffice-fresh
     easyeffects
     kooha
