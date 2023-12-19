@@ -32,7 +32,6 @@
         starsector = pkgs.callPackage ./starsector {};
         thorium = pkgs.callPackage ./thorium {};
         waterfox = pkgs.callPackage ./waterfox {};
-        glib = pkgs.callPackage ./glib {};
         vscode = pkgs.callPackage ./vscode/vscode.nix {};
         # webcord = pkgs.callPackage ./webcord {};
       };
