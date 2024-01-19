@@ -21,7 +21,7 @@
     ../features/browser/firefox
     # ../features/browser/googleChrome.nix
     ../features/browser/vivaldi.nix
-    ../features/browser/chromium.nix
+    # ../features/browser/chromium.nix
     # ../features/browser/librewolf
     ../features/browser/thorium.nix
     ../features/browser/waterfox.nix

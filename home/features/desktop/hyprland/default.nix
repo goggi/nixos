@@ -5,21 +5,21 @@
   pkgs,
   ...
 }: let
-  flake-compat = builtins.fetchTarball {
-    url = "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-    sha256 = "sha256:0m9grvfsbwmvgwaxvdzv6cmyvjnlww004gfxjvcl806ndqaxzy4j";
-  };
-  hyprland =
-    (import flake-compat {
-      src = builtins.fetchTarball {
-        url = "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
-        sha256 = "sha256:0miihb72b4mk02lrwywbgf09i7lhzjvbk2izjc2ipgimcf52g0fc";
-      };
-    })
-    .defaultNix;
+  # flake-compat = builtins.fetchTarball {
+  #   url = "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
+  #   sha256 = "sha256:0m9grvfsbwmvgwaxvdzv6cmyvjnlww004gfxjvcl806ndqaxzy4j";
+  # };
+  # hyprland =
+  #   (import flake-compat {
+  #     src = builtins.fetchTarball {
+  #       url = "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
+  #       sha256 = "sha256:0izk3l0dbwrm2854paifmqpjcbys3w4g1v4qy7kr21cqc58cgzhg";
+  #     };
+  #   })
+  # .defaultNix;
 in {
   imports = [
-    hyprland.homeManagerModules.default
+    # hyprland.homeManagerModules.default
     ../common/wayland
     ./scripts.nix
   ];
@@ -37,7 +37,7 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    # package = inputs.hyprland.packages.${pkgs.system}.default.override {};
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     # package = pkgs.hyprland;
     systemdIntegration = true;
     xwayland = {

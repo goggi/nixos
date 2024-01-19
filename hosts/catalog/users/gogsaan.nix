@@ -3,6 +3,7 @@
   config,
   lib,
   outputs,
+  inputs,
   ...
 }: let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
@@ -44,4 +45,9 @@ in {
   };
   programs.fish.enable = true;
   programs.zsh.enable = false;
+
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  };
 }

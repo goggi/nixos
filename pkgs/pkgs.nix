@@ -25,6 +25,7 @@
         "nodejs-16.20.1"
         "nodejs-16.20.2"
         "electron-25.9.0"
+        "electron-24.8.6"
       ];
 
       packageOverrides = super: {
@@ -32,7 +33,8 @@
         starsector = pkgs.callPackage ./starsector {};
         thorium = pkgs.callPackage ./thorium {};
         waterfox = pkgs.callPackage ./waterfox {};
-        vscode = pkgs.callPackage ./vscode/vscode.nix {};
+        # vscode = pkgs.callPackage ./vscode/vscode.nix {};
+        obsidian = pkgs.callPackage ./obsidian {};
         # webcord = pkgs.callPackage ./webcord {};
       };
     };

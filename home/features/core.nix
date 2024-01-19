@@ -5,6 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    libdrm
     audio-recorder
     libreoffice-fresh
     easyeffects
