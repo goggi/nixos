@@ -10,7 +10,7 @@
       pkgs.yarn
       pkgs.nodePackages.pnpm
       pkgs.okteto
-      pkgs.postgresql
+      # pkgs.postgresql
     ];
   };
 }

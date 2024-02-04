@@ -109,12 +109,12 @@
       group {
         col.border_inactive=0xff313244
         groupbar:render_titles = false
-        groupbar:height = 0
+        # groupbar:height = 0
         col.border_active	=0xffcba6f7 0xfff38ba8 45deg
         groupbar:gradients = false
         groupbar:col.inactive=0xff313244
         groupbar:col.active	=0xffcba6f7 0xfff38ba8 45deg
-        groupbar:font_size = 10
+        # groupbar:font_size = 10
         # groupbar:text_color = 0x000000
       }
 

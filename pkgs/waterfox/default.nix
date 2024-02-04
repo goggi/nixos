@@ -85,12 +85,12 @@
     ++ lib.optionals mediaSupport [ffmpeg]
   );
 
-  version = "G6.0.6";
+  version = "G6.0.8";
 
   sources = {
     "x86_64-linux" = fetchurl {
       url = "https://cdn1.waterfox.net/waterfox/releases/${version}/Linux_x86_64/waterfox-${version}.tar.bz2";
-      sha256 = "0csgx5y7ky6azfsk5bmfab99615njs0v2cp0a8082l7dp1nyd9h8";
+      sha256 = "GBANH+CsVFUlq2Qv67/2X2ZLsNbWiXHTD0HRGePoXVM=";
     };
   };
 

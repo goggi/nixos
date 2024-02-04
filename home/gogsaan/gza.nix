@@ -18,12 +18,13 @@
     # ../features/desktop/sway
 
     # Browser
-    ../features/browser/firefox
-    # ../features/browser/googleChrome.nix
+    # ../features/browser/firefox
+    ../features/browser/googleChrome.nix
+    ../features/browser/floorp.nix
     ../features/browser/vivaldi.nix
     # ../features/browser/chromium.nix
     # ../features/browser/librewolf
-    ../features/browser/thorium.nix
+    # ../features/browser/thorium.nix
     ../features/browser/waterfox.nix
     # ../features/browser/wavebox.nix
     # ../features/browser/microsoftEdge.nix

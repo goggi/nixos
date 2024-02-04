@@ -14,16 +14,16 @@
     };
   };
 
-  environment.etc = {
-    "1password/custom_allowed_browsers" = {
-      text = ''
-        librewolf
-        com.microsoft.EdgeDev
-        thorium-browser
-        waterfox-browser
-      '';
-      mode = "0755";
-      user = "root";
-    };
-  };
+  # environment.etc = {
+  #   "1password/custom_allowed_browsers" = {
+  #     text = ''
+  #       librewolf
+  #       com.microsoft.EdgeDev
+  #       thorium-browser
+  #       waterfox-browser
+  #     '';
+  #     mode = "0755";
+  #     user = "root";
+  #   };
+  # };
 }
