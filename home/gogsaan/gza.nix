@@ -54,6 +54,7 @@
     # Communication
     ../features/communcation/signalDesktop.nix
     ../features/communcation/webcord.nix
+    ../features/communcation/vencord.nix
 
     # Media
     ../features/media/obsStudio.nix
@@ -105,6 +106,7 @@
           ".config/dconf"
           ".config/vpn"
           ".config/sops"
+          ".config/rclone"
           ".ssh"
           ".aws"
           ".local/share/applications"

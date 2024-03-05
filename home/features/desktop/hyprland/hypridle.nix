@@ -1,10 +1,10 @@
 {pkgs, ...}: let
   hyprctl = "hyprctl";
-  resetSpecialWorkspace = "hyprctl dispatch workspace 1 && hyprctl dispatch togglespecialworkspace chatgpt && hyprctl dispatch togglespecialworkspace music && hyprctl dispatch togglespecialworkspace kitty && hyprctl dispatch togglespecialworkspace obsidian && hyprctl dispatch togglespecialworkspace obsidian && sleep 0.1 &&  hyprctl dispatch
+  resetSpecialWorkspace = "hyprctl dispatch workspace 1 && hyprctl dispatch togglespecialworkspace chatgpt && hyprctl dispatch togglespecialworkspace music && hyprctl dispatch togglespecialworkspace kitty && hyprctl dispatch togglespecialworkspace obsidian && hyprctl dispatch togglespecialworkspace obsidian && sleep 0.1
  workspace 7 &&  hyprctl dispatch workspace 1 &&  hyprctl dispatch workspace 7 &&  hyprctl dispatch workspace 1";
-  mediaPause = "playerctl pause";
-  restartWaybar = "pkill waybar && waybar &";
-  restartXdgPortal = "systemctl --user restart xdg-desktop-portal-hyprland";
+  mediaPause = "hyprctl dispatch exec \"playerctl pause\"";
+  restartWaybar = "hyprctl dispatch exec \"pkill waybar && waybar &\"";
+  restartXdgPortal = "hyprctl dispatch exec \"systemctl --user restart xdg-desktop-portal-hyprland\"";
 in {
   home = {
     packages = with pkgs; [
@@ -22,9 +22,9 @@ in {
     }
 
     listener {
-        timeout = 300
+        timeout = 10
         on-timeout = hyprctl dispatch dpms off && ${mediaPause}
-        on-resume = hyprctl dispatch dpms on && sleep 1 && ${resetSpecialWorkspace} && ${restartWaybar} && ${restartXdgPortal}
+        on-resume = hyprctl dispatch dpms on && sleep 1 && ${restartXdgPortal} && ${resetSpecialWorkspace} && ${restartWaybar}
     }
   '';
 }

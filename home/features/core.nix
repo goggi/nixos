@@ -14,7 +14,6 @@
     libreoffice-fresh
     easyeffects
     kooha
-    s3fs
     lzip
     playerctl # for media keys
     steamtinkerlaunch

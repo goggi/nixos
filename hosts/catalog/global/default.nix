@@ -125,6 +125,8 @@
     shells = with pkgs; [fish];
 
     systemPackages = with pkgs; [
+      rclone
+      s3fs
       inputs.bazecor.packages.${pkgs.system}.default
       acpi
       libva-utils
