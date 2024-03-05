@@ -1,0 +1,139 @@
+add_newline = true
+format = "[](#9A348E)$os$username[](bg:#DA627D fg:#9A348E)$directory[](fg:#DA627D bg:#FCA17D)$git_branch$git_status[](fg:#FCA17D bg:#86BBD8)$c$elixir$elm$golang$haskell$java$julia$nodejs$nim$rust$scala[](fg:#86BBD8 bg:#33658A)$time[ ](fg:#33658A)\n"
+right_format = "$status"
+scan_timeout = 10
+
+[aws]
+symbol = "  "
+
+[character]
+error_symbol = "[λ](red)"
+success_symbol = "[λ](green)"
+
+[cmd_duration]
+disabled = false
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[directory]
+format = "[ $path ]($style)"
+read_only = " "
+style = "#000000 bg:#DA627D"
+truncation_length = 1
+truncation_symbol = "…/"
+
+[docker_context]
+style = "#000000 bg:#86BBD8"
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[gcloud]
+symbol = " "
+
+[git_branch]
+format = "[ $symbol $branch ]($style)"
+style = "#000000 bg:#FCA17D"
+symbol = ""
+
+[git_metrics]
+format = "[ $symbol $branch ]($style)"
+style = "#000000 bg:#FCA17D"
+symbol = ""
+
+[git_status]
+format = "[$all_status$ahead_behind ]($style)"
+style = "#000000 bg:#FCA17D"
+
+[golang]
+style = "#000000 bg:#86BBD8"
+symbol = " "
+
+[java]
+style = "#000000 bg:#86BBD8"
+symbol = " "
+
+[julia]
+symbol = " "
+
+[line_break]
+disabled = true
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+style = "#000000 bg:#86BBD8"
+symbol = " "
+
+[nodejs]
+format = "[ $symbol $version ]($style)"
+style = "#000000 bg:#86BBD8"
+symbol = " "
+
+[os]
+disabled = true
+style = "bg:#9A348E"
+
+[package]
+style = "#000000 bg:#86BBD8"
+symbol = " "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+style = "#000000 bg:#86BBD8"
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[status]
+disabled = false
+format = "[$symbol]($style)"
+success_symbol = "[](green)"
+symbol = "[](red)"
+
+[swift]
+symbol = "ﯣ "
+
+[terraform]
+style = "#000000 bg:#86BBD8"
+symbol = "行 "
+
+[time]
+disabled = false
+format = "[ ♥ ]($style)"
+style = "bg:#33658A"
+time_format = "%R"
+
+[username]
+disabled = false
+format = "[λ ]($style)"
+show_always = true
+style_root = "bold #000000 bg:#9A348E"
+style_user = "bold #000000 bg:#9A348E"

@@ -5,23 +5,12 @@
   pkgs,
   ...
 }: let
-  # flake-compat = builtins.fetchTarball {
-  #   url = "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-  #   sha256 = "sha256:0m9grvfsbwmvgwaxvdzv6cmyvjnlww004gfxjvcl806ndqaxzy4j";
-  # };
-  # hyprland =
-  #   (import flake-compat {
-  #     src = builtins.fetchTarball {
-  #       url = "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
-  #       sha256 = "sha256:0izk3l0dbwrm2854paifmqpjcbys3w4g1v4qy7kr21cqc58cgzhg";
-  #     };
-  #   })
-  # .defaultNix;
 in {
   imports = [
-    # hyprland.homeManagerModules.default
     ../common/wayland
     ./scripts.nix
+    ./hypridle.nix
+    ./hyprpaper.nix
   ];
 
   home = {
@@ -30,16 +19,23 @@ in {
       python39Packages.requests
       tesseract5
       xorg.xprop
-      inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-      swayidle
+      hyprland-per-window-layout
+      grimblast
     ];
   };
 
   wayland.windowManager.hyprland = {
     enable = true;
-    # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     # package = pkgs.hyprland;
-    systemdIntegration = true;
+    systemd = {
+      enable = true;
+      variables = ["--all"];
+      extraCommands = [
+        "systemctl --user stop graphical-session.target"
+        "systemctl --user start hyprland-session.target"
+      ];
+    };
     xwayland = {
       enable = true;
     };

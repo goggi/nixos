@@ -44,9 +44,4 @@ in {
     neededForUsers = true;
   };
   programs.fish.enable = true;
-  programs.zsh.enable = false;
-
-  programs.hyprland = {
-    enable = true;
-  };
 }

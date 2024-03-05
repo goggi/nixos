@@ -5,6 +5,10 @@
   ...
 }: {
   home.packages = with pkgs; [
+    ncdu
+    pulumi
+    pulumiPackages.pulumi-language-nodejs
+    deepin.deepin-calculator
     libdrm
     audio-recorder
     libreoffice-fresh

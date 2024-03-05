@@ -8,8 +8,7 @@
     ./gammastep.nix
     # ./kitty.nix
     # ./mako.nix
-    ./swayidle.nix
-    ./swaylock.nix
+    # ./swaylock.nix
     ./waybar
     # ./eww
     # ./eww/eww.nix
@@ -30,7 +29,6 @@
     waypipe
     grim
     slurp
-    swaybg
   ];
 
   home.sessionVariables = {

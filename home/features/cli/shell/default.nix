@@ -64,7 +64,13 @@ in {
   };
 
   programs = {
-    ssh.enable = true;
+    ssh = {
+      enable = true;
+      extraConfig = ''
+        Host *
+          IdentityAgent ~/.1password/agent.sock
+      '';
+    };
 
     gpg = {
       enable = true;

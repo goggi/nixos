@@ -4,12 +4,12 @@
 
     # Local Unstable nixpkgs repository at ../nixpkgs
     # nixpkgsUnstable = {
-    # url = "/persist/home/gogsaan/Projects/private/nix/nixpkgs";
+    #   url = "/persist/home/gogsaan/Projects/private/nix/nixpkgs";
     # };
 
     nixpkgs = {
-      # url = "github:NixOS/nixpkgs/nixos-unstable";
-      url = "github:NixOS/nixpkgs/nixos-23.11";
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+      # url = "github:NixOS/nixpkgs/nixos-23.11";
     };
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland = {
@@ -18,8 +18,8 @@
     };
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
-      # url = "github:nix-community/home-manager";
+      # url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {
@@ -30,12 +30,16 @@
     };
 
     # Hyprland
-    # hyprland = {
-    #   url = "github:hyprwm/Hyprland";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    hyprland = {
+      # url = "github:goggi/Hyprland/88a5ae0e7241dcc3945b6561275710e9aca66715";
+      # url = "github:goggi/Hyprland/ef213c7fe4d38dff45724d62775f81a7ad02712e";
+      # url = "github:goggi/Hyprland";
+      url = "github:hyprwm/Hyprland";
+      # url = "github:hyprwm/Hyprland/94aeb06d6ba14d403c46b52d1d2e397acb5906a4";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    hyprland-contrib.url = "github:hyprwm/contrib";
+    # hyprland-contrib.url = "github:hyprwm/contrib";
 
     # Other
     lug.url = "github:LovingMelody/lug-helper/20806da463f9e069fdf98841ca2c5d69146cb163";
@@ -53,17 +57,17 @@
   outputs = {
     self,
     nixpkgs,
-    bazecor,
     sops-nix,
-    lug,
+    hyprland,
     ...
   } @ inputs: let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
-    inherit (builtins);
+    inherit (self) outputs;
     pkgs = import ./pkgs/pkgs.nix {inherit inputs system lib builtins;};
   in {
     inherit lib pkgs;
+
     homeManagerModules = import ./modules/home-manager;
 
     nixosConfigurations = import ./hosts inputs;

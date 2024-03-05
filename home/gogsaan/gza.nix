@@ -24,8 +24,8 @@
     ../features/browser/vivaldi.nix
     # ../features/browser/chromium.nix
     # ../features/browser/librewolf
-    # ../features/browser/thorium.nix
-    ../features/browser/waterfox.nix
+    # ../features/browser/brave.nix
+    # ../features/browser/waterfox.nix
     # ../features/browser/wavebox.nix
     # ../features/browser/microsoftEdge.nix
 
@@ -100,6 +100,7 @@
             directory = "Projects";
             method = "symlink";
           }
+          ".cache/hyprland"
           ".config/certs"
           ".config/dconf"
           ".config/vpn"

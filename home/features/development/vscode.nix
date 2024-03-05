@@ -6,14 +6,14 @@
 }: {
   programs.vscode = {
     enable = true;
-    # package = pkgs.vscode.override {
-    #   commandLineArgs = ''
-    #     --enable-features=UseOzonePlatform \
-    #     --ozone-platform=wayland
-    #   '';
-    # };
+    package = pkgs.vscode.override {
+      commandLineArgs = ''
+        --enable-features=UseOzonePlatform \
+        --ozone-platform=wayland
+      '';
+    };
     # package = pkgs.vscode.fhs;
-    package = pkgs.vscode;
+    # package = pkgs.vscode;
   };
 
   # programs.vscode = {
@@ -21,7 +21,7 @@
   #   package = (pkgs.vscode.override {isInsiders = true;}).overrideAttrs (oldAttrs: rec {
   #     src = builtins.fetchTarball {
   #       url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
-  #       sha256 = "sha256:14hlmq519qb3zadrdvxv52irdrak4gl6rg8ki25fd1dvbzc75jnc";
+  #       sha256 = "sha256:0iaiawwp4m2glb4kcnmw54wvlknbmkaw076n243aa3y3x5z0k86q";
   #     };
   #     version = "latest";
   #   });

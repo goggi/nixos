@@ -26,15 +26,16 @@
         "nodejs-16.20.2"
         "electron-25.9.0"
         "electron-24.8.6"
+        "freeimage-unstable-2021-11-01"
       ];
 
       packageOverrides = super: {
         looking-glass-client = pkgs.callPackage ./looking {};
-        starsector = pkgs.callPackage ./starsector {};
+        # starsector = pkgs.callPackage ./starsector {};
         thorium = pkgs.callPackage ./thorium {};
         waterfox = pkgs.callPackage ./waterfox {};
         floorp = pkgs.callPackage ./floorp {};
-        vscode = pkgs.callPackage ./vscode/vscode.nix {};
+        # vscode = pkgs.callPackage ./vscode/vscode.nix {};
         obsidian = pkgs.callPackage ./obsidian {};
         # webcord = pkgs.callPackage ./webcord {};
       };

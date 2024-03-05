@@ -1,6 +1,10 @@
-{config, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   programs.starship = {
-    enable = true;
+    enable = false;
     settings = {
       scan_timeout = 10;
       add_newline = true;
@@ -122,6 +126,20 @@
       terraform = {
         symbol = "行 ";
         style = "#000000 bg:#86BBD8";
+      };
+    };
+  };
+
+  home = {
+    packages = [
+      pkgs.starship
+    ];
+    persistence = {
+      "/persist/home/gogsaan" = {
+        allowOther = true;
+        files = [
+          ".config/starship.toml"
+        ];
       };
     };
   };

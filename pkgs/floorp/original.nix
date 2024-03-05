@@ -7,12 +7,12 @@
 }:
 ((buildMozillaMach rec {
     pname = "floorp";
-    packageVersion = "11.9.0";
+    packageVersion = "11.10.5";
     applicationName = "Floorp";
     binaryName = "floorp";
 
     # Must match the contents of `browser/config/version.txt` in the source tree
-    version = "115.7.0";
+    version = "115.8.0";
 
     src = fetchFromGitHub {
       owner = "Floorp-Projects";

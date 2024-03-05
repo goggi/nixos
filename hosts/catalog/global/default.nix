@@ -16,6 +16,18 @@
     ./nix.nix
   ];
 
+  console = {
+    earlySetup = false;
+    packages = with pkgs; [terminus_font];
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+    # font = "ter-powerline-v24b";
+    # packages = [
+    #   pkgs.terminus_font
+    #   pkgs.powerline-fonts
+    # ];
+    keyMap = "us";
+  };
+
   security = {
     rtkit.enable = true;
     polkit.enable = true;
@@ -84,8 +96,8 @@
   };
 
   programs = {
-    bash.promptInit = ''eval "$(${pkgs.starship}/bin/starship init bash)"'';
-    fish.promptInit = ''eval "$(${pkgs.starship}/bin/starship init fish | source)"'';
+    # bash.promptInit = ''eval "$(${pkgs.starship}/bin/starship init bash)"'';
+    # fish.promptInit = ''eval "$(${pkgs.starship}/bin/starship init fish | source)"'';
     xwayland.enable = true;
     gnome-disks.enable = true;
     adb.enable = true;
@@ -111,7 +123,6 @@
   environment = {
     binsh = "${pkgs.bash}/bin/bash";
     shells = with pkgs; [fish];
-    # shells = with pkgs; [zsh];
 
     systemPackages = with pkgs; [
       inputs.bazecor.packages.${pkgs.system}.default

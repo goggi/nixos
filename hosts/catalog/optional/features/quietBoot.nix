@@ -3,10 +3,6 @@
   config,
   ...
 }: {
-  console = {
-    earlySetup = false;
-  };
-
   boot = {
     plymouth = {
       enable = true;

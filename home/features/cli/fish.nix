@@ -4,6 +4,7 @@
     shellAbbrs = {
     };
     shellAliases = {
+      disk = "ncdu /";
       system = "nix run nixpkgs#neofetch";
       xdg-restart = "systemctl --user restart xdg-desktop-portal-hyprland.service";
       gpgFrontend = "QT_QPA_PLATFORM=\"wayland;xcb\" appimage-run /home/gogsaan/Applications/appimage/GpgFrontend-2.0.9-linux-x86_64_4a0a7c2d621c582a773f4a7652633cc3.AppImage";
@@ -56,14 +57,6 @@
         bind \cr true
       ''
       +
-      # kitty integration
-      ''
-        set --global KITTY_INSTALLATION_DIR "${pkgs.kitty}/lib/kitty"
-        set --global KITTY_SHELL_INTEGRATION enabled
-        source "$KITTY_INSTALLATION_DIR/shell-integration/fish/vendor_conf.d/kitty-shell-integration.fish"
-        set --prepend fish_complete_path "$KITTY_INSTALLATION_DIR/shell-integration/fish/vendor_completions.d"
-      ''
-      +
       # Use vim bindings and cursors
       ''
         # fish_vi_key_bindings
@@ -101,13 +94,14 @@
         set -U fish_pager_color_description   yellow
         set -U fish_pager_color_prefix        'white' '--bold' '--underline'
         set -U fish_pager_color_progress      'brwhite' '--background=cyan'
-        starship init fish | source
 
         set -U -x KUBECONFIG /home/gogsaan/Projects/crawlyfi/terraform/kubernetes/kubeconfig
         set PATH $HOME/.npm/bin $fish_user_paths $PATH
-
         set -U -x CRAWLYFI_ENV dev
 
+        if test "$TERM" != "linux" -a -z "$SSH_TTY"
+            starship init fish | source
+        end
       '';
   };
 

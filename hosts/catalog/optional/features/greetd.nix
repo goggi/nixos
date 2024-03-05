@@ -33,7 +33,7 @@ in {
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${tuigreet} --greeting Welcome to GZA-DT --remember --time --cmd Hyprland";
+        command = "${tuigreet} --greeting Welcome to GZA-DT --remember --time --cmd Hyprland ";
         user = "gogsaan";
       };
       default_session = initial_session;

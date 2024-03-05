@@ -14,7 +14,7 @@
         allowOther = true;
         directories = [
           {
-            directory = ".config/starsector";
+            directory = ".local/share/starsector";
             method = "symlink";
           }
         ];

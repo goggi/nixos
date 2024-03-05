@@ -84,14 +84,15 @@ in {
     {device = "/dev/disk/by-label/swap";}
   ];
 
-  networking.useDHCP = lib.mkDefault true;
-  networking.firewall.allowedTCPPorts = [25565 32400];
-  networking.firewall.allowedUDPPorts = [19132];
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # DDCUTIL
   hardware.i2c.enable = true;
+
+  # Networking
+  networking.useDHCP = lib.mkDefault true;
+  networking.firewall.allowedTCPPorts = [25565 32400];
+  networking.firewall.allowedUDPPorts = [19132];
 }

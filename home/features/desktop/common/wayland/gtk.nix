@@ -6,7 +6,7 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Latte-Standard-Mauve-Light";
+      name = "Catppuccin-Mocha-Standard-Mauve-Dark";
       package = pkgs.catppuccin-gtk.override {
         accents = ["mauve"];
         size = "standard";
@@ -62,9 +62,9 @@
 
   home.sessionVariables = {
     # Theming Related Variables
-    GTK_THEME = "Catppuccin-Latte-Standard-Mauve-Light";
+    GTK_THEME = "Catppuccin-Mocha-Standard-Mauve-Dark";
     XCURSOR_SIZE = "28";
   };
 
-  # xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 }
