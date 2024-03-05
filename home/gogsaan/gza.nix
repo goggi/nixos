@@ -54,7 +54,7 @@
     # Communication
     ../features/communcation/signalDesktop.nix
     ../features/communcation/webcord.nix
-    ../features/communcation/vencord.nix
+    ../features/communcation/webcord-vencord.nix
 
     # Media
     ../features/media/obsStudio.nix
