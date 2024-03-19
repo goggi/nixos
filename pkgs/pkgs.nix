@@ -30,14 +30,9 @@
       ];
 
       packageOverrides = super: {
-        looking-glass-client = pkgs.callPackage ./looking {};
-        # starsector = pkgs.callPackage ./starsector {};
-        thorium = pkgs.callPackage ./thorium {};
-        waterfox = pkgs.callPackage ./waterfox {};
-        floorp = pkgs.callPackage ./floorp {};
-        # vscode = pkgs.callPackage ./vscode/vscode.nix {};
-        obsidian = pkgs.callPackage ./obsidian {};
-        # webcord = pkgs.callPackage ./webcord {};
+        thorium = pkgs.callPackage ./active/thorium {};
+        floorp = pkgs.callPackage ./active/floorp {};
+        waybar = pkgs.callPackage ./active/waybar {};
       };
     };
 

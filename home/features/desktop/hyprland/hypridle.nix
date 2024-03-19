@@ -22,7 +22,7 @@ in {
     }
 
     listener {
-        timeout = 10
+        timeout = 300
         on-timeout = hyprctl dispatch dpms off && ${mediaPause}
         on-resume = hyprctl dispatch dpms on && sleep 1 && ${restartXdgPortal} && ${resetSpecialWorkspace} && ${restartWaybar}
     }

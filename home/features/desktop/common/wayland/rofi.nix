@@ -144,7 +144,6 @@ in {
 
   xdg.configFile."rofi/index.rasi".text = ''
         configuration {
-        modi: "run,drun,emoji";
         icon-theme: "Oranchelo";
         show-icons: true;
         terminal: "kitty";

@@ -29,7 +29,7 @@
   exec-once = flatpak run io.kopia.KopiaUI &
   exec-once = nmcli radio wifi off
   exec-once = find ~/Downloads/Sidebery/ -ctime +3 -delete &
-  exec-once = systemctl --user restart xdg-desktop-portal-hyprland
+  # exec-once = systemctl --user restart xdg-desktop-portal-hyprland
 
 
   # Modifiers

@@ -18,6 +18,8 @@ bindfs -o fsname=/persist/home/gogsaan/.mozilla /persist/home/gogsaan/.mozilla /
 bindfs -o fsname=/persist/home/gogsaan/.config/1Password /persist/home/gogsaan/.config/1Password /home/gogsaan/.config/1Password
 
 bindfs -o fsname=/persist/home/gogsaan/.config/swaync /persist/home/gogsaan/.config/swaync /home/gogsaan/.config/swaync
+bindfs -o fsname=/persist/home/gogsaan/.config/vesktop /persist/home/gogsaan/.config/vesktop /home/gogsaan/.config/vesktop
+bindfs -o fsname=/persist/home/gogsaan/.config/Logseq /persist/home/gogsaan/.config/Logseq /home/gogsaan/.config/Logseq
 
 
 

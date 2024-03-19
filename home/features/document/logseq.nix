@@ -4,13 +4,11 @@
   ...
 }: {
   home = {
-    packages = [
-      pkgs.vesktop
-    ];
+    packages = [pkgs.logseq];
     persistence = {
       "/persist/home/gogsaan" = {
         allowOther = true;
-        directories = [".config/vesktop"];
+        directories = [".config/Logseq"];
       };
     };
   };

@@ -48,13 +48,14 @@
 
     # Document
     ../features/document/obsidian.nix
+    ../features/document/logseq.nix
     ../features/document/zathura.nix
     ../features/document/lapce.nix
 
     # Communication
     ../features/communcation/signalDesktop.nix
-    ../features/communcation/webcord.nix
-    ../features/communcation/webcord-vencord.nix
+    # ../features/communcation/webcord.nix
+    ../features/communcation/vencord.nix
 
     # Media
     ../features/media/obsStudio.nix
