@@ -27,7 +27,7 @@
     # ../features/browser/brave.nix
     # ../features/browser/waterfox.nix
     # ../features/browser/wavebox.nix
-    # ../features/browser/microsoftEdge.nix
+    ../features/browser/microsoftEdgeDev.nix
 
     # Development
     ../features/development/vscode.nix
