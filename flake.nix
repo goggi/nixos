@@ -31,11 +31,8 @@
 
     # Hyprland
     hyprland = {
-      # url = "github:goggi/Hyprland/88a5ae0e7241dcc3945b6561275710e9aca66715";
-      # url = "github:goggi/Hyprland/ef213c7fe4d38dff45724d62775f81a7ad02712e";
-      # url = "github:goggi/Hyprland";
+      # url = "github:hyprwm/Hyprland/84ab8d11e8951a6551d1e1bf87796a8589da6d47";
       url = "github:hyprwm/Hyprland";
-      # url = "github:hyprwm/Hyprland/94aeb06d6ba14d403c46b52d1d2e397acb5906a4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

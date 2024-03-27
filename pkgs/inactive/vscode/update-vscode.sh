@@ -21,7 +21,7 @@ sed -i "s/version = \".*\"/version = \"${VSCODE_VER}\"/" "$ROOT/vscode.nix"
 
 TEMP_FOLDER=$(mktemp -d)
 
-VSCODE_X64_LINUX_URL="https://update.code.visualstudio.com/${VSCODE_VER}/linux-x64/stable"
+VSCODE_X64_LINUX_URL="https://code.visualstudio.com/sha/download?build=insider&os=linux-x64"
 
 # Split output by newlines into Bash array
 readarray -t VSCODE_X64_LINUX <<< $(nix-prefetch-url --print-path ${VSCODE_X64_LINUX_URL})

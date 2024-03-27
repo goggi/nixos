@@ -3,7 +3,7 @@
     overlay = false
     damage_blink = false
     # enable_stdout_logs = true
-    # disable_logs = false
+    disable_logs = false
   }
 
   misc {
@@ -63,241 +63,236 @@
   bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$mainMonitorLowerResolutionPadding"
   bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$secondMonitorLowerResolution"
 
-    # Inputs
-    input {
-      kb_layout = us,se
-      kb_variant =
-      kb_model =
-      kb_options = grp:rwin_toggle
-      kb_rules =
-      follow_mouse = 1
-      # touchpad {
-      #     disable_while_typing = true
-      #     natural_scroll = true
-      #     tap-to-click = true
-      # }
-      sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
-    }
-
-
-    # General
-    binds {
-      allow_workspace_cycles = false
-    }
-
-    # General
-    general {
-      gaps_in = 6
-      gaps_out = 20
-      border_size = 2
-      col.active_border= 0xffcba6f7 0xfff38ba8 45deg
-      no_border_on_floating = false
-      layout = master
-    }
-
-    # Layouts
-    master {
-      special_scale_factor = 0.9f
-    }
-
-    group {
-      col.border_inactive=0xff313244
-      groupbar:render_titles = false
-      groupbar:font_size = 11
-      # groupbar:text_color = 0x000000
-      groupbar:height = 0
-      col.border_active	=0xffcba6f7 0xfff38ba8 45deg
-      groupbar:gradients = false
-      groupbar:col.inactive=0xff313244
-      groupbar:col.active	=0xffcba6f7 0xfff38ba8 45deg
-
-    }
-
-
-    # Decorations
-    decoration {
-
-      # Rounded corners
-      rounding = 6
-      # multisample_edges = true
-
-      # Opacity
-      active_opacity = 1.0
-      inactive_opacity = 1.0
-
-
-      # Shadow
-      drop_shadow = true
-      shadow_ignore_window = true
-      shadow_offset = 2 2
-      shadow_range = 4
-      shadow_render_power = 2
-      col.shadow = 0x66000000
-      dim_special = 0.7
-      dim_inactive = false
-      dim_strength = 0.6
-    }
-
-    # Blurring layerSurfaces
-    # blurls = gtk-layer-shell
-    blurls = waybar
-    blurls = lockscreen
-
-    # Animations
-    animations {
-      enabled = true
-      # bezier curve
-      bezier = linear, 0, 0, 1, 1
-      bezier = overshot, 0.05, 0.9, 0.1, 1.05
-      # bezier = overshot, 0.13, 0.99, 0.29, 1.1
-      bezier = smoothOut, 0.36, 0, 0.66, -0.56
-      bezier = smoothIn, 0.25, 1, 0.5, 1
-      # bezier = smoothIn, 0.34, 1.56, 0.64, 1
-
-      # animation list
-      animation = windows, 1, 3, overshot, slide
-      animation = windowsOut, 1, 10, smoothOut, slide
-      animation = windowsMove, 1, 3, default
-      animation = fadeIn, 1, 7, default
-      animation = fadeDim, 1, 7, smoothIn
-      animation = workspaces, 1, 4, overshot, slidevert
-      # animation = workspaces, 1, 10, smoothIn, fade
-      animation = borderangle, 1, 15, linear, loop
-    }
-
-    # Gestures
-    # gestures {
-    #   workspace_swipe = true
-    #   workspace_swipe_fingers = 3
+  # Inputs
+  input {
+    kb_layout = us,se
+    kb_variant =
+    kb_model =
+    kb_options = grp:rwin_toggle
+    kb_rules =
+    follow_mouse = 1
+    # touchpad {
+    #     disable_while_typing = true
+    #     natural_scroll = true
+    #     tap-to-click = true
     # }
-
-    # Navicat
-    windowrule = float, download
-    windowrule = dimaround, title:^.*Confirm.*$
-    windowrule = float, notification
-    windowrule = float, error
-    windowrule = float, splash
-    windowrule = float, confirmreset
+    sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+  }
 
 
-    # Workspaces
-    windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$
-    windowrule = workspace special:obsidian, title:^.*btop.*$
-    windowrule = workspace 10, title:^.*WebCord.*$
-    windowrule = workspace 10, title:^.*Skype.*$
-    windowrule = workspace 10, title:^.*Signal.*$
-    windowrule = workspace 1, title:^.*Visual Studio Code.*$
-    windowrule = fakefullscreen, title:^.*Visual Studio Code.*$
+  # General
+  binds {
+    allow_workspace_cycles = false
+  }
 
-    # Floating
-    windowrule = float, title:^(Firefox — Sharing Indicator)$
-    windowrule = float, title:^(KeePassXC -  Access Request)$
-    windowrule = float, title:^(Passwords - KeePassXC)$
-    windowrule = float, title:^(KopiaUI is Loading...)$
-    windowrule = move center,title:^(KopiaUI is Loading...)$
+  # General
+  general {
+    gaps_in = 6
+    gaps_out = 20
+    border_size = 2
+    col.active_border= 0xffcba6f7 0xfff38ba8 45deg
+    no_border_on_floating = false
+    layout = master
+  }
 
-    # Inhibit IDLE
-    windowrule = idleinhibit fullscreen, firefox
+  # Layouts
+  master {
+    special_scale_factor = 0.9f
+  }
 
-    # 1Password
-    # windowrule = move center,title:^(1Password)$
-    windowrule = size 2000 1000, title:^(1Password)$
-    windowrule = float, title:^(1Password)$
+  group {
+    col.border_inactive=0xff313244
+    groupbar:render_titles = false
+    groupbar:font_size = 11
+    # groupbar:text_color = 0x000000
+    groupbar:height = 1
+    col.border_active	=0xffcba6f7 0xfff38ba8 45deg
+    groupbar:gradients = false
+    groupbar:col.inactive=0xff313244
+    groupbar:col.active	=0xffcba6f7 0xfff38ba8 45deg
 
-    # Swappy
-    windowrule = float, title:^(swappy)$
-    windowrule = move 35% 10%, title:^(swappy)$
-
-    # FLY IS KITTY
-    windowrule=move center,title:^(fly_is_kitty)$
-    windowrule=size 800 500,title:^(fly_is_kitty)$
-    windowrule=float,title:^(fly_is_kitty)$
-
-    # SPECIAL IS KITTY
-    windowrule = workspace special:kitty, title:^(special_is_kitty)$
-
-    windowrule=float,title:^_crx_
+  }
 
 
-    # dwindle {
-    #   no_gaps_when_only = false
-    #   pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-    #   preserve_split = true # you probably want thisgroupbar_gradients
-    # windowrule = float, download
-    # windowrule = float, notification
-    # windowrule = float, error
-    # windowrule = float, splash
-    # windowrule = float, confirmreset
-    # windowrule = float, title:Open File
-    # windowrule = float, title:branchdialog
-    # windowrule = float, zoom
+  # Decorations
+  decoration {
+
+    # Rounded corners
+    rounding = 6
+    # multisample_edges = true
+
+    # Opacity
+    active_opacity = 1.0
+    inactive_opacity = 1.0
+
+
+    # Shadow
+    drop_shadow = true
+    shadow_ignore_window = true
+    shadow_offset = 2 2
+    shadow_range = 4
+    shadow_render_power = 2
+    col.shadow = 0x66000000
+    dim_special = 0.7
+    dim_inactive = false
+    dim_strength = 0.6
+  }
+
+  # Blurring layerSurfaces
+  # blurls = gtk-layer-shell
+  blurls = waybar
+  blurls = lockscreen
+
+  # Animations
+  animations {
+    enabled = true
+    # bezier curve
+    bezier = linear, 0, 0, 1, 1
+    bezier = overshot, 0.05, 0.9, 0.1, 1.05
+    # bezier = overshot, 0.13, 0.99, 0.29, 1.1
+    bezier = smoothOut, 0.36, 0, 0.66, -0.56
+    bezier = smoothIn, 0.25, 1, 0.5, 1
+    # bezier = smoothIn, 0.34, 1.56, 0.64, 1
+
+    # animation list
+    animation = windows, 1, 3, overshot, slide
+    animation = windowsOut, 1, 10, smoothOut, slide
+    animation = windowsMove, 1, 3, default
+    animation = fadeIn, 1, 7, default
+    animation = fadeDim, 1, 7, smoothIn
+    animation = workspaces, 1, 4, overshot, slidevert
+    # animation = workspaces, 1, 10, smoothIn, fade
+    animation = borderangle, 1, 15, linear, loop
+  }
+
+  # xGestures
+  gestures {
+    workspace_swipe = true
+    workspace_swipe_fingers = 3
+  }
+
+  # Navicat
+  windowrule = float, download
+  windowrule = dimaround, title:^.*Confirm.*$
+  windowrule = float, notification
+  windowrule = float, error
+  windowrule = float, splash
+  windowrule = float, confirmreset
+
+
+  # Workspaces
+  windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$
+  windowrule = workspace special:obsidian, title:^.*btop.*$
+  windowrule = workspace 10, title:^.*WebCord.*$
+  windowrule = workspace 10, title:^.*Skype.*$
+  windowrule = workspace 10, title:^.*Signal.*$
+  # windowrule = workspace 1, title:^.*Visual Studio Code.*$
+  # windowrule = fakefullscreen, title:^.*Visual Studio Code.*$
+
+  # Floating
+  windowrule = float, title:^(Firefox — Sharing Indicator)$
+  windowrule = float, title:^(KeePassXC -  Access Request)$
+  windowrule = float, title:^(Passwords - KeePassXC)$
+  windowrule = float, title:^(KopiaUI is Loading...)$
+  windowrule = move center,title:^(KopiaUI is Loading...)$
+
+  # Inhibit IDLE
+  windowrule = idleinhibit fullscreen, firefox
+
+  # 1Password
+  # windowrule = move center,title:^(1Password)$
+  windowrule = size 2000 1000, title:^(1Password)$
+  windowrule = float, title:^(1Password)$
+
+  # Swappy
+  windowrule = float, title:^(swappy)$
+  windowrule = move 35% 10%, title:^(swappy)$
+
+  # FLY IS KITTY
+  windowrule=move center,title:^(fly_is_kitty)$
+  windowrule=size 800 500,title:^(fly_is_kitty)$
+  windowrule=float,title:^(fly_is_kitty)$
+
+  # SPECIAL IS KITTY
+  windowrule = workspace special:kitty, title:^(special_is_kitty)$
+  windowrule=float,title:^_crx_
+
+  # dwindle {
+  #   no_gaps_when_only = false
+  #   pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+  #   preserve_split = true # you probably want thisgroupbar_gradients
+  # windowrule = float, download
+  # windowrule = float, notification
+  # windowrule = float, error
+  # windowrule = float, splash
+  # windowrule = float, confirmreset
+  # windowrule = float, title:Open File
+  # windowrule = float, title:branchdialog
+  # windowrule = float, zoom
 
 
 
-    # windowrule = float, vlc
-    # windowrule = size 800 600, vlc
-    # windowrule = move center, vlc
+  # windowrule = float, vlc
+  # windowrule = size 800 600, vlc
+  # windowrule = move center, vlc
 
-    # windowrule = float, Lxappearance
-    # windowrule = float, ncmpcpp
-    # # windowrule = float, Rofi
-    # # windowrule = animation none, Rofi
-    # windowrule = float, viewnior
-    # windowrule = float, pavucontrol-qt
-    # windowrule = float, gucharmap
-    # windowrule = float, gnome-font
-    # windowrule = float, org.gnome.Settings
-    # windowrule = float, file-roller
-    # # windowrule = float, nautilus
-    # # windowrule = float, nemo
-    # windowrule = float, thunar
-    # windowrule = float, Pcmanfm
-    # # windowrule = float, obs
-    # windowrule = float, wdisplays
-    # # windowrule = float, *.exe
-    # windowrule = fullscreen, wlogout
-    # windowrule = float, title:wlogout
-    # windowrule = fullscreen, title:wlogout
-    # windowrule = float, pavucontrol-qt
-    # windowrule = float, keepassxc
-    # windowrule = idleinhibit focus, mpv
-    # windowrule = idleinhibit fullscreen, firefox
-    # windowrule = float, title:^(Media viewer)$
-    # # windowrule = float, title:^(Mount and Blade II Bannerlord)$
-    # windowrule = float, title:^(Transmission)$
-    # windowrule = float, title:^(Volume Control)$
-    # windowrule = float, title:^(Picture-in-Picture)$
-    # windowrule = float, title:^(Firefox — Sharing Indicator)$
+  # windowrule = float, Lxappearance
+  # windowrule = float, ncmpcpp
+  # # windowrule = float, Rofi
+  # # windowrule = animation none, Rofi
+  # windowrule = float, viewnior
+  # windowrule = float, pavucontrol-qt
+  # windowrule = float, gucharmap
+  # windowrule = float, gnome-font
+  # windowrule = float, org.gnome.Settings
+  # windowrule = float, file-roller
+  # # windowrule = float, nautilus
+  # # windowrule = float, nemo
+  # windowrule = float, thunar
+  # windowrule = float, Pcmanfm
+  # # windowrule = float, obs
+  # windowrule = float, wdisplays
+  # # windowrule = float, *.exe
+  # windowrule = fullscreen, wlogout
+  # windowrule = float, title:wlogout
+  # windowrule = fullscreen, title:wlogout
+  # windowrule = float, pavucontrol-qt
+  # windowrule = float, keepassxc
+  # windowrule = idleinhibit focus, mpv
+  # windowrule = idleinhibit fullscreen, firefox
+  # windowrule = float, title:^(Media viewer)$
+  # # windowrule = float, title:^(Mount and Blade II Bannerlord)$
+  # windowrule = float, title:^(Transmission)$
+  # windowrule = float, title:^(Volume Control)$
+  # windowrule = float, title:^(Picture-in-Picture)$
+  # windowrule = float, title:^(Firefox — Sharing Indicator)$
 
-    # windowrule = float, title:^(Select Folder to Upload)$
-    # windowrule = move center,title:^(Select Folder to Upload)$
+  # windowrule = float, title:^(Select Folder to Upload)$
+  # windowrule = move center,title:^(Select Folder to Upload)$
 
-    # windowrule = move 0 0, title:^(Firefox — Sharing Indicator)$
-    # windowrule = size 800 600, title:^(Volume Control)$
-    # windowrule = move 75 44%, title:^(Volume Control)$
+  # windowrule = move 0 0, title:^(Firefox — Sharing Indicator)$
+  # windowrule = size 800 600, title:^(Volume Control)$
+  # windowrule = move 75 44%, title:^(Volume Control)$
 
-    # windowrule = float, title:^(swappy)$
-    # windowrule = move 35% 10%, title:^(swappy)$
+  # windowrule = float, title:^(swappy)$
+  # windowrule = move 35% 10%, title:^(swappy)$
 
-    # windowrule = move center,title:^(1Password)$
-    # windowrule = size 2000 1000, title:^(1Password)$
-    # windowrule = float, title:^(1Password)$
+  # windowrule = move center,title:^(1Password)$
+  # windowrule = size 2000 1000, title:^(1Password)$
+  # windowrule = float, title:^(1Password)$
 
+  # # Looking glass
+  # windowrule = workspace 3, title:^.*Looking Glass (client).*$
+  # windowrule = float, title:^.*Looking Glass (client).*$
 
-
-    # # Looking glass
-    # windowrule = workspace 3, title:^.*Looking Glass (client).*$
-    # windowrule = float, title:^.*Looking Glass (client).*$
-
-
-    # windowrule = tile, title:^(Battle.net Login)$
-    # windowrule = nofullscreenrequest, title:^(Battle.net Login)$
-    # windowrule = nofullscreenrequest, title:^(Diablo III)$
-    # windowrule = tile, title:^(Diablo III)$
+  # windowrule = tile, title:^(Battle.net Login)$
+  # windowrule = nofullscreenrequest, title:^(Battle.net Login)$
+  # windowrule = nofullscreenrequest, title:^(Diablo III)$
+  # windowrule = tile, title:^(Diablo III)$
 
 
-    windowrulev2 = stayfocused, title:^()$,class :^(steam)$
-    windowrulev2 = minsize 1 1, title:^()$,class:^(steam)$
+  windowrulev2 = stayfocused, title:^()$,class :^(steam)$
+  windowrulev2 = minsize 1 1, title:^()$,class:^(steam)$
 
   #
   # Keybinds
