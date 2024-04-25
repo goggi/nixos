@@ -300,15 +300,14 @@
   # App shortcuts
   # bind=CTRL,RETURN,exec,$term
   bind=$mainMod,Return,exec,$term
-  bind=CTRL_SHIFT,Return,togglespecialworkspace,kitty
+
   bind=$mainMod_CTRL_SHIFT,Return,exec, kitty --title='special_is_kitty' &
 
   bind=$mainMod_SHIFT,G,exec, hyprctl dispatch centerwindow
 
   # Browsers
   bind=$mainModSHIFT,Return,exec,floorp-browser -p gogsaan
-  bind=ALTSHIFT,Return,exec,google-chrome-stable
-  bind=$mainModCTRL,Return,togglespecialworkspace,chatgpt
+  bind=ALTSHIFT,Return,exec,thorium-browser
 
   #bind=$mainMod,B,exec,swaync-client -t -sw
   #bind=$mainMod,V,exec,swaync-client -C -sw && swaync-client -cp -sw
@@ -379,9 +378,11 @@
   bind=SUPERCTRL,9,movetoworkspace,special:search
   # bind=SUPERCTRL,0,movetoworkspace,special:pomo
 
-  bind=SUPER,Tab,togglespecialworkspace,music
-  bind=$mainModALT,F12,togglespecialworkspace,obsidian
+  bind=SUPER,Tab,togglespecialworkspace,obsidian
+  bind=$mainModALT,F12,togglespecialworkspace,chatgpt
   bind=$mainMod_SHIFT,Tab,togglespecialworkspace,search
+  bind=$mainModCTRL,Return,togglespecialworkspace,music
+  bind=CTRL_SHIFT,Return,togglespecialworkspace,kitty
   # bind=$mainMod_SHIFT,F12,togglespecialworkspace,search
 
   # Groups

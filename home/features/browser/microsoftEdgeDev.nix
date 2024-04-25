@@ -10,12 +10,12 @@
     persistence = {
       "/persist/home/gogsaan" = {
         allowOther = true;
-        directories = [".config/microsoft-edge"];
+        directories = [".config/microsoft-edge-dev"];
       };
     };
   };
-  xdg.desktopEntries.microsoft-edge-dev = {
-    name = "Microsoft Edge Dev";
-    exec = "microsoft-edge --enable-features=UseOzonePlatform --ozone-platform=wayland";
+  xdg.desktopEntries.microsoft-edge = {
+    name = "Microsoft Edge (dev)";
+    exec = "microsoft-edge-dev --enable-features=UseOzonePlatform --ozone-platform=wayland";
   };
 }

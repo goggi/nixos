@@ -20,6 +20,8 @@
     # Browser
     # ../features/browser/firefox
     ../features/browser/googleChrome.nix
+    ../features/browser/thorium.nix
+
     ../features/browser/floorp.nix
     ../features/browser/vivaldi.nix
     # ../features/browser/chromium.nix
@@ -27,6 +29,7 @@
     # ../features/browser/brave.nix
     # ../features/browser/waterfox.nix
     # ../features/browser/wavebox.nix
+    ../features/browser/microsoftEdgeBeta.nix
     ../features/browser/microsoftEdgeDev.nix
 
     # Development
@@ -97,6 +100,7 @@
           "Downloads"
           "Pictures"
           "Videos"
+          "Audio"
           # "Projects"
           {
             directory = "Projects";

@@ -125,6 +125,7 @@
     shells = with pkgs; [fish];
 
     systemPackages = with pkgs; [
+      devenv
       rclone
       s3fs
       inputs.bazecor.packages.${pkgs.system}.default

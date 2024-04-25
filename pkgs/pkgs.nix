@@ -32,7 +32,8 @@
       packageOverrides = super: {
         thorium = pkgs.callPackage ./active/thorium {};
         floorp = pkgs.callPackage ./active/floorp {};
-        waybar = pkgs.callPackage ./active/waybar {};
+        # waybar = pkgs.callPackage ./active/waybar {};
+        # obsidian = pkgs.callPackage ./active/obsidian {};
       };
     };
 
