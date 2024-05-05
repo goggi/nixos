@@ -41,9 +41,11 @@
   udev,
   upower,
   wayland,
+  wayland-scanner,
   wireplumber,
-  wrapGAppsHook,
+  wrapGAppsHook3,
   cavaSupport ? true,
+  enableManpages ? stdenv.buildPlatform.canExecute stdenv.hostPlatform,
   evdevSupport ? true,
   experimentalPatches ? true,
   hyprlandSupport ? true,
@@ -55,7 +57,7 @@
   pipewireSupport ? true,
   pulseSupport ? true,
   rfkillSupport ? true,
-  runTests ? true,
+  runTests ? stdenv.buildPlatform.canExecute stdenv.hostPlatform,
   sndioSupport ? true,
   swaySupport ? true,
   traySupport ? true,
@@ -63,6 +65,7 @@
   upowerSupport ? true,
   wireplumberSupport ? true,
   withMediaPlayer ? mprisSupport && false,
+  nix-update-script,
 }: let
   # Derived from subprojects/cava.wrap
   libcava.src = fetchFromGitHub {
@@ -71,27 +74,16 @@
     rev = "0.10.1";
     hash = "sha256-iIYKvpOWafPJB5XhDOSIW9Mb4I3A4pcgIIPQdQYEqUw=";
   };
-
-  wireplumber_0_4 = wireplumber.overrideAttrs (attrs: rec {
-    version = "0.4.17";
-    src = fetchFromGitLab {
-      domain = "gitlab.freedesktop.org";
-      owner = "pipewire";
-      repo = "wireplumber";
-      rev = version;
-      hash = "sha256-vhpQT67+849WV1SFthQdUeFnYe/okudTQJoL3y+wXwI=";
-    };
-  });
 in
   stdenv.mkDerivation (finalAttrs: {
     pname = "waybar";
-    version = "0.10.0";
+    version = "0.10.2";
 
     src = fetchFromGitHub {
       owner = "Alexays";
       repo = "Waybar";
       rev = finalAttrs.version;
-      hash = "sha256-p1VRrKT2kTDy48gDXPMHlLbfcokAOFeTZXGzTeO1SAE=";
+      hash = "sha256-xinTLjZJhL4048jpAbN3i6nSxKAqnbesbK/GBX+1CkE=";
     };
 
     postUnpack = lib.optional cavaSupport ''
@@ -106,18 +98,17 @@ in
         meson
         ninja
         pkg-config
-        scdoc
-        wrapGAppsHook
+        wayland-scanner
+        wrapGAppsHook3
       ]
-      ++ lib.optional withMediaPlayer gobject-introspection;
+      ++ lib.optional withMediaPlayer gobject-introspection
+      ++ lib.optional enableManpages scdoc;
 
     propagatedBuildInputs = lib.optionals withMediaPlayer [
       glib
       playerctl
       python3.pkgs.pygobject3
     ];
-
-    strictDeps = false;
 
     buildInputs =
       [
@@ -151,7 +142,7 @@ in
       ++ lib.optional traySupport libdbusmenu-gtk3
       ++ lib.optional udevSupport udev
       ++ lib.optional upowerSupport upower
-      ++ lib.optional wireplumberSupport wireplumber_0_4
+      ++ lib.optional wireplumberSupport wireplumber
       ++ lib.optional (cavaSupport || pipewireSupport) pipewire
       ++ lib.optional (!stdenv.isLinux) libinotify-kqueue;
 
@@ -166,7 +157,7 @@ in
         "libinput" = inputSupport;
         "libnl" = nlSupport;
         "libudev" = udevSupport;
-        "man-pages" = true;
+        "man-pages" = enableManpages;
         "mpd" = mpdSupport;
         "mpris" = mprisSupport;
         "pipewire" = pipewireSupport;
@@ -191,6 +182,8 @@ in
       wrapProgram $out/bin/waybar-mediaplayer.py \
         --prefix PYTHONPATH : "$PYTHONPATH:$out/${python3.sitePackages}"
     '';
+
+    passthru.updateScript = nix-update-script {};
 
     meta = {
       homepage = "https://github.com/alexays/waybar";

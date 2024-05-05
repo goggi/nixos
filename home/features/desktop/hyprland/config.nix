@@ -307,7 +307,7 @@
 
   # Browsers
   bind=$mainModSHIFT,Return,exec,floorp-browser -p gogsaan
-  bind=ALTSHIFT,Return,exec,thorium-browser
+  bind=ALTSHIFT,Return,exec,google-chrome-stable --ozone-platform=wayland
 
   #bind=$mainMod,B,exec,swaync-client -t -sw
   #bind=$mainMod,V,exec,swaync-client -C -sw && swaync-client -cp -sw

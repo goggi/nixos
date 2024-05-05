@@ -7,7 +7,7 @@
 }:
 ((buildMozillaMach rec {
     pname = "floorp";
-    packageVersion = "11.10.5";
+    packageVersion = "11.12.2";
     applicationName = "Floorp";
     binaryName = "floorp";
 

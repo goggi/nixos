@@ -20,7 +20,7 @@
     # Browser
     # ../features/browser/firefox
     ../features/browser/googleChrome.nix
-    ../features/browser/thorium.nix
+    # ../features/browser/thorium.nix
 
     ../features/browser/floorp.nix
     ../features/browser/vivaldi.nix
@@ -30,7 +30,7 @@
     # ../features/browser/waterfox.nix
     # ../features/browser/wavebox.nix
     ../features/browser/microsoftEdgeBeta.nix
-    ../features/browser/microsoftEdgeDev.nix
+    # ../features/browser/microsoftEdgeDev.nix
 
     # Development
     ../features/development/vscode.nix

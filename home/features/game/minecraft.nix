@@ -5,7 +5,7 @@
 }: {
   home = {
     packages = [
-      pkgs.prismlauncher-qt5
+      pkgs.prismlauncher
     ];
 
     persistence = {

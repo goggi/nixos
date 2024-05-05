@@ -14,4 +14,8 @@
       };
     };
   };
+  xdg.desktopEntries.chromium = {
+    name = "Chromium";
+    exec = "chromium --enable-features=UseOzonePlatform --ozone-platform=wayland";
+  };
 }

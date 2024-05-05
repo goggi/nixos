@@ -85,12 +85,12 @@
     ++ lib.optionals mediaSupport [ffmpeg]
   );
 
-  version = "11.11.2";
+  version = "11.12.2";
 
   sources = {
     "x86_64-linux" = fetchurl {
       url = "https://github.com/Floorp-Projects/Floorp/releases/download/v${version}/floorp-${version}.linux-x86_64.tar.bz2";
-      sha256 = "YOSOSRU9H7639dEBV8IImWH9/tTElfDupvK5Omtjkq0=";
+      sha256 = "JvkdO+5HbhtCuBJYD+D0XYR4CBwKdvrT4Djrj08ivUE=";
     };
   };
 

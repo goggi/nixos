@@ -19,4 +19,8 @@
       };
     };
   };
+  xdg.desktopEntries.chromium = {
+    name = "Chrome Wayland";
+    exec = "google-chrome-stable --ozone-platform=wayland";
+  };
 }

@@ -10,6 +10,7 @@
     nixpkgs = {
       # url = "github:NixOS/nixpkgs/nixos-unstable-small";
       url = "github:NixOS/nixpkgs/nixos-unstable";
+
       # url = "github:NixOS/nixpkgs/nixos-23.11";
     };
     impermanence.url = "github:nix-community/impermanence";
@@ -33,7 +34,8 @@
     # Hyprland
     hyprland = {
       # url = "github:hyprwm/Hyprland";
-      url = "github:hyprwm/Hyprland/fe7b748eb668136dd0558b7c8279bfcd7ab4d759";
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      # url = "github:hyprwm/Hyprland/fe7b748eb668136dd0558b7c8279bfcd7ab4d759";
       # url = "github:hyprwm/Hyprland/54376d7b5f88bffd96ce9ded26637d83d7aa95b1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
