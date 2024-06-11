@@ -9,7 +9,6 @@
 }: {
   imports = [
     # Core
-
     inputs.impermanence.nixosModules.home-manager.impermanence
     ../features/core.nix
 
@@ -30,13 +29,20 @@
     # ../features/browser/waterfox.nix
     # ../features/browser/wavebox.nix
     ../features/browser/microsoftEdgeBeta.nix
-    # ../features/browser/microsoftEdgeDev.nix
+    ../features/browser/microsoftEdgeDev.nix
 
     # Development
     ../features/development/vscode.nix
+    "${fetchTarball {
+      url = "https://github.com/msteen/nixos-vscode-server/tarball/master";
+      sha256 = "1rq8mrlmbzpcbv9ys0x88alw30ks70jlmvnfr2j8v830yy5wvw7h";
+    }}/modules/vscode-server/home.nix"
+    # "${fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master"}/modules/vscode-server/home.nix"
     ../features/development/navicatPersistance.nix
     ../features/development/dockerPersistance.nix
     ../features/development/k8sManagment.nix
+    ../features/development/archi.nix
+
     # ../features/development/jetbrain.nix
     # ../features/development/helix
     ../features/development/language/nodejs.nix
@@ -127,6 +133,8 @@
     };
   };
 
+  services.vscode-server.enable = true;
+  # services.vscode-server.nodejsPackage = pkgs.nodejs-16_x;
   # disable manuals as nmd fails to build often
   manual = {
     html.enable = false;

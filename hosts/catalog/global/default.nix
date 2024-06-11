@@ -125,6 +125,7 @@
     shells = with pkgs; [fish];
 
     systemPackages = with pkgs; [
+      gnumake
       devenv
       rclone
       s3fs

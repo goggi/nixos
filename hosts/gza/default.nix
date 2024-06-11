@@ -123,7 +123,7 @@
 
   system.stateVersion = lib.mkForce "23.11";
 
-  services.ollama.enable = true;
-  # services.ollama.acceleration = "rocm";
-  services.ollama.listenAddress = "0.0.0.0:11434";
+  # services.ollama.enable = true;
+  # # services.ollama.acceleration = "rocm";
+  # services.ollama.listenAddress = "0.0.0.0:11434";
 }

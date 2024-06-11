@@ -93,6 +93,6 @@ in {
 
   # Networking
   networking.useDHCP = lib.mkDefault true;
-  networking.firewall.allowedTCPPorts = [25565 32400 11434];
+  networking.firewall.allowedTCPPorts = [25565 32400 11434 4000 8055];
   networking.firewall.allowedUDPPorts = [19132];
 }

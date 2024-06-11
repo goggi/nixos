@@ -14,7 +14,7 @@
       };
     };
   };
-  xdg.desktopEntries.microsoft-edge = {
+  xdg.desktopEntries.microsoft-edge-dev = {
     name = "Microsoft Edge (dev)";
     exec = "microsoft-edge-dev --enable-features=UseOzonePlatform --ozone-platform=wayland";
   };

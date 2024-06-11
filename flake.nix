@@ -8,10 +8,10 @@
     # };
 
     nixpkgs = {
-      # url = "github:NixOS/nixpkgs/nixos-unstable-small";
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+      #url = "github:NixOS/nixpkgs/nixos-unstable-small";
+      #url = "github:NixOS/nixpkgs/nixos-unstable";
 
-      # url = "github:NixOS/nixpkgs/nixos-23.11";
+      url = "github:NixOS/nixpkgs/nixos-24.05";
     };
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland = {
@@ -20,8 +20,8 @@
     };
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
-      # url = "github:nix-community/home-manager/release-23.11";
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.05";
+      # url = "github:nix-community/home-manager";/
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {
@@ -33,10 +33,8 @@
 
     # Hyprland
     hyprland = {
-      # url = "github:hyprwm/Hyprland";
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-      # url = "github:hyprwm/Hyprland/fe7b748eb668136dd0558b7c8279bfcd7ab4d759";
-      # url = "github:hyprwm/Hyprland/54376d7b5f88bffd96ce9ded26637d83d7aa95b1";
+      # url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      url = "github:hyprwm/Hyprland/e8e02e81e84bb04efa0c926361ec80c60744f665";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

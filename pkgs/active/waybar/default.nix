@@ -79,11 +79,17 @@ in
     pname = "waybar";
     version = "0.10.2";
 
-    src = fetchFromGitHub {
-      owner = "Alexays";
-      repo = "Waybar";
-      rev = finalAttrs.version;
-      hash = "sha256-xinTLjZJhL4048jpAbN3i6nSxKAqnbesbK/GBX+1CkE=";
+    # src = fetchFromGitHub {
+    #   owner = "Alexays";
+    #   repo = "Waybar";
+    #   rev = finalAttrs.version;
+    #   hash = "sha256-xinTLjZJhL4048jpAbN3i6nSxKAqnbesbK/GBX+1CkE=";
+    # };
+
+    src = fetchGit {
+      url = "https://github.com/Alexays/Waybar.git";
+      rev = "a04016e0b6033b783e4b706e764aa8b5466f81c1"; # Specify the commit hash of the latest commit
+      # sha256 = "sha256-hash-of-the-latest-commit"; # Update this with the correct SHA-256 hash
     };
 
     postUnpack = lib.optional cavaSupport ''
