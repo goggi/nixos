@@ -68,6 +68,11 @@ in {
       enable = true;
       extraConfig = ''
         Host *
+          AddKeysToAgent yes
+          UseKeychain yes
+          IdentityFile ~/.ssh/id_rsa
+
+        Host *
           IdentityAgent ~/.1password/agent.sock
       '';
     };
