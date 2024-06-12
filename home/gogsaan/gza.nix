@@ -47,6 +47,7 @@
     # ../features/development/helix
     ../features/development/language/nodejs.nix
     ../features/development/language/python3.nix
+    ../features/development/language/gleam.nix
     # inputs.nix-doom-emacs.hmModule
 
     # Management

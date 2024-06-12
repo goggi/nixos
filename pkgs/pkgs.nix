@@ -33,6 +33,7 @@
         thorium = pkgs.callPackage ./active/thorium {};
         floorp = pkgs.callPackage ./active/floorp {};
         waybar = pkgs.callPackage ./active/waybar {};
+        gleam = pkgs.callPackage ./active/gleam {};
         # obsidian = pkgs.callPackage ./active/obsidian {};
       };
     };
