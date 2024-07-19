@@ -2,6 +2,8 @@ inputs: let
   inherit (inputs) self;
   inherit (self.lib) nixosSystem;
   sharedModules = [
+    inputs.catppuccin.nixosModules.catppuccin
+
     inputs.home-manager.nixosModules.home-manager
     {
       home-manager = {

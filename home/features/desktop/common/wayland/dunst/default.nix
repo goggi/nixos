@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: let
   notify-send = pkgs.libnotify + "/bin/notify-send";
@@ -113,7 +114,7 @@ in {
         progress_bar_max_width = 300;
         separator_height = 2;
         frame_width = 2;
-        frame_color = "#c6a0f6";
+        # frame_color = lib.mkDefault "#c6a0f6";
         separator_color = "frame";
         corner_radius = 8;
         transparency = 0;
@@ -146,24 +147,24 @@ in {
 
       fullscreen_delay_everything = {fullscreen = "delay";};
 
-      urgency_low = {
-        timeout = 2;
-        background = "#181926";
-        foreground = "#cdd6f4";
-        highlight = "#cba6f7";
-      };
-      urgency_normal = {
-        timeout = 4;
-        background = "#181926";
-        foreground = "#cdd6f4";
-        highlight = "#cba6f7";
-      };
-      urgency_critical = {
-        timeout = 0;
-        background = "#181926";
-        foreground = "#cdd6f4";
-        highlight = "#cba6f7";
-      };
+      # urgency_low = {
+      #   timeout = 2;
+      #   background = "#181926";
+      #   foreground = "#cdd6f4";
+      #   highlight = "#cba6f7";
+      # };
+      # urgency_normal = {
+      #   timeout = 4;
+      #   background = "#181926";
+      #   foreground = "#cdd6f4";
+      #   highlight = "#cba6f7";
+      # };
+      # urgency_critical = {
+      #   timeout = 0;
+      #   background = "#181926";
+      #   foreground = "#cdd6f4";
+      #   highlight = "#cba6f7";
+      # };
     };
   };
 }

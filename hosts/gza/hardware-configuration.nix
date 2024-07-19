@@ -12,14 +12,8 @@
 in {
   # Hardware configuration
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
     };
 
     bluetooth = {

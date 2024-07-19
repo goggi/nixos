@@ -306,7 +306,7 @@
   bind=$mainMod_SHIFT,G,exec, hyprctl dispatch centerwindow
 
   # Browsers
-  bind=$mainModSHIFT,Return,exec,floorp-browser -p gogsaan
+  bind=$mainModSHIFT,Return,exec,vivaldi
   bind=ALTSHIFT,Return,exec,google-chrome-stable --ozone-platform=wayland
 
   #bind=$mainMod,B,exec,swaync-client -t -sw

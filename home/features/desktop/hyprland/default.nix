@@ -5,6 +5,8 @@
   pkgs,
   ...
 }: let
+  cursor = "HyprBibataModernClassicSVG";
+  cursorPackage = pkgs.bibata-hyprcursor;
 in {
   imports = [
     ../common/wayland
@@ -23,6 +25,9 @@ in {
       grimblast
     ];
   };
+
+  home.file.".icons/${cursor}".source = "${cursorPackage}/share/icons/${cursor}";
+  xdg.dataFile."icons/${cursor}".source = "${cursorPackage}/share/icons/${cursor}";
 
   wayland.windowManager.hyprland = {
     enable = true;

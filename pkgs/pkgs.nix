@@ -27,10 +27,13 @@
         "electron-25.9.0"
         "electron-24.8.6"
         "freeimage-unstable-2021-11-01"
+        "electron-27.3.11"
       ];
 
       packageOverrides = super: {
+        bibata-hyprcursor = pkgs.callPackage ./active/bibata {};
         thorium = pkgs.callPackage ./active/thorium {};
+        archi = pkgs.callPackage ./active/archi {};
         floorp = pkgs.callPackage ./active/floorp {};
         waybar = pkgs.callPackage ./active/waybar {};
         gleam = pkgs.callPackage ./active/gleam {};

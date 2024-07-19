@@ -3,8 +3,20 @@
   config,
   ...
 }: {
+  # catppuccin = {
+  #   enable = true;
+
+  #   flavor = "mocha";
+  #   accent = "mauve";
+
+  #   # icon.enable = true;
+  #   # icon.accent = "mocha";
+  #   # icon.flavor = "mauve";
+  # };
+
   gtk = {
     enable = true;
+
     theme = {
       name = "Catppuccin-Latte-Standard-Mauve-Light";
       package = pkgs.catppuccin-gtk.override {
@@ -46,15 +58,18 @@
 
   qt = {
     enable = true;
-    platformTheme = "gnome";
+    # platformTheme = "gnome";
+    platformTheme = {
+      name = "kvantum";
+    };
     style = {
-      package = pkgs.adwaita-qt;
-      name = "adwaita-dark";
+      name = "kvantum";
     };
   };
 
   home.pointerCursor = {
-    name = "Catppuccin-Mocha-Mauve-Cursors";
+    # name = "catppuccin-mocha-mauve-cursors";
+    name = "catppuccin-mocha-dark-cursors";
     package = pkgs.catppuccin-cursors.mochaMauve;
     size = 28;
     gtk.enable = true;
@@ -62,7 +77,7 @@
 
   home.sessionVariables = {
     # Theming Related Variables
-    GTK_THEME = "Catppuccin-Latte-Standard-Mauve-Light";
+    GTK_THEME = "catppuccin-latte-standard-mauve-light";
     XCURSOR_SIZE = "28";
   };
 

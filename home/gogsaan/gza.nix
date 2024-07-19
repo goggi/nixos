@@ -9,6 +9,7 @@
 }: {
   imports = [
     # Core
+    inputs.catppuccin.homeManagerModules.catppuccin
     inputs.impermanence.nixosModules.home-manager.impermanence
     ../features/core.nix
 
@@ -21,7 +22,7 @@
     ../features/browser/googleChrome.nix
     # ../features/browser/thorium.nix
 
-    ../features/browser/floorp.nix
+    # ../features/browser/floorp.nix
     ../features/browser/vivaldi.nix
     # ../features/browser/chromium.nix
     # ../features/browser/librewolf
@@ -29,7 +30,7 @@
     # ../features/browser/waterfox.nix
     # ../features/browser/wavebox.nix
     ../features/browser/microsoftEdgeBeta.nix
-    ../features/browser/microsoftEdgeDev.nix
+    # ../features/browser/microsoftEdgeDev.nix
 
     # Development
     ../features/development/vscode.nix

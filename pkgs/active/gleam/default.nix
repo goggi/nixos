@@ -6,9 +6,9 @@
   git,
   pkg-config,
   openssl,
-  Security,
+  Security ? null,
   nix-update-script,
-  SystemConfiguration,
+  SystemConfiguration ? null,
 }:
 rustPlatform.buildRustPackage rec {
   pname = "gleam";
