@@ -12,10 +12,19 @@
 in {
   # Hardware configuration
   hardware = {
-    graphics = {
-      enable = true;
-    };
+    # graphics = {
+    #   enable = true;
+    # };
 
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
+    };
     bluetooth = {
       package = pkgs.bluez;
       enable = true;

@@ -36,8 +36,11 @@
         archi = pkgs.callPackage ./active/archi {};
         floorp = pkgs.callPackage ./active/floorp {};
         waybar = pkgs.callPackage ./active/waybar {};
-        gleam = pkgs.callPackage ./active/gleam {};
+        _1password = pkgs.callPackage ./active/1password {};
+        _1password-gui = pkgs.callPackage ./active/1password-gui {};
+        _1password-gui-beta = pkgs.callPackage ./active/1password-gui {};
         # obsidian = pkgs.callPackage ./active/obsidian {};
+        # gleam = pkgs.callPackage ./active/gleam {};
       };
     };
 
