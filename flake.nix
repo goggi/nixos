@@ -3,9 +3,9 @@
     # NixOS
 
     # Local Unstable nixpkgs repository at ../nixpkgs
-    # nixpkgsUnstable = {
-    #   url = "/persist/home/gogsaan/Projects/private/nix/nixpkgs";
-    # };
+    nixpkgs-unstable = {
+      url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    };
 
     nixpkgs = {
       #url = "github:NixOS/nixpkgs/nixos-unstable-small";
@@ -66,8 +66,9 @@
     lib = nixpkgs.lib;
     inherit (self) outputs;
     pkgs = import ./pkgs/pkgs.nix {inherit inputs system lib builtins;};
+    pkgsUnstable = import ./pkgs/pkgsUnstable.nix {inherit inputs system lib builtins;};
   in {
-    inherit lib pkgs;
+    inherit lib pkgs pkgsUnstable;
 
     homeManagerModules = import ./modules/home-manager;
 

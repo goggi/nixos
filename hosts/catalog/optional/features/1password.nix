@@ -7,7 +7,7 @@
     _1password-gui = {
       enable = true;
       polkitPolicyOwners = ["gogsaan"];
-      package = pkgs._1password-gui-beta;
+      # package = pkgs._1password-gui-beta;
     };
     _1password = {
       enable = true;
