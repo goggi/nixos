@@ -3,15 +3,17 @@
     # NixOS
 
     # Local Unstable nixpkgs repository at ../nixpkgs
-    nixpkgs-unstable = {
+    nixpkgsUnstableSmall = {
       url = "github:NixOS/nixpkgs/nixos-unstable-small";
     };
-
-    nixpkgs = {
-      #url = "github:NixOS/nixpkgs/nixos-unstable-small";
-      # url = "github:NixOS/nixpkgs/nixos-unstable";
-
+    nixpkgsUnstable = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
+    nixpkgsStable = {
       url = "github:NixOS/nixpkgs/nixos-24.05";
+    };
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
     };
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland = {
@@ -20,8 +22,8 @@
     };
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
-      # url = "github:nix-community/home-manager";
+      # url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {
@@ -33,8 +35,8 @@
 
     # Hyprland
     hyprland = {
-      # url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-      url = "github:hyprwm/Hyprland/e8e02e81e84bb04efa0c926361ec80c60744f665";
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      # url = "github:hyprwm/Hyprland/7c4c402bd7f24241c096d809cc80408a469f15cb";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -66,9 +68,8 @@
     lib = nixpkgs.lib;
     inherit (self) outputs;
     pkgs = import ./pkgs/pkgs.nix {inherit inputs system lib builtins;};
-    pkgsUnstable = import ./pkgs/pkgsUnstable.nix {inherit inputs system lib builtins;};
   in {
-    inherit lib pkgs pkgsUnstable;
+    inherit lib pkgs;
 
     homeManagerModules = import ./modules/home-manager;
 

@@ -5,7 +5,7 @@
 }: {
   home = {
     packages = [
-      pkgs.cinnamon.nemo
+      pkgs.nemo
     ];
 
     persistence = {

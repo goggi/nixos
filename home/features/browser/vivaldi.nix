@@ -1,15 +1,15 @@
 {
   lib,
-  pkgsUnstable,
+  pkgs,
   ...
 }: {
   home = {
     packages = [
-      (pkgsUnstable.vivaldi.override {
+      (pkgs.vivaldi.override {
         proprietaryCodecs = true;
         enableWidevine = true;
       })
-      pkgsUnstable.vivaldi-ffmpeg-codecs
+      pkgs.vivaldi-ffmpeg-codecs
       # pkgs.widevine-cdm
     ];
     persistence = {

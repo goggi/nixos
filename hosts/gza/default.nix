@@ -39,6 +39,7 @@
       directories = [
         "/var/lib/bluetooth"
         "/var/lib/systemd/coredump"
+        "/var/lib/nixos"
       ];
     };
   };

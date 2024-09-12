@@ -56,12 +56,12 @@ in {
       settings = {
         trust-model = "tofu+pgp";
       };
-      publicKeys = [
-        {
-          source = "/persist/home/gogsaan/Documents/Auth/033E4036D8E78DEFDE28692373ECBA45B94F96B1.asc";
-          trust = 5;
-        }
-      ];
+      # publicKeys = [
+      #   {
+      #     source = "/persist/home/gogsaan/Documents/Auth/033E4036D8E78DEFDE28692373ECBA45B94F96B1.asc";
+      #     trust = 5;
+      #   }
+      # ];
     };
   };
 

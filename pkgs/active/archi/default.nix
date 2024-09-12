@@ -10,21 +10,21 @@
   wrapGAppsHook3,
   _7zz,
   nixosTests,
+  gtk4,
+  swt,
+  glib,
+  swt_jdk8,
 }:
 stdenv.mkDerivation rec {
   pname = "Archi";
-  version = "5.4.0-beta1";
+  version = "5.4.0";
 
   src =
     {
       "x86_64-linux" = fetchurl {
-        url = "https://www.archimatetool.com/downloads/archi/beta/Archi-Linux64-${version}.tgz";
-        hash = "sha256-UPfFjk76mVZmt3gz4kyxZ1JoX9TCWEDnWsKCpbJFsyc=";
+        url = "https://www.archimatetool.com/downloads/archi/${version}/Archi-Linux64-${version}.tgz";
+        hash = "sha256-IFhyyIdE1uW/Y/m0hFv7Su1SGpbnAHp7u0IPVji9KJ0=";
       };
-      # "x86_64-linux" = fetchurl {
-      #   url = "https://www.archimatetool.com/downloads/archi/${version}/Archi-Linux64-${version}.tgz";
-      #   hash = "sha256-ngO3YFCChsnefxdxtR00Dy736K2GYnTEYI4vKWLnPsw=";
-      # };
       "x86_64-darwin" = fetchurl {
         url = "https://www.archimatetool.com/downloads/archi/${version}/Archi-Mac-${version}.dmg";
         hash = "sha256-dL1c7IrbDMY/WbijQh1dCmCrRQQhj4fjGN+6m19OjO0=";
@@ -68,7 +68,14 @@ stdenv.mkDerivation rec {
 
       install -D -m755 Archi $out/libexec/Archi
       makeWrapper $out/libexec/Archi $out/bin/Archi \
-        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [webkitgtk]} \
+      --prefix LD_LIBRARY_PATH : "$out/lib:${
+        lib.makeLibraryPath [
+          swt
+          gtk4
+          swt_jdk8
+          glib
+        ]
+      }" \
         --set WEBKIT_DISABLE_DMABUF_RENDERER 1 \
         --prefix PATH : ${jdk}/bin
     ''

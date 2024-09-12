@@ -12,6 +12,20 @@
         (lib.filterAttrs filterNixFiles (builtins.readDir path))))
     import;
 
+  nixpkgsUnstableSmall = import inputs.nixpkgsUnstableSmall {
+    inherit system;
+    config = {
+      allowUnfree = true;
+    };
+  };
+
+  nixpkgsUnstable = import inputs.nixpkgsUnstable {
+    inherit system;
+    config = {
+      allowUnfree = true;
+    };
+  };
+
   pkgs = import inputs.nixpkgs {
     inherit system;
 
@@ -31,16 +45,19 @@
       ];
 
       packageOverrides = super: {
+        vivaldi = nixpkgsUnstableSmall.vivaldi;
+        vivaldi-ffmpeg-codecs = nixpkgsUnstableSmall.vivaldi-ffmpeg-codecs;
+        vscode = nixpkgsUnstableSmall.vscode;
+        microsoft-edge-beta = nixpkgsUnstableSmall.microsoft-edge-beta;
+        vencord = nixpkgsUnstableSmall.vencord;
+        obsidian = nixpkgsUnstable.obsidian;
+
+        navicat = pkgs.callPackage ./active/navicat {};
+        cloudflare-utils = pkgs.callPackage ./active/cloudflare-utils {};
         bibata-hyprcursor = pkgs.callPackage ./active/bibata {};
-        thorium = pkgs.callPackage ./active/thorium {};
         archi = pkgs.callPackage ./active/archi {};
-        floorp = pkgs.callPackage ./active/floorp {};
-        waybar = pkgs.callPackage ./active/waybar {};
-        "_1password" = pkgs.callPackage ./active/1password {};
-        "_1password-gui" = pkgs.callPackage ./active/1password-gui {};
-        "1password-gui-beta" = pkgs.callPackage ./active/1password-gui {};
-        # obsidian = pkgs.callPackage ./active/obsidian {};
-        # gleam = pkgs.callPackage ./active/gleam {};
+        cursor = pkgs.callPackage ./active/cursor {};
+        bazecor = pkgs.callPackage ./active/bazecor {};
       };
     };
 

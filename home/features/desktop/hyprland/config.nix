@@ -6,6 +6,10 @@
     disable_logs = false
   }
 
+  render {
+    # direct_scanout = true
+    }
+
   misc {
     disable_hyprland_logo = true
     disable_splash_rendering = true
@@ -13,7 +17,7 @@
     key_press_enables_dpms = true
     vfr = true
     vrr = 1
-    no_direct_scanout = false
+    # no_direct_scanout = false
     enable_swallow = true
     swallow_regex = ^(kitty)$
     # render_ahead_of_time = false #Buggy
@@ -368,7 +372,7 @@
 
   bind=$mainMod,F,fullscreen
   bind=$mainMod_SHIFT,F,fullscreen, 1
-  bind=$mainMod_CTRL,F,fakefullscreen
+  bind=$mainMod_CTRL,F,fullscreenstate
   bind=$mainModSHIFT,backslash, exec, pkill waybar || waybar && pkill -f dunst || true
   bind=$mainMod,Q,killactive,
 
@@ -399,6 +403,7 @@
 
   # Workspace padding
   # bind=SUPER,E,exec, hyprctl keyword monitor DP-2,addreserved,0,0,1200,1200
+  bind=SUPER_SHIFT,E,exec, hyprctl keyword monitor DP-2,addreserved,0,0,1200,1200
   bind=SUPER,E,exec, hyprctl keyword monitor DP-2,addreserved,0,0,700,700
   bind=SUPER,R,exec, hyprctl keyword monitor DP-2,addreserved,0,0,500,500
   bind=SUPER,T,exec, hyprctl keyword monitor DP-2,addreserved,0,0,0,0

@@ -24,9 +24,9 @@
       cdd = "cd $(find ~ -type d | fzf)";
       la = "${pkgs.eza}/bin/eza -lah";
       getip = "curl ifconfig.me";
-      ssh = "kitty +kitten ssh";
+      # ssh = "kitty +kitten ssh";
       k9s = "k9s --kubeconfig $KUBECONFIG";
-      kubectl = "kubectl --kubeconfig $KUBECONFIG";
+      # kubectl = "kubectl --kubeconfig $KUBECONFIG";
       kubefwd = "echo \"Check Yubikey\" && sudo cp /etc/hosts /etc/hostsTemp && sudo rm /etc/hosts && sudo cp /etc/hostsTemp /etc/hosts && sudo ~/Applications/bin/kubefwd svc -c $KUBECONFIG -n crawlyfi-prod";
       # Clear screen and scrollback
       clear = "printf '\\033[2J\\033[3J\\033[1;1H'";

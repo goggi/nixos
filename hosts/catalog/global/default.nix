@@ -78,7 +78,7 @@
     xserver.enable = false;
     xserver.autorun = true;
 
-    udev.packages = with pkgs; [gnome.gnome-settings-daemon];
+    udev.packages = with pkgs; [pkgs.gnome-settings-daemon];
 
     dbus = {
       enable = true;

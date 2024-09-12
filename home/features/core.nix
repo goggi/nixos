@@ -5,6 +5,9 @@
   ...
 }: {
   home.packages = with pkgs; [
+    bazecor
+    kopia
+    sox
     ncdu
     # pulumi
     pulumi-bin

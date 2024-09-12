@@ -2,7 +2,6 @@
   config,
   inputs,
   pkgs,
-  pkgsUnstable,
   lib,
   system,
   ...
@@ -38,6 +37,12 @@
       url = "https://github.com/msteen/nixos-vscode-server/tarball/master";
       sha256 = "1rq8mrlmbzpcbv9ys0x88alw30ks70jlmvnfr2j8v830yy5wvw7h";
     }}/modules/vscode-server/home.nix"
+
+    "${fetchTarball {
+      url = "https://github.com/warmingking/nixos-cursor-server/tarball/master";
+      sha256 = "sha256:1yr2613zjam8cjhswin3sqaz69jba9bwc03bi596p73mc7nb8lys";
+    }}/modules/cursor-server/home.nix"    
+    
     # "${fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master"}/modules/vscode-server/home.nix"
     ../features/development/navicatPersistance.nix
     ../features/development/dockerPersistance.nix
@@ -92,6 +97,7 @@
     ../features/game/lutris.nix
     ../features/game/minecraft.nix
     ../features/game/starsector.nix
+    # ../features/game/bottles.nix
   ];
 
   home = {
@@ -136,6 +142,7 @@
   };
 
   services.vscode-server.enable = true;
+  services.cursor-server.enable = true;
   # services.vscode-server.nodejsPackage = pkgs.nodejs-16_x;
   # disable manuals as nmd fails to build often
   manual = {
@@ -155,6 +162,6 @@
 
   programs.mangohud = {
     enable = true;
-    # enableSessionWide = true;
+    enableSessionWide = false;
   };
 }
