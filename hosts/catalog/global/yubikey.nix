@@ -13,6 +13,7 @@
     enable = true;
   };
   security.pam.services = {
+    greetd.enableGnomeKeyring = true;
     login.u2fAuth = true;
     sudo.u2fAuth = true;
   };

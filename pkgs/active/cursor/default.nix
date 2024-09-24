@@ -10,11 +10,12 @@
   common-updater-scripts,
 }: let
   pname = "cursor";
-  version = "0.40.4";
+  version = "0.41.2";
   appKey = "230313mzl4w4u92";
+
   src = fetchurl {
-    url = "https://download.todesktop.com/${appKey}/cursor-0.40.4-build-2409052yfcjagw2-x86_64.AppImage";
-    hash = "sha256-ZURE8UoLPw+Qo1e4xuwXgc+JSwGrgb/6nfIGXMacmSg=";
+    url = "https://downloader.cursor.sh/linux/appImage/x64";
+    hash = "sha256-zBNNKpSzRKC0R8kscHyCNaMzA/czcYKrAM9vHv2tHsA=";
   };
   appimageContents = appimageTools.extractType2 {inherit version pname src;};
 in

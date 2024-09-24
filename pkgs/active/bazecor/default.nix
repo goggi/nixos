@@ -10,7 +10,7 @@
     inherit pname version;
     src = fetchurl {
       url = "https://github.com/Dygmalab/Bazecor/releases/download/v${version}/Bazecor-${version}-x64.AppImage";
-      hash = "sha256-ep+3lqWdktyvbTKxfLcPiVq9/5f0xBHwKG1+BxDDBQA=";
+      hash = "sha256-cvzUjOmeTWB07vSe6taUyGDmTlN62fhsQw/OMgvIJ2M=";
     };
 
     # Workaround for https://github.com/Dygmalab/Bazecor/issues/370

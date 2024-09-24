@@ -5,13 +5,13 @@
 }: {
   home = {
     packages = [
-      # pkgs.keepassxc
+      pkgs.gnome-keyring
     ];
 
     persistence = {
       "/persist/home/gogsaan" = {
         allowOther = true;
-        directories = [".config/keepassxc" ".cache/keepassxc"];
+        directories = [".local/share/keyrings"];
       };
     };
   };

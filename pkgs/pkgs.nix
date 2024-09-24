@@ -58,6 +58,7 @@
         archi = pkgs.callPackage ./active/archi {};
         cursor = pkgs.callPackage ./active/cursor {};
         bazecor = pkgs.callPackage ./active/bazecor {};
+        deno = pkgs.callPackage ./active/deno {};
       };
     };
 

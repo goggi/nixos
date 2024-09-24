@@ -28,8 +28,8 @@
     # ../features/browser/brave.nix
     # ../features/browser/waterfox.nix
     # ../features/browser/wavebox.nix
-    ../features/browser/microsoftEdgeBeta.nix
-    # ../features/browser/microsoftEdgeDev.nix
+    ../features/browser/microsoftEdgeDev.nix
+    # ../features/browser/microsoftEdge.nix
 
     # Development
     ../features/development/vscode.nix
@@ -41,8 +41,8 @@
     "${fetchTarball {
       url = "https://github.com/warmingking/nixos-cursor-server/tarball/master";
       sha256 = "sha256:1yr2613zjam8cjhswin3sqaz69jba9bwc03bi596p73mc7nb8lys";
-    }}/modules/cursor-server/home.nix"    
-    
+    }}/modules/cursor-server/home.nix"
+
     # "${fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master"}/modules/vscode-server/home.nix"
     ../features/development/navicatPersistance.nix
     ../features/development/dockerPersistance.nix
@@ -58,7 +58,8 @@
 
     # Management
     ../features/management/1password.nix
-    ../features/management/keepassxc.nix
+    ../features/management/gnomeKeyring.nix
+    # ../features/management/keepassxc.nix
     ../features/management/yubikey.nix
     ../features/management/gpg.nix
 

@@ -15,6 +15,8 @@
     ../catalog/optional/features/virtualization.nix
     ../catalog/optional/features/btrfsOptinPersistence.nix
     # ../catalog/optional/features/passthroughGpu.nix
+
+    ../catalog/optional/features/gnomeKeyRing.nix
     ../catalog/optional/features/encryptedRoot.nix
     ../catalog/optional/features/flatpakIconFix.nix
     ../catalog/optional/features/greetd.nix

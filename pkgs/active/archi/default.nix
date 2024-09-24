@@ -6,24 +6,21 @@
   makeWrapper,
   jdk,
   libsecret,
+  glib,
   webkitgtk,
   wrapGAppsHook3,
   _7zz,
   nixosTests,
-  gtk4,
-  swt,
-  glib,
-  swt_jdk8,
 }:
 stdenv.mkDerivation rec {
   pname = "Archi";
-  version = "5.4.0";
+  version = "5.3.0";
 
   src =
     {
       "x86_64-linux" = fetchurl {
         url = "https://www.archimatetool.com/downloads/archi/${version}/Archi-Linux64-${version}.tgz";
-        hash = "sha256-IFhyyIdE1uW/Y/m0hFv7Su1SGpbnAHp7u0IPVji9KJ0=";
+        hash = "sha256-ngO3YFCChsnefxdxtR00Dy736K2GYnTEYI4vKWLnPsw=";
       };
       "x86_64-darwin" = fetchurl {
         url = "https://www.archimatetool.com/downloads/archi/${version}/Archi-Mac-${version}.dmg";
@@ -68,14 +65,7 @@ stdenv.mkDerivation rec {
 
       install -D -m755 Archi $out/libexec/Archi
       makeWrapper $out/libexec/Archi $out/bin/Archi \
-      --prefix LD_LIBRARY_PATH : "$out/lib:${
-        lib.makeLibraryPath [
-          swt
-          gtk4
-          swt_jdk8
-          glib
-        ]
-      }" \
+        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [glib webkitgtk]} \
         --set WEBKIT_DISABLE_DMABUF_RENDERER 1 \
         --prefix PATH : ${jdk}/bin
     ''
