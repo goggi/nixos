@@ -7,13 +7,13 @@
       url = "github:NixOS/nixpkgs/nixos-unstable-small";
     };
     nixpkgsUnstable = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+      url = "github:NixOS/nixpkgs/nixos-unstable-small";
     };
     nixpkgsStable = {
       url = "github:NixOS/nixpkgs/nixos-24.05";
     };
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+      url = "github:NixOS/nixpkgs/nixos-unstable-small";
     };
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland = {

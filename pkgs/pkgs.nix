@@ -54,11 +54,11 @@
 
         navicat = pkgs.callPackage ./active/navicat {};
         cloudflare-utils = pkgs.callPackage ./active/cloudflare-utils {};
+        # devspace = pkgs.callPackage ./active/devspace {};
         bibata-hyprcursor = pkgs.callPackage ./active/bibata {};
         archi = pkgs.callPackage ./active/archi {};
         cursor = pkgs.callPackage ./active/cursor {};
         bazecor = pkgs.callPackage ./active/bazecor {};
-        deno = pkgs.callPackage ./active/deno {};
       };
     };
 
