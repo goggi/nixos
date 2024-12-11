@@ -5,7 +5,7 @@
 }: {
   home = {
     packages = [
-      # pkgs.navicat
+      pkgs.navicat
     ];
 
     persistence = {

@@ -51,7 +51,7 @@
         vscode = nixpkgsUnstableSmall.vscode;
         vencord = nixpkgsUnstableSmall.vencord;
         obsidian = nixpkgsUnstable.obsidian;
-        # navicat = pkgs.callPackage ./active/navicat {};
+        navicat = pkgs.callPackage ./active/navicat {};
         bibata-hyprcursor = pkgs.callPackage ./active/bibata {};
         archi = pkgs.callPackage ./active/archi {};
         cursor = pkgs.callPackage ./active/cursor {};
