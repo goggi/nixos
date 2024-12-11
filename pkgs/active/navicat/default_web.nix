@@ -10,9 +10,9 @@
   versionItems = builtins.splitVersion version;
   majorVersion = builtins.elemAt versionItems 0;
 
-  appimageContents = appimageTools.extract {
-    inherit name src;
-  };
+  # appimageContents = appimageTools.extract {
+  #   inherit name src;
+  # };
 
   src = fetchurl {
     url = "https://dn.navicat.com/download/navicat${majorVersion}-premium-en-x86_64.AppImage";

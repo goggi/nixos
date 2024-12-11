@@ -5,17 +5,19 @@
   ...
 }: {
   home.packages = with pkgs; [
+    jdk23
+    graphviz
     bazecor
     kopia
     sox
     ncdu
     # pulumi
-    pulumi-bin
+    # pulumi-bin
     # pulumiPackages.pulumi-language-nodejs
     deepin.deepin-calculator
     libdrm
     audio-recorder
-    libreoffice-fresh
+    # libreoffice-fresh
     easyeffects
     kooha
     lzip

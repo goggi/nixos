@@ -12,7 +12,7 @@
 
   misc {
     disable_hyprland_logo = true
-    disable_splash_rendering = true
+    disable_splash_rendering = trueIt doesn't matter actually for years. Why do you have your own room? When you need a break, you go to lab room again. You have what you need. You go to rec room. I have nowhere to go. I have not taken any breaks. No, when I'm not there. Why? I don't say nobody. Fixtures get mixed. He had a doggy and become fleeted to the loser. What a week or 5? Another mixed or next step? Of the anticipated. Pardon me. Hello. As we've just made it before the middle of our life. And represented that. How are you today? In Japan. Now.
     # mouse_move_enables_dpms = false
     key_press_enables_dpms = true
     vfr = true
@@ -33,6 +33,8 @@
   exec-once = flatpak run io.kopia.KopiaUI &
   exec-once = nmcli radio wifi off
   exec-once = find ~/Downloads/Sidebery/ -ctime +3 -delete &
+  exec-once = gsettings set org.gnome.desktop.interface cursor-theme HyprBibataModernClassicSVG
+  exec-once = sleep 1 && ~/.config/hypr/autoBrightness.sh
   # exec-once = systemctl --user restart xdg-desktop-portal-hyprland
 
 
@@ -49,7 +51,7 @@
   # Monitor Variables
   $mainMonitorStandardResolution = DP-2,preferred,0x0,1
   $mainMonitorStandardResolutionPadding = DP-2,addreserved,0,0,700,700
-  $mainMonitorLowerResolution = DP-2,2560x1080@120,0x0,1
+  $mainMonitorLowerResolution = DP-2,3440x1440@120,0x0,1
   $mainMonitorLowerResolutionPadding = DP-2,addreserved,0,0,0,0
   $secondMonitorLowerResolution = DP-3,preferred, 670x-1080,1
   $secondMonitorStandardResolution = DP-3,preferred,1800x-1080,1
@@ -130,13 +132,14 @@
     inactive_opacity = 1.0
 
 
-    # Shadow
-    drop_shadow = true
-    shadow_ignore_window = true
-    shadow_offset = 2 2
-    shadow_range = 4
-    shadow_render_power = 2
-    col.shadow = 0x66000000
+    shadow{
+      enabled = true
+      color = 0x66000000
+      offset = 2 2
+      range = 4
+      render_power = 2
+      ignore_window = true
+    }
     dim_special = 0.7
     dim_inactive = false
     dim_strength = 0.6
@@ -311,7 +314,7 @@
 
   # Browsers
   bind=$mainModSHIFT,Return,exec,vivaldi
-  bind=ALTSHIFT,Return,exec,google-chrome-stable --ozone-platform=wayland
+  # bind=ALTSHIFT,Return,exec,google-chrome-stable --ozone-platform=wayland
 
   #bind=$mainMod,B,exec,swaync-client -t -sw
   #bind=$mainMod,V,exec,swaync-client -C -sw && swaync-client -cp -sw
@@ -345,13 +348,13 @@
 
   # VPN
   # bind=SUPER,n, exec, nmcli connection up ikea passwd-file ~/.config/vpn/passwd
-  bind=SUPER,n, exec, nmcli radio wifi on || true && nmcli device disconnect enp38s0 || true
-  bind=SUPERSHIFT,n, exec, nmcli radio wifi off || true && nmcli device connect enp38s0 || true
+  # bind=SUPER,n, exec, nmcli radio wifi on || true && nmcli device disconnect enp38s0 || true
+  # bind=SUPERSHIFT,n, exec, nmcli radio wifi off || true && nmcli device connect enp38s0 || true
   # bind=SUPERSHIFT,n, exec, nmcli connection down ikea
 
   # Virtual Machines
-  bind = $mainMod, M, exec, virsh start win10 || true && looking-glass-client -F -K 120 -S -d input:ignoreWindowsKeys input:autoCapture
-  bind = $mainMod_SHIFT, M, exec, virsh shutdown win10
+  # bind = $mainMod, M, exec, virsh start win10 || true && looking-glass-client -F -K 120 -S -d input:ignoreWindowsKeys input:autoCapture
+  # bind = $mainMod_SHIFT, M, exec, virsh shutdown win10
 
   # Reset workspaces
   bind=SUPER,G,exec, hyprctl dispatch moveworkspacetomonitor special:chatgpt && hyprctl dispatch moveworkspacetomonitor special:pomo && hyprctl dispatch moveworkspacetomonitor special:obsidian DP-2 && hyprctl dispatch moveworkspacetomonitor special:kitty DP-2 && hyprctl dispatch moveworkspacetomonitor special:music DP-2 && hyprctl dispatch moveworkspacetomonitor 1 DP-2 && hyprctl dispatch moveworkspacetomonitor 2 DP-2 && hyprctl dispatch moveworkspacetomonitor 3 DP-2 && hyprctl dispatch moveworkspacetomonitor 4 DP-2 && hyprctl dispatch moveworkspacetomonitor 5 DP-2 && hyprctl dispatch moveworkspacetomonitor 6 DP-2 && hyprctl dispatch moveworkspacetomonitor 7 DP-3 && hyprctl dispatch moveworkspacetomonitor 8 DP-3 && hyprctl dispatch moveworkspacetomonitor 9 DP-3 && hyprctl dispatch moveworkspacetomonitor 10 DP-2

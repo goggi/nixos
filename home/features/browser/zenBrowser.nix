@@ -1,17 +1,21 @@
 {
-  lib,
+  config,
   pkgs,
   ...
 }: {
   home = {
     packages = [
-      # pkgs.navicat
+      pkgs.zen-browser
     ];
-
     persistence = {
       "/persist/home/gogsaan" = {
         allowOther = true;
-        directories = [".config/navicat"];
+        directories = [
+          {
+            directory = ".zen";
+            method = "symlink";
+          }
+        ];
       };
     };
   };

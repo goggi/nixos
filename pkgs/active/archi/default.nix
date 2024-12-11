@@ -14,13 +14,13 @@
 }:
 stdenv.mkDerivation rec {
   pname = "Archi";
-  version = "5.3.0";
+  version = "5.4.2";
 
   src =
     {
       "x86_64-linux" = fetchurl {
         url = "https://www.archimatetool.com/downloads/archi/${version}/Archi-Linux64-${version}.tgz";
-        hash = "sha256-ngO3YFCChsnefxdxtR00Dy736K2GYnTEYI4vKWLnPsw=";
+        hash = "sha256-GcVouaJC955LaRtwJXOtknEnjHE1QzNeoWSqAPF9zGE=";
       };
       "x86_64-darwin" = fetchurl {
         url = "https://www.archimatetool.com/downloads/archi/${version}/Archi-Mac-${version}.dmg";

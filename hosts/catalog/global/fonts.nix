@@ -50,13 +50,17 @@
       # normal fonts
       lexend
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
       sf-mono-liga
       roboto
 
+      nerd-fonts.fira-code
+      nerd-fonts.jetbrains-mono
+
       # nerdfonts
-      (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
+      # (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
+      # nerd-fonts
     ];
 
     # causes more issues than it solves

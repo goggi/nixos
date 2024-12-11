@@ -9,22 +9,46 @@ in {
   home = {
     packages = with pkgs; [
       hypridle
+      ddcutil
+      fish
     ];
+  };
+
+  # Create the autoBrightness script
+  xdg.configFile."hypr/autoBrightness.sh" = {
+    executable = true;
+    text = ''
+      #!${pkgs.fish}/bin/fish
+
+      set HOUR (date +%H | string trim)
+
+      # Convert hour to number for comparison
+      set HOUR_NUM (echo $HOUR | sed 's/^0//')
+
+      # Low brightness between 20:00 and 08:00
+      if test $HOUR_NUM -ge 20; or test $HOUR_NUM -lt 8
+        ${pkgs.ddcutil}/bin/ddcutil --bus=10 setvcp 10 0
+        ${pkgs.ddcutil}/bin/ddcutil --bus=11 setvcp 10 0
+      else
+        ${pkgs.ddcutil}/bin/ddcutil --bus=10 setvcp 10 100
+        ${pkgs.ddcutil}/bin/ddcutil --bus=11 setvcp 10 100
+      end
+    '';
   };
 
   xdg.configFile."hypr/hypridle.conf".text = ''
     general {
-        lock_cmd = notify-send "lock!"          # dbus/sysd lock command (loginctl lock-session)
-        unlock_cmd = notify-send "unlock!"      # same as above, but unlock
-        before_sleep_cmd = notify-send "Zzz"    # command ran before sleep
-        after_sleep_cmd = notify-send "Awake!"  # command ran after sleep
-        ignore_dbus_inhibit = false             # whether to ignore dbus-sent idle-inhibit requests (used by e.g. firefox or steam)
+        lock_cmd = notify-send "lock!"
+        unlock_cmd = notify-send "unlock!"
+        before_sleep_cmd = notify-send "Zzz"
+        after_sleep_cmd = notify-send "Awake!"
+        ignore_dbus_inhibit = false
     }
 
     listener {
         timeout = 300
-        on-timeout = hyprctl dispatch dpms off && ${mediaPause}
-        on-resume = hyprctl dispatch dpms on && sleep 1 && ${restartXdgPortal} && ${resetSpecialWorkspace} && ${restartWaybar}
+        on-timeout = hyprctl sleep 1 && hyprctl dispatch dpms off && ${mediaPause}
+        on-resume = hyprctl dispatch dpms on && sleep 1 && ${restartXdgPortal} && ${restartWaybar} && ~/.config/hypr/autoBrightness.sh && sleep 1 && ~/.config/hypr/autoBrightness.sh
     }
   '';
 }

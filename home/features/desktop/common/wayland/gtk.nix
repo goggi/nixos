@@ -68,11 +68,11 @@
   };
 
   home.pointerCursor = {
-    # name = "catppuccin-mocha-mauve-cursors";
-    name = "catppuccin-mocha-dark-cursors";
-    package = pkgs.catppuccin-cursors.mochaMauve;
-    size = 28;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 24;
     gtk.enable = true;
+    x11.enable = true;
   };
 
   home.sessionVariables = {

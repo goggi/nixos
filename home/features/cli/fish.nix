@@ -18,7 +18,7 @@
       cat = "${pkgs.bat}/bin/bat --style=plain";
       nb = "echo \"Check Yubikey\" && sudo rm /home/gogsaan/.config/mimeapps.list || true && sudo mv /persist/home/gogsaan/.config/mimeapps.list /persist/home/gogsaan/.config/mimeapps1.list || true && sudo rm /persist/home/gogsaan/.ssh/config || true && git add . || true && sudo nixos-rebuild switch --show-trace --option eval-cache false --flake /home/gogsaan/Projects/private/nix/config#gza --show-trace && sudo mv /persist/home/gogsaan/.config/mimeapps1.list /persist/home/gogsaan/.config/mimeapps.list || true && ln -s /persist/home/gogsaan/.config/mimeapps.list /home/gogsaan/.config/mimeapps.list || true";
       # nb = "echo \"Check Yubikey\" && sudo rm /home/gogsaan/.config/mimeapps.list || true && sudo rm /home/gogsaan/.ssh/config || true && git add . || true && sudo nixos-rebuild switch --show-trace --option eval-cache false --flake /home/gogsaan/Projects/private/nix/config#gza --show-trace";
-      nu = "echo \"Check Yubikey\" && sudo nix flake update /persist/home/gogsaan/Projects/private/nix/config";
+      nu = "echo \"Check Yubikey\" && cd /persist/home/gogsaan/Projects/private/nix/config  && sudo nix flake update";
       sops = "nix-shell -p sops --run \" sops hosts/catalog/secrets.yaml \"";
       ls = "eza";
       cdd = "cd $(find ~ -type d | fzf)";

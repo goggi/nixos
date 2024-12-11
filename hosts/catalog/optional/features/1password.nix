@@ -19,6 +19,8 @@
         vivaldi-bin
         wavebox
         vivaldi
+        zen
+        .zen-wrapped
       '';
       mode = "0755";
     };

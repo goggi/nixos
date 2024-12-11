@@ -135,8 +135,8 @@
       ocl-icd
       qt6.qtwayland
       inputs.lug.packages.${pkgs.system}.lug-helper # installs a package
-      wineWowPackages.stable
-      wineWowPackages.waylandFull
+      # wineWowPackages.stable
+      # wineWowPackages.waylandFull
       curl
       gcc
       git

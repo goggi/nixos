@@ -15,8 +15,8 @@
   hardware.graphics.extraPackages = with pkgs; [
     amdvlk
     mangohud
-    rocm-opencl-icd
-    rocm-opencl-runtime
+    # rocm-opencl-icd
+    # rocm-opencl-runtime
     vaapiVdpau
     libvdpau-va-gl
   ];

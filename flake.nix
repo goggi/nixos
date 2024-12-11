@@ -13,7 +13,8 @@
       url = "github:NixOS/nixpkgs/nixos-24.05";
     };
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable-small";
+      # url = "github:NixOS/nixpkgs/68b021b3244d6464671494eb83015deeb0fe294a";
+      url = "github:NixOS/nixpkgs/nixos-unstable";
     };
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland = {
@@ -22,7 +23,7 @@
     };
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
-      # url = "github:nix-community/home-manager/release-24.05";
+      # url = "github:nix-community/home-manager/release-25.05";
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -41,8 +42,8 @@
     };
 
     # hyprland-contrib.url = "github:hyprwm/contrib";
-
     # Other
+    zen-browser.url = "github:fufexan/zen-browser-flake";
     catppuccin.url = "github:catppuccin/nix";
     lug.url = "github:LovingMelody/lug-helper/20806da463f9e069fdf98841ca2c5d69146cb163";
     nix-gaming.url = "github:fufexan/nix-gaming";
@@ -62,6 +63,7 @@
     sops-nix,
     hyprland,
     catppuccin,
+    zen-browser,
     ...
   } @ inputs: let
     system = "x86_64-linux";

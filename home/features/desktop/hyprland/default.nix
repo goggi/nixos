@@ -18,7 +18,7 @@ in {
   home = {
     packages = with pkgs; [
       pngquant
-      python39Packages.requests
+      # python39Packages.requests
       tesseract5
       xorg.xprop
       hyprland-per-window-layout
@@ -31,8 +31,8 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    package = pkgs.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    # package = pkgs.hyprland;
     systemd = {
       enable = true;
       variables = ["--all"];

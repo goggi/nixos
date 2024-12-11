@@ -45,20 +45,18 @@
       ];
 
       packageOverrides = super: {
+        zen-browser = inputs.zen-browser.packages.${system}.default;
         vivaldi = nixpkgsUnstableSmall.vivaldi;
         vivaldi-ffmpeg-codecs = nixpkgsUnstableSmall.vivaldi-ffmpeg-codecs;
         vscode = nixpkgsUnstableSmall.vscode;
-        microsoft-edge-beta = nixpkgsUnstableSmall.microsoft-edge-beta;
         vencord = nixpkgsUnstableSmall.vencord;
         obsidian = nixpkgsUnstable.obsidian;
-
-        navicat = pkgs.callPackage ./active/navicat {};
-        cloudflare-utils = pkgs.callPackage ./active/cloudflare-utils {};
-        # devspace = pkgs.callPackage ./active/devspace {};
+        # navicat = pkgs.callPackage ./active/navicat {};
         bibata-hyprcursor = pkgs.callPackage ./active/bibata {};
         archi = pkgs.callPackage ./active/archi {};
         cursor = pkgs.callPackage ./active/cursor {};
         bazecor = pkgs.callPackage ./active/bazecor {};
+        starsector = pkgs.callPackage ./active/starsector {};
       };
     };
 

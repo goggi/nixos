@@ -5,30 +5,48 @@
   makeWrapper,
   stdenv,
 }: let
-  name = "navicat";
+  pname = "navicat";
   version = "16";
 
+  src = ./navicat16-premium-en.AppImage;
+
   appimageContents = appimageTools.extract {
-    inherit name src;
+    inherit pname version src;
   };
 
-  src = ./navicat16-premium-en.AppImage;
 in
   appimageTools.wrapType2 {
-    inherit name src;
+    name = "${pname}-${version}";
+    inherit src;
 
     extraInstallCommands = ''
       mkdir -p $out/share/applications
-      cp ${appimageContents}/navicat.desktop $out/share/applications/${name}.desktop
+      cp ${appimageContents}/navicat.desktop $out/share/applications/${pname}.desktop
       cp -r ${appimageContents}/usr/share/icons $out/share/
-      substituteInPlace $out/share/applications/${name}.desktop \
-        --replace 'Exec=AppRun' 'Exec=${name}'
+      substituteInPlace $out/share/applications/${pname}.desktop \
+        --replace 'Exec=AppRun' 'Exec=${pname}'
 
       # Add the reset script
       mkdir -p $out/bin
       cat << 'EOF' > $out/bin/navicat_reset.sh
       #!/usr/bin/env bash
-      # ... (rest of the reset script)
+        echo "Starting reset..."
+        DATE=$(date '+%Y%m%d_%H%M%S')
+        # Backup
+        echo "=> Creating a backup..."
+        cp ~/.config/dconf/user ~/.config/dconf/user.$DATE.bk
+        echo "The user dconf backup was created at $HOME/.config/dconf/user.$DATE.bk"
+        cp ~/.config/navicat/Premium/preferences.json ~/.config/navicat/Premium/preferences.json.$DATE.bk
+        echo "The Navicat preferences backup was created at $HOME/.config/navicat/Premium/preferences.json.$DATE.bk"
+        # Clear data in dconf
+        echo "=> Resetting..."
+        dconf reset -f /com/premiumsoft/navicat-premium/
+        echo "The user dconf data was reset"
+        # Remove data fields in config file
+        sed -i -E 's/,?"([A-F0-9]+)":\{([^\}]+)},?//g' ~/.config/navicat/Premium/preferences.json
+        echo "The Navicat preferences was reset"
+        # Done
+        echo "Done."
       EOF
       chmod +x $out/bin/navicat_reset.sh
     '';

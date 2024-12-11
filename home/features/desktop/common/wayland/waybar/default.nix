@@ -34,7 +34,7 @@
   waybar-wttr = pkgs.stdenv.mkDerivation {
     name = "waybar-wttr";
     buildInputs = [
-      (pkgs.python39.withPackages
+      (pkgs.python3.withPackages
         (pythonPackages: with pythonPackages; [requests]))
     ];
     unpackPhase = "true";

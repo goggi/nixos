@@ -22,13 +22,14 @@
     # ../features/browser/thorium.nix
 
     # ../features/browser/floorp.nix
+    ../features/browser/zenBrowser.nix
     ../features/browser/vivaldi.nix
     # ../features/browser/chromium.nix
     # ../features/browser/librewolf
     # ../features/browser/brave.nix
     # ../features/browser/waterfox.nix
     # ../features/browser/wavebox.nix
-    ../features/browser/microsoftEdgeDev.nix
+    # ../features/browser/microsoftEdgeDev.nix
     # ../features/browser/microsoftEdge.nix
 
     # Development
@@ -40,7 +41,7 @@
 
     "${fetchTarball {
       url = "https://github.com/warmingking/nixos-cursor-server/tarball/master";
-      sha256 = "sha256:1yr2613zjam8cjhswin3sqaz69jba9bwc03bi596p73mc7nb8lys";
+      sha256 = "sha256:0iqrhkysfjmqpkxj31vk1y7iq8541sfnpqjlg1jlgvn20kbpym3p";
     }}/modules/cursor-server/home.nix"
 
     # "${fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master"}/modules/vscode-server/home.nix"
@@ -53,7 +54,7 @@
     # ../features/development/helix
     ../features/development/language/nodejs.nix
     ../features/development/language/python3.nix
-    ../features/development/language/gleam.nix
+    # ../features/development/language/gleam.nix
     # inputs.nix-doom-emacs.hmModule
 
     # Management
@@ -65,7 +66,7 @@
 
     # Document
     ../features/document/obsidian.nix
-    ../features/document/logseq.nix
+    # ../features/document/logseq.nix
     ../features/document/zathura.nix
     ../features/document/lapce.nix
 
@@ -88,14 +89,14 @@
     ../features/tool/flatpakPersistance.nix
     ../features/tool/btop.nix
     ../features/tool/nemo.nix
-    ../features/tool/idasen.nix
+    # ../features/tool/idasen.nix
     ../features/tool/swappy.nix
     ../features/tool/wasabiwallet.nix
-    ../features/tool/wayvnc.nix
+    # ../features/tool/wayvnc.nix
 
     # Game
     ../features/game/steam.nix
-    ../features/game/lutris.nix
+    # ../features/game/lutris.nix
     ../features/game/minecraft.nix
     ../features/game/starsector.nix
     # ../features/game/bottles.nix
@@ -144,6 +145,8 @@
 
   services.vscode-server.enable = true;
   services.cursor-server.enable = true;
+  services.cursor-server.installPath = "$HOME/.vscode/.cursor-server-oss";
+
   # services.vscode-server.nodejsPackage = pkgs.nodejs-16_x;
   # disable manuals as nmd fails to build often
   manual = {

@@ -10,12 +10,13 @@
   common-updater-scripts,
 }: let
   pname = "cursor";
-  version = "0.42.0";
+  version = "0.43.0";
   appKey = "230313mzl4w4u92";
 
   src = fetchurl {
-    url = "https://downloader.cursor.sh/linux/appImage/x64";
-    hash = "sha256-WtfyiNGnUn8g1HR0TQPyn3SMJmjqe+otAYeyokMIO+w=";
+    url = "https://downloader.cursor.sh/linux/appImage/x64?v=${version}";
+    hash = "sha256-cDXYElWUQwJ/fd9PrMs5KEbjd9N3mb1b9f1kqa3bil0=";
+    name = "${pname}-${version}.AppImage";
   };
   appimageContents = appimageTools.extractType2 {inherit version pname src;};
 in
