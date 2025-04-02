@@ -14,6 +14,7 @@
     };
     nixpkgs = {
       # url = "github:NixOS/nixpkgs/68b021b3244d6464671494eb83015deeb0fe294a";
+      # url = "github:NixOS/nixpkgs/nixos-24.11";
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
     impermanence.url = "github:nix-community/impermanence";
@@ -23,7 +24,7 @@
     };
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
-      # url = "github:nix-community/home-manager/release-25.05";
+      # url = "github:nix-community/home-manager/release-24.11";
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -36,14 +37,37 @@
 
     # Hyprland
     hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-      # url = "github:hyprwm/Hyprland/7c4c402bd7f24241c096d809cc80408a469f15cb";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      
+      
+      url = "github:hyprwm/Hyprland";
+
+      # Currently works
+      # url = "github:goggi/Hyprland/23be7fc49aee0668c93762cdb342120eef65f2d4";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     # hyprland-contrib.url = "github:hyprwm/contrib";
     # Other
-    zen-browser.url = "github:fufexan/zen-browser-flake";
+    playwright.url = "github:pietdevries94/playwright-web-flake";
+    zen-browser.url = "github:youwen5/zen-browser-flake";
+    # zen-browser.url = "github:goggi/zen-browser-flake";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
     catppuccin.url = "github:catppuccin/nix";
     lug.url = "github:LovingMelody/lug-helper/20806da463f9e069fdf98841ca2c5d69146cb163";
     nix-gaming.url = "github:fufexan/nix-gaming";

@@ -1,7 +1,7 @@
 {
+  appimageTools,
   lib,
   pkgs,
-  appimageTools,
   makeWrapper,
   stdenv,
 }: let
@@ -10,23 +10,23 @@
 
   src = ./navicat16-premium-en.AppImage;
 
-  # Define a custom extraction process using a different tool
-  extractedDir = pkgs.runCommand "extract-navicat" {
-    buildInputs = [ pkgs.bash pkgs.squashfsTools ];
-  } ''
-    mkdir -p $out
-    unsquashfs -d $out ${src}
-  '';
+
+
+appimageContents = appimageTools.extractType2 {
+    inherit pname version src;
+  };
 
 in
   appimageTools.wrapType2 {
     name = "${pname}-${version}";
+    pname = pname;
+    version = version;
     inherit src;
 
     extraInstallCommands = ''
       mkdir -p $out/share/applications
-      cp ${extractedDir}/navicat.desktop $out/share/applications/${pname}.desktop
-      cp -r ${extractedDir}/usr/share/icons $out/share/
+      cp ${appimageContents}/navicat.desktop $out/share/applications/${pname}.desktop
+      cp -r ${appimageContents}/usr/share/icons $out/share/
       substituteInPlace $out/share/applications/${pname}.desktop \
         --replace 'Exec=AppRun' 'Exec=${pname}'
 

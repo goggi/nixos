@@ -38,7 +38,6 @@
       # Environment
       export PATH="''${HOME}/.local/bin:''${HOME}/go/bin:''${HOME}/.npm/bin:''${PATH}"
       export SUDO_PROMPT=$'Password for ->\033[32;05;16m %u\033[0m  '
-
       export FZF_DEFAULT_OPTS="
       --color bg+:#313244
       --color bg:#1e1e2e

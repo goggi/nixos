@@ -13,6 +13,8 @@
 # }
 {pkgs, ...}: {
   hardware.graphics.extraPackages = with pkgs; [
+    vkd3d-proton
+    vkd3d
     amdvlk
     mangohud
     # rocm-opencl-icd

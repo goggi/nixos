@@ -30,7 +30,7 @@
       kubefwd = "echo \"Check Yubikey\" && sudo cp /etc/hosts /etc/hostsTemp && sudo rm /etc/hosts && sudo cp /etc/hostsTemp /etc/hosts && sudo ~/Applications/bin/kubefwd svc -c $KUBECONFIG -n crawlyfi-prod";
       # Clear screen and scrollback
       clear = "printf '\\033[2J\\033[3J\\033[1;1H'";
-      startCoder = "nohup /home/gogsaan/Applications/bin/coder server --postgres-url \"postgres://coder:coder@127.0.0.1:5432/coder?sslmode=disable\" --derp-config-url https://controlplane.tailscale.com/derpmap/default & && disown ";
+      # startCoder = "nohup /home/gogsaan/Applications/bin/coder server --postgres-url \"postgres://coder:coder@127.0.0.1:5432/coder?sslmode=disable\" --derp-config-url https://controlplane.tailscale.com/derpmap/default & && disown ";
       protonge = "protonup -d \"/home/gogsaan/.steam/steam/compatibilitytools.d\" && protonup ";
       # Add & Commit all changes And push
       gpacp = "git pull && git add . && git commit -m \"$(date)\" && git push";
@@ -95,9 +95,10 @@
         set -U fish_pager_color_prefix        'white' '--bold' '--underline'
         set -U fish_pager_color_progress      'brwhite' '--background=cyan'
 
-        set -U -x KUBECONFIG /home/gogsaan/Projects/crawlyfi/terraform/kubernetes/kubeconfig
+        set -U -x KUBECONFIG /home/gogsaan/Projects/crawlyfi/infra/src/cluster/hetzner-k3s/kubeconfig
         set PATH $HOME/.npm/bin $fish_user_paths $PATH
         set -U -x CRAWLYFI_ENV dev
+        set -U -x NODE_OPTIONS '--max-old-space-size=8192'
 
         if test "$TERM" != "linux" -a -z "$SSH_TTY"
             starship init fish | source

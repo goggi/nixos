@@ -19,9 +19,9 @@
     # Browser
     # ../features/browser/firefox
     ../features/browser/googleChrome.nix
-    # ../features/browser/thorium.nix
+    ../features/browser/thorium.nix
 
-    # ../features/browser/floorp.nix
+    ../features/browser/floorp.nix
     ../features/browser/zenBrowser.nix
     ../features/browser/vivaldi.nix
     # ../features/browser/chromium.nix
@@ -32,6 +32,8 @@
     # ../features/browser/microsoftEdgeDev.nix
     # ../features/browser/microsoftEdge.nix
 
+    # ../features/management/bitwarden.nix
+
     # Development
     ../features/development/vscode.nix
     "${fetchTarball {
@@ -40,7 +42,7 @@
     }}/modules/vscode-server/home.nix"
 
     "${fetchTarball {
-      url = "https://github.com/warmingking/nixos-cursor-server/tarball/master";
+      url = "https://github.com/p-zany/nixos-cursor-server/tarball/master";
       sha256 = "sha256:0iqrhkysfjmqpkxj31vk1y7iq8541sfnpqjlg1jlgvn20kbpym3p";
     }}/modules/cursor-server/home.nix"
 
@@ -76,8 +78,9 @@
     ../features/communcation/vencord.nix
 
     # Media
-    ../features/media/obsStudio.nix
-    ../features/media/plex.nix
+    # ../features/media/obsStudio.nix
+    # ../features/media/plex.nix
+    ../features/media/tidal.nix
 
     # Cli
     ../features/cli/fish.nix
@@ -93,7 +96,7 @@
     ../features/tool/swappy.nix
     ../features/tool/wasabiwallet.nix
     # ../features/tool/wayvnc.nix
-
+    ../features/tool/parsec.nix
     # Game
     ../features/game/steam.nix
     # ../features/game/lutris.nix
@@ -145,8 +148,11 @@
 
   services.vscode-server.enable = true;
   services.cursor-server.enable = true;
-  services.cursor-server.installPath = "$HOME/.vscode/.cursor-server-oss";
+  services.cursor-server.enableFHS = true;
+  services.cursor-server.installPath = "$HOME/.vscode/.cursor-server";
 
+  # services.vscode-server.nodejsPackage = pkgs.nodejs-16_x;
+  # services.vscode-server.nodejsPackage = pkgs.nodejs-16_x;
   # services.vscode-server.nodejsPackage = pkgs.nodejs-16_x;
   # disable manuals as nmd fails to build often
   manual = {

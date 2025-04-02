@@ -42,6 +42,7 @@
         "/var/lib/bluetooth"
         "/var/lib/systemd/coredump"
         "/var/lib/nixos"
+        "/var/lib/github-runner"
       ];
     };
   };
@@ -65,7 +66,7 @@
     # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     # kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
     # kernelPackages = pkgs.linuxPackages_latest;
-    # kernelPackages = pkgs.linuxPackages_6_6;
+    # kernelPackages = pkgs.linuxPackages_6_12;
 
     kernel.sysctl = {
       "vm.max_map_count" = 16777216;
@@ -103,6 +104,15 @@
         gfxmodeEfi = "1024x768";
       };
     };
+
+    postBootCommands = ''
+      if [ -d "/var/lib/github-runner" ]; then
+        echo "Cleaning GitHub runner directory at boot time"
+        rm -rf /var/lib/github-runner/*
+        chown -R runner:runner /var/lib/github-runner
+        chmod -R 0770 /var/lib/github-runner
+      fi
+    '';
   };
 
   xdg.portal = {
@@ -126,7 +136,26 @@
 
   system.stateVersion = lib.mkForce "23.11";
 
-  # services.ollama.enable = true;
-  # # services.ollama.acceleration = "rocm";
-  # services.ollama.listenAddress = "0.0.0.0:11434";
+
+  services = {
+    github-runners = {
+      runner = {
+        enable = true;
+        name = "Gza-DT Runner";
+        user = "root";
+        group = "docker";
+        tokenFile = "/home/gogsaan/Documents/githubtoken";
+        url = "https://github.com/TrendeeLabs";
+        extraPackages = [
+          pkgs.docker
+          pkgs.docker-compose
+          pkgs.docker-buildx
+          pkgs.git
+          pkgs.kustomize
+        ];
+      };
+    };
+  };
+
+
 }

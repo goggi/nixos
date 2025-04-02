@@ -48,12 +48,13 @@
   xfce,
   xorg,
 }:
+
 stdenv.mkDerivation rec {
   pname = "thorium-browser";
-  version = "122.0.6261.132";
+  version = "128.0.6613.189";
   src = fetchurl {
-    url = "https://github.com/Alex313031/thorium/releases/download/M${version}/thorium-browser_${version}_amd64.deb";
-    hash = "sha256-dR5yHJqUtnQe0V+FICZK+0fjenLl8590jDw8cP80yQA=";
+    url = "https://github.com/Alex313031/thorium/releases/download/M${version}/thorium-browser_${version}_SSE4.deb";
+    hash = "sha256-s9zonC48XhV98MVwtdwKxTuq5+Z68amAHgzZ7kHk/5U=";
   };
 
   nativeBuildInputs = [

@@ -8,14 +8,15 @@
 
   render {
     # direct_scanout = true
+    
     }
 
   misc {
     disable_hyprland_logo = true
-    disable_splash_rendering = trueIt doesn't matter actually for years. Why do you have your own room? When you need a break, you go to lab room again. You have what you need. You go to rec room. I have nowhere to go. I have not taken any breaks. No, when I'm not there. Why? I don't say nobody. Fixtures get mixed. He had a doggy and become fleeted to the loser. What a week or 5? Another mixed or next step? Of the anticipated. Pardon me. Hello. As we've just made it before the middle of our life. And represented that. How are you today? In Japan. Now.
+    disable_splash_rendering = true
     # mouse_move_enables_dpms = false
     key_press_enables_dpms = true
-    vfr = true
+    vfr = false
     vrr = 1
     # no_direct_scanout = false
     enable_swallow = true
@@ -56,6 +57,10 @@
   $secondMonitorLowerResolution = DP-3,preferred, 670x-1080,1
   $secondMonitorStandardResolution = DP-3,preferred,1800x-1080,1
 
+  $mainMonitorLowestResolution = DP-2,2650x1440@120,0x0,1
+  $mainMonitorLowestResolutionPadding = DP-2,addreserved,0,0,0,0
+
+
   monitor=DP-2,preferred,0x0,1
   monitor=DP-2,addreserved,0,0,700,700
   monitor=DP-3,preferred,1800x-1080,1
@@ -68,6 +73,10 @@
   bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$mainMonitorLowerResolution"
   bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$mainMonitorLowerResolutionPadding"
   bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$secondMonitorLowerResolution"
+  bind=$mainModALT, slash, exec, hyprctl keyword monitor "$mainMonitorLowestResolution"
+  bind=$mainModALT, slash, exec, hyprctl keyword monitor "$mainMonitorLowestResolutionPadding"
+
+
 
   # Inputs
   input {
@@ -107,16 +116,16 @@
   }
 
   group {
+    auto_group = true
     col.border_inactive=0xff313244
     groupbar:render_titles = false
-    groupbar:font_size = 11
-    # groupbar:text_color = 0x000000
+    # groupbar:font_size = 11
+    # # groupbar:text_color = 0x000000
     groupbar:height = 1
     col.border_active	=0xffcba6f7 0xfff38ba8 45deg
     groupbar:gradients = false
-    groupbar:col.inactive=0xff313244
-    groupbar:col.active	=0xffcba6f7 0xfff38ba8 45deg
-
+    # groupbar:col.inactive=0xfff38ba8
+    # groupbar:col.active	=0xffcba6f7 
   }
 
 
@@ -179,12 +188,12 @@
   }
 
   # Navicat
-  windowrule = float, download
-  windowrule = dimaround, title:^.*Confirm.*$
-  windowrule = float, notification
-  windowrule = float, error
-  windowrule = float, splash
-  windowrule = float, confirmreset
+  # windowrule = float, download
+  # windowrule = dimaround, title:^.*Confirm.*$
+  # windowrule = float, notification
+  # windowrule = float, error
+  # windowrule = float, splash
+  # windowrule = float, confirmreset
 
 
   # Workspaces
@@ -204,7 +213,7 @@
   windowrule = move center,title:^(KopiaUI is Loading...)$
 
   # Inhibit IDLE
-  windowrule = idleinhibit fullscreen, firefox
+  # windowrule = idleinhibit fullscreen, firefox
 
   # 1Password
   # windowrule = move center,title:^(1Password)$
@@ -298,8 +307,8 @@
   # windowrule = tile, title:^(Diablo III)$
 
 
-  windowrulev2 = stayfocused, title:^()$,class :^(steam)$
-  windowrulev2 = minsize 1 1, title:^()$,class:^(steam)$
+  # windowrulev2 = stayfocused, title:^()$,class :^(steam)$
+  # windowrulev2 = minsize 1 1, title:^()$,class:^(steam)$
 
   #
   # Keybinds
@@ -313,7 +322,7 @@
   bind=$mainMod_SHIFT,G,exec, hyprctl dispatch centerwindow
 
   # Browsers
-  bind=$mainModSHIFT,Return,exec,vivaldi
+  bind=$mainModSHIFT,Return,exec,zen
   # bind=ALTSHIFT,Return,exec,google-chrome-stable --ozone-platform=wayland
 
   #bind=$mainMod,B,exec,swaync-client -t -sw
@@ -393,6 +402,7 @@
   # bind=$mainMod_SHIFT,F12,togglespecialworkspace,search
 
   # Groups
+  bind=SUPER_SHIFT,W,exec, ~/Projects/private/nix/config/home/features/desktop/hyprland/scripts/groupWindows.sh
   bind=$mainMod,W,togglegroup,
   bind=$mainMod,Left,changegroupactive, b
   bind=$mainMod,Right,changegroupactive, f
@@ -421,8 +431,8 @@
 
 
   # Screenshots
-  $screenshotarea = grimblast --cursor save area - | swappy -f -
-  $screensscreen = grimblast --cursor save active - | swappy -f -
+  $screenshotarea = grimblast save area - | swappy -f -
+  $screensscreen = grimblast save active - | swappy -f -
   bind = SUPER_SHIFT, t, exec, $screenshotarea
   bind = SUPER_CTRL, t, exec, $screensscreen
   bind = CTRL, Print, exec, grimblast --notify --cursor copysave output

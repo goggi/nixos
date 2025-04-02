@@ -5,14 +5,13 @@
 }: {
   home = {
     packages = [
-      # (pkgs.vesktop.override {
-      #   electron = pkgs.electron_32;
-      # })
+      pkgs.parsec-bin
     ];
+
     persistence = {
       "/persist/home/gogsaan" = {
         allowOther = true;
-        directories = [".config/vesktop"];
+        directories = [".parsec" ".parsec-persistent"];
       };
     };
   };

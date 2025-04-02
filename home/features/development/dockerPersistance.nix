@@ -15,6 +15,7 @@
           ".config/nats"
           ".local/share/docker"
           ".docker"
+          ".github-runner"
         ];
       };
     };

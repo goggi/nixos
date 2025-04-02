@@ -11,6 +11,7 @@
     kopia
     sox
     ncdu
+    nixfmt-classic
     # pulumi
     # pulumi-bin
     # pulumiPackages.pulumi-language-nodejs

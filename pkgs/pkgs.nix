@@ -57,6 +57,8 @@
         cursor = pkgs.callPackage ./active/cursor {};
         bazecor = pkgs.callPackage ./active/bazecor {};
         starsector = pkgs.callPackage ./active/starsector {};
+        thorium = pkgs.callPackage ./active/thorium {};
+        k9s = pkgs.callPackage ./active/k9s {};
       };
     };
 

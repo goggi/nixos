@@ -11,6 +11,11 @@
     _1password = {
       enable = true;
     };
+
+    # goldwarden = {
+    #   enable = true;
+    #   useSshAgent = true;
+    # };
   };
 
   environment.etc = {
