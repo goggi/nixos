@@ -6,10 +6,10 @@
   virtualisation.spiceUSBRedirection.enable = true;
 
   # # Waydroid
-  # virtualisation = {
-  #   waydroid.enable = true;
-  #   lxd.enable = true;
-  # };
+  virtualisation = {
+    waydroid.enable = true;
+    lxd.enable = true;
+  };
 
   virtualisation.libvirtd = {
     enable = true;

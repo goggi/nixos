@@ -9,14 +9,14 @@
   }:
   let
     pname = "cursor";
-    version = "0.48.6";
+    version = "0.49.4";
 
     inherit (stdenvNoCC) hostPlatform;
 
     sources = {
       x86_64-linux = fetchurl {
-        url = "https://downloads.cursor.com/production/1649e229afdef8fd1d18ea173f063563f1e722ef/linux/x64/Cursor-0.48.6-x86_64.AppImage";
-        hash = "sha256-ZiQpVRZRaFOJ8UbANRd1F+4uhv7W/t15d9wmGKshu80=";
+        url = "https://downloads.cursor.com/production/fd861c8a80c0f9e4e35294b1915ee8a7b29ae858/linux/x64/Cursor-0.49.5-x86_64.AppImage";
+        hash = "sha256-c5X8j6e/pOqvEqgE4Jc59xPDCYu2SlCJ0gG0Vs2qFMs=";
       };
       aarch64-linux = fetchurl {
         url = "https://download.todesktop.com/230313mzl4w4u92/cursor-0.45.14-build-250219jnihavxsz-arm64.AppImage";

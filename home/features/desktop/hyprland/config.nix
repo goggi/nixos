@@ -5,6 +5,9 @@
     # enable_stdout_logs = true
     disable_logs = false
   }
+  ecosystem {
+    no_update_news = true
+  }
 
   render {
     # direct_scanout = true

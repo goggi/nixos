@@ -3,6 +3,12 @@
     # NixOS
 
     # Local Unstable nixpkgs repository at ../nixpkgs
+
+    nixpkgsLocal = {
+      url = "path:./nixpkgs";
+      flake = false;
+    };
+
     nixpkgsUnstableSmall = {
       url = "github:NixOS/nixpkgs/nixos-unstable-small";
     };

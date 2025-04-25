@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: let
   steam-with-pkgs = pkgs.steam.override {
@@ -16,22 +17,41 @@
         stdenv.cc.cc.lib
         libkrb5
         keyutils
-        mangohud
+        gamescope
       ];
   };
+
+  gamescope-cmd = lib.concatStringsSep " " [
+    (lib.getExe pkgs.gamescope)
+    "--output-width 2560"
+    "--output-height 1080"
+    "--framerate 120"
+    "--framerate-limit 120"
+    "--adaptive-sync"
+    "--expose-wayland"
+    "--hdr-enabled"
+    "--steam"
+  ];
+  
+  steam-cmd = lib.concatStringsSep " " [
+    "steam"
+    "steam://open/bigpicture"
+  ];
 in {
-  home = {
-    sessionVariables = {
-      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
+  home.packages = [
+    steam-with-pkgs
+    pkgs.gamescope
+    pkgs.protontricks
+  ];
+  
+  xdg.desktopEntries = {
+    steam-session = {
+      name = "Steam Session";
+      exec = "${gamescope-cmd} -- ${steam-cmd}";
+      type = "Application";
     };
   };
-
-  home.packages = with pkgs; [
-    gamescope
-    steam-with-pkgs
-    protontricks
-    protonup-ng
-  ];
+  
   home.persistence = {
     "/persist/games/gogsaan" = {
       allowOther = true;

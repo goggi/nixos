@@ -75,8 +75,8 @@
     # Communication
     ../features/communcation/signalDesktop.nix
     # ../features/communcation/webcord.nix
-    ../features/communcation/vencord.nix
-
+    # ../features/communcation/vencord.nix
+    ../features/communcation/equibop.nix
     # Media
     # ../features/media/obsStudio.nix
     # ../features/media/plex.nix
@@ -134,7 +134,8 @@
           ".ssh"
           ".aws"
           ".local/share/applications"
-          # ".local/share/waydroid"
+          ".local/share/pnpm"
+          ".local/share/waydroid"
           ".local/share/desktop-directories"
         ];
         files = [

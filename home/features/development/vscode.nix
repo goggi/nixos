@@ -19,6 +19,7 @@
   home = {
     packages = [
       pkgs.cursor
+      pkgs.windsurf
     ];
     persistence = {
       "/persist/home/gogsaan" = {
@@ -40,6 +41,14 @@
           }
           {
             directory = ".cursor";
+            method = "symlink";
+          }
+          {
+            directory = ".windsurf";
+            method = "symlink";
+          }
+          {
+            directory = ".config/Windsurf";
             method = "symlink";
           }
         ];
