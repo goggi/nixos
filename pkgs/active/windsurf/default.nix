@@ -10,7 +10,7 @@
 }:
 let
   # Import the generic module without calling it
-  vscode-generic = ../vscode/generic.nix;
+  vscode-generic = ../../../nixpkgs/pkgs/applications/editors/vscode/generic.nix;
   
   info =
     (lib.importJSON ./info.json)."${stdenv.hostPlatform.system}"

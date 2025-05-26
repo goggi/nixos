@@ -20,6 +20,8 @@
     packages = [
       pkgs.cursor
       pkgs.windsurf
+      pkgs.biome
+      pkgs.claude-desktop
     ];
     persistence = {
       "/persist/home/gogsaan" = {
@@ -49,6 +51,10 @@
           }
           {
             directory = ".config/Windsurf";
+            method = "symlink";
+          }
+          {
+            directory = ".codeium";
             method = "symlink";
           }
         ];

@@ -4,9 +4,8 @@
 
     # Local Unstable nixpkgs repository at ../nixpkgs
 
-    nixpkgsLocal = {
-      url = "path:./nixpkgs";
-      flake = false;
+    nixpkgsMaster = {
+      url = "github:NixOS/nixpkgs";
     };
 
     nixpkgsUnstableSmall = {
@@ -21,7 +20,8 @@
     nixpkgs = {
       # url = "github:NixOS/nixpkgs/68b021b3244d6464671494eb83015deeb0fe294a";
       # url = "github:NixOS/nixpkgs/nixos-24.11";
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+      # url = "github:NixOS/nixpkgs/nixos-unstable";
+      url = "github:NixOS/nixpkgs/nixos-25.05";
     };
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland = {
@@ -30,8 +30,8 @@
     };
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
-      # url = "github:nix-community/home-manager/release-24.11";
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
+      # url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {
@@ -70,6 +70,12 @@
 
     # hyprland-contrib.url = "github:hyprwm/contrib";
     # Other
+
+    claude-desktop = {
+      url = "github:k3d3/claude-desktop-linux-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     playwright.url = "github:pietdevries94/playwright-web-flake";
     zen-browser.url = "github:youwen5/zen-browser-flake";
     # zen-browser.url = "github:goggi/zen-browser-flake";

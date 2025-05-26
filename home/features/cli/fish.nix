@@ -96,7 +96,8 @@
         set -U fish_pager_color_progress      'brwhite' '--background=cyan'
 
         set -U -x KUBECONFIG /home/gogsaan/Projects/crawlyfi/infra/src/cluster/hetzner-k3s/kubeconfig
-        set PATH $HOME/.npm/bin $fish_user_paths $PATH
+        set PATH $HOME/.npm/bin $HOME/.local/share/pnpm/global $fish_user_paths $PATH
+        set -U -x PNPM_HOME /home/gogsaan/.local/share/pnpm/global
         set -U -x CRAWLYFI_ENV dev
         set -U -x NODE_OPTIONS '--max-old-space-size=8192'
 

@@ -9,15 +9,19 @@
   }:
   let
     pname = "cursor";
-    version = "0.49.4";
+    version = "0.50.5";
 
     inherit (stdenvNoCC) hostPlatform;
 
     sources = {
       x86_64-linux = fetchurl {
-        url = "https://downloads.cursor.com/production/fd861c8a80c0f9e4e35294b1915ee8a7b29ae858/linux/x64/Cursor-0.49.5-x86_64.AppImage";
-        hash = "sha256-c5X8j6e/pOqvEqgE4Jc59xPDCYu2SlCJ0gG0Vs2qFMs=";
+        url = "https://downloads.cursor.com/production/96e5b01ca25f8fbd4c4c10bc69b15f6228c80771/linux/x64/Cursor-0.50.5-x86_64.AppImage";
+        hash = "sha256-DUWIgQYD3Wj6hF7NBb00OGRynKmXcFldWFUA6W8CZeM=";
       };
+      # x86_64-linux = fetchurl {
+      #   url = "https://downloads.cursor.com/production/fd861c8a80c0f9e4e35294b1915ee8a7b29ae858/linux/x64/Cursor-0.49.5-x86_64.AppImage";
+      #   hash = "sha256-c5X8j6e/pOqvEqgE4Jc59xPDCYu2SlCJ0gG0Vs2qFMs=";
+      # };
       aarch64-linux = fetchurl {
         url = "https://download.todesktop.com/230313mzl4w4u92/cursor-0.45.14-build-250219jnihavxsz-arm64.AppImage";
         hash = "sha256-8OUlPuPNgqbGe2x7gG+m3n3u6UDvgnVekkjJ08pVORs=";

@@ -1,7 +1,7 @@
 {
   lib,
-  buildFHSUserEnv ? buildFHSEnv,
-  buildFHSEnv ? buildFHSUserEnv,
+  buildFHSUserEnv,
+  buildFHSEnv,
   runtimeShell,
   writeShellScript,
   writeShellApplication,

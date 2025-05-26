@@ -95,18 +95,20 @@
     #     tap-to-click = true
     # }
     sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+    scroll_factor = 1.5
   }
 
 
   # General
   binds {
     allow_workspace_cycles = false
+    scroll_event_delay = 0
   }
 
-  # General
+  # Generalbinds
   general {
     gaps_in = 6
-    gaps_out = 20
+    gaps_out = 15
     border_size = 2
     col.active_border= 0xffcba6f7 0xfff38ba8 45deg
     no_border_on_floating = false
@@ -399,6 +401,8 @@
 
   bind=SUPER,Tab,togglespecialworkspace,obsidian
   bind=$mainModALT,F12,togglespecialworkspace,chatgpt
+  bind=,F12,togglespecialworkspace,chatgpt
+
   bind=$mainMod_SHIFT,Tab,togglespecialworkspace,search
   bind=$mainModCTRL,Return,togglespecialworkspace,music
   bind=CTRL_SHIFT,Return,togglespecialworkspace,kitty
@@ -431,6 +435,11 @@
   bind=,XF86AudioStop,exec,playerctl stop
   bind = ,XF86AudioRaiseVolume, exec, volume -i 5
   bind = ,XF86AudioLowerVolume, exec, volume -d 5
+  bind = CTRL_SHIFT, mouse_down, exec, volume -i 5
+  bind = CTRL_SHIFT, mouse_up, exec, volume -d 5
+  bind = CTRL_SHIFT, mouse:272,exec,playerctl play-pause
+  bind = CTRL_SHIFT, space, sendshortcut,,space, class:spotify
+  bind = CTRL_SHIFT, mouse:273,exec, hyprctl dispatch focuswindow class:spotify && hyprctl dispatch sendshortcut , space, class:spotify && hyprctl dispatch togglespecialworkspace music
 
 
   # Screenshots
@@ -508,7 +517,7 @@
   # bind = $mainMod, mouse_down, workspace, previous
   # bind = $mainMod, mouse_up, workspace, previous
 
-  bind = ALT, F12, workspace, previous
+  # bind = ALT, F12, workspace, previous
 
   # Move/resize windows with mainMod + LMB/RMB and dragging
   bindm = $mainMod, mouse:272, movewindow

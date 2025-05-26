@@ -12,14 +12,12 @@
         (lib.filterAttrs filterNixFiles (builtins.readDir path))))
     import;
 
-  # We're not using this approach anymore as it doesn't work well with flakes and submodules
-  # localNixpkgsPath = ../nixpkgs;
-  # nixpkgsLocal = import localNixpkgsPath {
-  #   inherit system;
-  #   config = {
-  #     allowUnfree = true;
-  #   };
-  # };
+  nixpkgsMaster = import inputs.nixpkgsMaster {
+    inherit system;
+    config = {
+      allowUnfree = true;
+    };
+  };
 
   nixpkgsUnstableSmall = import inputs.nixpkgsUnstableSmall {
     inherit system;
@@ -68,8 +66,8 @@
         starsector = pkgs.callPackage ./active/starsector {};
         thorium = pkgs.callPackage ./active/thorium {};
         k9s = pkgs.callPackage ./active/k9s {};
-        windsurf = pkgs.callPackage ./active/windsurf {};
-        # whispering = pkgs.callPackage ./active/whispering {};
+        windsurf = nixpkgsMaster.windsurf;
+        claude-desktop = inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs;
       };
     };
 

@@ -8,7 +8,7 @@
 }: {
   imports = [
     # Core
-    inputs.catppuccin.homeManagerModules.catppuccin
+    inputs.catppuccin.homeModules.catppuccin
     inputs.impermanence.nixosModules.home-manager.impermanence
     ../features/core.nix
 
@@ -45,6 +45,11 @@
       url = "https://github.com/p-zany/nixos-cursor-server/tarball/master";
       sha256 = "sha256:0iqrhkysfjmqpkxj31vk1y7iq8541sfnpqjlg1jlgvn20kbpym3p";
     }}/modules/cursor-server/home.nix"
+
+    "${fetchTarball {
+      url = "https://github.com/goggi/nixos-windsurf-server/tarball/master";
+      sha256 = "sha256:0azfzyir38iprw8h40ikm5vg2fmrynyf2b3vr2k0nqppd0a4x86w";
+    }}/modules/windsurf-server/home.nix"    
 
     # "${fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master"}/modules/vscode-server/home.nix"
     ../features/development/navicatPersistance.nix
@@ -151,6 +156,10 @@
   services.cursor-server.enable = true;
   services.cursor-server.enableFHS = true;
   services.cursor-server.installPath = "$HOME/.vscode/.cursor-server";
+  services.windsurf-server.enable = true;
+  services.windsurf-server.enableFHS = false;
+  services.windsurf-server.installPath = "$HOME/.windsurf-server";
+
 
   # services.vscode-server.nodejsPackage = pkgs.nodejs-16_x;
   # services.vscode-server.nodejsPackage = pkgs.nodejs-16_x;

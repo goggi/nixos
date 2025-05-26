@@ -5,6 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    sqlite
     jdk23
     graphviz
     bazecor
