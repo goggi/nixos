@@ -98,6 +98,12 @@
   programs = {
     # bash.promptInit = ''eval "$(${pkgs.starship}/bin/starship init bash)"'';
     # fish.promptInit = ''eval "$(${pkgs.starship}/bin/starship init fish | source)"'';
+    command-not-found.enable = false;
+    nix-index = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+    };
     xwayland.enable = true;
     gnome-disks.enable = true;
     adb.enable = true;

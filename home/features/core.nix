@@ -5,6 +5,8 @@
   ...
 }: {
   home.packages = with pkgs; [
+    pigz
+    ffmpeg
     sqlite
     jdk23
     graphviz

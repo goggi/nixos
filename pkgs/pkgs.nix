@@ -53,8 +53,8 @@
 
       packageOverrides = super: {
         zen-browser = inputs.zen-browser.packages.${system}.default;
-        vivaldi = nixpkgsUnstableSmall.vivaldi;
-        vivaldi-ffmpeg-codecs = nixpkgsUnstableSmall.vivaldi-ffmpeg-codecs;
+        vivaldi = nixpkgsMaster.vivaldi;
+        vivaldi-ffmpeg-codecs = nixpkgsMaster.vivaldi-ffmpeg-codecs;
         vscode = nixpkgsUnstableSmall.vscode;
         vencord = nixpkgsUnstableSmall.vencord;
         obsidian = nixpkgsUnstable.obsidian;

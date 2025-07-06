@@ -1,26 +1,15 @@
 {
   inputs = {
-    # NixOS
-
-    # Local Unstable nixpkgs repository at ../nixpkgs
-
     nixpkgsMaster = {
       url = "github:NixOS/nixpkgs";
     };
-
     nixpkgsUnstableSmall = {
       url = "github:NixOS/nixpkgs/nixos-unstable-small";
     };
     nixpkgsUnstable = {
       url = "github:NixOS/nixpkgs/nixos-unstable-small";
     };
-    nixpkgsStable = {
-      url = "github:NixOS/nixpkgs/nixos-24.05";
-    };
     nixpkgs = {
-      # url = "github:NixOS/nixpkgs/68b021b3244d6464671494eb83015deeb0fe294a";
-      # url = "github:NixOS/nixpkgs/nixos-24.11";
-      # url = "github:NixOS/nixpkgs/nixos-unstable";
       url = "github:NixOS/nixpkgs/nixos-25.05";
     };
     impermanence.url = "github:nix-community/impermanence";

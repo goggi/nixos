@@ -14,10 +14,18 @@
     inherit (stdenvNoCC) hostPlatform;
 
     sources = {
+      # x86_64-linux = fetchurl {
+      #   url = "https://downloads.cursor.com/production/a9dd46cbd249a30044eaae1526eb6ca1ec2f7568/linux/x64/Cursor-0.51.1-x86_64.AppImage";
+      #   hash = "sha256-KOKVvEH8PpXA11e7rieGWSmnjPTRIK0M73kVcQHjep4=";
+      # };
       x86_64-linux = fetchurl {
-        url = "https://downloads.cursor.com/production/02270c8441bdc4b2fdbc30e6f470a589ec78d60d/linux/x64/Cursor-0.50.7-x86_64.AppImage";
-        hash = "sha256-ukYsLtwnM+yjeDX24Bls7c0MhxeMGOemdQFF6t8Mqvg=";
+        url = "https://downloads.cursor.com/production/e86fcc937643bc6385aebd982c1c66012c98caec/linux/x64/Cursor-1.1.4-x86_64.AppImage";
+        hash = "sha256-kl2/NO8wNE1AcgyjNz9jresAqWLP/uYLCLoIvt3vNNA=";
       };
+      # x86_64-linux = fetchurl {
+      #   url = "https://downloads.cursor.com/production/96e5b01ca25f8fbd4c4c10bc69b15f6228c80771/linux/x64/Cursor-0.50.5-x86_64.AppImage";
+      #   hash = "sha256-DUWIgQYD3Wj6hF7NBb00OGRynKmXcFldWFUA6W8CZeM=";
+      # };
       # x86_64-linux = fetchurl {
       #   url = "https://downloads.cursor.com/production/fd861c8a80c0f9e4e35294b1915ee8a7b29ae858/linux/x64/Cursor-0.49.5-x86_64.AppImage";
       #   hash = "sha256-c5X8j6e/pOqvEqgE4Jc59xPDCYu2SlCJ0gG0Vs2qFMs=";

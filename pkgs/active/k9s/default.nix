@@ -2,7 +2,7 @@
 
 buildGoModule rec {
   pname = "k9s";
-  version = "0.50.4";
+  version = "0.50.6";
 
   src = fetchFromGitHub {
     owner = "derailed";

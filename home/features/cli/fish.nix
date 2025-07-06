@@ -51,6 +51,14 @@
       wh = "readlink -f (which $argv)";
     };
     interactiveShellInit =
+      # Check if VSCode is starting the shell and switch to bash
+      ''
+        # Detect if we're being started by VSCode and switch to bash
+        if test -n "$VSCODE_INJECTION" -o -n "$TERM_PROGRAM" -a "$TERM_PROGRAM" = "vscode"
+          exec bash
+        end
+      ''
+      +
       # Open command buffer in vim when alt+e is pressed
       ''
         bind \ee edit_command_buffer
