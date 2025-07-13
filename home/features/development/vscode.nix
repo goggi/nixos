@@ -21,7 +21,8 @@
       pkgs.cursor
       pkgs.windsurf
       pkgs.biome
-      pkgs.claude-desktop
+      # pkgs.claude-desktop
+      # pkgs.claude-code
     ];
     persistence = {
       "/persist/home/gogsaan" = {
@@ -55,6 +56,10 @@
           }
           {
             directory = ".codeium";
+            method = "symlink";
+          }
+          {
+            directory = ".claude";
             method = "symlink";
           }
         ];

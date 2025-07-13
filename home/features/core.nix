@@ -18,7 +18,7 @@
     # pulumi
     # pulumi-bin
     # pulumiPackages.pulumi-language-nodejs
-    deepin.deepin-calculator
+    # deepin.deepin-calculator
     libdrm
     audio-recorder
     # libreoffice-fresh

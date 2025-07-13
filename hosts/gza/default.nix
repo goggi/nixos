@@ -29,6 +29,16 @@
     ../catalog/optional/apps/bazecor.nix
   ];
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      dqlite = prev.dqlite.overrideAttrs (oldAttrs: {
+        postPatch = (oldAttrs.postPatch or "") + ''
+          find src -name "*.h" -o -name "*.c" | xargs sed -i 's/\bfloat_t\b/dqlite_float_t/g'
+        '';
+      });
+    })
+  ];
+
   nix.gc.automatic = true;
 
   networking = {

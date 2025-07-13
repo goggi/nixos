@@ -19,7 +19,7 @@
     # Browser
     # ../features/browser/firefox
     ../features/browser/googleChrome.nix
-    ../features/browser/thorium.nix
+    # ../features/browser/thorium.nix
 
     ../features/browser/floorp.nix
     ../features/browser/zenBrowser.nix
@@ -55,7 +55,7 @@
     ../features/development/navicatPersistance.nix
     ../features/development/dockerPersistance.nix
     ../features/development/k8sManagment.nix
-    ../features/development/archi.nix
+    # ../features/development/archi.nix
 
     # ../features/development/jetbrain.nix
     # ../features/development/helix
@@ -81,11 +81,11 @@
     ../features/communcation/signalDesktop.nix
     # ../features/communcation/webcord.nix
     # ../features/communcation/vencord.nix
-    ../features/communcation/equibop.nix
+    # ../features/communcation/equibop.nix
     # Media
     # ../features/media/obsStudio.nix
     # ../features/media/plex.nix
-    ../features/media/tidal.nix
+    # ../features/media/tidal.nix
 
     # Cli
     ../features/cli/fish.nix
