@@ -444,8 +444,9 @@
 
   # Screenshots
   $screenshotarea = grimblast save area - | swappy -f -
+  $screenshotareav2 = grimblast save area /tmp/screenshot.png && wl-copy /tmp/screenshot.png && satty -f /tmp/screenshot.png -o /tmp/screenshot.png --copy-command "wl-copy /tmp/screenshot.png" --save-after-copy --disable-notifications --early-exit
   $screensscreen = grimblast save active - | swappy -f -
-  bind = SUPER_SHIFT, t, exec, $screenshotarea
+  bind = SUPER_SHIFT, t, exec, $screenshotareav2
   bind = SUPER_CTRL, t, exec, $screensscreen
   bind = CTRL, Print, exec, grimblast --notify --cursor copysave output
   bind = SUPER SHIFT CTRL, R, exec, grimblast --notify --cursor copysave output

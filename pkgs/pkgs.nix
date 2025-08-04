@@ -67,6 +67,7 @@
     starsector = pkgs.callPackage ./active/starsector {};
     thorium = pkgs.callPackage ./active/thorium {};
     k9s = pkgs.callPackage ./active/k9s {};
+    satty = pkgs.callPackage ./active/satty {};
     # archi = pkgs.callPackage ./active/archi {};
   };
 

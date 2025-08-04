@@ -5,6 +5,9 @@
   ...
 }: {
   home.packages = with pkgs; [
+    satty
+    wl-clipboard
+    uv
     pigz
     ffmpeg
     sqlite
