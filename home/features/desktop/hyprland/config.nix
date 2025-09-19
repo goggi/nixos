@@ -78,8 +78,9 @@
   bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "$secondMonitorLowerResolution"
   bind=$mainModALT, slash, exec, hyprctl keyword monitor "$mainMonitorLowestResolution"
   bind=$mainModALT, slash, exec, hyprctl keyword monitor "$mainMonitorLowestResolutionPadding"
-
-
+  bind = CTRL, E, exec, sh -c 'echo "trigger" | nc -U /tmp/speechflow.sock'
+  bind = ALT SHIFT, E, exec, sh -c 'echo "trigger_with_enter" | nc -U /tmp/speechflow.sock'
+  bind = ALT CTRL, E , exec, sh -c 'echo "trigger" | nc -U /tmp/speechflow-dev.sock'
 
   # Inputs
   input {
@@ -187,10 +188,13 @@
   }
 
   # xGestures
-  gestures {
-    workspace_swipe = true
-    workspace_swipe_fingers = 3
-  }
+
+
+  windowrulev2 = float, title:(SpeechFlow - Recording)
+  windowrulev2 = move 2235 50, title:(SpeechFlow - Recording)
+  windowrulev2 = pin, title:(SpeechFlow - Recording)
+  windowrulev2 = noinitialfocus, title:(SpeechFlow - Recording)
+
 
   # Navicat
   # windowrule = float, download
@@ -204,9 +208,9 @@
   # Workspaces
   windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$
   windowrule = workspace special:obsidian, title:^.*btop.*$
-  windowrule = workspace 10, title:^.*WebCord.*$
-  windowrule = workspace 10, title:^.*Skype.*$
-  windowrule = workspace 10, title:^.*Signal.*$
+  # windowrule = workspace 10, title:^.*WebCord.*$
+  # windowrule = workspace 10, title:^.*Skype.*$
+  # windowrule = workspace 10, title:^.*Signal.*$
   # windowrule = workspace 1, title:^.*Visual Studio Code.*$
   # windowrule = fakefullscreen, title:^.*Visual Studio Code.*$
 
@@ -445,9 +449,11 @@
   # Screenshots
   $screenshotarea = grimblast save area - | swappy -f -
   $screenshotareav2 = grimblast save area /tmp/screenshot.png && wl-copy /tmp/screenshot.png && satty -f /tmp/screenshot.png -o /tmp/screenshot.png --copy-command "wl-copy /tmp/screenshot.png" --save-after-copy --disable-notifications --early-exit
+  $screenshotareav3 = grimblast save area /tmp/screenshot.png && wl-copy /tmp/screenshot.png && satty -f /tmp/screenshot.png -o /tmp/screenshot.png --copy-command "wl-copy /tmp/screenshot.png" --save-after-copy --disable-notifications --early-exit --annotation-size-factor 1 --initial-tool rectangle --actions-on-escape "save-to-file"
+  $screenshotareav4 = grimblast save area /tmp/screenshot.png && satty -f /tmp/screenshot.png -o ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png --copy-command "wl-copy" --save-after-copy --disable-notifications --early-exit --annotation-size-factor 1 --initial-tool rectangle --actions-on-escape "save-to-file"
   $screensscreen = grimblast save active - | swappy -f -
-  bind = SUPER_SHIFT, t, exec, $screenshotareav2
-  bind = SUPER_CTRL, t, exec, $screensscreen
+  bind = SUPER_SHIFT, t, exec, $screenshotareav3
+  bind = SUPER_CTRL, t, exec, $screenshotareav4
   bind = CTRL, Print, exec, grimblast --notify --cursor copysave output
   bind = SUPER SHIFT CTRL, R, exec, grimblast --notify --cursor copysave output
   bind = ALT, Print, exec, grimblast --notify --cursor copysave screen

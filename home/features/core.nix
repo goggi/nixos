@@ -1,10 +1,7 @@
-{
-  inputs,
-  pkgs,
-  config,
-  ...
-}: {
+{ inputs, pkgs, config, ... }: {
   home.packages = with pkgs; [
+    dotool
+    (whisper-cpp-vulkan.override { rocmGpuTargets = "10.3.0"; })
     satty
     wl-clipboard
     uv

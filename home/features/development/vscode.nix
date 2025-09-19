@@ -1,26 +1,28 @@
-{
-  inputs,
-  pkgs,
-  fetchTarball,
-  ...
-}: {
+{ inputs, pkgs, fetchTarball, ... }: {
   programs.vscode = {
     enable = true;
-    # package = pkgs.vscode.override {
-    #   commandLineArgs = ''
-    #     --enable-features=UseOzonePlatform \
-    #     --ozone-platform=wayland
-    #   '';
-    # };
-    # package = pkgs.vscode.fhs;
-    package = pkgs.vscode;
+    #   package = (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: rec {
+    #     src = (builtins.fetchTarball {
+    #       url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
+    #       sha256 = "sha256:1y6lp9l079n76ycsizzy1r62s6766z4k32bp125p6srmclmg7xiq";
+    #     });
+    #     version = "latest";
+
+    #     buildInputs = oldAttrs.buildInputs ++ [ pkgs.krb5 ];
+    #   });
   };
+
+  # programs.vscode = {
+  #   enable = true;
+  #   package = pkgs.vscodium;
+  # };
 
   home = {
     packages = [
       pkgs.cursor
       pkgs.windsurf
       pkgs.biome
+      pkgs.kiro
       # pkgs.claude-desktop
       # pkgs.claude-code
     ];
@@ -28,12 +30,8 @@
       "/persist/home/gogsaan" = {
         allowOther = true;
         directories = [
-          {
-            directory = ".vscode-server";
-          }
-          {
-            directory = ".cursor-server";
-          }
+          { directory = ".vscode-server"; }
+          { directory = ".cursor-server"; }
           {
             directory = ".config/Code";
             method = "symlink";
@@ -47,11 +45,27 @@
             method = "symlink";
           }
           {
+            directory = ".kiro";
+            method = "symlink";
+          } 
+          {
+            directory = ".config/Kiro";
+            method = "symlink";
+          }                       
+          {
             directory = ".windsurf";
             method = "symlink";
           }
           {
             directory = ".config/Windsurf";
+            method = "symlink";
+          }
+          {
+            directory = ".config/VSCodium";
+            method = "symlink";
+          }
+          {
+            directory = ".config/Code - Insiders";
             method = "symlink";
           }
           {
@@ -62,8 +76,19 @@
             directory = ".claude";
             method = "symlink";
           }
+          {
+            directory = ".serena";
+            method = "symlink";
+          }
+
         ];
+        files = [ ".claude.json" ".bash_history" ];
       };
     };
+  };
+
+  xdg.desktopEntries.kiro = {
+    name = "Kiro Wayland";
+    exec = "kiro --enable-features=UseOzonePlatform --ozone-platform=wayland";
   };
 }

@@ -17,8 +17,7 @@
     vkd3d
     amdvlk
     mangohud
-    # rocm-opencl-icd
-    # rocm-opencl-runtime
+rocmPackages.clr
     vaapiVdpau
     libvdpau-va-gl
   ];

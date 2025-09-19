@@ -1,22 +1,15 @@
-{
-  inputs,
-  system,
-  lib,
-  ...
-}: let
+{ inputs, system, lib, ... }:
+let
   inherit (builtins) mapAttrs;
 
   # Helper function to filter and import .nix files from a directory
   filterNixFiles = k: v: v == "regular" && lib.hasSuffix ".nix" k;
   importNixFiles = path:
     (lib.lists.forEach (lib.mapAttrsToList (name: _: path + ("/" + name))
-        (lib.filterAttrs filterNixFiles (builtins.readDir path))))
-    import;
+      (lib.filterAttrs filterNixFiles (builtins.readDir path)))) import;
 
   # Common nixpkgs configuration
-  commonNixpkgsConfig = {
-    allowUnfree = true;
-  };
+  commonNixpkgsConfig = { allowUnfree = true; };
 
   # Import different nixpkgs channels with consistent configuration
   nixpkgsMaster = import inputs.nixpkgsMaster {
@@ -48,41 +41,40 @@
   # Package overrides configuration
   packageOverrides = super: {
     # External flake packages
+    kiro = nixpkgsMaster.kiro;
+    cursor = nixpkgsMaster.code-cursor;
+
     zen-browser = inputs.zen-browser.packages.${system}.default;
     # claude-desktop = inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs;
 
+    whisper-cpp-vulkan = pkgs.callPackage ./active/whisper-cpp { };
     # Packages from different nixpkgs channels
-    vivaldi = nixpkgsMaster.vivaldi;
-    vivaldi-ffmpeg-codecs = nixpkgsMaster.vivaldi-ffmpeg-codecs;
+    # vivaldi = nixpkgsMaster.vivaldi;
+    # vivaldi-ffmpeg-codecs = nixpkgsMaster.vivaldi-ffmpeg-codecs;
     windsurf = nixpkgsMaster.windsurf;
     vscode = nixpkgsUnstableSmall.vscode;
     vencord = nixpkgsUnstableSmall.vencord;
     obsidian = nixpkgsUnstable.obsidian;
+    satty = nixpkgsUnstable.satty;
 
     # Local custom packages
-    navicat = pkgs.callPackage ./active/navicat {};
-    bibata-hyprcursor = pkgs.callPackage ./active/bibata {};
-    cursor = pkgs.callPackage ./active/cursor {};
-    bazecor = pkgs.callPackage ./active/bazecor {};
-    starsector = pkgs.callPackage ./active/starsector {};
-    thorium = pkgs.callPackage ./active/thorium {};
-    k9s = pkgs.callPackage ./active/k9s {};
-    satty = pkgs.callPackage ./active/satty {};
+    navicat = pkgs.callPackage ./active/navicat { };
+    bibata-hyprcursor = pkgs.callPackage ./active/bibata { };
+    # cursor = pkgs.callPackage ./active/cursor { };
+    bazecor = pkgs.callPackage ./active/bazecor { };
+    starsector = pkgs.callPackage ./active/starsector { };
+    thorium = pkgs.callPackage ./active/thorium { };
+    k9s = pkgs.callPackage ./active/k9s { };
     # archi = pkgs.callPackage ./active/archi {};
   };
 
   # Overlays configuration
   overlays = with inputs;
     [
-      (
-        final: _: let
-          inherit (final) system;
-        in {
-          sf-mono-liga-src = sf-mono-liga;
-        }
-      )
-    ]
-    ++ (importNixFiles ./.overlays);
+      (final: _:
+        let inherit (final) system;
+        in { sf-mono-liga-src = sf-mono-liga; })
+    ] ++ (importNixFiles ./.overlays);
 
   # Main nixpkgs configuration
   pkgs = import inputs.nixpkgs {
@@ -99,5 +91,4 @@
 
     inherit overlays;
   };
-in
-  pkgs
+in pkgs

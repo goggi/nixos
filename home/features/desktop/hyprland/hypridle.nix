@@ -48,7 +48,9 @@ in {
     listener {
         timeout = 300
         on-timeout = hyprctl sleep 1 && hyprctl dispatch dpms off && ${mediaPause}
-        on-resume = hyprctl dispatch dpms on && sleep 1 && ${restartXdgPortal} && ${restartWaybar} && ~/.config/hypr/autoBrightness.sh && sleep 1 && ~/.config/hypr/autoBrightness.sh
+        on-resume = hyprctl dispatch dpms on && sleep 8 && ~/.config/hypr/autoBrightness.sh
+        #on-resume = hyprctl dispatch dpms on && sleep 8 && ${restartXdgPortal} && ${restartWaybar} && ~/.config/hypr/autoBrightness.sh && sleep 1 && ~/.config/hypr/autoBrightness.sh
+        #on-resume = hyprctl dispatch dpms on
     }
   '';
 }

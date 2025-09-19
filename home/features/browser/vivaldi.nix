@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{ lib, pkgs, ... }: {
   home = {
     packages = [
       (pkgs.vivaldi.override {
@@ -15,7 +11,7 @@
     persistence = {
       "/persist/home/gogsaan" = {
         allowOther = true;
-        directories = [".config/vivaldi"];
+        directories = [ ".config/vivaldi" ];
       };
     };
   };

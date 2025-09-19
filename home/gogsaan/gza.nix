@@ -1,11 +1,4 @@
-{
-  config,
-  inputs,
-  pkgs,
-  lib,
-  system,
-  ...
-}: {
+{ config, inputs, pkgs, lib, system, ... }: {
   imports = [
     # Core
     inputs.catppuccin.homeModules.catppuccin
@@ -36,20 +29,34 @@
 
     # Development
     ../features/development/vscode.nix
-    "${fetchTarball {
-      url = "https://github.com/msteen/nixos-vscode-server/tarball/master";
-      sha256 = "sha256:1rdn70jrg5mxmkkrpy2xk8lydmlc707sk0zb35426v1yxxka10by";
-    }}/modules/vscode-server/home.nix"
+    "${
+      fetchTarball {
+        url = "https://github.com/msteen/nixos-vscode-server/tarball/master";
+        sha256 = "sha256:1rdn70jrg5mxmkkrpy2xk8lydmlc707sk0zb35426v1yxxka10by";
+      }
+    }/modules/vscode-server/home.nix"
 
-    "${fetchTarball {
-      url = "https://github.com/p-zany/nixos-cursor-server/tarball/master";
-      sha256 = "sha256:0iqrhkysfjmqpkxj31vk1y7iq8541sfnpqjlg1jlgvn20kbpym3p";
-    }}/modules/cursor-server/home.nix"
+    "${
+      fetchTarball {
+        url = "https://github.com/p-zany/nixos-cursor-server/tarball/master";
+        sha256 = "sha256:0iqrhkysfjmqpkxj31vk1y7iq8541sfnpqjlg1jlgvn20kbpym3p";
+      }
+    }/modules/cursor-server/home.nix"
 
-    "${fetchTarball {
-      url = "https://github.com/goggi/nixos-windsurf-server/tarball/master";
-      sha256 = "sha256:0azfzyir38iprw8h40ikm5vg2fmrynyf2b3vr2k0nqppd0a4x86w";
-    }}/modules/windsurf-server/home.nix"    
+    "${
+      fetchTarball {
+        url = "https://github.com/goggi/nixos-windsurf-server/tarball/master";
+        sha256 = "sha256:0azfzyir38iprw8h40ikm5vg2fmrynyf2b3vr2k0nqppd0a4x86w";
+      }
+    }/modules/windsurf-server/home.nix"
+
+    "${
+      fetchTarball {
+        url =
+          "https://github.com/goggi-archive/nixos-kiro-server/tarball/master";
+        sha256 = "sha256-xyi1mJSB7IqXcrHDLY/f6EqmDuW5qk1dnzCdopYgkno=";
+      }
+    }/modules/kiro-server/home.nix"
 
     # "${fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master"}/modules/vscode-server/home.nix"
     ../features/development/navicatPersistance.nix
@@ -97,7 +104,7 @@
     ../features/tool/flatpakPersistance.nix
     ../features/tool/btop.nix
     ../features/tool/nemo.nix
-    # ../features/tool/idasen.nix
+    ../features/tool/idasen.nix
     ../features/tool/swappy.nix
     ../features/tool/wasabiwallet.nix
     # ../features/tool/wayvnc.nix
@@ -114,7 +121,7 @@
     username = "gogsaan";
     homeDirectory = "/home/gogsaan";
     stateVersion = "23.11";
-    extraOutputsToInstall = ["doc" "devdoc"];
+    extraOutputsToInstall = [ "doc" "devdoc" ];
     # Seems like it needs to be commented out on first boot,ss
     persistence = {
       "/persist/home/gogsaan" = {
@@ -143,10 +150,7 @@
           ".local/share/waydroid"
           ".local/share/desktop-directories"
         ];
-        files = [
-          ".zsh_history"
-          ".config/mimeapps.list"
-        ];
+        files = [ ".zsh_history" ".config/mimeapps.list" ];
         allowOther = true;
       };
     };
@@ -159,7 +163,9 @@
   services.windsurf-server.enable = true;
   services.windsurf-server.enableFHS = false;
   services.windsurf-server.installPath = "$HOME/.windsurf-server";
-
+  services.kiro-server.enable = true;
+  services.kiro-server.enableFHS = false;
+  services.kiro-server.installPath = "$HOME/.kiro-server";
 
   # services.vscode-server.nodejsPackage = pkgs.nodejs-16_x;
   # services.vscode-server.nodejsPackage = pkgs.nodejs-16_x;
@@ -179,7 +185,6 @@
   #   doomPrivateDir = ./doom.d; # Directory containing your config.el, init.el
   #   # and packages.el files
   # };
-
   programs.mangohud = {
     enable = true;
     enableSessionWide = false;
